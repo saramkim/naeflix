@@ -1,7 +1,9 @@
+import Intro from 'pages/Intro/Intro';
+
 function App() {
   return (
     <div className='App'>
-      <div>react-typescript</div>
+      <Intro />
     </div>
   );
 }
