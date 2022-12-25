@@ -10,7 +10,7 @@ const TextCardLayout = styled.div`
   text-align: center;
   justify-content: space-around;
   height: 460px;
-  margin: 80px;
+  margin: 10px;
 `;
 
 const Title = styled.h1`

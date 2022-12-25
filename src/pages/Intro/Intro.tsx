@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import Banner from './Banner';
 import Header from './Header';
 import TextCard from './TextCard';
 
@@ -14,6 +15,7 @@ function Intro() {
     <IntroLayout>
       <Header />
       <TextCard />
+      <Banner />
     </IntroLayout>
   );
 }
