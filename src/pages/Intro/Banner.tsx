@@ -13,6 +13,7 @@ const BannerLayout = styled.div`
   align-items: center;
   justify-content: center;
   background: #0c1949;
+  margin-bottom: 50px;
 `;
 
 const Content = styled.div`
