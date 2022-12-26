@@ -6,6 +6,7 @@ import mobileImg from '../../assets/mobile-0819.jpg';
 import tvImg from '../../assets/tv.png';
 
 import Banner from './Banner';
+import FQACard from './FQACard';
 import GIFCard from './GIFCard';
 import Header from './Header';
 import TextCard from './TextCard';
@@ -44,6 +45,7 @@ function Intro() {
         gif={mobileImg}
         direction='reverse'
       />
+      <FQACard />
     </IntroLayout>
   );
 }

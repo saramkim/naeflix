@@ -38,4 +38,4 @@
 
 - 자주 묻는 질문 button
 
-  - [클릭] text box 출현
+  - [클릭] 답변 text box drop down
