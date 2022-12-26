@@ -49,7 +49,7 @@ function StartForm() {
       </FormTitle>
       <InputContainer>
         <Input value={value} onChange={onChangeInput} label='이메일 주소' />
-        <Button fontSize={26} path={isCorrect ? 'login' : undefined}>
+        <Button fontSize={26} hover='#F40612' path={isCorrect ? 'login' : undefined}>
           시작하기 &gt;
         </Button>
         {isCorrect ? null : value !== '' && <Warning>이메일 주소를 입력해 주세요.</Warning>}

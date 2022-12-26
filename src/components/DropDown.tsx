@@ -17,6 +17,7 @@ const InitialBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 `;
 
 const Title = styled.h1`
