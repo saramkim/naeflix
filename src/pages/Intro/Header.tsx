@@ -13,14 +13,14 @@ const HeaderLayout = styled.div`
 `;
 
 const HeaderRigth = styled.div`
-  width: 190px;
+  width: 200px;
   display: flex;
   justify-content: space-between;
 `;
 
-function Header() {
-  const LANGUAGE_LIST = ['한국어', 'English'];
+export const LANGUAGE_LIST = ['한국어', 'English'];
 
+function Header() {
   return (
     <HeaderLayout>
       <Logo />

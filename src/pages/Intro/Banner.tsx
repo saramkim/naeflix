@@ -1,6 +1,5 @@
-import { useNavigate } from 'react-router-dom';
-
 import Logo from 'components/Logo';
+import TextButton from 'components/TextButton';
 import { AiOutlineRight } from 'react-icons/ai';
 import styled from 'styled-components';
 
@@ -31,38 +30,19 @@ const SubTitle = styled.h2`
   font-size: 16px;
 `;
 
-const TextButton = styled.div`
-  color: #447fc4;
-  font-size: 16px;
-  width: fit-content;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-
-  &: hover {
-    text-decoration: underline;
-  }
-`;
-
 const Icon = styled.span`
   font-size: 22px;
   margin-left: 8px;
 `;
 
 function Banner() {
-  const navigate = useNavigate();
-
-  const onClickButton = () => {
-    navigate('signup');
-  };
-
   return (
     <BannerLayout>
       <Logo />
       <Content>
         <Title>0,000원이면 만날 수 있는 내플릭스.</Title>
         <SubTitle>무료형 베이식 멤버십에 가입하세요.</SubTitle>
-        <TextButton onClick={onClickButton}>
+        <TextButton fontSize={16} color='#447fc4' path='signup'>
           자세히 알아보기
           <Icon>
             <AiOutlineRight />

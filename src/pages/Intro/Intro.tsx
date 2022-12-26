@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import Banner from './Banner';
+import Footer from './Footer';
 import FQACard from './FQACard';
 import GIFCardBundle from './GIFCardBundle';
 import Header from './Header';
@@ -20,6 +21,7 @@ function Intro() {
       <Banner />
       <GIFCardBundle />
       <FQACard />
+      <Footer />
     </IntroLayout>
   );
 }
