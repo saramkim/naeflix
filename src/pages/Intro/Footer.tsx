@@ -34,37 +34,37 @@ function Footer() {
     <FooterLayout>
       <Inquiry>질문이 있으신가요? 문의 이메일: saramkimm@gmail.com</Inquiry>
       <Menu>
-        <TextButton fontSize={FONT_SIZE} path='signup'>
+        <TextButton fontSize={FONT_SIZE} path='/signup'>
           자주 묻는 질문
         </TextButton>
-        <TextButton fontSize={FONT_SIZE} path='signup'>
+        <TextButton fontSize={FONT_SIZE} path='/signup'>
           고객센터
         </TextButton>
-        <TextButton fontSize={FONT_SIZE} path='signup'>
+        <TextButton fontSize={FONT_SIZE} path='/signup'>
           계정
         </TextButton>
-        <TextButton fontSize={FONT_SIZE} path='signup'>
+        <TextButton fontSize={FONT_SIZE} path='/signup'>
           미디어 센터
         </TextButton>
-        <TextButton fontSize={FONT_SIZE} path='signup'>
+        <TextButton fontSize={FONT_SIZE} path='/signup'>
           내플릭스 지원 디바이스
         </TextButton>
-        <TextButton fontSize={FONT_SIZE} path='signup'>
+        <TextButton fontSize={FONT_SIZE} path='/signup'>
           이용약관
         </TextButton>
-        <TextButton fontSize={FONT_SIZE} path='signup'>
+        <TextButton fontSize={FONT_SIZE} path='/signup'>
           개인정보 처리방침
         </TextButton>
-        <TextButton fontSize={FONT_SIZE} path='signup'>
+        <TextButton fontSize={FONT_SIZE} path='/signup'>
           쿠키 설정
         </TextButton>
-        <TextButton fontSize={FONT_SIZE} path='signup'>
+        <TextButton fontSize={FONT_SIZE} path='/signup'>
           제작사 정보
         </TextButton>
-        <TextButton fontSize={FONT_SIZE} path='signup'>
+        <TextButton fontSize={FONT_SIZE} path='/signup'>
           문의하기
         </TextButton>
-        <TextButton fontSize={FONT_SIZE} path='signup'>
+        <TextButton fontSize={FONT_SIZE} path='/signup'>
           법적 고지
         </TextButton>
       </Menu>

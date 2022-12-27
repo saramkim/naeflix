@@ -9,7 +9,7 @@ type ButtonProps = {
   hover?: string;
 };
 
-const Btn = styled.button<{ fontSize: number; hover?: string }>`
+const ButtonLayout = styled.button<{ fontSize: number; hover?: string }>`
   background-color: #e50914;
   font-size: ${({ fontSize }) => fontSize}px;
   padding: 0.4em 1em;
@@ -24,17 +24,15 @@ const Btn = styled.button<{ fontSize: number; hover?: string }>`
 function Button({ children, fontSize, path, hover }: ButtonProps) {
   const navigate = useNavigate();
 
+  const onClickButton = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    if (path) navigate(path);
+  };
+
   return (
-    <Btn
-      fontSize={fontSize}
-      hover={hover}
-      onClick={(e) => {
-        e.preventDefault();
-        if (path) navigate(path);
-      }}
-    >
+    <ButtonLayout fontSize={fontSize} hover={hover} onClick={onClickButton}>
       {children}
-    </Btn>
+    </ButtonLayout>
   );
 }
 
