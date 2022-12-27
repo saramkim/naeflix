@@ -1,13 +1,24 @@
+import { useNavigate } from 'react-router-dom';
+
 import styled from 'styled-components';
 
 import logo from '../assets/naeflix-logo.png';
 
-const Img = styled.img`
+type LogoProps = {
+  path?: string;
+};
+
+const Img = styled.img<{ path?: string }>`
   height: calc(25px + 1vw);
+  cursor: ${({ path }) => (path ? 'pointer' : 'default')};
 `;
 
-function Logo() {
-  return <Img src={logo} alt='Naeflix' />;
+function Logo({ path }: LogoProps) {
+  const navigate = useNavigate();
+
+  const onClickLogo = () => path && navigate(path);
+
+  return <Img src={logo} alt='Naeflix' onClick={onClickLogo} path={path} />;
 }
 
 export default Logo;
