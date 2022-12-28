@@ -1,3 +1,4 @@
+import Footer from 'components/Footer';
 import styled from 'styled-components';
 
 import Header from './Header';
@@ -12,6 +13,7 @@ function SignUp() {
     <SignUpLayout>
       <Header />
       <SignUpForm />
+      <Footer background='rgb(243, 243, 243)' />
     </SignUpLayout>
   );
 }

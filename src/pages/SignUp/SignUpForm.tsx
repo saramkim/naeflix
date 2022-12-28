@@ -11,6 +11,7 @@ const SignUpFormLayout = styled.div`
   justify-content: center;
   padding: 20px 32px 60px 32px;
   height: 600px;
+  margin-bottom: 80px;
 `;
 
 const Form = styled.form`

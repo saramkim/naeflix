@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
+import Footer from '../../components/Footer';
+
 import Banner from './Banner';
-import Footer from './Footer';
 import FQACard from './FQACard';
 import GIFCardBundle from './GIFCardBundle';
 import Header from './Header';

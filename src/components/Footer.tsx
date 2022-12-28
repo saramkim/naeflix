@@ -2,14 +2,15 @@ import SelectBox from 'components/SelectBox';
 import TextButton from 'components/TextButton';
 import styled from 'styled-components';
 
-import { LANGUAGE_LIST } from './Header';
+import { LANGUAGE_LIST } from '../pages/Intro/Header';
 
-const FooterLayout = styled.div`
+const FooterLayout = styled.div<{ background?: string }>`
   padding: 80px 85px;
   color: #737373;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  background: ${({ background }) => background || 'inherit'};
 `;
 
 const Inquiry = styled.span`
@@ -27,11 +28,11 @@ const Info = styled.p`
   font-size: 12px;
 `;
 
-function Footer() {
+function Footer({ background }: { background?: string }) {
   const FONT_SIZE = 12;
 
   return (
-    <FooterLayout>
+    <FooterLayout background={background}>
       <Inquiry>질문이 있으신가요? 문의 이메일: saramkimm@gmail.com</Inquiry>
       <Menu>
         <TextButton fontSize={FONT_SIZE} path='/signup'>
@@ -69,7 +70,7 @@ function Footer() {
         </TextButton>
       </Menu>
       <div>
-        <SelectBox list={LANGUAGE_LIST} fontSize={18} />
+        <SelectBox list={LANGUAGE_LIST} fontSize={18} background={background} />
       </div>
       <Info>넷플릭스를 카피한 비상업적 웹 서비스 ※불법 스트리밍 근절※</Info>
     </FooterLayout>
