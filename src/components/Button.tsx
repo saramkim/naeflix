@@ -5,32 +5,32 @@ import styled from 'styled-components';
 type ButtonProps = {
   children: string;
   fontSize: number;
+  padding?: string;
   path?: string;
-  hover?: string;
+  hover?: boolean;
 };
 
-const ButtonLayout = styled.button<{ fontSize: number; hover?: string }>`
+const ButtonLayout = styled.button<{ fontSize: number; padding?: string; hover?: boolean }>`
   background-color: #e50914;
   font-size: ${({ fontSize }) => fontSize}px;
-  padding: 0.4em 1em;
+  padding: ${({ padding }) => padding || '0.4em 1em'};
   border-radius: 3px;
-  color: inherit;
+  color: white;
 
   &:hover {
-    background-color: ${({ hover }) => hover || '#e50914'};
+    background-color: ${({ hover }) => (hover ? 'rgb(246, 18, 29)' : '#e50914')};
   }
 `;
 
-function Button({ children, fontSize, path, hover }: ButtonProps) {
+function Button({ children, fontSize, padding, path, hover }: ButtonProps) {
   const navigate = useNavigate();
 
-  const onClickButton = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
+  const onClickButton = () => {
     if (path) navigate(path);
   };
 
   return (
-    <ButtonLayout fontSize={fontSize} hover={hover} onClick={onClickButton}>
+    <ButtonLayout fontSize={fontSize} padding={padding} hover={hover} onClick={onClickButton}>
       {children}
     </ButtonLayout>
   );

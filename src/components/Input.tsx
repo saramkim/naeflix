@@ -7,6 +7,7 @@ type InputProps = {
   label: string;
   warning: string;
   isCorrect: boolean;
+  type?: 'password';
 };
 
 const InputLayout = styled.div`
@@ -15,7 +16,7 @@ const InputLayout = styled.div`
 `;
 
 const InputBox = styled.input<{ isWrong: boolean }>`
-  width: 450px;
+  width: 440px;
   padding: 16px 10px 0 10px;
   height: 60px;
   font-size: 20px;
@@ -46,7 +47,7 @@ const Warning = styled.div`
 `;
 
 function Input(
-  { onChange, label, warning, isCorrect }: InputProps,
+  { onChange, label, warning, isCorrect, type }: InputProps,
   ref: React.Ref<HTMLInputElement>
 ) {
   const INITIAL_TOP = 20;
@@ -75,6 +76,7 @@ function Input(
         onBlur={onBlurInput}
         onChange={onChange}
         isWrong={isWrong}
+        type={type || 'text'}
       />
       <Label top={top} fontSize={fontSize}>
         {label}
