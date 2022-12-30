@@ -21,8 +21,9 @@ const FormTitle = styled.h3`
 `;
 
 const InputContainer = styled.div`
-  display: flex;
   position: relative;
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
 `;
 
 function StartForm() {

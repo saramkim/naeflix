@@ -10,7 +10,8 @@ const FooterLayout = styled.div<{ background?: string }>`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  background: ${({ background }) => background || 'inherit'};
+  background-color: ${({ background }) => background || 'inherit'};
+  position: relative;
 `;
 
 const Inquiry = styled.span`

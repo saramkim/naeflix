@@ -7,6 +7,7 @@ type InputProps = {
   label: string;
   warning: string;
   isCorrect: boolean;
+  background?: string;
   type?: 'password';
 };
 
@@ -15,16 +16,16 @@ const InputLayout = styled.div`
   position: relative;
 `;
 
-const InputBox = styled.input<{ isWrong: boolean }>`
-  width: 440px;
+const InputBox = styled.input<{ isWrong: boolean; background?: string }>`
+  width: 100%;
   padding: 16px 10px 0 10px;
   height: 60px;
   font-size: 20px;
   border: 1px solid ${({ isWrong }) => (isWrong ? '#ffa00a' : 'black')};
   border-radius: 1px;
   outline: none;
-  background-color: white;
-  color: black;
+  background-color: ${({ background }) => background || 'white'};
+  color: ${({ background }) => (background ? 'white' : 'black')}; ;
 `;
 
 const Label = styled.label<{ top: number; fontSize: number }>`
@@ -47,7 +48,7 @@ const Warning = styled.div`
 `;
 
 function Input(
-  { onChange, label, warning, isCorrect, type }: InputProps,
+  { onChange, label, warning, isCorrect, type, background }: InputProps,
   ref: React.Ref<HTMLInputElement>
 ) {
   const INITIAL_TOP = 20;
@@ -77,6 +78,7 @@ function Input(
         onChange={onChange}
         isWrong={isWrong}
         type={type || 'text'}
+        background={background}
       />
       <Label top={top} fontSize={fontSize}>
         {label}
