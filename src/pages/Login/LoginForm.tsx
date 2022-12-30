@@ -4,6 +4,7 @@ import Button from 'components/Button';
 import Input from 'components/Input';
 import TextButton from 'components/TextButton';
 import styled from 'styled-components';
+import { REG_EX } from 'utils/constants';
 
 const Form = styled.form`
   height: 660px;
@@ -48,8 +49,7 @@ function LoginForm() {
   const [isCorrectPassword, setisCorrectPassword] = useState(false);
 
   const onChangeEmail = () => {
-    const EMAIL_REGEX = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
-    if (emailRef.current?.value.match(EMAIL_REGEX)) setIsCorrectEmail(true);
+    if (emailRef.current?.value.match(REG_EX.EMAIL)) setIsCorrectEmail(true);
     else setIsCorrectEmail(false);
   };
 

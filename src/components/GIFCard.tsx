@@ -1,5 +1,6 @@
 import TextBox, { TextBoxProps } from 'components/TextBox';
 import styled from 'styled-components';
+import { STYLE } from 'utils/constants';
 
 interface GIFCardProprs extends TextBoxProps {
   gif: string;
@@ -8,7 +9,7 @@ interface GIFCardProprs extends TextBoxProps {
 
 const GIFCardLayout = styled.div<{ direction: string }>`
   padding: 70px 45px;
-  border-bottom: 8px solid #222222;
+  border-bottom: ${STYLE.BORDER_BOTTOM};
   display: flex;
   flex-direction: ${({ direction }) => direction};
   align-items: center;

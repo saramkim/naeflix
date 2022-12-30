@@ -1,8 +1,7 @@
 import SelectBox from 'components/SelectBox';
 import TextButton from 'components/TextButton';
 import styled from 'styled-components';
-
-import { LANGUAGE_LIST } from '../pages/Intro/Header';
+import { LANGUAGE_LIST } from 'utils/constants';
 
 const FooterLayout = styled.div<{ background?: string }>`
   padding: 80px 85px;

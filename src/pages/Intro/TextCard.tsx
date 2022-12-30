@@ -1,5 +1,6 @@
 import StartForm from 'pages/Intro/StartForm';
 import styled from 'styled-components';
+import { STYLE } from 'utils/constants';
 
 const TextCardLayout = styled.div`
   padding: 140px 0;
@@ -10,7 +11,7 @@ const TextCardLayout = styled.div`
   text-align: center;
   justify-content: space-around;
   height: 600px;
-  border-bottom: 8px solid #222222;
+  border-bottom: ${STYLE.BORDER_BOTTOM};
   box-shadow: inset 0px -200px 100px -80px rgba(0, 0, 0, 0.75);
   position: relative;
 `;

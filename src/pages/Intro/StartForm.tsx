@@ -5,6 +5,7 @@ import Button from 'components/Button';
 import Input from 'components/Input';
 import { useAppDispatch } from 'hooks/useRedux';
 import styled from 'styled-components';
+import { REG_EX } from 'utils/constants';
 
 import { setEmail } from '../../store/emailSlice';
 
@@ -33,9 +34,7 @@ function StartForm() {
   const navigate = useNavigate();
 
   const onChangeInput = () => {
-    const EMAIL_REGEX = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
-
-    if (inputRef.current?.value.match(EMAIL_REGEX)) setIsCorrect(true);
+    if (inputRef.current?.value.match(REG_EX.EMAIL)) setIsCorrect(true);
     else setIsCorrect(false);
   };
 

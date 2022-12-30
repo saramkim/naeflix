@@ -1,6 +1,7 @@
 import DropDown from 'components/DropDown';
 import StartForm from 'pages/Intro/StartForm';
 import styled from 'styled-components';
+import { STYLE } from 'utils/constants';
 
 const FQACardLayout = styled.div`
   padding: 70px 45px;
@@ -9,7 +10,7 @@ const FQACardLayout = styled.div`
   justify-content: center;
   align-items: center;
   gap: 60px;
-  border-bottom: 8px solid #222222;
+  border-bottom: ${STYLE.BORDER_BOTTOM};
   width: 100%;
 `;
 

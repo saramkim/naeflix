@@ -2,6 +2,7 @@ import Button from 'components/Button';
 import Logo from 'components/Logo';
 import SelectBox from 'components/SelectBox';
 import styled from 'styled-components';
+import { LANGUAGE_LIST } from 'utils/constants';
 
 const HeaderLayout = styled.div`
   padding: 20px 56px 0 56px;
@@ -18,8 +19,6 @@ const HeaderRigth = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-
-export const LANGUAGE_LIST = ['한국어', 'English'];
 
 function Header() {
   return (

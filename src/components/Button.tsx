@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
+import { STYLE } from 'utils/constants';
 
 type ButtonProps = {
   children: string;
@@ -11,14 +12,14 @@ type ButtonProps = {
 };
 
 const ButtonLayout = styled.button<{ fontSize: number; padding?: string; hover?: boolean }>`
-  background-color: #e50914;
+  background-color: ${STYLE.MAIN_COLOR};
   font-size: ${({ fontSize }) => fontSize}px;
   padding: ${({ padding }) => padding || '0.4em 1em'};
   border-radius: 3px;
   color: white;
 
   &:hover {
-    background-color: ${({ hover }) => (hover ? 'rgb(246, 18, 29)' : '#e50914')};
+    background-color: ${({ hover }) => (hover ? 'rgb(246, 18, 29)' : STYLE.MAIN_COLOR)};
   }
 `;
 
