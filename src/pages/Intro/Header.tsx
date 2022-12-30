@@ -9,7 +9,8 @@ const HeaderLayout = styled.div`
   display: flex;
   align-items: end;
   justify-content: space-between;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
+  position: relative;
 `;
 
 const HeaderRigth = styled.div`

@@ -1,5 +1,5 @@
 import DropDown from 'components/DropDown';
-import StartForm from 'components/StartForm';
+import StartForm from 'pages/Intro/StartForm';
 import styled from 'styled-components';
 
 const FQACardLayout = styled.div`

@@ -6,7 +6,7 @@ import Input from 'components/Input';
 import { useAppDispatch } from 'hooks/useRedux';
 import styled from 'styled-components';
 
-import { setEmail } from '../store/emailSlice';
+import { setEmail } from '../../store/emailSlice';
 
 const Form = styled.form`
   display: flex;
@@ -50,7 +50,7 @@ function StartForm() {
   return (
     <Form onSubmit={onSubmitForm}>
       <FormTitle>
-        시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.
+        이용할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.
       </FormTitle>
       <InputContainer>
         <Input

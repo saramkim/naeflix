@@ -1,3 +1,4 @@
+import BackgroundLayout from 'components/BackgroundLayout';
 import styled from 'styled-components';
 
 import Footer from '../../components/Footer';
@@ -17,8 +18,10 @@ const IntroLayout = styled.div`
 function Intro() {
   return (
     <IntroLayout>
-      <Header />
-      <TextCard />
+      <BackgroundLayout>
+        <Header />
+        <TextCard />
+      </BackgroundLayout>
       <Banner />
       <GIFCardBundle />
       <FQACard />

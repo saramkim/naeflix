@@ -12,6 +12,8 @@ const BannerLayout = styled.div`
   align-items: center;
   justify-content: center;
   background: #0c1949;
+  position: absolute;
+  bottom: 210px;
 `;
 
 const Content = styled.div`

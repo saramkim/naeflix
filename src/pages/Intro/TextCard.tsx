@@ -1,16 +1,18 @@
-import StartForm from 'components/StartForm';
+import StartForm from 'pages/Intro/StartForm';
 import styled from 'styled-components';
 
 const TextCardLayout = styled.div`
-  padding: 75px 0;
+  padding: 140px 0;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: space-around;
-  height: 460px;
-  margin: 10px;
+  height: 600px;
+  border-bottom: 8px solid #222222;
+  box-shadow: inset 0px -200px 100px -80px rgba(0, 0, 0, 0.75);
+  position: relative;
 `;
 
 const Title = styled.h1`
@@ -26,8 +28,8 @@ const SubTitle = styled.h2`
 function TextCard() {
   return (
     <TextCardLayout>
-      <Title>영화와 시리즈를 무제한으로.</Title>
-      <SubTitle>다양한 디바이스에서 시청하세요. 언제든 해지하실 수 있습니다.</SubTitle>
+      <Title>영화와 시리즈는 합법적으로.</Title>
+      <SubTitle>불법 스트리밍 사이트를 이용하지 맙시다.</SubTitle>
       <StartForm />
     </TextCardLayout>
   );
