@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
     }
     *{
         box-sizing: border-box;
+        word-break: keep-all;
     }
     input, textarea { 
       -moz-user-select: auto;

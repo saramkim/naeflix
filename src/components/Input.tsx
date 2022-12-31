@@ -12,6 +12,7 @@ type InputProps = {
 };
 
 const InputLayout = styled.div`
+  width: 100%;
   font-size: 20px;
   position: relative;
 `;

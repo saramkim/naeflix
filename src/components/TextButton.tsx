@@ -16,6 +16,8 @@ const TextButtonLayout = styled.div<{ fontSize: number; color?: string }>`
   cursor: pointer;
   display: flex;
   align-items: center;
+  line-height: 1rem;
+
   &: hover {
     text-decoration: underline;
   }

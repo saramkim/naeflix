@@ -18,25 +18,56 @@ const InitialBox = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+
+  @media screen and (max-width: 550px) {
+    padding: 14px 22px;
+  }
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    padding: 16px 24px;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 26px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 18px;
+  }
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    font-size: 20px;
+  }
 `;
 
 const Icon = styled.span`
   font-size: 35px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 26px;
+  }
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    font-size: 30px;
+  }
 `;
 
 const DropBox = styled.div<{ isClicked: boolean }>`
   background: #303030;
   font-size: 26px;
   line-height: 35px;
-  word-break: keep-all;
   transition: all 0.15s linear;
   overflow: hidden;
   padding: ${({ isClicked }) => (isClicked ? '30' : '0')}px 30px;
   max-height: ${({ isClicked }) => (isClicked ? '500' : '0')}px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 18px;
+    line-height: 24px;
+    padding: ${({ isClicked }) => (isClicked ? '22' : '0')}px 22px;
+  }
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    font-size: 20px;
+    line-height: 26px;
+    padding: ${({ isClicked }) => (isClicked ? '24' : '0')}px 24px;
+  }
 `;
 
 function DropDown({ title, content }: DropDownProps) {

@@ -12,12 +12,27 @@ const HeaderLayout = styled.div`
   justify-content: space-between;
   margin-bottom: 30px;
   position: relative;
+
+  @media screen and (max-width: 550px) {
+    height: 45px;
+    width: 100%;
+    padding: 20px 20px 0 20px;
+  }
+
+  @media screen and (min-width: 1450px) {
+    height: 80px;
+    margin-bottom: 16px;
+  }
 `;
 
 const HeaderRigth = styled.div`
   width: 200px;
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 550px) {
+    width: 180px;
+  }
 `;
 
 function Header() {

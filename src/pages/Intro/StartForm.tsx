@@ -14,17 +14,37 @@ const Form = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  gap: 20px;
+
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    max-width: 500px;
+  }
 `;
 
 const FormTitle = styled.h3`
   font-size: 18px;
+  text-align: center;
+  line-height: 24px;
 `;
 
 const InputContainer = styled.div`
-  position: relative;
   display: grid;
   grid-template-columns: 2.5fr 1fr;
+  width: 100%;
+
+  @media screen and (max-width: 550px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 `;
 
 function StartForm() {

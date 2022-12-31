@@ -5,15 +5,27 @@ import styled from 'styled-components';
 
 const BannerLayout = styled.div`
   height: 144px;
-  width: calc(100vw - 148px);
-  margin: 0 74px;
+  width: 800px;
+  margin: 0 calc((100vw - 800px) / 2);
   padding: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #0c1949;
   position: absolute;
-  bottom: 210px;
+  top: 620px;
+
+  @media screen and (max-width: 550px) {
+    height: 110px;
+    width: 100%;
+    margin: 0;
+    padding: 18px;
+    top: 480px;
+  }
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    width: 90%;
+    margin: 0 5%;
+  }
 `;
 
 const Content = styled.div`
@@ -26,10 +38,18 @@ const Content = styled.div`
 
 const Title = styled.h1`
   font-size: 20px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 16px;
+  }
 `;
 
 const SubTitle = styled.h2`
   font-size: 16px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 12px;
+  }
 `;
 
 const Icon = styled.span`

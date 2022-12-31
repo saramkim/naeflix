@@ -19,7 +19,6 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: space-around;
   width: 440px;
-  word-break: keep-all;
   height: 100%;
 `;
 

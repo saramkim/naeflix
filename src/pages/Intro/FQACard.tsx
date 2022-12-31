@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
 
 const FQACardLayout = styled.div`
+  width: 100%;
   padding: 70px 45px;
   display: flex;
   flex-direction: column;
@@ -11,11 +12,25 @@ const FQACardLayout = styled.div`
   align-items: center;
   gap: 60px;
   border-bottom: ${STYLE.BORDER_BOTTOM};
-  width: 100%;
+
+  @media screen and (max-width: 550px) {
+    gap: 30px;
+    padding: 50px 0;
+  }
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    gap: 45px;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 50px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 26px;
+  }
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    font-size: 40px;
+  }
 `;
 
 const Content = styled.div`
@@ -23,6 +38,18 @@ const Content = styled.div`
   flex-direction: column;
   gap: 10px;
   width: 75%;
+  max-width: 815px;
+
+  @media screen and (max-width: 550px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    width: 90%;
+  }
+`;
+
+const StartFormWrapper = styled.div`
+  padding: 0 30px;
 `;
 
 function FQACard() {
@@ -49,8 +76,9 @@ function FQACard() {
         />
         <DropDown title='아이들이 내플릭스를 이용해도 좋을까요?' content='아무렴요.' />
       </Content>
-
-      <StartForm />
+      <StartFormWrapper>
+        <StartForm />
+      </StartFormWrapper>
     </FQACardLayout>
   );
 }

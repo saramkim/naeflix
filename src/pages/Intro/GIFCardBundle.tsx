@@ -1,4 +1,4 @@
-import GIFCard from 'components/GIFCard';
+import GIFCard from 'pages/Intro/GIFCard';
 import styled from 'styled-components';
 
 import deviceImg from '../../assets/device-pile.png';
