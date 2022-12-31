@@ -1,8 +1,9 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import Button from 'components/Button';
 import Input from 'components/Input';
 import TextButton from 'components/TextButton';
+import { useInput } from 'hooks/useInput';
 import styled from 'styled-components';
 import { REG_EX } from 'utils/constants';
 
@@ -53,21 +54,11 @@ const Text = styled.div`
 function LoginForm() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const [isCorrectEmail, setIsCorrectEmail] = useState(false);
-  const [isCorrectPassword, setisCorrectPassword] = useState(false);
-
-  const onChangeEmail = () => {
-    if (emailRef.current?.value.match(REG_EX.EMAIL)) setIsCorrectEmail(true);
-    else setIsCorrectEmail(false);
-  };
-
-  const onChangePassword = () => {
-    if (passwordRef.current) {
-      const { length } = passwordRef.current.value;
-      if (length >= 4 && length <= 20) setisCorrectPassword(true);
-      else setisCorrectPassword(false);
-    }
-  };
+  const { onChange: onChangeEmail, isCorrect: isCorrectEmail } = useInput(emailRef, REG_EX.EMAIL);
+  const { onChange: onChangePassword, isCorrect: isCorrectPassword } = useInput(
+    passwordRef,
+    REG_EX.PASSWORD
+  );
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

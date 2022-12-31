@@ -5,6 +5,7 @@ const STYLE = {
 
 const REG_EX = {
   EMAIL: /[a-z0-9]+@[a-z]+.[a-z]{2,3}/,
+  PASSWORD: /^.{4,20}$/,
 };
 
 const LANGUAGE_LIST = ['한국어', 'English'];

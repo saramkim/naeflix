@@ -1,8 +1,9 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
 import Input from 'components/Input';
+import { useInput } from 'hooks/useInput';
 import { useAppDispatch } from 'hooks/useRedux';
 import styled from 'styled-components';
 import { REG_EX } from 'utils/constants';
@@ -48,15 +49,10 @@ const InputContainer = styled.div`
 `;
 
 function StartForm() {
-  const [isCorrect, setIsCorrect] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { onChange, isCorrect } = useInput(inputRef, REG_EX.EMAIL);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  const onChangeInput = () => {
-    if (inputRef.current?.value.match(REG_EX.EMAIL)) setIsCorrect(true);
-    else setIsCorrect(false);
-  };
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -74,7 +70,7 @@ function StartForm() {
       <InputContainer>
         <Input
           ref={inputRef}
-          onChange={onChangeInput}
+          onChange={onChange}
           label='이메일 주소'
           warning='이메일 주소를 입력해 주세요.'
           isCorrect={isCorrect}

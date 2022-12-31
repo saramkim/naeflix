@@ -1,10 +1,12 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
 import Input from 'components/Input';
+import { useInput } from 'hooks/useInput';
 import { useAppSelector } from 'hooks/useRedux';
 import styled from 'styled-components';
+import { REG_EX } from 'utils/constants';
 
 const SignUpFormLayout = styled.div`
   display: flex;
@@ -42,18 +44,10 @@ const Email = styled.div`
 `;
 
 function SignUpForm() {
-  const [isCorrect, setIsCorrect] = useState(false);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const { onChange, isCorrect } = useInput(passwordRef, REG_EX.PASSWORD);
   const email = useAppSelector((state) => state.email);
   const navigate = useNavigate();
-
-  const onChageInput = () => {
-    if (passwordRef.current) {
-      const { length } = passwordRef.current.value;
-      if (length >= 4 && length <= 20) setIsCorrect(true);
-      else setIsCorrect(false);
-    }
-  };
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -77,7 +71,7 @@ function SignUpForm() {
         </EmailWrapper>
         <Input
           ref={passwordRef}
-          onChange={onChageInput}
+          onChange={onChange}
           label='비밀번호'
           warning='비밀번호는 4자리 이상 20자리 이하여야 합니다.'
           isCorrect={isCorrect}
