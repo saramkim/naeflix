@@ -3,16 +3,22 @@ import styled from 'styled-components';
 
 const HeaderLayout = styled.div`
   height: 90px;
+  padding: 0 28px;
   display: flex;
   align-items: center;
-  padding: 0 28px;
   position: relative;
+
+  @media screen and (max-width: 740px) {
+    background-color: black;
+    height: 80px;
+    padding: 0 18px;
+  }
 `;
 
 function Header() {
   return (
     <HeaderLayout>
-      <Logo path='/' />
+      <Logo path='/' height='45px' />
     </HeaderLayout>
   );
 }

@@ -19,6 +19,14 @@ const Form = styled.form`
   background-color: inherit;
   position: relative;
   font-size: 14px;
+
+  @media screen and (max-width: 740px) {
+    width: 100%;
+    margin-bottom: 0;
+    height: 550px;
+    padding: 20px 30px;
+    border-bottom: 1px solid;
+  }
 `;
 
 const Title = styled.h1`

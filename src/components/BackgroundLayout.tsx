@@ -19,6 +19,10 @@ const BackgroundLayout = styled.div`
     bottom: 0px;
     background-color: black;
   }
+
+  @media screen and (max-width: 740px) {
+    background-color: black;
+  }
 `;
 
 export default BackgroundLayout;
