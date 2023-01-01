@@ -50,13 +50,13 @@ const InputContainer = styled.div`
 
 function StartForm() {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { onChange, isCorrect } = useInput(inputRef, REG_EX.EMAIL);
+  const { onChange, isValid } = useInput(inputRef, REG_EX.EMAIL);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (isCorrect) {
+    if (isValid) {
       if (inputRef.current) dispatch(setEmail(inputRef.current.value));
       navigate('/signup');
     }
@@ -73,7 +73,7 @@ function StartForm() {
           onChange={onChange}
           label='이메일 주소'
           warning='이메일 주소를 입력해 주세요.'
-          isCorrect={isCorrect}
+          isValid={isValid}
         />
         <Button fontSize={26} hover>
           시작하기 &gt;

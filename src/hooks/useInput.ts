@@ -1,15 +1,15 @@
 import { useState } from 'react';
 
 export function useInput(ref: React.RefObject<HTMLInputElement>, regExp: RegExp) {
-  const [isCorrect, setIsCorrect] = useState(false);
+  const [isValid, setIsValid] = useState(false);
 
   const onChange = () => {
-    if (ref.current?.value.match(regExp)) setIsCorrect(true);
-    else setIsCorrect(false);
+    if (ref.current?.value.match(regExp)) setIsValid(true);
+    else setIsValid(false);
   };
 
   return {
     onChange,
-    isCorrect,
+    isValid,
   };
 }

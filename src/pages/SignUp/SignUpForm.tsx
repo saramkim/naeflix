@@ -45,13 +45,13 @@ const Email = styled.div`
 
 function SignUpForm() {
   const passwordRef = useRef<HTMLInputElement>(null);
-  const { onChange, isCorrect } = useInput(passwordRef, REG_EX.PASSWORD);
+  const { onChange, isValid } = useInput(passwordRef, REG_EX.PASSWORD);
   const email = useAppSelector((state) => state.email);
   const navigate = useNavigate();
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (isCorrect) {
+    if (isValid) {
       // 비밀번호 저장
       navigate('/completion');
     }
@@ -74,7 +74,7 @@ function SignUpForm() {
           onChange={onChange}
           label='비밀번호'
           warning='비밀번호는 4자리 이상 20자리 이하여야 합니다.'
-          isCorrect={isCorrect}
+          isValid={isValid}
           type='password'
         />
         <Button fontSize={24} padding='15px' hover>

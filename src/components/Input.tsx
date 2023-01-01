@@ -6,7 +6,7 @@ type InputProps = {
   onChange: React.ChangeEventHandler;
   label: string;
   warning: string;
-  isCorrect: boolean;
+  isValid: boolean;
   background?: string;
   type?: 'password';
 };
@@ -49,7 +49,7 @@ const Warning = styled.div`
 `;
 
 function Input(
-  { onChange, label, warning, isCorrect, type, background }: InputProps,
+  { onChange, label, warning, isValid, type, background }: InputProps,
   ref: React.Ref<HTMLInputElement>
 ) {
   const INITIAL_TOP = 20;
@@ -57,7 +57,7 @@ function Input(
 
   const [top, setTop] = useState(INITIAL_TOP);
   const [fontSize, setFontSize] = useState(INITIAL_FONT_SIZE);
-  const isWrong = !isCorrect && top !== INITIAL_TOP;
+  const isWrong = !isValid && top !== INITIAL_TOP;
 
   const onFocusInput = () => {
     setTop(7);

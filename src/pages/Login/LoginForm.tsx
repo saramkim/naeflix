@@ -54,15 +54,15 @@ const Text = styled.div`
 function LoginForm() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const { onChange: onChangeEmail, isCorrect: isCorrectEmail } = useInput(emailRef, REG_EX.EMAIL);
-  const { onChange: onChangePassword, isCorrect: isCorrectPassword } = useInput(
+  const { onChange: onChangeEmail, isValid: isValidEmail } = useInput(emailRef, REG_EX.EMAIL);
+  const { onChange: onChangePassword, isValid: isValidPassword } = useInput(
     passwordRef,
     REG_EX.PASSWORD
   );
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (isCorrectEmail && isCorrectPassword) {
+    if (isValidEmail && isValidPassword) {
       // 비교 알고리즘
     }
   };
@@ -75,7 +75,7 @@ function LoginForm() {
         onChange={onChangeEmail}
         label='이메일 주소'
         warning='정확한 이메일 주소를 입력하세요.'
-        isCorrect={isCorrectEmail}
+        isValid={isValidEmail}
         background='rgb(51, 51, 51)'
       />
       <Input
@@ -83,7 +83,7 @@ function LoginForm() {
         onChange={onChangePassword}
         label='비밀번호'
         warning='비밀번호는 4~20자 사이여야 합니다.'
-        isCorrect={isCorrectPassword}
+        isValid={isValidPassword}
         type='password'
         background='rgb(51, 51, 51)'
       />
