@@ -18,8 +18,6 @@
 
   - [클릭] 회원가입 다음 단계
 
-  - signup/password
-
   - signup/completion
 
 - footer

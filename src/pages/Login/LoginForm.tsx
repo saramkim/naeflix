@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
 import Input from 'components/Input';
@@ -6,6 +7,8 @@ import TextButton from 'components/TextButton';
 import { useInput } from 'hooks/useInput';
 import styled from 'styled-components';
 import { REG_EX } from 'utils/constants';
+
+import { loginUser } from '../../firebase/firebase';
 
 const Form = styled.form`
   height: 660px;
@@ -52,6 +55,7 @@ const Text = styled.div`
 `;
 
 function LoginForm() {
+  const navigate = useNavigate();
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const { onChange: onChangeEmail, isValid: isValidEmail } = useInput(emailRef, REG_EX.EMAIL);
@@ -63,7 +67,9 @@ function LoginForm() {
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isValidEmail && isValidPassword) {
-      // 비교 알고리즘
+      const email = emailRef.current!.value;
+      const password = passwordRef.current!.value;
+      loginUser(email, password).then((result) => result && navigate('/main'));
     }
   };
 
@@ -82,7 +88,7 @@ function LoginForm() {
         ref={passwordRef}
         onChange={onChangePassword}
         label='비밀번호'
-        warning='비밀번호는 4~20자 사이여야 합니다.'
+        warning='비밀번호는 6~20자여야 합니다.'
         isValid={isValidPassword}
         type='password'
         background='rgb(51, 51, 51)'

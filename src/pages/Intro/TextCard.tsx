@@ -20,7 +20,7 @@ const TextCardLayout = styled.div`
     padding: 60px 20px 80px 20px;
   }
   @media screen and (min-width: 550px) and (max-width: 950px) {
-    padding: 100px 40px;
+    padding: 80px 40px;
   }
   @media screen and (min-width: 1450px) {
     padding: 120px 20px;
@@ -30,6 +30,7 @@ const TextCardLayout = styled.div`
 const Title = styled.h1`
   font-size: 50px;
   max-width: 700px;
+  line-height: 68px;
 
   @media screen and (max-width: 550px) {
     font-size: 28px;

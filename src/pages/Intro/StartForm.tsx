@@ -5,10 +5,11 @@ import Button from 'components/Button';
 import Input from 'components/Input';
 import { useInput } from 'hooks/useInput';
 import { useAppDispatch } from 'hooks/useRedux';
+import { setEmail } from 'store/emailSlice';
 import styled from 'styled-components';
 import { REG_EX } from 'utils/constants';
 
-import { setEmail } from '../../store/emailSlice';
+import { checkUserExist } from '../../firebase/firebase';
 
 const Form = styled.form`
   display: flex;
@@ -57,8 +58,10 @@ function StartForm() {
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isValid) {
-      if (inputRef.current) dispatch(setEmail(inputRef.current.value));
-      navigate('/signup');
+      dispatch(setEmail(inputRef.current!.value));
+      checkUserExist(inputRef.current!.value).then((result) =>
+        result ? navigate('/login') : navigate('/signup')
+      );
     }
   };
 

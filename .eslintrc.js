@@ -29,6 +29,7 @@ module.exports = {
     'jsx-a11y/no-autofocus': 0,
     'jsx-a11y/label-has-associated-control': 0,
     'react/require-default-props': 0,
+    '@typescript-eslint/no-non-null-assertion': 0,
   },
   overrides: [
     {
