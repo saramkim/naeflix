@@ -10,28 +10,21 @@ import { REG_EX } from 'utils/constants';
 
 import { createUser } from '../../firebase/firebase';
 
-const SignUpFormLayout = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 20px 32px 60px 32px;
-  height: 600px;
-  margin-bottom: 80px;
-`;
+import OutletLayout from './OutletLayout';
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 440px;
-  height: 100%;
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   font-size: 32px;
-  line-height: 40px;
+  line-height: 44px;
 `;
 
-const Content = styled.p`
+export const Content = styled.p`
   font-size: 18px;
   line-height: 20px;
 `;
@@ -71,7 +64,7 @@ function SignUpForm() {
   };
 
   return (
-    <SignUpFormLayout>
+    <OutletLayout>
       <Form onSubmit={onSubmitForm}>
         <Title>
           회원님, 반갑습니다. <br />
@@ -109,7 +102,7 @@ function SignUpForm() {
           다음
         </Button>
       </Form>
-    </SignUpFormLayout>
+    </OutletLayout>
   );
 }
 
