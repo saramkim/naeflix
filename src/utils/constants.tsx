@@ -8,6 +8,11 @@ const REG_EX = {
   PASSWORD: /^.{6,20}$/,
 };
 
+const PHRASE = {
+  EMAIL_WARNING: '올바른 이메일 형식을 입력하세요.',
+  PASSWORD_WARNING: '비밀번호는 6자 이상이여야 합니다.',
+};
+
 const LANGUAGE_LIST = ['한국어', 'English'];
 
-export { LANGUAGE_LIST, REG_EX, STYLE };
+export { LANGUAGE_LIST, PHRASE, REG_EX, STYLE };

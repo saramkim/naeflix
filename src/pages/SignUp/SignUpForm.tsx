@@ -6,7 +6,7 @@ import Input from 'components/Input';
 import { useInput } from 'hooks/useInput';
 import { useAppSelector } from 'hooks/useRedux';
 import styled from 'styled-components';
-import { REG_EX } from 'utils/constants';
+import { PHRASE, REG_EX } from 'utils/constants';
 
 import { createUser } from '../../firebase/firebase';
 
@@ -86,7 +86,7 @@ function SignUpForm() {
             ref={emailRef}
             onChange={onChangeEmail}
             label='이메일 주소'
-            warning='정확한 이메일 주소를 입력하세요.'
+            warning={PHRASE.EMAIL_WARNING}
             isValid={isValidEmail}
           />
         )}
@@ -94,7 +94,7 @@ function SignUpForm() {
           ref={passwordRef}
           onChange={onChangePassword}
           label='비밀번호'
-          warning='비밀번호는 6~20자여야 합니다.'
+          warning={PHRASE.PASSWORD_WARNING}
           isValid={isValidPassword}
           type='password'
         />

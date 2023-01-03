@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
 import Input from 'components/Input';
-import { getAuth, updateEmail } from 'firebase/auth';
+import { getAuth, updatePassword } from 'firebase/auth';
 import { useInput } from 'hooks/useInput';
 import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
@@ -22,9 +22,9 @@ const Title = styled.h1`
   line-height: 40px;
 `;
 
-function EmailPopup() {
-  const emailRef = useRef<HTMLInputElement>(null);
-  const { onChange, isValid } = useInput(emailRef, REG_EX.EMAIL);
+function PasswordPopup() {
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const { onChange, isValid } = useInput(passwordRef, REG_EX.PASSWORD);
   const navigate = useNavigate();
   const auth = getAuth();
   const user = auth.currentUser!;
@@ -32,8 +32,8 @@ function EmailPopup() {
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isValid) {
-      const email = emailRef.current!.value;
-      updateEmail(user, email)
+      const password = passwordRef.current!.value;
+      updatePassword(user, password)
         .then(() => {
           navigate('/account');
           window.location.reload();
@@ -45,18 +45,19 @@ function EmailPopup() {
   return (
     <Layout>
       <Form onSubmit={onSubmitForm}>
-        <Title>변경할 이메일을 입력해주세요.</Title>
+        <Title>변경할 비밀번호를 입력해주세요.</Title>
         <Input
-          ref={emailRef}
+          ref={passwordRef}
           onChange={onChange}
           isValid={isValid}
-          label='이메일'
-          warning={PHRASE.EMAIL_WARNING}
+          label='비밀번호'
+          warning={PHRASE.PASSWORD_WARNING}
+          type='password'
         />
-        <Button fontSize={25}>이메일 변경</Button>
+        <Button fontSize={25}>비밀번호 변경</Button>
       </Form>
     </Layout>
   );
 }
 
-export default EmailPopup;
+export default PasswordPopup;

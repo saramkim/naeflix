@@ -6,7 +6,7 @@ import Input from 'components/Input';
 import { EmailAuthProvider, getAuth, reauthenticateWithCredential } from 'firebase/auth';
 import { useInput } from 'hooks/useInput';
 import styled from 'styled-components';
-import { REG_EX } from 'utils/constants';
+import { PHRASE, REG_EX } from 'utils/constants';
 
 import Layout from './Layout';
 
@@ -59,7 +59,7 @@ function Reauthentication() {
           onChange={onChange}
           isValid={isValid}
           label='비밀번호'
-          warning='비밀번호는 6~20자여야 합니다.'
+          warning={PHRASE.PASSWORD_WARNING}
           type='password'
         />
         <Button fontSize={25}>다음</Button>

@@ -6,7 +6,7 @@ import Input from 'components/Input';
 import TextButton from 'components/TextButton';
 import { useInput } from 'hooks/useInput';
 import styled from 'styled-components';
-import { REG_EX } from 'utils/constants';
+import { PHRASE, REG_EX } from 'utils/constants';
 
 import { loginUser } from '../../firebase/firebase';
 
@@ -80,7 +80,7 @@ function LoginForm() {
         ref={emailRef}
         onChange={onChangeEmail}
         label='이메일 주소'
-        warning='정확한 이메일 주소를 입력하세요.'
+        warning={PHRASE.EMAIL_WARNING}
         isValid={isValidEmail}
         background='rgb(51, 51, 51)'
       />
@@ -88,7 +88,7 @@ function LoginForm() {
         ref={passwordRef}
         onChange={onChangePassword}
         label='비밀번호'
-        warning='비밀번호는 6~20자여야 합니다.'
+        warning={PHRASE.PASSWORD_WARNING}
         isValid={isValidPassword}
         type='password'
         background='rgb(51, 51, 51)'

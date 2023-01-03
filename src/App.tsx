@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import GlobalStyles from 'components/GlobalStyle';
 import Account from 'pages/account/Account';
 import EmailPopup from 'pages/account/popup/EmailPopup';
+import PasswordPopup from 'pages/account/popup/PasswordPopup';
 import Reauthentication from 'pages/account/popup/Reauthentication';
 import UnregisterPopup from 'pages/account/popup/UnregisterPopup';
 import Intro from 'pages/Intro/Intro';
@@ -27,6 +28,7 @@ function App() {
         <Route path='account' element={<Account />}>
           <Route path='reauthentication' element={<Reauthentication />} />
           <Route path='email' element={<EmailPopup />} />
+          <Route path='password' element={<PasswordPopup />} />
           <Route path='unregister' element={<UnregisterPopup />} />
         </Route>
       </Routes>

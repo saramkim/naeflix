@@ -7,7 +7,7 @@ import { useInput } from 'hooks/useInput';
 import { useAppDispatch } from 'hooks/useRedux';
 import { setEmail } from 'store/emailSlice';
 import styled from 'styled-components';
-import { REG_EX } from 'utils/constants';
+import { PHRASE, REG_EX } from 'utils/constants';
 
 import { checkUserExist } from '../../firebase/firebase';
 
@@ -75,7 +75,7 @@ function StartForm() {
           ref={inputRef}
           onChange={onChange}
           label='이메일 주소'
-          warning='이메일 주소를 입력해 주세요.'
+          warning={PHRASE.EMAIL_WARNING}
           isValid={isValid}
         />
         <Button fontSize={26} hover>
