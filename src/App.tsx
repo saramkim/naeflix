@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import GlobalStyles from 'components/GlobalStyle';
 import Account from 'pages/account/Account';
 import EmailPopup from 'pages/account/popup/EmailPopup';
+import UnregisterPopup from 'pages/account/popup/UnregisterPopup';
 import Intro from 'pages/Intro/Intro';
 import Login from 'pages/Login/Login';
 import Completion from 'pages/SignUp/Completion';
@@ -24,6 +25,7 @@ function App() {
         </Route>
         <Route path='account' element={<Account />}>
           <Route path='email' element={<EmailPopup />} />
+          <Route path='unregister' element={<UnregisterPopup />} />
         </Route>
       </Routes>
     </>

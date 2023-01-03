@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import styled from 'styled-components';
 
 const Background = styled.div`
@@ -20,12 +22,29 @@ const PopupLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 40px;
+`;
+
+const ExitButton = styled.button`
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 40px;
 `;
 
 function Layout({ children }: { children: React.ReactNode }) {
+  const navigate = useNavigate();
+
+  const onClickButton = () => {
+    navigate('/account', { replace: true });
+  };
+
   return (
     <Background>
-      <PopupLayout>{children}</PopupLayout>
+      <PopupLayout>
+        {children}
+        <ExitButton onClick={onClickButton}>X</ExitButton>
+      </PopupLayout>
     </Background>
   );
 }
