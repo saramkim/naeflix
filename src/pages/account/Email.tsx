@@ -25,7 +25,12 @@ function Email() {
         <div>
           이메일: {email} <FcApproval />
         </div>
-        <TextButton color='rgb(0, 115, 232)' fontSize={16} path='email'>
+        <TextButton
+          color='rgb(0, 115, 232)'
+          fontSize={16}
+          path='reauthentication'
+          state={{ path: 'email' }}
+        >
           이메일 주소 변경
         </TextButton>
       </ContentLayout>
@@ -36,6 +41,14 @@ function Email() {
       <div>이메일: {email}</div>
       <TextButton color='rgb(0, 115, 232)' fontSize={16} onClick={onClickButton}>
         이메일 인증
+      </TextButton>
+      <TextButton
+        color='rgb(0, 115, 232)'
+        fontSize={16}
+        path='reauthentication'
+        state={{ path: 'email' }}
+      >
+        이메일 주소 변경
       </TextButton>
     </ContentLayout>
   );

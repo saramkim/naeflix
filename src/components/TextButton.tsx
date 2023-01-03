@@ -7,6 +7,7 @@ type TextButtonProps = {
   fontSize: number;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
   path?: string;
+  state?: { [key: string]: string };
   color?: string;
 };
 
@@ -24,11 +25,17 @@ const TextButtonLayout = styled.div<{ fontSize: number; color?: string }>`
   }
 `;
 
-function TextButton({ children, fontSize, color, path, onClick }: TextButtonProps) {
+function TextButton({ children, fontSize, onClick, path, state, color }: TextButtonProps) {
   const navigate = useNavigate();
 
   const onClickButton = () => {
-    if (path) navigate(path);
+    if (path) {
+      if (state) {
+        navigate(path, {
+          state,
+        });
+      } else navigate(path);
+    }
   };
 
   return (
