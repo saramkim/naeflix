@@ -15,10 +15,7 @@ const CompletionLayout = styled.div`
 
 const ButtonWrapper = styled.div`
   width: 100%;
-  // display: flex;
-  // justify-content: space-around;
   display: grid;
-  // grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 `;

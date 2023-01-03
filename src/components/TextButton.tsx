@@ -5,8 +5,9 @@ import styled from 'styled-components';
 type TextButtonProps = {
   children: React.ReactNode;
   fontSize: number;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  path?: string;
   color?: string;
-  path: string;
 };
 
 const TextButtonLayout = styled.div<{ fontSize: number; color?: string }>`
@@ -18,20 +19,20 @@ const TextButtonLayout = styled.div<{ fontSize: number; color?: string }>`
   align-items: center;
   line-height: 1rem;
 
-  &: hover {
+  &:hover {
     text-decoration: underline;
   }
 `;
 
-function TextButton({ children, fontSize, color, path }: TextButtonProps) {
+function TextButton({ children, fontSize, color, path, onClick }: TextButtonProps) {
   const navigate = useNavigate();
 
   const onClickButton = () => {
-    navigate(path);
+    if (path) navigate(path);
   };
 
   return (
-    <TextButtonLayout fontSize={fontSize} color={color} onClick={onClickButton}>
+    <TextButtonLayout fontSize={fontSize} color={color} onClick={onClick || onClickButton}>
       {children}
     </TextButtonLayout>
   );
