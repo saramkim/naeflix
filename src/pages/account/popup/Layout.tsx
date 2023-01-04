@@ -13,7 +13,7 @@ const Background = styled.div`
 
 const PopupLayout = styled.div`
   background-color: white;
-  height: 500px;
+  height: 600px;
   width: 500px;
   position: fixed;
   top: 50%;
@@ -23,7 +23,7 @@ const PopupLayout = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px;
+  padding: 50px;
   gap: 30px;
 `;
 
