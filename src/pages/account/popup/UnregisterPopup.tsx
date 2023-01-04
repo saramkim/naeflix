@@ -9,12 +9,10 @@ function UnregisterPopup() {
   const auth = getAuth();
   const user = auth.currentUser!;
 
-  deleteUser(user)
-    .then(() => {
-      alert('회원탈퇴 완료');
-      navigate('/');
-    })
-    .catch(console.log);
+  deleteUser(user).then(() => {
+    alert('회원탈퇴 완료');
+    navigate('/');
+  });
 
   return <Layout>hi</Layout>;
 }

@@ -10,11 +10,9 @@ function Logout() {
   const navigate = useNavigate();
 
   const onClickButton = () => {
-    signOut(auth)
-      .then(() => {
-        navigate('/');
-      })
-      .catch(console.log);
+    signOut(auth).then(() => {
+      navigate('/');
+    });
   };
 
   return (

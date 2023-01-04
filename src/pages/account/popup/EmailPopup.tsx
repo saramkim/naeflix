@@ -15,6 +15,7 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   gap: 30px;
+  width: 100%;
 `;
 
 const Title = styled.h1`
@@ -33,12 +34,10 @@ function EmailPopup() {
     e.preventDefault();
     if (isValid) {
       const email = emailRef.current!.value;
-      updateEmail(user, email)
-        .then(() => {
-          navigate('/account');
-          window.location.reload();
-        })
-        .catch(console.log);
+      updateEmail(user, email).then(() => {
+        navigate('/account');
+        window.location.reload();
+      });
     }
   };
 

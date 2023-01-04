@@ -15,6 +15,7 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   gap: 30px;
+  width: 100%;
 `;
 
 const Title = styled.h1`
@@ -33,12 +34,10 @@ function PasswordPopup() {
     e.preventDefault();
     if (isValid) {
       const password = passwordRef.current!.value;
-      updatePassword(user, password)
-        .then(() => {
-          navigate('/account');
-          window.location.reload();
-        })
-        .catch(console.log);
+      updatePassword(user, password).then(() => {
+        navigate('/account');
+        window.location.reload();
+      });
     }
   };
 

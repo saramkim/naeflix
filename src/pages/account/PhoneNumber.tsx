@@ -11,13 +11,13 @@ function PhoneNumber() {
     <ContentLayout>
       {phoneNumber ? (
         <>
-          <span>전화번호: {phoneNumber}</span>
-          <TextButton color='rgb(0, 115, 232)' fontSize={16} path='/'>
+          <span>전화번호: {`0${phoneNumber.substring(3)}`}</span>
+          <TextButton color='rgb(0, 115, 232)' fontSize={16} path='phone-number'>
             전화번호 변경
           </TextButton>
         </>
       ) : (
-        <TextButton color='rgb(0, 115, 232)' fontSize={16} path='/'>
+        <TextButton color='rgb(0, 115, 232)' fontSize={16} path='phone-number'>
           전화번호 등록
         </TextButton>
       )}

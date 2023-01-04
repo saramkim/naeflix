@@ -40,11 +40,9 @@ const loginUser = (email: string, password: string) =>
     });
 
 const checkUserExist = (email: string) =>
-  fetchSignInMethodsForEmail(auth, email)
-    .then((method) => {
-      if (method.length) return true;
-      return false;
-    })
-    .catch(console.log);
+  fetchSignInMethodsForEmail(auth, email).then((method) => {
+    if (method.length) return true;
+    return false;
+  });
 
 export { checkUserExist, createUser, loginUser };

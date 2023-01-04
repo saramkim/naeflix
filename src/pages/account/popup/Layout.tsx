@@ -20,9 +20,11 @@ const PopupLayout = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 40px;
+  gap: 30px;
 `;
 
 const ExitButton = styled.button`
