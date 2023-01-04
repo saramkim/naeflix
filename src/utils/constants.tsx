@@ -4,10 +4,11 @@ const STYLE = {
 };
 
 const REG_EX = {
-  EMAIL: /[a-z0-9]+@[a-z]+.[a-z]{2,3}/,
+  EMAIL: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
   PASSWORD: /^.{6,}$/,
   PHONE: /^[0-9]{10,11}$/,
   CODE: /^[0-9]{6}$/,
+  NICKNAME: /^.{1,20}$/,
 };
 
 const PHRASE = {
