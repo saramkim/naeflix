@@ -4,11 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'components/Button';
 import Input from 'components/Input';
 import TextButton from 'components/TextButton';
+import { loginUser } from 'firebases/user';
 import { useInput } from 'hooks/useInput';
 import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
-
-import { loginUser } from '../../firebase/firebase';
 
 const Form = styled.form`
   height: 660px;
@@ -69,7 +68,7 @@ function LoginForm() {
     if (isValidEmail && isValidPassword) {
       const email = emailRef.current!.value;
       const password = passwordRef.current!.value;
-      loginUser(email, password).then((result) => result && navigate('/account'));
+      loginUser(email, password).then(() => navigate('/account'));
     }
   };
 

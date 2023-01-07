@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
 import { getAuth, updateProfile } from 'firebase/auth';
+import { uploadImage } from 'firebases/storage';
 import styled from 'styled-components';
-
-import { uploadImage } from '../../../firebase/useStorage';
 
 import Layout from './Layout';
 

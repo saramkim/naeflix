@@ -3,12 +3,11 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
 import Input from 'components/Input';
+import { createUser } from 'firebases/user';
 import { useInput } from 'hooks/useInput';
 import { useAppSelector } from 'hooks/useRedux';
 import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
-
-import { createUser } from '../../firebase/firebase';
 
 import OutletLayout from './OutletLayout';
 
@@ -54,12 +53,12 @@ function SignUpForm() {
     if (email) {
       if (isValidPassword) {
         const password = passwordRef.current!.value;
-        createUser(email, password).then((result) => result && navigate('completion'));
+        createUser(email, password).then(() => navigate('completion'));
       }
     } else if (isValidEmail && isValidPassword) {
       const email = emailRef.current!.value;
       const password = passwordRef.current!.value;
-      createUser(email, password).then((result) => result && navigate('completion'));
+      createUser(email, password).then(() => navigate('completion'));
     }
   };
 
