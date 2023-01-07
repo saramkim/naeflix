@@ -45,4 +45,4 @@ const checkUserExist = (email: string) =>
     return false;
   });
 
-export { checkUserExist, createUser, loginUser };
+export { app, checkUserExist, createUser, loginUser };

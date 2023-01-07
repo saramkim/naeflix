@@ -6,6 +6,7 @@ import EmailPopup from 'pages/account/popup/EmailPopup';
 import NicknamePopup from 'pages/account/popup/NicknamePopup';
 import PasswordPopup from 'pages/account/popup/PasswordPopup';
 import PhoneNumberPopup from 'pages/account/popup/PhoneNumberPopup';
+import ProfilePopup from 'pages/account/popup/ProfilePopup';
 import Reauthentication from 'pages/account/popup/Reauthentication';
 import UnregisterPopup from 'pages/account/popup/UnregisterPopup';
 import Intro from 'pages/Intro/Intro';
@@ -33,6 +34,7 @@ function App() {
           <Route path='password' element={<PasswordPopup />} />
           <Route path='phone-number' element={<PhoneNumberPopup />} />
           <Route path='nickname' element={<NicknamePopup />} />
+          <Route path='profile' element={<ProfilePopup />} />
           <Route path='unregister' element={<UnregisterPopup />} />
         </Route>
       </Routes>

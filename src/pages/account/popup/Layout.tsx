@@ -4,10 +4,10 @@ import styled from 'styled-components';
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
-  height: calc(100% - 70px);
+  height: 100%;
   width: 100%;
   position: fixed;
-  top: 70px;
+  top: 0;
   left: 0;
 `;
 

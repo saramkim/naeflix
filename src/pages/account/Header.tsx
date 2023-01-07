@@ -1,4 +1,5 @@
 import Logo from 'components/Logo';
+import MoreButton from 'components/MoreButton';
 import styled from 'styled-components';
 
 const HeaderLayout = styled.div`
@@ -13,15 +14,11 @@ const HeaderLayout = styled.div`
   top: 0;
 `;
 
-const Profile = styled.div`
-  color: white;
-`;
-
 function Header() {
   return (
     <HeaderLayout>
       <Logo path='/main' />
-      <Profile>▼</Profile>
+      <MoreButton />
     </HeaderLayout>
   );
 }
