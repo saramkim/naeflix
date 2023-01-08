@@ -8,7 +8,7 @@ import { STYLE } from 'utils/constants';
 
 import TextButton from './TextButton';
 
-const MoreButtonLayout = styled.div`
+const ProfileButtonLayout = styled.div`
   color: white;
   position: relative;
   height: 100%;
@@ -35,7 +35,7 @@ const ProfileImage = styled.img`
 const DropBox = styled.div`
   position: absolute;
   top: 70px;
-  right: -2px;
+  right: -4px;
   background-color: black;
   min-width: 120px;
   display: flex;
@@ -45,23 +45,25 @@ const DropBox = styled.div`
   align-items: center;
   gap: 20px;
   padding: 20px;
-  border-top: 2px solid ${STYLE.ACCOUNT_COLOR};
+  background-clip: padding-box;
+  border-top: 2px solid transparent;
+  z-index: 10;
 
   &:after {
     content: '';
     height: 0;
     width: 0;
     position: absolute;
-    top: -12px;
+    top: -10px;
     left: 50%;
     transform: translateX(-50%);
-    border: 10px solid transparent;
+    border: 8px solid transparent;
     border-top-width: 0;
     border-bottom-color: ${STYLE.ACCOUNT_COLOR};
   }
 `;
 
-function MoreButton() {
+function ProfileButton() {
   const [isShown, setIsShown] = useState(false);
   const auth = getAuth();
   const { photoURL } = auth.currentUser!;
@@ -72,7 +74,10 @@ function MoreButton() {
   };
 
   return (
-    <MoreButtonLayout onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
+    <ProfileButtonLayout
+      onMouseEnter={() => setIsShown(true)}
+      onMouseLeave={() => setIsShown(false)}
+    >
       <InitialBox>
         <ProfileImage src={photoURL || defaultProfile} alt='profile-img' /> ▼
       </InitialBox>
@@ -86,8 +91,8 @@ function MoreButton() {
           </TextButton>
         </DropBox>
       )}
-    </MoreButtonLayout>
+    </ProfileButtonLayout>
   );
 }
 
-export default MoreButton;
+export default ProfileButton;

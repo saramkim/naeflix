@@ -4,16 +4,17 @@ import styled from 'styled-components';
 
 type TextButtonProps = {
   children: React.ReactNode;
-  fontSize: number;
+  fontSize?: number;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
   path?: string;
   state?: { [key: string]: string };
   color?: string;
+  hover?: 'opacity';
 };
 
-const TextButtonLayout = styled.div<{ fontSize: number; color?: string }>`
+const TextButtonLayout = styled.div<{ fontSize?: number; color?: string; hover?: 'opacity' }>`
   color: ${({ color }) => color || 'inherit'};
-  font-size: ${({ fontSize }) => fontSize}px;
+  font-size: ${({ fontSize }) => `${fontSize}px` || 'inherit'};
   width: fit-content;
   cursor: pointer;
   display: flex;
@@ -21,11 +22,11 @@ const TextButtonLayout = styled.div<{ fontSize: number; color?: string }>`
   line-height: 1rem;
 
   &:hover {
-    text-decoration: underline;
+    ${({ hover }) => (hover ? 'opacity: 0.8' : 'text-decoration: underline')}
   }
 `;
 
-function TextButton({ children, fontSize, onClick, path, state, color }: TextButtonProps) {
+function TextButton({ children, fontSize, onClick, path, state, color, hover }: TextButtonProps) {
   const navigate = useNavigate();
 
   const onClickButton = () => {
@@ -39,7 +40,12 @@ function TextButton({ children, fontSize, onClick, path, state, color }: TextBut
   };
 
   return (
-    <TextButtonLayout fontSize={fontSize} color={color} onClick={onClick || onClickButton}>
+    <TextButtonLayout
+      fontSize={fontSize}
+      color={color}
+      onClick={onClick || onClickButton}
+      hover={hover}
+    >
       {children}
     </TextButtonLayout>
   );

@@ -11,6 +11,7 @@ import Reauthentication from 'pages/account/popup/Reauthentication';
 import UnregisterPopup from 'pages/account/popup/UnregisterPopup';
 import Intro from 'pages/Intro/Intro';
 import Login from 'pages/Login/Login';
+import Main from 'pages/Main/Main';
 import Completion from 'pages/SignUp/Completion';
 import SignUp from 'pages/SignUp/SignUp';
 import SignUpForm from 'pages/SignUp/SignUpForm';
@@ -37,6 +38,7 @@ function App() {
           <Route path='profile' element={<ProfilePopup />} />
           <Route path='unregister' element={<UnregisterPopup />} />
         </Route>
+        <Route path='/main' element={<Main />} />
       </Routes>
     </>
   );

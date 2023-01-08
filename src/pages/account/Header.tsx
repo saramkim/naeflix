@@ -1,5 +1,5 @@
 import Logo from 'components/Logo';
-import MoreButton from 'components/MoreButton';
+import ProfileButton from 'components/ProfileButton';
 import styled from 'styled-components';
 
 const HeaderLayout = styled.div`
@@ -18,7 +18,7 @@ function Header() {
   return (
     <HeaderLayout>
       <Logo path='/main' />
-      <MoreButton />
+      <ProfileButton />
     </HeaderLayout>
   );
 }

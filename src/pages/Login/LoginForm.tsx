@@ -68,7 +68,7 @@ function LoginForm() {
     if (isValidEmail && isValidPassword) {
       const email = emailRef.current!.value;
       const password = passwordRef.current!.value;
-      loginUser(email, password).then(() => navigate('/account'));
+      loginUser(email, password).then(() => navigate('/main'));
     }
   };
 

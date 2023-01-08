@@ -11,6 +11,10 @@ const GlobalStyles = createGlobalStyle`
     *{
         box-sizing: border-box;
         word-break: keep-all;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
     }
     input, textarea { 
       -moz-user-select: auto;
