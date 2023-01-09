@@ -19,6 +19,10 @@ const PHRASE = {
   CODE_WARNING: '인증 번호는 6자여야 합니다.',
 };
 
+const MOVIE = {
+  POSTER_INIT_URL: 'https://image.tmdb.org/t/p/w154/',
+};
+
 const LANGUAGE_LIST = ['한국어', 'English'];
 
-export { LANGUAGE_LIST, PHRASE, REG_EX, STYLE };
+export { LANGUAGE_LIST, MOVIE, PHRASE, REG_EX, STYLE };
