@@ -24,7 +24,15 @@
 
     - 검색
 
+      - [클릭] 검색바
+
+        - [제출] 검색 결과 페이지 이동 (`/main/search?title=${title}`)
+
     - 계정
+
+      - account 페이지 버튼
+
+      - 로그아웃 버튼
 
 - Movie Container
 
@@ -41,5 +49,7 @@
   - title
 
   - scroll
+
+  - 가로 정렬
 
 - Footer
