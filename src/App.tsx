@@ -12,13 +12,14 @@ import UnregisterPopup from 'pages/account/popup/UnregisterPopup';
 import Intro from 'pages/Intro/Intro';
 import Login from 'pages/Login/Login';
 import Main from 'pages/Main/Main';
+import Search from 'pages/Main/Search';
 import Completion from 'pages/SignUp/Completion';
 import SignUp from 'pages/SignUp/SignUp';
 import SignUpForm from 'pages/SignUp/SignUpForm';
-import Loading from 'utils/Loading';
+import { loading } from 'utils/loading';
 
 function App() {
-  if (Loading()) return null;
+  if (loading()) return null;
   return (
     <>
       <GlobalStyles />
@@ -29,7 +30,7 @@ function App() {
           <Route path='' element={<SignUpForm />} />
           <Route path='completion' element={<Completion />} />
         </Route>
-        <Route path='account' element={<Account />}>
+        <Route path='/account' element={<Account />}>
           <Route path='reauthentication' element={<Reauthentication />} />
           <Route path='email' element={<EmailPopup />} />
           <Route path='password' element={<PasswordPopup />} />
@@ -38,7 +39,9 @@ function App() {
           <Route path='profile' element={<ProfilePopup />} />
           <Route path='unregister' element={<UnregisterPopup />} />
         </Route>
-        <Route path='/main' element={<Main />} />
+        <Route path='/main' element={<Main />}>
+          <Route path='search' element={<Search />} />
+        </Route>
       </Routes>
     </>
   );
