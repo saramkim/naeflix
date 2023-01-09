@@ -12,6 +12,7 @@ const MovieLayout = styled.div`
   height: 222px;
   border-radius: 5px;
   overflow: hidden;
+  background-color: white;
 `;
 
 const Poster = styled.img``;

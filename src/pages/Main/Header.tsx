@@ -1,12 +1,10 @@
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Logo from 'components/Logo';
 import ProfileButton from 'components/ProfileButton';
 import TextButton from 'components/TextButton';
-import { GoSearch, GoX } from 'react-icons/go';
+import { GoSearch } from 'react-icons/go';
 import styled from 'styled-components';
-
-import SearchBar from './SearchBar';
 
 const HeaderLayout = styled.div`
   height: 70px;
@@ -35,11 +33,7 @@ const Icon = styled.div`
 `;
 
 function Header() {
-  const [isShown, setIsShown] = useState(false);
-
-  const onClickSearch = () => {
-    setIsShown((v) => !v);
-  };
+  const navigate = useNavigate();
 
   return (
     <HeaderLayout>
@@ -66,11 +60,11 @@ function Header() {
         </TextButton>
       </ButtonContainer>
       <ButtonContainer>
-        <Icon onClick={onClickSearch}>{isShown ? <GoX /> : <GoSearch />}</Icon>
+        <Icon onClick={() => navigate('/main/search')}>
+          <GoSearch />
+        </Icon>
         <ProfileButton />
       </ButtonContainer>
-
-      {isShown && <SearchBar />}
     </HeaderLayout>
   );
 }
