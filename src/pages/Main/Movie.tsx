@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { MovieType } from 'api/getMovie';
+import { MovieType } from 'api/movieData';
 import styled from 'styled-components';
 import { MOVIE, STYLE } from 'utils/constants';
 
@@ -40,14 +40,11 @@ const Rating = styled.span`
   color: ${STYLE.MAIN_COLOR};
 `;
 
-function Movie({ title, poster_path: posterPath, vote_average: rating, id, ...props }: MovieType) {
+function Movie({ title, poster_path, vote_average, id }: MovieType) {
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
 
-  const onClickMovie = () =>
-    navigate(`/movie/${id}`, {
-      state: { title, posterPath, rating, ...props },
-    });
+  const onClickMovie = () => navigate(`/main/movie/${id}`);
 
   return (
     <MovieLayout
@@ -55,11 +52,11 @@ function Movie({ title, poster_path: posterPath, vote_average: rating, id, ...pr
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
     >
-      <Poster src={MOVIE.POSTER_INIT_URL + posterPath} alt='movie-poster' />
+      <Poster src={MOVIE.IMG_BASE_URL(154) + poster_path} alt='movie-poster' />
       {isShown && (
         <Content>
           <Title>{title}</Title>
-          <Rating>{rating}</Rating>
+          <Rating>{vote_average}</Rating>
         </Content>
       )}
     </MovieLayout>

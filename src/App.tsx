@@ -13,7 +13,8 @@ import UnregisterPopup from 'pages/account/popup/UnregisterPopup';
 import Intro from 'pages/Intro/Intro';
 import Login from 'pages/Login/Login';
 import Main from 'pages/Main/Main';
-import Search from 'pages/Main/Search';
+import MovieDetail from 'pages/Main/Movie/MovieDetail';
+import Search from 'pages/Main/Search/Search';
 import NotFound from 'pages/NotFound';
 import Completion from 'pages/SignUp/Completion';
 import SignUp from 'pages/SignUp/SignUp';
@@ -45,6 +46,7 @@ function App() {
         </Route>
         <Route path='/main' element={<Main />}>
           <Route path='search' element={<Search />} />
+          <Route path='movie/:id' element={<MovieDetail />} />
         </Route>
       </Route>
       <Route path='/*' element={<NotFound />} />

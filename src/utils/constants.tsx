@@ -20,7 +20,7 @@ const PHRASE = {
 };
 
 const MOVIE = {
-  POSTER_INIT_URL: 'https://image.tmdb.org/t/p/w154/',
+  IMG_BASE_URL: (width: number) => `https://image.tmdb.org/t/p/w${width}/`,
 };
 
 const LANGUAGE_LIST = ['한국어', 'English'];

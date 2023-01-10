@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { getMovie, MovieType } from 'api/getMovie';
+import { getMovies, MovieType } from 'api/movieData';
 import styled from 'styled-components';
 
-import Movie from './Movie';
+import Movie from '../Movie';
+
 import SearchBar from './SearchBar';
 
 const SearchLayout = styled.div`
@@ -29,8 +30,10 @@ function Search() {
 
   useEffect(() => {
     (async () => {
-      const result = await getMovie(title);
-      setMovies(result);
+      if (title) {
+        const result = await getMovies(title);
+        setMovies(result);
+      }
     })();
   }, [title]);
 
@@ -38,9 +41,7 @@ function Search() {
     <SearchLayout>
       <SearchBar setTitle={setTitle} />
       <MovieContainer>
-        {movies.map((movie) => (
-          <Movie {...movie} />
-        ))}
+        {movies && movies.map((movie) => <Movie {...movie} key={movie.id} />)}
       </MovieContainer>
     </SearchLayout>
   );
