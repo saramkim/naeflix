@@ -1,46 +1,93 @@
-# Getting Started with Create React App
+# NAEFLIX (내플릭스)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+내가 본 영화를 기록하는 웹 서비스
 
-## Available Scripts
+My Flicks, 내플릭스.
 
-In the project directory, you can run:
+<br/>
 
-### `npm start`
+## 기능 목록
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 회원가입
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  - [x] 이메일, 비밀번호 회원가입
 
-### `npm test`
+  - [ ] 소셜 회원가입
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 로그인
 
-### `npm run build`
+  - [x] 이메일 로그인
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - [ ] 전화번호 로그인
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - [ ] 소셜 로그인
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  - [ ] 로그인 정보 저장
 
-### `npm run eject`
+  - [ ] 비밀번호 찾기
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- 계정
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  - [x] 인증
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  - [x] 등록
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  - [x] 변경
 
-## Learn More
+  - [x] 로그아웃
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  - [x] 회원탈퇴
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  - [ ] 소셜 연동
+
+- 영화 검색
+
+  - [x] 제목 검색
+
+  - [ ] 인물 검색
+
+  - [ ] 검색 추천
+
+- 영화 상세
+
+  - [x] 영화 정보
+
+  - [ ] 비슷한 영화
+
+  - [ ] 볼 수 있는 곳
+
+  - [ ] 관련 인물
+
+- 인물 상세
+
+  - [ ] 인물 정보
+
+  - [ ] 필모그래피
+
+- 기록
+
+  - [ ] 시청한 영화
+
+  - [ ] 북마크
+
+  - [ ] 평점
+
+  - [ ] 한줄평
+
+  - [ ] 감상문
+
+  - [ ] 인물 선호도
+
+  - [ ] 영화 직접 추가
+
+- 통계
+
+  - [ ] 평점 순위
+
+  - [ ] 장르별
+
+  - [ ] 나라별
+
+- 부가 기능
+
+  - [ ] 언어 선택 (한국어 / English)
