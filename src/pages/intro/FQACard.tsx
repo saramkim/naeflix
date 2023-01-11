@@ -1,7 +1,8 @@
 import DropDown from 'components/DropDown';
-import StartForm from 'pages/Intro/StartForm';
 import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
+
+import StartForm from './StartForm';
 
 const FQACardLayout = styled.div`
   width: 100%;

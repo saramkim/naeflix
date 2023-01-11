@@ -10,15 +10,15 @@ import PhoneNumberPopup from 'pages/account/popup/PhoneNumberPopup';
 import ProfilePopup from 'pages/account/popup/ProfilePopup';
 import Reauthentication from 'pages/account/popup/Reauthentication';
 import UnregisterPopup from 'pages/account/popup/UnregisterPopup';
-import Intro from 'pages/Intro/Intro';
-import Login from 'pages/Login/Login';
+import Intro from 'pages/intro/Intro';
+import Login from 'pages/login/Login';
 import Main from 'pages/Main/Main';
-import MovieDetail from 'pages/Main/Movie/MovieDetail';
-import Search from 'pages/Main/Search/Search';
+import MovieDetail from 'pages/Main/movie/MovieDetail';
+import Search from 'pages/Main/search/Search';
 import NotFound from 'pages/NotFound';
-import Completion from 'pages/SignUp/Completion';
-import SignUp from 'pages/SignUp/SignUp';
-import SignUpForm from 'pages/SignUp/SignUpForm';
+import Completion from 'pages/signup/Completion';
+import SignUp from 'pages/signup/SignUp';
+import SignUpForm from 'pages/signup/SignUpForm';
 import { loading } from 'utils/loading';
 
 function App() {

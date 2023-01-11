@@ -1,6 +1,7 @@
-import StartForm from 'pages/Intro/StartForm';
 import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
+
+import StartForm from './StartForm';
 
 const TextCardLayout = styled.div`
   height: 600px;

@@ -1,7 +1,6 @@
 import BackgroundLayout from 'components/BackgroundLayout';
+import Footer from 'components/Footer';
 import styled from 'styled-components';
-
-import Footer from '../../components/Footer';
 
 import Banner from './Banner';
 import FQACard from './FQACard';

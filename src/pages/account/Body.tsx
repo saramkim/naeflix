@@ -1,4 +1,3 @@
-import TextButton from 'components/TextButton';
 import styled from 'styled-components';
 
 import ContentLayout from './ContentLayout';

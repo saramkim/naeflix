@@ -1,10 +1,10 @@
-import GIFCard from 'pages/Intro/GIFCard';
+import deviceImg from 'assets/device-pile.png';
+import kidsImg from 'assets/kids.png';
+import mobileImg from 'assets/mobile-0819.jpg';
+import tvImg from 'assets/tv.png';
 import styled from 'styled-components';
 
-import deviceImg from '../../assets/device-pile.png';
-import kidsImg from '../../assets/kids.png';
-import mobileImg from '../../assets/mobile-0819.jpg';
-import tvImg from '../../assets/tv.png';
+import GIFCard from './GIFCard';
 
 const GIFCardBundleLayout = styled.div`
   margin-top: 50px;
