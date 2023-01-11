@@ -17,6 +17,13 @@ type MovieType = {
   vote_count: number;
 };
 
+type MovieDataType = {
+  page: number;
+  results: MovieType[];
+  total_pages: number;
+  total_results: number;
+};
+
 type MovieDetailType = {
   adult: boolean;
   backdrop_path: string;
@@ -60,12 +67,12 @@ type MovieDetailType = {
   vote_count: number;
 };
 
-async function getMovies(title: string) {
+async function getMovies(title: string, page: number) {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko&query=${title}&page=1&region=KR`
+    `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko&query=${title}&page=${page}&region=KR`
   );
-  const { results }: { results: MovieType[] } = response.data;
-  return results;
+  const { data }: { data: MovieDataType } = response;
+  return data;
 }
 
 async function getMovieDetail(id: string) {
