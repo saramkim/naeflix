@@ -3,8 +3,11 @@ import { useParams } from 'react-router-dom';
 
 import { getMovieDetail, MovieDetailType } from 'api/movieData';
 import Loading from 'components/Loading';
+import { isMarkedMovie } from 'firebases/firestore';
 import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
+
+import WatchedButton from '../WatchedButton';
 
 const MovieDetailLayout = styled.div`
   display: flex;
@@ -65,6 +68,12 @@ const Genre = styled.div`
   padding: 10px;
 `;
 
+const TitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
 const Title = styled.h1`
   font-size: 50px;
   font-weight: bold;
@@ -93,12 +102,15 @@ const Overview = styled.p`
 function MovieDetail() {
   const { id } = useParams();
   const [movieDetail, setMovieDetail] = useState<MovieDetailType | null>(null);
+  const [isMarked, setIsMarked] = useState(true);
 
   useEffect(() => {
     (async () => {
       if (id) {
-        const result = await getMovieDetail(id);
-        setMovieDetail(result);
+        const data = await getMovieDetail(id);
+        setMovieDetail(data);
+        const result = await isMarkedMovie(id);
+        setIsMarked(result);
       }
     })();
   }, [id]);
@@ -127,7 +139,10 @@ function MovieDetail() {
                   <Genre key={genre.id}>{genre.name}</Genre>
                 ))}
               </GenreWraaper>
-              <Title>{title}</Title>
+              <TitleWrapper>
+                <Title>{title}</Title>
+                {!isMarked && <WatchedButton fontSize='45' id={id!} />}
+              </TitleWrapper>
               <Created>
                 {release_date} {production_countries.map((country) => `(${country.iso_3166_1}) `)}
                 {runtime}분

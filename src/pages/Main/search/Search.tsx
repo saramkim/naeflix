@@ -46,7 +46,7 @@ const DEFAULT_PAGE = 1;
 
 function Search() {
   const iconRef = useRef<HTMLDivElement>(null);
-  const [iconY, setIconY] = useState(0);
+  const [iconY, setIconY] = useState(1000);
   const [scrollY, setScrollY] = useState(0);
   const [title, setTitle] = useState('');
   const [page, setPage] = useState(DEFAULT_PAGE);

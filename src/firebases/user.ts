@@ -5,14 +5,18 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 
+import { setFirestore } from './firestore';
+
 const auth = getAuth();
 
 const createUser = (email: string, password: string) =>
-  createUserWithEmailAndPassword(auth, email, password).catch((error) => {
-    console.log(error.code);
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(setFirestore)
+    .catch((error) => {
+      console.log(error.code);
 
-    if (error.code === 'auth/email-already-in-use') alert('이미 존재하는 계정입니다.');
-  });
+      if (error.code === 'auth/email-already-in-use') alert('이미 존재하는 계정입니다.');
+    });
 
 const loginUser = (email: string, password: string) =>
   signInWithEmailAndPassword(auth, email, password).catch((error) => {
