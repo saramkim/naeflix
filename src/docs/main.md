@@ -8,48 +8,52 @@
 
   - text button
 
-    - 홈
-
-    - 순위
-
-    - 한국 영화
-
-    - 외국 영화
-
-    - 장르
-
-    - 감독
+    - 카테고리 / 분류
 
   - button
 
     - 검색
 
-      - [클릭] 검색바
-
-        - [제출] 검색 결과 페이지 이동 (/main/search)
+      - [클릭] 검색 페이지 이동 (/main/search)
 
     - 계정
 
-      - account 페이지 버튼
+      - account 페이지 이동 버튼
 
       - 로그아웃 버튼
 
-- Movie Container
+- Movie
 
-  - Movie
+  - [클릭] 영화 상세 페이지로 이동 (/main/movie/:id)
 
-    - 영화 이미지
+  - 포스터
 
-    - 영화 제목
+  - 제목
 
-    - 나만의 평점
+  - 평점
 
-    - [클릭] 영화 상세 페이지로 이동 (/main/movie/:id)
+  - 북마크 버튼
 
-  - title
+- Horizontal Movie Container
 
-  - scroll
+  - 카테고리 text
 
-  - 가로 정렬
+  - drag scroll
+
+  - 모두 보기 text button
+
+    - [클릭] 카테고리에 해당하는 영화 모음 페이지로 이동 (/main/:category)
+
+- Vertical Movie Container
+
+  - 카테고리 text
+
+  - infinite scroll
+
+  - scroll top button
+
+- Search Bar
+
+  - [입력] 해당 입력값이 포함된 제목을 가진 영화 검색
 
 - Footer
