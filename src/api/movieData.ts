@@ -3,11 +3,11 @@ import axios from 'axios';
 type MovieType = {
   adult: boolean;
   backdrop_path: string;
-  genre_ids: Array<number>;
+  genre_ids?: number[];
   id: number;
   original_language: string;
   original_title: string;
-  overview: string;
+  overview?: string;
   popularity: number;
   poster_path?: string;
   release_date: string;

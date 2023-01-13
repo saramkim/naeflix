@@ -21,6 +21,9 @@ const PHRASE = {
 
 const MOVIE = {
   IMG_BASE_URL: (width: number) => `https://image.tmdb.org/t/p/w${width}/`,
+  CATEGORY_TITLE: {
+    watched: '시청한 영화',
+  },
 };
 
 const LANGUAGE_LIST = ['한국어', 'English'];

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { getMovieDetail, MovieDetailType } from 'api/movieData';
 import Loading from 'components/Loading';
-import { isMarkedMovie } from 'firebases/firestore';
+import { isWatchedMovie } from 'firebases/firestore';
 import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
 
@@ -109,7 +109,7 @@ function MovieDetail() {
       if (id) {
         const data = await getMovieDetail(id);
         setMovieDetail(data);
-        const result = await isMarkedMovie(id);
+        const result = await isWatchedMovie(id);
         setIsMarked(result);
       }
     })();

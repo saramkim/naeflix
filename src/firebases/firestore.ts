@@ -24,7 +24,7 @@ const markWatched = (id: string) => {
   updateDoc(watchedRef, data);
 };
 
-const isMarkedMovie = async (id: string) => {
+const isWatchedMovie = async (id: string) => {
   const { uid } = auth.currentUser!;
   const watchedRef = doc(db, 'watched', uid);
   const docSnap = await getDoc(watchedRef);
@@ -35,4 +35,15 @@ const isMarkedMovie = async (id: string) => {
   return false;
 };
 
-export { isMarkedMovie, markWatched, setFirestore };
+const getWatchedMovies = async () => {
+  const { uid } = auth.currentUser!;
+  const watchedRef = doc(db, 'watched', uid);
+  const docSnap = await getDoc(watchedRef);
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    return data;
+  }
+  return {};
+};
+
+export { getWatchedMovies, isWatchedMovie, markWatched, setFirestore };

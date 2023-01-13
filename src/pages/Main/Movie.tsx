@@ -5,14 +5,16 @@ import { MovieType } from 'api/movieData';
 import styled from 'styled-components';
 import { MOVIE, STYLE } from 'utils/constants';
 
+const POSTER_WIDTH = 154;
+
 const MovieLayout = styled.div`
   position: relative;
   cursor: pointer;
-  width: 154px;
-  height: 222px;
+  width: ${POSTER_WIDTH}px;
   border-radius: 5px;
   overflow: hidden;
   background-color: white;
+  display: flex;
 `;
 
 const Poster = styled.img``;
@@ -52,7 +54,7 @@ function Movie({ title, poster_path, vote_average, id }: MovieType) {
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
     >
-      <Poster src={MOVIE.IMG_BASE_URL(154) + poster_path} alt='movie-poster' />
+      <Poster src={MOVIE.IMG_BASE_URL(POSTER_WIDTH) + poster_path} alt='movie-poster' />
       {isShown && (
         <Content>
           <Title>{title}</Title>
