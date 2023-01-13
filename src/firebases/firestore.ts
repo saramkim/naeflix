@@ -1,5 +1,5 @@
 import { getAuth, User } from 'firebase/auth';
-import { doc, getDoc, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
+import { deleteField, doc, getDoc, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
 
 import app from './firebase';
 
@@ -20,6 +20,15 @@ const markWatched = (id: string) => {
       rating: null,
       comment: null,
     },
+  };
+  updateDoc(watchedRef, data);
+};
+
+const unmarkWatched = (id: string) => {
+  const { uid } = auth.currentUser!;
+  const watchedRef = doc(db, 'watched', uid);
+  const data = {
+    [id]: deleteField(),
   };
   updateDoc(watchedRef, data);
 };
@@ -46,4 +55,4 @@ const getWatchedMovies = async () => {
   return {};
 };
 
-export { getWatchedMovies, isWatchedMovie, markWatched, setFirestore };
+export { getWatchedMovies, isWatchedMovie, markWatched, setFirestore, unmarkWatched };

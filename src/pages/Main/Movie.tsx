@@ -5,6 +5,8 @@ import { MovieType } from 'api/movieData';
 import styled from 'styled-components';
 import { MOVIE, STYLE } from 'utils/constants';
 
+import WatchedButton from './WatchedButton';
+
 const POSTER_WIDTH = 154;
 
 const MovieLayout = styled.div`
@@ -57,6 +59,7 @@ function Movie({ title, poster_path, vote_average, id }: MovieType) {
       <Poster src={MOVIE.IMG_BASE_URL(POSTER_WIDTH) + poster_path} alt='movie-poster' />
       {isShown && (
         <Content>
+          <WatchedButton id={id.toString()} />
           <Title>{title}</Title>
           <Rating>{vote_average}</Rating>
         </Content>
