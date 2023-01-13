@@ -4,8 +4,8 @@ import { getMovieDetail, MovieDetailType } from 'api/movieData';
 import { getWatchedMovies } from 'firebases/firestore';
 import styled from 'styled-components';
 
+import HorizontalMovieContainer from '../HorizontalMovieContainer';
 import Movie from '../Movie';
-import MovieContainer from '../MovieContainer';
 
 const HomeLayout = styled.div`
   background-color: rgb(20, 20, 20);
@@ -34,11 +34,11 @@ function Home() {
 
   return (
     <HomeLayout>
-      <MovieContainer category='watched'>
+      <HorizontalMovieContainer category='watched'>
         {movieDetailList.map((movie) => (
           <Movie {...movie} key={movie.id} />
         ))}
-      </MovieContainer>
+      </HorizontalMovieContainer>
     </HomeLayout>
   );
 }

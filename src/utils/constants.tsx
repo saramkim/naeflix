@@ -21,7 +21,7 @@ const PHRASE = {
 
 const MOVIE = {
   IMG_BASE_URL: (width: number) => `https://image.tmdb.org/t/p/w${width}/`,
-  CATEGORY_TITLE: {
+  CATEGORY_NAME: {
     watched: '시청한 영화',
   },
 };

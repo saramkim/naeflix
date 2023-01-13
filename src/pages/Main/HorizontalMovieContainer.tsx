@@ -5,9 +5,12 @@ import styled from 'styled-components';
 import { MOVIE, STYLE } from 'utils/constants';
 import { throttle } from 'utils/throttle';
 
-type MovieContainerType = { children: React.ReactNode; category: string };
+export interface MovieContainerType {
+  children: React.ReactNode;
+  category: string;
+}
 
-const MovieContainerLayout = styled.div`
+const Layout = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -20,7 +23,7 @@ const Info = styled.div`
   padding-right: 50px;
 `;
 
-const Title = styled.h1`
+const Category = styled.h1`
   font-size: 20px;
 `;
 
@@ -42,7 +45,7 @@ const MovieWrapper = styled.div`
   }
 `;
 
-function MovieContainer({ children, category }: MovieContainerType) {
+function HorizontalMovieContainer({ children, category }: MovieContainerType) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScroll, setCanScroll] = useState(false);
   const [mouseDownX, setMouseDownX] = useState(0);
@@ -65,9 +68,9 @@ function MovieContainer({ children, category }: MovieContainerType) {
   };
 
   return (
-    <MovieContainerLayout>
+    <Layout>
       <Info>
-        <Title>{MOVIE.CATEGORY_TITLE[category]}</Title>
+        <Category>{MOVIE.CATEGORY_NAME[category]}</Category>
         <TextButton hover='opacity' color={STYLE.MAIN_COLOR} path={category}>
           모두 보기
         </TextButton>
@@ -81,8 +84,8 @@ function MovieContainer({ children, category }: MovieContainerType) {
       >
         {children}
       </MovieWrapper>
-    </MovieContainerLayout>
+    </Layout>
   );
 }
 
-export default MovieContainer;
+export default HorizontalMovieContainer;

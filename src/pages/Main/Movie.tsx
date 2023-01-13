@@ -31,11 +31,11 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   font-size: 25px;
 `;
 
 const Title = styled.h1`
-  margin: auto;
   word-break: break-all;
   line-height: 30px;
 `;

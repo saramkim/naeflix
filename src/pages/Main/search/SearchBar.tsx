@@ -26,7 +26,7 @@ const Input = styled.input`
 function SearchBar({ setTitle }: { setTitle: React.Dispatch<React.SetStateAction<string>> }) {
   return (
     <SearchBarLayout>
-      <Input placeholder='영화 검색' onChange={debounce((e) => setTitle(e.target.value), 500)} />
+      <Input placeholder='영화 검색' onChange={debounce((e) => setTitle(e.target.value), 300)} />
     </SearchBarLayout>
   );
 }
