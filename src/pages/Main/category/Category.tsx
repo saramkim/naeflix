@@ -1,20 +1,19 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { getMovieData, MovieDataType } from 'api/movieData';
 import { getWatchedMovies } from 'firebases/firestore';
 import styled from 'styled-components';
 
-import HorizontalMovieContainer from '../HorizontalMovieContainer';
 import Movie from '../Movie';
+import VerticalMovieContainer from '../VerticalMovieContainer';
 
-const HomeLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 50px 0 50px 50px;
-  gap: 50px;
+const CategoryLayout = styled.div`
+  padding: 50px;
 `;
 
-function Home() {
+function Category() {
+  const { category } = useParams();
   const [movieDetailList, setMovieDetailList] = useState<MovieDataType[]>([]);
 
   useEffect(() => {
@@ -32,14 +31,14 @@ function Home() {
   }, []);
 
   return (
-    <HomeLayout>
-      <HorizontalMovieContainer category='watched'>
+    <CategoryLayout>
+      <VerticalMovieContainer category={category!}>
         {movieDetailList.map((movie) => (
           <Movie {...movie} key={movie.id} />
         ))}
-      </HorizontalMovieContainer>
-    </HomeLayout>
+      </VerticalMovieContainer>
+    </CategoryLayout>
   );
 }
 
-export default Home;
+export default Category;

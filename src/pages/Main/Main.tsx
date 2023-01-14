@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Header from './Header';
 
 const MainLayout = styled.div`
-  background-color: black;
+  background-color: rgb(20, 20, 20);
   color: white;
   padding-top: 70px;
 `;
@@ -16,7 +16,7 @@ function Main() {
     <MainLayout>
       <Header />
       <Outlet />
-      <Footer />
+      <Footer background='black' />
     </MainLayout>
   );
 }

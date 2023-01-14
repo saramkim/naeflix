@@ -2,14 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 
 import { AiFillCaretUp, AiOutlineDownCircle } from 'react-icons/ai';
 import styled from 'styled-components';
+import { MOVIE } from 'utils/constants';
 import { throttle } from 'utils/throttle';
 
-import { MovieContainerType } from './HorizontalMovieContainer';
-
-interface VerticalMovieContainerType extends MovieContainerType {
-  canLoad: boolean;
-  setLoad: React.Dispatch<React.SetStateAction<boolean>>;
-}
+type VerticalMovieContainerType = {
+  children: React.ReactNode;
+  category?: string;
+  canLoad?: boolean;
+  setLoad?: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 const Layout = styled.div`
   display: flex;
@@ -75,14 +76,14 @@ function VerticalMovieContainer({
   }, []);
 
   useEffect(() => {
-    setLoad(iconY - scrollY < 800);
+    if (setLoad) setLoad(iconY - scrollY < 800);
     if (scrollY > 800) setShown(true);
     else setShown(false);
   }, [scrollY]);
 
   return (
     <Layout>
-      <Category>{category}</Category>
+      {category && <Category>{MOVIE.CATEGORY_NAME[category]}</Category>}
       <MovieWrapper>{children}</MovieWrapper>
       {canLoad && (
         <ScrollDown ref={iconRef}>

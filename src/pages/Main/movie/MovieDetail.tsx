@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { getMovieDetail, MovieDetailType } from 'api/movieData';
+import { getMovieData, MovieDataType } from 'api/movieData';
 import Loading from 'components/Loading';
 import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
@@ -101,12 +101,12 @@ const Overview = styled.p`
 
 function MovieDetail() {
   const { id } = useParams();
-  const [movieDetail, setMovieDetail] = useState<MovieDetailType | null>(null);
+  const [movieDetail, setMovieDetail] = useState<MovieDataType | null>(null);
 
   useEffect(() => {
     (async () => {
       if (id) {
-        const data = await getMovieDetail(id);
+        const data = await getMovieData(id);
         setMovieDetail(data);
       }
     })();
