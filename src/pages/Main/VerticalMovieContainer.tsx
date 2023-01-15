@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { AiFillCaretUp, AiOutlineDownCircle } from 'react-icons/ai';
+import ScrollExceed from 'components/ScrollExceed';
+import ScrollToTop from 'components/ScrollToTop';
+import { AiOutlineDownCircle } from 'react-icons/ai';
 import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
 import { throttle } from 'utils/throttle';
@@ -35,17 +37,6 @@ const ScrollDown = styled.div`
   font-size: 50px;
 `;
 
-const ScrollTopButton = styled.button`
-  background-color: rgb(222, 222, 222);
-  position: fixed;
-  right: 40px;
-  bottom: 40px;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  font-size: 30px;
-`;
-
 function VerticalMovieContainer({
   children,
   category,
@@ -55,19 +46,10 @@ function VerticalMovieContainer({
   const iconRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState(0);
   const [iconY, setIconY] = useState(1000);
-  const [isShown, setShown] = useState(false);
 
   const handleScroll = () => {
     setScrollY(window.pageYOffset);
     if (iconRef.current) setIconY(iconRef.current.offsetTop);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-    setShown(false);
   };
 
   useEffect(() => {
@@ -77,8 +59,6 @@ function VerticalMovieContainer({
 
   useEffect(() => {
     if (setLoad) setLoad(iconY - scrollY < 800);
-    if (scrollY > 800) setShown(true);
-    else setShown(false);
   }, [scrollY]);
 
   return (
@@ -90,11 +70,9 @@ function VerticalMovieContainer({
           <AiOutlineDownCircle />
         </ScrollDown>
       )}
-      {isShown && (
-        <ScrollTopButton onClick={scrollToTop}>
-          <AiFillCaretUp />
-        </ScrollTopButton>
-      )}
+      <ScrollExceed distance={800}>
+        <ScrollToTop />
+      </ScrollExceed>
     </Layout>
   );
 }
