@@ -7,6 +7,7 @@ import WatchedMovies from '../WatchedMovies';
 
 const CategoryLayout = styled.div`
   padding: 50px;
+  min-height: calc(100vh - 479px);
 `;
 
 function Category() {

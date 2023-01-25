@@ -13,6 +13,7 @@ import UnregisterPopup from 'pages/account/popup/UnregisterPopup';
 import Intro from 'pages/intro/Intro';
 import Login from 'pages/login/Login';
 import Category from 'pages/Main/category/Category';
+import Genre from 'pages/Main/genre/Genre';
 import Home from 'pages/Main/home/Home';
 import Main from 'pages/Main/Main';
 import MovieDetail from 'pages/Main/movie/MovieDetail';
@@ -51,6 +52,8 @@ function App() {
           <Route path=':category' element={<Category />} />
           <Route path='search' element={<Search />} />
           <Route path='movie/:id' element={<MovieDetail />} />
+          <Route path='genre' element={<Genre />} />
+          <Route path='genre/:genre' element={<Genre />} />
         </Route>
       </Route>
       <Route path='/*' element={<NotFound />} />

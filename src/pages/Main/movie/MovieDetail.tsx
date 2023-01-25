@@ -6,6 +6,7 @@ import Loading from 'components/Loading';
 import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
 
+import GenreButton from '../GenreButton';
 import MarkingButton from '../MarkingButton';
 import RatingStar from '../RatingStar';
 
@@ -59,13 +60,6 @@ const GenreWraaper = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-`;
-
-const Genre = styled.div`
-  background-color: rgb(111, 111, 111);
-  border-radius: 3px;
-  width: fit-content;
-  padding: 10px;
 `;
 
 const TitleWrapper = styled.div`
@@ -134,7 +128,7 @@ function MovieDetail() {
             <Content>
               <GenreWraaper>
                 {genres.map((genre) => (
-                  <Genre key={genre.id}>{genre.name}</Genre>
+                  <GenreButton key={genre.id} genre={genre.name} fontSize={16} />
                 ))}
               </GenreWraaper>
               <TitleWrapper>

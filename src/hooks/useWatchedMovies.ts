@@ -7,8 +7,6 @@ const useWatchecMovies = () => {
   const [movieList, setMovieList] = useState<MovieDataType[]>([]);
 
   useEffect(() => {
-    setMovieList([]);
-
     (async () => {
       const movies = await getMarkedMovie();
       const idList = Object.keys(movies);
@@ -18,6 +16,7 @@ const useWatchecMovies = () => {
         setMovieList((v) => [...v, detail]);
       });
     })();
+    return () => setMovieList([]);
   }, []);
 
   return movieList;

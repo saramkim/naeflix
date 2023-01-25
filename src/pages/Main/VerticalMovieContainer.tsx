@@ -63,7 +63,7 @@ function VerticalMovieContainer({
 
   return (
     <Layout>
-      {category && <Category>{MOVIE.CATEGORY_NAME[category]}</Category>}
+      {category && <Category>{MOVIE.CATEGORY_NAME[category] || category}</Category>}
       <MovieWrapper>{children}</MovieWrapper>
       {canLoad && (
         <ScrollDown ref={iconRef}>
