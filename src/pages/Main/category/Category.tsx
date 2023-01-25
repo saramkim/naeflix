@@ -1,12 +1,9 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { getMovieData, MovieDataType } from 'api/movieData';
-import { getMarkedMovie } from 'firebases/firestore';
 import styled from 'styled-components';
 
-import Movie from '../Movie';
-import VerticalMovieContainer from '../VerticalMovieContainer';
+import MoviesWithStars from '../MoviesWithStars';
+import WatchedMovies from '../WatchedMovies';
 
 const CategoryLayout = styled.div`
   padding: 50px;
@@ -14,29 +11,17 @@ const CategoryLayout = styled.div`
 
 function Category() {
   const { category } = useParams();
-  const [movieDetailList, setMovieDetailList] = useState<MovieDataType[]>([]);
 
-  useEffect(() => {
-    setMovieDetailList([]);
-
-    (async () => {
-      const movies = await getMarkedMovie();
-      const idList = Object.keys(movies);
-
-      idList.forEach(async (id) => {
-        const detail = await getMovieData(id);
-        setMovieDetailList((v) => [...v, detail]);
-      });
-    })();
-  }, []);
+  if (category === 'watched')
+    return (
+      <CategoryLayout>
+        <WatchedMovies direction='vertical' />
+      </CategoryLayout>
+    );
 
   return (
     <CategoryLayout>
-      <VerticalMovieContainer category={category!}>
-        {movieDetailList.map((movie) => (
-          <Movie {...movie} key={movie.id} />
-        ))}
-      </VerticalMovieContainer>
+      <MoviesWithStars direction='vertical' category={category!} />
     </CategoryLayout>
   );
 }

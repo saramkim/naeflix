@@ -1,11 +1,7 @@
-import { useEffect, useState } from 'react';
-
-import { getMovieData, MovieDataType } from 'api/movieData';
-import { getMarkedMovie } from 'firebases/firestore';
 import styled from 'styled-components';
 
-import HorizontalMovieContainer from '../HorizontalMovieContainer';
-import Movie from '../Movie';
+import MoviesWithStars from '../MoviesWithStars';
+import WatchedMovies from '../WatchedMovies';
 
 const HomeLayout = styled.div`
   display: flex;
@@ -15,29 +11,16 @@ const HomeLayout = styled.div`
 `;
 
 function Home() {
-  const [movieDetailList, setMovieDetailList] = useState<MovieDataType[]>([]);
-
-  useEffect(() => {
-    setMovieDetailList([]);
-
-    (async () => {
-      const movies = await getMarkedMovie();
-      const idList = Object.keys(movies);
-
-      idList.forEach(async (id) => {
-        const detail = await getMovieData(id);
-        setMovieDetailList((v) => [...v, detail]);
-      });
-    })();
-  }, []);
-
   return (
     <HomeLayout>
-      <HorizontalMovieContainer category='watched'>
-        {movieDetailList.map((movie) => (
-          <Movie {...movie} key={movie.id} />
-        ))}
-      </HorizontalMovieContainer>
+      <MoviesWithStars category='0stars' />
+      <MoviesWithStars category='5stars' />
+      <MoviesWithStars category='4.5stars' />
+      <MoviesWithStars category='4stars' />
+      <MoviesWithStars category='3.5stars' />
+      <MoviesWithStars category='3stars' />
+      <MoviesWithStars category='2.5stars' />
+      <WatchedMovies direction='horizontal' />
     </HomeLayout>
   );
 }

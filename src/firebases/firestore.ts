@@ -17,7 +17,7 @@ const markMovie = ({ id, rating, comment }: { id: string; rating?: number; comme
   const watchedRef = doc(db, 'watched', uid);
   const data = {
     [id]: {
-      rating: rating || null,
+      rating: rating || 0,
       comment: comment || null,
     },
   };
