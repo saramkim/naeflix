@@ -6,7 +6,8 @@ import Loading from 'components/Loading';
 import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
 
-import WatchedButton from '../WatchedButton';
+import MarkingButton from '../MarkingButton';
+import RatingStar from '../RatingStar';
 
 const MovieDetailLayout = styled.div`
   display: flex;
@@ -138,7 +139,8 @@ function MovieDetail() {
               </GenreWraaper>
               <TitleWrapper>
                 <Title>{title}</Title>
-                <WatchedButton id={id!} />
+                <MarkingButton id={id!} />
+                <RatingStar id={id!} size={50} readonly={false} />
               </TitleWrapper>
               <Created>
                 {release_date} {production_countries.map((country) => `(${country.iso_3166_1}) `)}

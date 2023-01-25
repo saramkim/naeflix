@@ -12,13 +12,13 @@ const setFirestore = ({ user }: { user: User }) => {
   setDoc(watchedRef, {});
 };
 
-const markWatched = (id: string) => {
+const markMovie = ({ id, rating, comment }: { id: string; rating?: number; comment?: string }) => {
   const { uid } = auth.currentUser!;
   const watchedRef = doc(db, 'watched', uid);
   const data = {
     [id]: {
-      rating: null,
-      comment: null,
+      rating: rating || null,
+      comment: comment || null,
     },
   };
   updateDoc(watchedRef, data);
@@ -33,7 +33,7 @@ const unmarkWatched = (id: string) => {
   updateDoc(watchedRef, data);
 };
 
-const isWatchedMovie = async (id: string) => {
+const isMarkedMovie = async (id: string) => {
   const { uid } = auth.currentUser!;
   const watchedRef = doc(db, 'watched', uid);
   const docSnap = await getDoc(watchedRef);
@@ -44,15 +44,15 @@ const isWatchedMovie = async (id: string) => {
   return false;
 };
 
-const getWatchedMovies = async () => {
+const getMarkedMovie = async (id?: string) => {
   const { uid } = auth.currentUser!;
   const watchedRef = doc(db, 'watched', uid);
   const docSnap = await getDoc(watchedRef);
   if (docSnap.exists()) {
     const data = docSnap.data();
-    return data;
+    return id ? data[id] : data;
   }
   return {};
 };
 
-export { getWatchedMovies, isWatchedMovie, markWatched, setFirestore, unmarkWatched };
+export { getMarkedMovie, isMarkedMovie, markMovie, setFirestore, unmarkWatched };

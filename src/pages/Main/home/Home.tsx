@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { getMovieData, MovieDataType } from 'api/movieData';
-import { getWatchedMovies } from 'firebases/firestore';
+import { getMarkedMovie } from 'firebases/firestore';
 import styled from 'styled-components';
 
 import HorizontalMovieContainer from '../HorizontalMovieContainer';
@@ -21,7 +21,7 @@ function Home() {
     setMovieDetailList([]);
 
     (async () => {
-      const movies = await getWatchedMovies();
+      const movies = await getMarkedMovie();
       const idList = Object.keys(movies);
 
       idList.forEach(async (id) => {

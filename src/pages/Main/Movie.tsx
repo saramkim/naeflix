@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 
 import { MovieType } from 'api/movieData';
 import styled from 'styled-components';
-import { MOVIE, STYLE } from 'utils/constants';
+import { MOVIE } from 'utils/constants';
 
-import WatchedButton from './WatchedButton';
+import MarkingButton from './MarkingButton';
+import RatingStar from './RatingStar';
 
 const POSTER_WIDTH = 154;
 
@@ -40,11 +41,7 @@ const Title = styled.h1`
   line-height: 30px;
 `;
 
-const Rating = styled.span`
-  color: ${STYLE.MAIN_COLOR};
-`;
-
-function Movie({ title, poster_path, vote_average, id }: MovieType) {
+function Movie({ title, poster_path, id }: MovieType) {
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
 
@@ -59,9 +56,9 @@ function Movie({ title, poster_path, vote_average, id }: MovieType) {
       <Poster src={MOVIE.IMG_BASE_URL(POSTER_WIDTH) + poster_path} alt='movie-poster' />
       {isShown && (
         <Content>
-          <WatchedButton id={id.toString()} />
+          <MarkingButton id={id.toString()} />
           <Title>{title}</Title>
-          <Rating>{vote_average}</Rating>
+          <RatingStar id={id.toString()} size={20} readonly />
         </Content>
       )}
     </MovieLayout>
