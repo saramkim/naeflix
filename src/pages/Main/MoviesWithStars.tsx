@@ -23,7 +23,7 @@ function MoviesWithStars({ category, direction }: MoviesWithStarsType) {
   }
 
   return (
-    <HorizontalMovieContainer category={category}>
+    <HorizontalMovieContainer category={category} viewAll>
       {movieList.map((movie) => (
         <Movie {...movie} key={movie.id} />
       ))}

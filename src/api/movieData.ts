@@ -67,21 +67,36 @@ type MovieDataType = {
   vote_count: number;
 };
 
-async function getMovies(title: string, page: number) {
+const getMovies = async (title: string, page: number) => {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko&query=${title}&page=${page}&region=KR`
+    `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&query=${title}&page=${page}&region=KR`
   );
   const { data }: { data: SearchDataType } = response;
   return data;
-}
+};
 
-async function getMovieData(id: string) {
+const getMovieData = async (id: string) => {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko&region=KR`
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&region=KR`
   );
   const { data }: { data: MovieDataType } = response;
   return data;
-}
+};
 
-export { getMovieData, getMovies };
+const getRecommendationMovies = async (id: string) => {
+  const response = axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&page=1`
+  );
+  const response2 = axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&page=2`
+  );
+  const { data }: { data: SearchDataType } = await response;
+  const data2: SearchDataType = (await response2).data;
+  const list = [...data.results, ...data2.results];
+  return list.filter(
+    (arr, index, callback) => index === callback.findIndex((t) => t.id === arr.id)
+  );
+};
+
+export { getMovieData, getMovies, getRecommendationMovies };
 export type { MovieDataType, MovieType };

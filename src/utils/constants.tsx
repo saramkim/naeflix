@@ -23,6 +23,7 @@ const MOVIE = {
   IMG_BASE_URL: (width: number) => `https://image.tmdb.org/t/p/w${width}/`,
   CATEGORY_NAME: {
     watched: '시청한 영화',
+    recommendation: '추천 영화',
 
     '5stars': '평점 10점',
     '4.5stars': '평점 9점',
@@ -35,8 +36,6 @@ const MOVIE = {
     '1stars': '평점 2점',
     '0.5stars': '평점 1점',
     '0stars': '평가 대기중',
-
-    
   },
 };
 

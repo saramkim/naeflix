@@ -1,14 +1,17 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { getMovieData, MovieDataType } from 'api/movieData';
 import Loading from 'components/Loading';
+import { useMark } from 'hooks/useMark';
+import { useMovieDetail } from 'hooks/useMovieDetail';
+import { useStar } from 'hooks/useStar';
 import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
 
 import GenreButton from '../GenreButton';
 import MarkingButton from '../MarkingButton';
 import RatingStar from '../RatingStar';
+
+import RecommendationMovies from './RecommendationMovies';
 
 const MovieDetailLayout = styled.div`
   display: flex;
@@ -58,13 +61,15 @@ const Content = styled.div`
 
 const GenreWraaper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 `;
 
 const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 15px;
   font-size: 50px;
   width: fit-content;
@@ -90,22 +95,20 @@ const Overview = styled.p`
   line-height: 28px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 8;
+  -webkit-line-clamp: 7;
   overflow: hidden;
 `;
 
-function MovieDetail() {
-  const { id } = useParams();
-  const [movieDetail, setMovieDetail] = useState<MovieDataType | null>(null);
+const Extra = styled.div`
+  background-color: rgb(20, 20, 20);
+  padding: 50px 0 50px 50px;
+`;
 
-  useEffect(() => {
-    (async () => {
-      if (id) {
-        const data = await getMovieData(id);
-        setMovieDetail(data);
-      }
-    })();
-  }, [id]);
+function MovieDetail() {
+  const id = useParams().id!;
+  const movieDetail = useMovieDetail(id);
+  const { star, setStar } = useStar(id);
+  const { isMarked, setMarked } = useMark(id);
 
   if (movieDetail) {
     const {
@@ -133,8 +136,8 @@ function MovieDetail() {
               </GenreWraaper>
               <TitleWrapper>
                 <Title>{title}</Title>
-                <MarkingButton id={id!} />
-                <RatingStar id={id!} size={50} readonly={false} />
+                <MarkingButton id={id} isMarked={isMarked} setMarked={setMarked} setStar={setStar} />
+                <RatingStar id={id} star={star} setStar={setStar} setMarked={setMarked} size={50} readonly={false} />
               </TitleWrapper>
               <Created>
                 {release_date} {production_countries.map((country) => `(${country.iso_3166_1}) `)}
@@ -145,6 +148,10 @@ function MovieDetail() {
             </Content>
           </MovieInfo>
         </Backdrop>
+
+        <Extra>
+          <RecommendationMovies id={id} />
+        </Extra>
       </MovieDetailLayout>
     );
   }

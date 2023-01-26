@@ -17,7 +17,7 @@ function WatchedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) 
     );
 
   return (
-    <HorizontalMovieContainer category='watched'>
+    <HorizontalMovieContainer category='watched' viewAll>
       {movieList.map((movie) => (
         <Movie {...movie} key={movie.id} />
       ))}

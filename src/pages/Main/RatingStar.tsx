@@ -1,39 +1,27 @@
-import { useEffect } from 'react';
-
-import { getMarkedMovie, markMovie } from 'firebases/firestore';
-import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
+import { markMovie } from 'firebases/firestore';
 import { Rating } from 'react-simple-star-rating';
-import { setStar } from 'store/starSlice';
 import styled from 'styled-components';
+
+type RatingStarType = {
+  id: string;
+  star: number;
+  setStar: React.Dispatch<React.SetStateAction<number>>;
+  setMarked: React.Dispatch<React.SetStateAction<boolean>>;
+  size: number;
+  readonly: boolean;
+};
 
 const RatingStarLayout = styled.div`
   display: flex;
   font-size: inherit;
 `;
 
-function RatingStar({ id, size, readonly }: { id: string; size: number; readonly: boolean }) {
-  const star = useAppSelector((state) => state.star);
-  const isMarked = useAppSelector((state) => state.isMarked);
-  const dispatch = useAppDispatch();
-
+function RatingStar({ id, star, setStar, setMarked, size, readonly }: RatingStarType) {
   const handleRating = (rating: number) => {
-    dispatch(setStar(rating));
     markMovie({ id, rating });
+    setStar(rating);
+    setMarked(true);
   };
-
-  useEffect(() => {
-    (async () => {
-      const data = await getMarkedMovie(id);
-      if (data) dispatch(setStar(data.rating));
-    })();
-    return () => {
-      dispatch(setStar(0));
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isMarked) dispatch(setStar(0));
-  }, [isMarked]);
 
   return (
     <RatingStarLayout>

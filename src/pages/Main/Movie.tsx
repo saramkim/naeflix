@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { MovieType } from 'api/movieData';
+import { useMark } from 'hooks/useMark';
+import { useStar } from 'hooks/useStar';
 import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
 
@@ -44,6 +46,8 @@ const Title = styled.h1`
 function Movie({ title, poster_path, id }: MovieType) {
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
+  const { star, setStar } = useStar(id.toString());
+  const { isMarked, setMarked } = useMark(id.toString());
 
   const onClickMovie = () => navigate(`/main/movie/${id}`);
 
@@ -56,9 +60,21 @@ function Movie({ title, poster_path, id }: MovieType) {
       <Poster src={MOVIE.IMG_BASE_URL(POSTER_WIDTH) + poster_path} alt='movie-poster' />
       {isShown && (
         <Content>
-          <MarkingButton id={id.toString()} />
+          <MarkingButton
+            id={id.toString()}
+            isMarked={isMarked}
+            setMarked={setMarked}
+            setStar={setStar}
+          />
           <Title>{title}</Title>
-          <RatingStar id={id.toString()} size={20} readonly />
+          <RatingStar
+            id={id.toString()}
+            star={star}
+            setStar={setStar}
+            setMarked={setMarked}
+            size={20}
+            readonly
+          />
         </Content>
       )}
     </MovieLayout>

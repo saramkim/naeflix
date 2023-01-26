@@ -8,6 +8,7 @@ import { throttle } from 'utils/throttle';
 type HorizontalMovieContainerType = {
   children: React.ReactNode;
   category: string;
+  viewAll: boolean;
 };
 
 const Layout = styled.div`
@@ -45,7 +46,7 @@ const MovieWrapper = styled.div`
   }
 `;
 
-function HorizontalMovieContainer({ children, category }: HorizontalMovieContainerType) {
+function HorizontalMovieContainer({ children, category, viewAll }: HorizontalMovieContainerType) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScroll, setCanScroll] = useState(false);
   const [mouseDownX, setMouseDownX] = useState(0);
@@ -71,9 +72,11 @@ function HorizontalMovieContainer({ children, category }: HorizontalMovieContain
     <Layout>
       <Info>
         <Category>{MOVIE.CATEGORY_NAME[category]}</Category>
-        <TextButton hover='opacity' color={STYLE.MAIN_COLOR} path={category}>
-          모두 보기
-        </TextButton>
+        {viewAll && (
+          <TextButton hover='opacity' color={STYLE.MAIN_COLOR} path={category}>
+            모두 보기
+          </TextButton>
+        )}
       </Info>
       <MovieWrapper
         ref={scrollRef}
