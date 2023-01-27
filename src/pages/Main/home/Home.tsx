@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import MoviesWithStars from '../MoviesWithStars';
+import TopRatedMovies from '../TopRatedMovies';
 import WatchedMovies from '../WatchedMovies';
 
 const HomeLayout = styled.div`
@@ -13,6 +14,7 @@ const HomeLayout = styled.div`
 function Home() {
   return (
     <HomeLayout>
+      <TopRatedMovies direction='horizontal' />
       <MoviesWithStars category='0stars' />
       <MoviesWithStars category='5stars' />
       <MoviesWithStars category='4.5stars' />
@@ -20,6 +22,10 @@ function Home() {
       <MoviesWithStars category='3.5stars' />
       <MoviesWithStars category='3stars' />
       <MoviesWithStars category='2.5stars' />
+      <MoviesWithStars category='2stars' />
+      <MoviesWithStars category='1.5stars' />
+      <MoviesWithStars category='1stars' />
+      <MoviesWithStars category='0.5stars' />
       <WatchedMovies direction='horizontal' />
     </HomeLayout>
   );

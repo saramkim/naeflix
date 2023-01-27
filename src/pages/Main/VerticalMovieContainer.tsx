@@ -1,11 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-
-import ScrollExceed from 'components/ScrollExceed';
 import ScrollToTop from 'components/ScrollToTop';
+import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
+import { useScrollDistance } from 'hooks/useScrollDistance';
 import { AiOutlineDownCircle } from 'react-icons/ai';
 import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
-import { throttle } from 'utils/throttle';
 
 type VerticalMovieContainerType = {
   children: React.ReactNode;
@@ -40,26 +38,11 @@ const ScrollDown = styled.div`
 function VerticalMovieContainer({
   children,
   category,
-  canLoad,
+  canLoad = false,
   setLoad,
 }: VerticalMovieContainerType) {
-  const iconRef = useRef<HTMLDivElement>(null);
-  const [scrollY, setScrollY] = useState(0);
-  const [iconY, setIconY] = useState(1000);
-
-  const handleScroll = () => {
-    setScrollY(window.pageYOffset);
-    if (iconRef.current) setIconY(iconRef.current.offsetTop);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', throttle(handleScroll, 300));
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (setLoad) setLoad(iconY - scrollY < 800);
-  }, [scrollY]);
+  const iconRef = setLoad ? useInfiniteScroll({ setLoad }) : null;
+  const exceed = useScrollDistance(800);
 
   return (
     <Layout>
@@ -70,9 +53,7 @@ function VerticalMovieContainer({
           <AiOutlineDownCircle />
         </ScrollDown>
       )}
-      <ScrollExceed distance={800}>
-        <ScrollToTop />
-      </ScrollExceed>
+      {exceed && <ScrollToTop />}
     </Layout>
   );
 }

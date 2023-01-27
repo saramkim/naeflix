@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { getMovieData, MovieDataType } from 'api/movieData';
 import { getMarkedMovie } from 'firebases/firestore';
 
-const useWatchecMovies = () => {
+export const useWatchecMovies = () => {
   const [movieList, setMovieList] = useState<MovieDataType[]>([]);
 
   useEffect(() => {
@@ -21,5 +21,3 @@ const useWatchecMovies = () => {
 
   return movieList;
 };
-
-export default useWatchecMovies;

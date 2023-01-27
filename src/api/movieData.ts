@@ -98,5 +98,13 @@ const getRecommendationMovies = async (id: string) => {
   );
 };
 
-export { getMovieData, getMovies, getRecommendationMovies };
+const getTopRatedMovies = async (page: number) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&page=${page}&region=KR`
+  );
+  const { results }: { results: MovieType[] } = response.data;
+  return results;
+};
+
+export { getMovieData, getMovies, getRecommendationMovies, getTopRatedMovies };
 export type { MovieDataType, MovieType };

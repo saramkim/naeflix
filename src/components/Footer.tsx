@@ -83,10 +83,13 @@ function Footer({ background }: { background?: string }) {
             법적 고지
           </TextButton>
         </Menu>
-        <div>
-          <SelectBox list={LANGUAGE_LIST} fontSize={18} background={background} />
-        </div>
-        <Info>넷플릭스를 카피한 비상업적 웹 서비스 ※불법 스트리밍 근절※</Info>
+        <SelectBox list={LANGUAGE_LIST} fontSize={18} background={background} />
+        <Info>
+          영화를 기록하는 비상업적 웹 서비스 ※불법 스트리밍 근절※
+          <br />
+          <br />
+          Naeflix는 TMDB(https://www.themoviedb.org)의 오픈소스를 사용합니다.
+        </Info>
       </ContentWrapper>
     </FooterLayout>
   );

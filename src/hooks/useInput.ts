@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export function useInput(ref: React.RefObject<HTMLInputElement>, regExp: RegExp) {
+export const useInput = (ref: React.RefObject<HTMLInputElement>, regExp: RegExp) => {
   const [isValid, setIsValid] = useState(false);
 
   const onChange = () => {
@@ -12,4 +12,4 @@ export function useInput(ref: React.RefObject<HTMLInputElement>, regExp: RegExp)
     onChange,
     isValid,
   };
-}
+};

@@ -48,9 +48,14 @@ const ExtraFeatures = styled.div`
   justify-content: space-between;
 `;
 
+const TextWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+`;
+
 const Text = styled.div`
-  margin: 40px 0;
-  line-height: 20px;
+  font-size: 15px;
 `;
 
 function LoginForm() {
@@ -98,7 +103,7 @@ function LoginForm() {
         </Button>
         <ExtraFeatures>
           <label>
-            <input type='checkbox' value='save' />
+            <input type='checkbox' value='save' checked />
             로그인 정보 저장
           </label>
           <TextButton fontSize={14} path='help'>
@@ -106,14 +111,13 @@ function LoginForm() {
           </TextButton>
         </ExtraFeatures>
       </ButtonWrapper>
-      <Text>
-        Naeflix 회원이 아닌가요?
-        <TextButton fontSize={16} color='white' path='/signup'>
-          지금 가입하세요.
+      <TextWrapper>
+        <Text>Naeflix 회원이 아닌가요?</Text>
+        <TextButton fontSize={18} color='white' path='/signup'>
+          지금 가입하기
         </TextButton>
-        <br />이 페이지는 Google reCAPTCHA의 보호를 받지 않아 사용자가 로봇이 아님을 확인하지
-        않습니다.
-      </Text>
+      </TextWrapper>
+      <span>이 페이지는 Google reCAPTCHA의 보호를 받고 있습니다.</span>
     </Form>
   );
 }

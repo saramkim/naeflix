@@ -24,7 +24,7 @@ const MOVIE = {
   CATEGORY_NAME: {
     watched: '시청한 영화',
     recommendation: '추천 영화',
-
+    'top-rated': '대중 평점순',
     '5stars': '평점 10점',
     '4.5stars': '평점 9점',
     '4stars': '평점 8점',

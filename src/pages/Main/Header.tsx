@@ -43,17 +43,17 @@ function Header() {
         <TextButton hover='opacity' path='/main'>
           홈
         </TextButton>
-        <TextButton hover='opacity' path='/main/ranking'>
-          순위
+        <TextButton hover='opacity' path='/main/genre'>
+          장르
+        </TextButton>
+        <TextButton hover='opacity' path='/main/top-rated'>
+          평점순
         </TextButton>
         <TextButton hover='opacity' path='/main/korean-movie'>
           한국 영화
         </TextButton>
         <TextButton hover='opacity' path='/main/foreign-movie'>
           외국 영화
-        </TextButton>
-        <TextButton hover='opacity' path='/main/genre'>
-          장르
         </TextButton>
         <TextButton hover='opacity' path='/main/movie-director'>
           감독

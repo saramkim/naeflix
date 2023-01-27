@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import MoviesWithStars from '../MoviesWithStars';
+import TopRatedMovies from '../TopRatedMovies';
 import WatchedMovies from '../WatchedMovies';
 
 const CategoryLayout = styled.div`
@@ -17,6 +18,13 @@ function Category() {
     return (
       <CategoryLayout>
         <WatchedMovies direction='vertical' />
+      </CategoryLayout>
+    );
+
+  if (category === 'top-rated')
+    return (
+      <CategoryLayout>
+        <TopRatedMovies direction='vertical' />
       </CategoryLayout>
     );
 

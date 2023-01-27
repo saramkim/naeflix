@@ -1,15 +1,18 @@
-import { useWatchecMovies } from 'hooks/useWatchedMovies';
+import { useState } from 'react';
+
+import { useTopRatedMovies } from 'hooks/useTopRatedMovies';
 
 import HorizontalMovieContainer from './HorizontalMovieContainer';
 import Movie from './Movie';
 import VerticalMovieContainer from './VerticalMovieContainer';
 
-function WatchedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) {
-  const movieList = useWatchecMovies();
+function TopRatedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) {
+  const [load, setLoad] = useState(false);
+  const movieList = useTopRatedMovies(load);
 
   if (direction === 'vertical')
     return (
-      <VerticalMovieContainer category='watched'>
+      <VerticalMovieContainer category='top-rated' setLoad={setLoad} canLoad>
         {movieList.map((movie) => (
           <Movie {...movie} key={movie.id} />
         ))}
@@ -17,7 +20,7 @@ function WatchedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) 
     );
 
   return (
-    <HorizontalMovieContainer category='watched' viewAll>
+    <HorizontalMovieContainer category='top-rated' viewAll>
       {movieList.map((movie) => (
         <Movie {...movie} key={movie.id} />
       ))}
@@ -25,4 +28,4 @@ function WatchedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) 
   );
 }
 
-export default WatchedMovies;
+export default TopRatedMovies;
