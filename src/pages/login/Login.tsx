@@ -1,3 +1,5 @@
+import { Outlet } from 'react-router-dom';
+
 import BackgroundLayout from 'components/BackgroundLayout';
 import Footer from 'components/Footer';
 
@@ -10,6 +12,7 @@ function Login() {
       <Header />
       <LoginForm />
       <Footer />
+      <Outlet />
     </BackgroundLayout>
   );
 }

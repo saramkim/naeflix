@@ -11,6 +11,7 @@ import ProfilePopup from 'pages/account/popup/ProfilePopup';
 import Reauthentication from 'pages/account/popup/Reauthentication';
 import UnregisterPopup from 'pages/account/popup/UnregisterPopup';
 import Intro from 'pages/intro/Intro';
+import HelpPopup from 'pages/login/HelpPopup';
 import Login from 'pages/login/Login';
 import Category from 'pages/Main/category/Category';
 import Genre from 'pages/Main/genre/Genre';
@@ -31,7 +32,9 @@ function App() {
     <Routes>
       <Route element={<PrivateRoutes />}>
         <Route path='/' element={<Intro />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login />}>
+          <Route path='help' element={<HelpPopup />} />
+        </Route>
         <Route path='/signup' element={<SignUp />}>
           <Route path='' element={<SignUpForm />} />
           <Route path='completion' element={<Completion />} />
