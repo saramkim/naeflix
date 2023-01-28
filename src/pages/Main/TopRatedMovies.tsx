@@ -8,7 +8,7 @@ import VerticalMovieContainer from './VerticalMovieContainer';
 
 function TopRatedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) {
   const [load, setLoad] = useState(false);
-  const movieList = useTopRatedMovies(load);
+  const movieList = useTopRatedMovies({load, setLoad});
 
   if (direction === 'vertical')
     return (

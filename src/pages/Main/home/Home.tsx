@@ -14,7 +14,6 @@ const HomeLayout = styled.div`
 function Home() {
   return (
     <HomeLayout>
-      <TopRatedMovies direction='horizontal' />
       <MoviesWithStars category='0stars' />
       <MoviesWithStars category='5stars' />
       <MoviesWithStars category='4.5stars' />
@@ -27,6 +26,7 @@ function Home() {
       <MoviesWithStars category='1stars' />
       <MoviesWithStars category='0.5stars' />
       <WatchedMovies direction='horizontal' />
+      <TopRatedMovies direction='horizontal' />
     </HomeLayout>
   );
 }

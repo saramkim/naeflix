@@ -12,25 +12,28 @@ const setFirestore = ({ user }: { user: User }) => {
   setDoc(watchedRef, {});
 };
 
-const markMovie = ({ id, rating, comment }: { id: string; rating?: number; comment?: string }) => {
+const markMovie = (id: string) => {
   const { uid } = auth.currentUser!;
   const watchedRef = doc(db, 'watched', uid);
-  const data = {
-    [id]: {
-      rating: rating || 0,
-      comment: comment || null,
-    },
-  };
-  updateDoc(watchedRef, data);
+  updateDoc(watchedRef, { [id]: { rating: 0 } });
+};
+
+const rateMovie = ({ id, rating }: { id: string; rating: number }) => {
+  const { uid } = auth.currentUser!;
+  const watchedRef = doc(db, 'watched', uid);
+  updateDoc(watchedRef, { [`${id}.rating`]: rating });
+};
+
+const commentMovie = ({ id, comment }: { id: string; comment: string }) => {
+  const { uid } = auth.currentUser!;
+  const watchedRef = doc(db, 'watched', uid);
+  updateDoc(watchedRef, { [`${id}.comment`]: comment });
 };
 
 const unmarkWatched = (id: string) => {
   const { uid } = auth.currentUser!;
   const watchedRef = doc(db, 'watched', uid);
-  const data = {
-    [id]: deleteField(),
-  };
-  updateDoc(watchedRef, data);
+  updateDoc(watchedRef, { [id]: deleteField() });
 };
 
 const isMarkedMovie = async (id: string) => {
@@ -55,4 +58,12 @@ const getMarkedMovie = async (id?: string) => {
   return {};
 };
 
-export { getMarkedMovie, isMarkedMovie, markMovie, setFirestore, unmarkWatched };
+export {
+  commentMovie,
+  getMarkedMovie,
+  isMarkedMovie,
+  markMovie,
+  rateMovie,
+  setFirestore,
+  unmarkWatched,
+};

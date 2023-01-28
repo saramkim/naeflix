@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react';
 
 import { getTopRatedMovies, MovieType } from 'api/movieData';
 
-export const useTopRatedMovies = (load: boolean) => {
+type useTopRatedMoviesType = {
+  load: boolean;
+  setLoad: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const useTopRatedMovies = ({ load, setLoad }: useTopRatedMoviesType) => {
   const [movieList, setMovieList] = useState<MovieType[]>([]);
   const [page, setPage] = useState(1);
 
@@ -17,7 +22,10 @@ export const useTopRatedMovies = (load: boolean) => {
   }, []);
 
   useEffect(() => {
-    if (load) getMovieList();
+    if (load) {
+      getMovieList();
+      setLoad(false);
+    }
   }, [load]);
 
   return movieList;

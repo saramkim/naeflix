@@ -1,16 +1,20 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Loading from 'components/Loading';
+import { useComment } from 'hooks/useComment';
 import { useMark } from 'hooks/useMark';
 import { useMovieDetail } from 'hooks/useMovieDetail';
 import { useStar } from 'hooks/useStar';
 import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
 
+import Comment from '../Comment';
 import GenreButton from '../GenreButton';
 import MarkingButton from '../MarkingButton';
 import RatingStar from '../RatingStar';
 
+import CommentIcon from './CommentIcon';
 import RecommendationMovies from './RecommendationMovies';
 
 const MovieDetailLayout = styled.div`
@@ -84,10 +88,14 @@ const Created = styled.span`
   color: rgb(180, 180, 180);
 `;
 
-const Tagline = styled.span`
-  font-size: 22px;
+const Tagline = styled.div<{ comment: string | null }>`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
   font-weight: bold;
   line-height: 30px;
+  color: ${({ comment }) => (comment ? 'rgb(255, 188, 11)' : 'white')};
 `;
 
 const Overview = styled.p`
@@ -109,6 +117,8 @@ function MovieDetail() {
   const movieDetail = useMovieDetail(id);
   const { star, setStar } = useStar(id);
   const { isMarked, setMarked } = useMark(id);
+  const { comment, setComment } = useComment(id);
+  const [isShown, setShown] = useState(true);
 
   if (movieDetail) {
     const {
@@ -136,14 +146,35 @@ function MovieDetail() {
               </GenreWraaper>
               <TitleWrapper>
                 <Title>{title}</Title>
-                <MarkingButton id={id} isMarked={isMarked} setMarked={setMarked} setStar={setStar} />
-                <RatingStar id={id} star={star} setStar={setStar} setMarked={setMarked} size={50} readonly={false} />
+                <MarkingButton
+                  id={id}
+                  isMarked={isMarked}
+                  setMarked={setMarked}
+                  setStar={setStar}
+                  setComment={setComment}
+                  setShown={setShown}
+                />
+                <RatingStar
+                  id={id}
+                  star={star}
+                  setStar={setStar}
+                  setMarked={setMarked}
+                  size={50}
+                  readonly={false}
+                />
               </TitleWrapper>
               <Created>
                 {release_date} {production_countries.map((country) => `(${country.iso_3166_1}) `)}
                 {runtime}분
               </Created>
-              {tagline && <Tagline>{tagline}</Tagline>}
+              {isShown ? (
+                <Tagline comment={comment}>
+                  {comment || tagline}
+                  {isMarked && <CommentIcon setShown={setShown} />}
+                </Tagline>
+              ) : (
+                <Comment id={id} setShown={setShown} comment={comment} setComment={setComment} />
+              )}
               {overview && <Overview>{overview}</Overview>}
             </Content>
           </MovieInfo>

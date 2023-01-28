@@ -1,4 +1,4 @@
-import { markMovie } from 'firebases/firestore';
+import { rateMovie } from 'firebases/firestore';
 import { Rating } from 'react-simple-star-rating';
 import styled from 'styled-components';
 
@@ -18,7 +18,7 @@ const RatingStarLayout = styled.div`
 
 function RatingStar({ id, star, setStar, setMarked, size, readonly }: RatingStarType) {
   const handleRating = (rating: number) => {
-    markMovie({ id, rating });
+    rateMovie({ id, rating });
     setStar(rating);
     setMarked(true);
   };
