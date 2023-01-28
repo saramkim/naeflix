@@ -1,45 +1,59 @@
 import { getAuth, User } from 'firebase/auth';
-import { deleteField, doc, getDoc, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
+import {
+  deleteDoc,
+  deleteField,
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+  updateDoc,
+} from 'firebase/firestore';
 
 import app from './firebase';
 
 const db = getFirestore(app);
 const auth = getAuth();
 
-const setFirestore = ({ user }: { user: User }) => {
+const createMarked = ({ user }: { user: User }) => {
   const { uid } = user;
-  const watchedRef = doc(db, 'watched', uid);
-  setDoc(watchedRef, {});
+  const markedRef = doc(db, 'marked', uid);
+  setDoc(markedRef, {});
+};
+
+const deleteMarked = (user: User) => {
+  const { uid } = user;
+  const markedRef = doc(db, 'marked', uid);
+  deleteDoc(markedRef);
 };
 
 const markMovie = (id: string) => {
   const { uid } = auth.currentUser!;
-  const watchedRef = doc(db, 'watched', uid);
-  updateDoc(watchedRef, { [id]: { rating: 0 } });
+  const markedRef = doc(db, 'marked', uid);
+  updateDoc(markedRef, { [id]: { rating: 0 } });
 };
 
 const rateMovie = ({ id, rating }: { id: string; rating: number }) => {
   const { uid } = auth.currentUser!;
-  const watchedRef = doc(db, 'watched', uid);
-  updateDoc(watchedRef, { [`${id}.rating`]: rating });
+  const markedRef = doc(db, 'marked', uid);
+  updateDoc(markedRef, { [`${id}.rating`]: rating });
 };
 
 const commentMovie = ({ id, comment }: { id: string; comment: string }) => {
   const { uid } = auth.currentUser!;
-  const watchedRef = doc(db, 'watched', uid);
-  updateDoc(watchedRef, { [`${id}.comment`]: comment });
+  const markedRef = doc(db, 'marked', uid);
+  updateDoc(markedRef, { [`${id}.comment`]: comment });
 };
 
-const unmarkWatched = (id: string) => {
+const unmarkMovie = (id: string) => {
   const { uid } = auth.currentUser!;
-  const watchedRef = doc(db, 'watched', uid);
-  updateDoc(watchedRef, { [id]: deleteField() });
+  const markedRef = doc(db, 'marked', uid);
+  updateDoc(markedRef, { [id]: deleteField() });
 };
 
 const isMarkedMovie = async (id: string) => {
   const { uid } = auth.currentUser!;
-  const watchedRef = doc(db, 'watched', uid);
-  const docSnap = await getDoc(watchedRef);
+  const markedRef = doc(db, 'marked', uid);
+  const docSnap = await getDoc(markedRef);
   if (docSnap.exists()) {
     const data = docSnap.data();
     return id in data;
@@ -49,8 +63,8 @@ const isMarkedMovie = async (id: string) => {
 
 const getMarkedMovie = async (id?: string) => {
   const { uid } = auth.currentUser!;
-  const watchedRef = doc(db, 'watched', uid);
-  const docSnap = await getDoc(watchedRef);
+  const markedRef = doc(db, 'marked', uid);
+  const docSnap = await getDoc(markedRef);
   if (docSnap.exists()) {
     const data = docSnap.data();
     return id ? data[id] : data;
@@ -60,10 +74,11 @@ const getMarkedMovie = async (id?: string) => {
 
 export {
   commentMovie,
+  createMarked,
+  deleteMarked,
   getMarkedMovie,
   isMarkedMovie,
   markMovie,
   rateMovie,
-  setFirestore,
-  unmarkWatched,
+  unmarkMovie,
 };

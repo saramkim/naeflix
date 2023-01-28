@@ -1,15 +1,15 @@
-import { useWatchecMovies } from 'hooks/useWatchedMovies';
+import { useMarkedMovies } from 'hooks/useMarkedMovies';
 
 import HorizontalMovieContainer from './HorizontalMovieContainer';
 import Movie from './Movie';
 import VerticalMovieContainer from './VerticalMovieContainer';
 
-function WatchedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) {
-  const movieList = useWatchecMovies();
+function MarkedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) {
+  const movieList = useMarkedMovies();
 
   if (direction === 'vertical')
     return (
-      <VerticalMovieContainer category='watched'>
+      <VerticalMovieContainer category='marked'>
         {movieList.map((movie) => (
           <Movie {...movie} key={movie.id} />
         ))}
@@ -17,7 +17,7 @@ function WatchedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) 
     );
 
   return (
-    <HorizontalMovieContainer category='watched' viewAll>
+    <HorizontalMovieContainer category='marked' viewAll>
       {movieList.map((movie) => (
         <Movie {...movie} key={movie.id} />
       ))}
@@ -25,4 +25,4 @@ function WatchedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) 
   );
 }
 
-export default WatchedMovies;
+export default MarkedMovies;

@@ -22,7 +22,7 @@ const PHRASE = {
 const MOVIE = {
   IMG_BASE_URL: (width: number) => `https://image.tmdb.org/t/p/w${width}/`,
   CATEGORY_NAME: {
-    watched: '시청한 영화',
+    marked: '저장한 영화',
     recommendation: '추천 영화',
     'top-rated': '대중 평점순',
     '5stars': '평점 10점',

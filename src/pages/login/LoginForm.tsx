@@ -103,7 +103,7 @@ function LoginForm() {
         </Button>
         <ExtraFeatures>
           <label>
-            <input type='checkbox' value='save' checked />
+            <input type='checkbox' value='save' defaultChecked />
             로그인 정보 저장
           </label>
           <TextButton fontSize={14} path='help'>

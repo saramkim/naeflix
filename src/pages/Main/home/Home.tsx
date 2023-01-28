@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
+import MarkedMovies from '../MarkedMovies';
 import MoviesWithStars from '../MoviesWithStars';
 import TopRatedMovies from '../TopRatedMovies';
-import WatchedMovies from '../WatchedMovies';
 
 const HomeLayout = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ function Home() {
       <MoviesWithStars category='1.5stars' />
       <MoviesWithStars category='1stars' />
       <MoviesWithStars category='0.5stars' />
-      <WatchedMovies direction='horizontal' />
+      <MarkedMovies direction='horizontal' />
       <TopRatedMovies direction='horizontal' />
     </HomeLayout>
   );

@@ -1,4 +1,4 @@
-import { getMarkedMovie, markMovie, unmarkWatched } from 'firebases/firestore';
+import { getMarkedMovie, markMovie, unmarkMovie } from 'firebases/firestore';
 import { BsFillBookmarkStarFill } from 'react-icons/bs';
 import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
@@ -37,12 +37,12 @@ function MarkingButton({
       if (window.confirm('마크를 제거하면 해당 영화의 기록이 초기화됩니다. 제거하시겠습니까?')) {
         setMarked(false);
         setStar(0);
-        unmarkWatched(id);
+        unmarkMovie(id);
         if (setComment) setComment('');
       }
     } else if (isMarked) {
       setMarked(false);
-      unmarkWatched(id);
+      unmarkMovie(id);
     } else {
       setMarked(true);
       markMovie(id);

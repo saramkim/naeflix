@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import MoviesWithStars from '../MoviesWithStars';
 import TopRatedMovies from '../TopRatedMovies';
-import WatchedMovies from '../WatchedMovies';
+import MarkedMovies from '../MarkedMovies';
 
 const CategoryLayout = styled.div`
   padding: 50px;
@@ -14,10 +14,10 @@ const CategoryLayout = styled.div`
 function Category() {
   const { category } = useParams();
 
-  if (category === 'watched')
+  if (category === 'marked')
     return (
       <CategoryLayout>
-        <WatchedMovies direction='vertical' />
+        <MarkedMovies direction='vertical' />
       </CategoryLayout>
     );
 
