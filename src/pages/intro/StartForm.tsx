@@ -66,9 +66,7 @@ function StartForm() {
 
   return (
     <Form onSubmit={onSubmitForm}>
-      <FormTitle>
-        이용할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.
-      </FormTitle>
+      <FormTitle>내플릭스를 이용하려면 이메일 주소를 입력하세요.</FormTitle>
       <InputContainer>
         <Input
           ref={inputRef}

@@ -62,8 +62,8 @@ function Banner() {
     <BannerLayout>
       <Logo />
       <Content>
-        <Title>0,000원이면 만날 수 있는 내플릭스.</Title>
-        <SubTitle>무료형 베이식 멤버십에 가입하세요.</SubTitle>
+        <Title>회원가입으로 만날 수 있는 내플릭스.</Title>
+        <SubTitle>평생 무료 멤버십에 가입하세요.</SubTitle>
         <TextButton fontSize={16} color='#447fc4' path='/signup'>
           자세히 알아보기
           <Icon>
