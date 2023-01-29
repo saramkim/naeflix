@@ -1,11 +1,12 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
 import Input from 'components/Input';
 import { createUser } from 'firebases/user';
 import { useInput } from 'hooks/useInput';
-import { useAppSelector } from 'hooks/useRedux';
+import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
+import { setEmail } from 'store/emailSlice';
 import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
 
@@ -47,6 +48,7 @@ function SignUpForm() {
     REG_EX.PASSWORD
   );
   const email = useAppSelector((state) => state.email);
+  const dispatch = useAppDispatch();
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,6 +63,12 @@ function SignUpForm() {
       createUser(email, password).then(() => navigate('completion'));
     }
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(setEmail(''));
+    };
+  }, []);
 
   return (
     <OutletLayout>

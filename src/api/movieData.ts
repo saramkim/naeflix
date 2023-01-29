@@ -67,6 +67,23 @@ type MovieDataType = {
   vote_count: number;
 };
 
+type CreditsDataType = {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+  credit_id: string;
+  cast_id?: number;
+  character?: string;
+  order?: number;
+  job?: string;
+  department?: string;
+};
+
 const getMovies = async (title: string, page: number) => {
   const response = await axios.get(
     `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&query=${title}&page=${page}&region=KR`
@@ -98,6 +115,14 @@ const getRecommendationMovies = async (id: string) => {
   );
 };
 
+const getCredits = async (id: string) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+  );
+  const { cast, crew }: { cast: CreditsDataType[]; crew: CreditsDataType[] } = response.data;
+  return [...cast, ...crew];
+};
+
 const getTopRatedMovies = async (page: number) => {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&page=${page}&region=KR`
@@ -106,5 +131,5 @@ const getTopRatedMovies = async (page: number) => {
   return results;
 };
 
-export { getMovieData, getMovies, getRecommendationMovies, getTopRatedMovies };
-export type { MovieDataType, MovieType };
+export { getCredits, getMovieData, getMovies, getRecommendationMovies, getTopRatedMovies };
+export type { CreditsDataType, MovieDataType, MovieType };

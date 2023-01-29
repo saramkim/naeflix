@@ -7,10 +7,8 @@ export const useMovieDetail = (id: string) => {
 
   useEffect(() => {
     (async () => {
-      if (id) {
-        const data = getMovieData(id);
-        setMovieDetail(await data);
-      }
+      const data = await getMovieData(id);
+      setMovieDetail(data);
     })();
   }, [id]);
 

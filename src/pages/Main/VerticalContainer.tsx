@@ -5,7 +5,7 @@ import { AiOutlineDownCircle } from 'react-icons/ai';
 import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
 
-type VerticalMovieContainerType = {
+type VerticalContainerType = {
   children: React.ReactNode;
   category?: string;
   canLoad?: boolean;
@@ -35,12 +35,12 @@ const ScrollDown = styled.div`
   font-size: 50px;
 `;
 
-function VerticalMovieContainer({
+function VerticalContainer({
   children,
   category,
   canLoad = false,
   setLoad,
-}: VerticalMovieContainerType) {
+}: VerticalContainerType) {
   const iconRef = setLoad ? useInfiniteScroll({ setLoad }) : null;
   const exceed = useScrollDistance(800);
 
@@ -58,4 +58,4 @@ function VerticalMovieContainer({
   );
 }
 
-export default VerticalMovieContainer;
+export default VerticalContainer;

@@ -24,6 +24,7 @@ const MOVIE = {
   CATEGORY_NAME: {
     marked: '저장한 영화',
     recommendation: '추천 영화',
+    credits: '관련 인물',
     'top-rated': '대중 평점순',
     '5stars': '평점 10점',
     '4.5stars': '평점 9점',

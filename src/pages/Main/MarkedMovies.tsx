@@ -1,27 +1,27 @@
 import { useMarkedMovies } from 'hooks/useMarkedMovies';
 
-import HorizontalMovieContainer from './HorizontalMovieContainer';
+import HorizontalContainer from './HorizontalContainer';
 import Movie from './Movie';
-import VerticalMovieContainer from './VerticalMovieContainer';
+import VerticalContainer from './VerticalContainer';
 
 function MarkedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) {
   const movieList = useMarkedMovies();
 
   if (direction === 'vertical')
     return (
-      <VerticalMovieContainer category='marked'>
+      <VerticalContainer category='marked'>
         {movieList.map((movie) => (
           <Movie {...movie} key={movie.id} />
         ))}
-      </VerticalMovieContainer>
+      </VerticalContainer>
     );
 
   return (
-    <HorizontalMovieContainer category='marked' viewAll>
+    <HorizontalContainer category='marked'>
       {movieList.map((movie) => (
         <Movie {...movie} key={movie.id} />
       ))}
-    </HorizontalMovieContainer>
+    </HorizontalContainer>
   );
 }
 

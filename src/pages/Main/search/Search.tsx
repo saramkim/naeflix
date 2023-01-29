@@ -4,7 +4,7 @@ import { getMovies, MovieType } from 'api/movieData';
 import styled from 'styled-components';
 
 import Movie from '../Movie';
-import VerticalMovieContainer from '../VerticalMovieContainer';
+import VerticalContainer from '../VerticalContainer';
 
 import SearchBar from './SearchBar';
 
@@ -52,11 +52,11 @@ function Search() {
   return (
     <SearchLayout>
       <SearchBar setTitle={setTitle} />
-      <VerticalMovieContainer category={title} canLoad={totalPages > page} setLoad={setLoad}>
+      <VerticalContainer category={title} canLoad={totalPages > page} setLoad={setLoad}>
         {movies.map((movie) => (
           <Movie {...movie} key={movie.id} />
         ))}
-      </VerticalMovieContainer>
+      </VerticalContainer>
     </SearchLayout>
   );
 }

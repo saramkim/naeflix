@@ -2,29 +2,29 @@ import { useState } from 'react';
 
 import { useTopRatedMovies } from 'hooks/useTopRatedMovies';
 
-import HorizontalMovieContainer from './HorizontalMovieContainer';
+import HorizontalContainer from './HorizontalContainer';
 import Movie from './Movie';
-import VerticalMovieContainer from './VerticalMovieContainer';
+import VerticalContainer from './VerticalContainer';
 
 function TopRatedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) {
   const [load, setLoad] = useState(false);
-  const movieList = useTopRatedMovies({load, setLoad});
+  const movieList = useTopRatedMovies({ load, setLoad });
 
   if (direction === 'vertical')
     return (
-      <VerticalMovieContainer category='top-rated' setLoad={setLoad} canLoad>
+      <VerticalContainer category='top-rated' setLoad={setLoad} canLoad>
         {movieList.map((movie) => (
           <Movie {...movie} key={movie.id} />
         ))}
-      </VerticalMovieContainer>
+      </VerticalContainer>
     );
 
   return (
-    <HorizontalMovieContainer category='top-rated' viewAll>
+    <HorizontalContainer category='top-rated'>
       {movieList.map((movie) => (
         <Movie {...movie} key={movie.id} />
       ))}
-    </HorizontalMovieContainer>
+    </HorizontalContainer>
   );
 }
 

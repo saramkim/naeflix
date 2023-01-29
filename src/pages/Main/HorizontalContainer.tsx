@@ -5,10 +5,10 @@ import styled from 'styled-components';
 import { MOVIE, STYLE } from 'utils/constants';
 import { throttle } from 'utils/throttle';
 
-type HorizontalMovieContainerType = {
+type HorizontalContainerType = {
   children: React.ReactNode;
   category: string;
-  viewAll: boolean;
+  viewAll?: boolean;
 };
 
 const Layout = styled.div`
@@ -46,7 +46,7 @@ const MovieWrapper = styled.div`
   }
 `;
 
-function HorizontalMovieContainer({ children, category, viewAll }: HorizontalMovieContainerType) {
+function HorizontalContainer({ children, category, viewAll = true }: HorizontalContainerType) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScroll, setCanScroll] = useState(false);
   const [mouseDownX, setMouseDownX] = useState(0);
@@ -91,4 +91,4 @@ function HorizontalMovieContainer({ children, category, viewAll }: HorizontalMov
   );
 }
 
-export default HorizontalMovieContainer;
+export default HorizontalContainer;

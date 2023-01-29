@@ -1,8 +1,8 @@
 import useMoviesWithStars from 'hooks/useMovieWithStar';
 
-import HorizontalMovieContainer from './HorizontalMovieContainer';
+import HorizontalContainer from './HorizontalContainer';
 import Movie from './Movie';
-import VerticalMovieContainer from './VerticalMovieContainer';
+import VerticalContainer from './VerticalContainer';
 
 type MoviesWithStarsType = {
   category: string;
@@ -14,20 +14,20 @@ function MoviesWithStars({ category, direction }: MoviesWithStarsType) {
 
   if (direction === 'vertical') {
     return (
-      <VerticalMovieContainer category={category}>
+      <VerticalContainer category={category}>
         {movieList.map((movie) => (
           <Movie {...movie} key={movie.id} />
         ))}
-      </VerticalMovieContainer>
+      </VerticalContainer>
     );
   }
 
   return (
-    <HorizontalMovieContainer category={category} viewAll>
+    <HorizontalContainer category={category}>
       {movieList.map((movie) => (
         <Movie {...movie} key={movie.id} />
       ))}
-    </HorizontalMovieContainer>
+    </HorizontalContainer>
   );
 }
 

@@ -15,6 +15,7 @@ import MarkingButton from '../MarkingButton';
 import RatingStar from '../RatingStar';
 
 import CommentIcon from './CommentIcon';
+import Credits from './Credits';
 import RecommendationMovies from './RecommendationMovies';
 
 const MovieDetailLayout = styled.div`
@@ -110,6 +111,9 @@ const Overview = styled.p`
 const Extra = styled.div`
   background-color: rgb(20, 20, 20);
   padding: 50px 0 50px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 `;
 
 function MovieDetail() {
@@ -182,6 +186,7 @@ function MovieDetail() {
 
         <Extra>
           <RecommendationMovies id={id} />
+          <Credits id={id} />
         </Extra>
       </MovieDetailLayout>
     );

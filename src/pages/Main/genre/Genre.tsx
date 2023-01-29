@@ -6,7 +6,7 @@ import { GENRE } from 'utils/constants';
 
 import GenreButton from '../GenreButton';
 import Movie from '../Movie';
-import VerticalMovieContainer from '../VerticalMovieContainer';
+import VerticalContainer from '../VerticalContainer';
 
 const GenreLayout = styled.div`
   padding: 50px;
@@ -32,11 +32,11 @@ function Genre() {
           <GenreButton key={genre.id} genre={genre.name} fontSize={20} />
         ))}
       </ButtonContainer>
-      <VerticalMovieContainer category={genre}>
+      <VerticalContainer category={genre}>
         {movieList.map((movie) => (
           <Movie {...movie} key={movie.id} />
         ))}
-      </VerticalMovieContainer>
+      </VerticalContainer>
     </GenreLayout>
   );
 }
