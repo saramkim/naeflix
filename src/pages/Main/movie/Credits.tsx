@@ -10,7 +10,7 @@ function Credits({ id }: { id: string }) {
   return (
     <HorizontalContainer category='credits' viewAll={false}>
       {credits.map((person) => (
-        <Person {...person} key={person.id} />
+        <Person {...person} key={person.department ? person.id + person.department : person.id} />
       ))}
     </HorizontalContainer>
   );

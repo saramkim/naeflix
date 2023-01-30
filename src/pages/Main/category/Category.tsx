@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import MoviesWithStars from '../MoviesWithStars';
 import TopRatedMovies from '../TopRatedMovies';
-import MarkedMovies from '../MarkedMovies';
 
 const CategoryLayout = styled.div`
   padding: 50px;
@@ -13,13 +12,6 @@ const CategoryLayout = styled.div`
 
 function Category() {
   const { category } = useParams();
-
-  if (category === 'marked')
-    return (
-      <CategoryLayout>
-        <MarkedMovies direction='vertical' />
-      </CategoryLayout>
-    );
 
   if (category === 'top-rated')
     return (

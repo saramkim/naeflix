@@ -120,7 +120,11 @@ const getCredits = async (id: string) => {
     `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
   );
   const { cast, crew }: { cast: CreditsDataType[]; crew: CreditsDataType[] } = response.data;
-  return [...cast, ...crew];
+  const list = [...cast, ...crew];
+  return list.filter(
+    (arr, index, callback) =>
+      index === callback.findIndex((t) => t.id === arr.id && t.department === arr.department)
+  );
 };
 
 const getTopRatedMovies = async (page: number) => {

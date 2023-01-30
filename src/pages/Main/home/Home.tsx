@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import MarkedMovies from '../MarkedMovies';
 import MoviesWithStars from '../MoviesWithStars';
 import TopRatedMovies from '../TopRatedMovies';
 
@@ -25,7 +24,6 @@ function Home() {
       <MoviesWithStars category='1.5stars' />
       <MoviesWithStars category='1stars' />
       <MoviesWithStars category='0.5stars' />
-      <MarkedMovies direction='horizontal' />
       <TopRatedMovies direction='horizontal' />
     </HomeLayout>
   );

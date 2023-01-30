@@ -39,7 +39,7 @@ const Content = styled.div`
 `;
 
 const Title = styled.h1`
-  word-break: break-all;
+  text-align: center;
   line-height: 30px;
 `;
 

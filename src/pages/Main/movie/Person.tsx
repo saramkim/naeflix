@@ -34,12 +34,13 @@ const Content = styled.div`
 `;
 
 const Name = styled.h1`
-  word-break: break-all;
+  text-align: center;
   line-height: 30px;
 `;
 
 const Info = styled.span`
   font-size: 20px;
+  text-align: center;
 `;
 
 function Person({ id, name, character, profile_path, department }: CreditsDataType) {
@@ -48,17 +49,6 @@ function Person({ id, name, character, profile_path, department }: CreditsDataTy
 
   const onClickPerson = () => navigate(`/main/person/${id}`);
 
-  if (profile_path === null) {
-    return (
-      <PersonLayout onClick={onClickPerson}>
-        <Content>
-          <div />
-          <Name>{name}</Name>
-          <Info>{department || character}</Info>
-        </Content>
-      </PersonLayout>
-    );
-  }
   return (
     <PersonLayout
       onClick={onClickPerson}
