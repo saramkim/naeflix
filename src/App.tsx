@@ -18,6 +18,7 @@ import Genre from 'pages/Main/genre/Genre';
 import Home from 'pages/Main/home/Home';
 import Main from 'pages/Main/Main';
 import MovieDetail from 'pages/Main/movie/MovieDetail';
+import PersonDetail from 'pages/Main/person/PersonDetail';
 import Search from 'pages/Main/search/Search';
 import NotFound from 'pages/NotFound';
 import Completion from 'pages/signup/Completion';
@@ -55,6 +56,7 @@ function App() {
           <Route path=':category' element={<Category />} />
           <Route path='search' element={<Search />} />
           <Route path='movie/:id' element={<MovieDetail />} />
+          <Route path='person/:id' element={<PersonDetail />} />
           <Route path='genre' element={<Genre />} />
           <Route path='genre/:genre' element={<Genre />} />
         </Route>

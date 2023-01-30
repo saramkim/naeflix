@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react';
 
 import { getMovieData, MovieDataType } from 'api/movieData';
 
-export const useMovieDetail = (id: string) => {
-  const [movieDetail, setMovieDetail] = useState<MovieDataType | null>(null);
+export const useMovieData = (id: string) => {
+  const [movieData, setMovieData] = useState<MovieDataType | null>(null);
 
   useEffect(() => {
     (async () => {
       const data = await getMovieData(id);
-      setMovieDetail(data);
+      setMovieData(data);
     })();
   }, [id]);
 
-  return movieDetail;
+  return movieData;
 };

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Loading from 'components/Loading';
 import { useComment } from 'hooks/useComment';
 import { useMark } from 'hooks/useMark';
-import { useMovieDetail } from 'hooks/useMovieDetail';
+import { useMovieData } from 'hooks/useMovieData';
 import { useStar } from 'hooks/useStar';
 import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
@@ -109,7 +109,6 @@ const Overview = styled.p`
 `;
 
 const Extra = styled.div`
-  background-color: rgb(20, 20, 20);
   padding: 50px 0 50px 50px;
   display: flex;
   flex-direction: column;
@@ -118,13 +117,13 @@ const Extra = styled.div`
 
 function MovieDetail() {
   const id = useParams().id!;
-  const movieDetail = useMovieDetail(id);
+  const movieData = useMovieData(id);
   const { star, setStar } = useStar(id);
   const { isMarked, setMarked } = useMark(id);
   const { comment, setComment } = useComment(id);
   const [isShown, setShown] = useState(true);
 
-  if (movieDetail) {
+  if (movieData) {
     const {
       backdrop_path,
       poster_path,
@@ -135,7 +134,7 @@ function MovieDetail() {
       tagline,
       production_countries,
       runtime,
-    } = movieDetail;
+    } = movieData;
 
     return (
       <MovieDetailLayout>

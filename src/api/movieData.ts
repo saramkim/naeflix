@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-type MovieType = {
+interface MovieType {
   adult: boolean;
   backdrop_path: string;
   genre_ids?: number[];
@@ -15,7 +15,7 @@ type MovieType = {
   video: boolean;
   vote_average: number;
   vote_count: number;
-};
+}
 
 type SearchDataType = {
   page: number;
@@ -84,6 +84,40 @@ type CreditsDataType = {
   department?: string;
 };
 
+interface PersonDetailType {
+  adult: boolean;
+  also_known_as: string[];
+  biography: string;
+  birthday: Date;
+  deathday: Date;
+  gender: number;
+  homepage: string;
+  id: number;
+  imdb_id: string;
+  known_for_department: string;
+  name: string;
+  place_of_birth: string;
+  popularity: number;
+  profile_path: string;
+}
+
+interface CastType extends MovieType {
+  character: string;
+  credit_id: string;
+  order: number;
+}
+
+interface CrewType extends MovieType {
+  credit_id: string;
+  department: string;
+  job: string;
+}
+
+interface PersonDataType extends PersonDetailType {
+  cast: CastType[];
+  crew: CrewType[];
+}
+
 const getMovies = async (title: string, page: number) => {
   const response = await axios.get(
     `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&query=${title}&page=${page}&region=KR`
@@ -110,21 +144,7 @@ const getRecommendationMovies = async (id: string) => {
   const { data }: { data: SearchDataType } = await response;
   const data2: SearchDataType = (await response2).data;
   const list = [...data.results, ...data2.results];
-  return list.filter(
-    (arr, index, callback) => index === callback.findIndex((t) => t.id === arr.id)
-  );
-};
-
-const getCredits = async (id: string) => {
-  const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
-  );
-  const { cast, crew }: { cast: CreditsDataType[]; crew: CreditsDataType[] } = response.data;
-  const list = [...cast, ...crew];
-  return list.filter(
-    (arr, index, callback) =>
-      index === callback.findIndex((t) => t.id === arr.id && t.department === arr.department)
-  );
+  return list.filter((v, i, arr) => i === arr.findIndex((t) => t.id === v.id));
 };
 
 const getTopRatedMovies = async (page: number) => {
@@ -135,5 +155,36 @@ const getTopRatedMovies = async (page: number) => {
   return results;
 };
 
-export { getCredits, getMovieData, getMovies, getRecommendationMovies, getTopRatedMovies };
-export type { CreditsDataType, MovieDataType, MovieType };
+const getCredits = async (id: string) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+  );
+  const { cast, crew }: { cast: CreditsDataType[]; crew: CreditsDataType[] } = response.data;
+  const list = [...cast, ...crew];
+  return list.filter(
+    (v, i, arr) => i === arr.findIndex((t) => t.id === v.id && t.department === v.department)
+  );
+};
+
+const getPersonData = async (id: string) => {
+  const detailResponse = axios.get(
+    `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR`
+  );
+  const creditsResponse = axios.get(
+    `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR`
+  );
+  const detail: PersonDetailType = (await detailResponse).data;
+  const { cast, crew: list }: { cast: CastType[]; crew: CrewType[] } = (await creditsResponse).data;
+  const crew = list.filter((v, i, arr) => i === arr.findIndex((t) => t.id === v.id));
+  return { ...detail, cast, crew };
+};
+
+export {
+  getCredits,
+  getMovieData,
+  getMovies,
+  getPersonData,
+  getRecommendationMovies,
+  getTopRatedMovies,
+};
+export type { CreditsDataType, MovieDataType, MovieType, PersonDataType };
