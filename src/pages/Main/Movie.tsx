@@ -20,6 +20,8 @@ const MovieLayout = styled.div`
   overflow: hidden;
   background-color: white;
   display: flex;
+  width: ${POSTER_WIDTH}px;
+  min-height: 220px;
 `;
 
 const Poster = styled.img``;

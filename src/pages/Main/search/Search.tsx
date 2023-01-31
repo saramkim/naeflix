@@ -1,16 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { getMovies, MovieType } from 'api/movieData';
+import { useSearch } from 'hooks/useSerach';
 import styled from 'styled-components';
+import { STYLE } from 'utils/constants';
 
 import Movie from '../Movie';
+import Person from '../Person';
 import VerticalContainer from '../VerticalContainer';
 
 import SearchBar from './SearchBar';
 
+export type SearchType = 'movie' | 'person';
+
 const SearchLayout = styled.div`
   width: 100%;
-  min-height: calc(100vh - 479px);
+  min-height: ${STYLE.HEIGHT_WITHOUT_HEADER_FOOTER};
   padding: 50px;
   display: flex;
   flex-direction: column;
@@ -18,44 +22,19 @@ const SearchLayout = styled.div`
   gap: 50px;
 `;
 
-const DEFAULT_PAGE = 1;
-
 function Search() {
-  const [title, setTitle] = useState('');
-  const [page, setPage] = useState(DEFAULT_PAGE);
-  const [totalPages, setTotalPages] = useState(DEFAULT_PAGE);
-  const [movies, setMovies] = useState<MovieType[]>([]);
-  const [load, setLoad] = useState(false);
-
-  useEffect(() => {
-    setMovies([]);
-    setPage(DEFAULT_PAGE);
-    if (title) {
-      (async () => {
-        const { results, total_pages } = await getMovies(title, DEFAULT_PAGE);
-        setTotalPages(total_pages);
-        setMovies((v) => [...v, ...results]);
-      })();
-    } else setTotalPages(DEFAULT_PAGE);
-  }, [title]);
-
-  useEffect(() => {
-    if (load) {
-      (async () => {
-        const { results } = await getMovies(title, page + 1);
-        setPage((v) => v + 1);
-        setMovies((v) => [...v, ...results]);
-      })();
-    }
-  }, [load]);
+  const [word, setWord] = useState('');
+  const [type, setType] = useState<SearchType>('movie');
+  const { dataList, page, totalPages, setLoad } = useSearch({ word, type });
 
   return (
     <SearchLayout>
-      <SearchBar setTitle={setTitle} />
-      <VerticalContainer category={title} canLoad={totalPages > page} setLoad={setLoad}>
-        {movies.map((movie) => (
-          <Movie {...movie} key={movie.id} />
-        ))}
+      <SearchBar setWord={setWord} type={type} setType={setType} />
+      <VerticalContainer category={word} canLoad={totalPages > page} setLoad={setLoad}>
+        {dataList.map((data) => {
+          if (type === 'movie') return <Movie {...data} key={data.id} />;
+          return <Person {...data} key={data.id} />;
+        })}
       </VerticalContainer>
     </SearchLayout>
   );

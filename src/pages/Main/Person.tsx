@@ -15,6 +15,8 @@ const PersonLayout = styled.div`
   overflow: hidden;
   background-color: white;
   display: flex;
+  width: ${PROFILE_WIDTH}px;
+  min-height: 220px;
 `;
 
 const Profile = styled.img``;
@@ -43,7 +45,14 @@ const Info = styled.span`
   text-align: center;
 `;
 
-function Person({ id, name, character, profile_path, department }: CreditsDataType) {
+function Person({
+  id,
+  name,
+  profile_path,
+  character,
+  department,
+  known_for_department,
+}: CreditsDataType) {
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
 
@@ -60,7 +69,7 @@ function Person({ id, name, character, profile_path, department }: CreditsDataTy
         <Content>
           <div />
           <Name>{name}</Name>
-          <Info>{department || character}</Info>
+          <Info>{department || character || known_for_department}</Info>
         </Content>
       )}
     </PersonLayout>

@@ -2,12 +2,20 @@ import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
 import { debounce } from 'utils/debounce';
 
+import { SearchType } from './Search';
+
+type SearchBarType = {
+  setWord: React.Dispatch<React.SetStateAction<string>>;
+  type: SearchType;
+  setType: React.Dispatch<React.SetStateAction<SearchType>>;
+};
+
 const SearchBarLayout = styled.div`
   background-color: ${STYLE.MAIN_COLOR};
   height: 70px;
   width: 100%;
-  max-width: 800px;
-  padding: 0 20px 0 10px;
+  max-width: 600px;
+  padding: 0 5px;
   display: flex;
   align-items: center;
   border-radius: 3px;
@@ -15,18 +23,33 @@ const SearchBarLayout = styled.div`
 
 const Input = styled.input`
   width: 100%;
-  height: 50px;
+  height: 60px;
   font-size: 25px;
   border: none;
-  padding-left: 10px;
+  padding-left: 15px;
   background-color: black;
   color: white;
+  border-radius: 3px;
 `;
 
-function SearchBar({ setTitle }: { setTitle: React.Dispatch<React.SetStateAction<string>> }) {
+const TypeButton = styled.button`
+  color: white;
+  height: 60px;
+  font-size: 25px;
+  padding: 0 10px;
+  margin-right: 5px;
+`;
+
+function SearchBar({ setWord, type, setType }: SearchBarType) {
+  const onTypeChange = () => {
+    if (type === 'movie') setType('person');
+    else setType('movie');
+  };
+
   return (
     <SearchBarLayout>
-      <Input placeholder='영화 검색' onChange={debounce((e) => setTitle(e.target.value), 300)} />
+      <TypeButton onClick={onTypeChange}>{type === 'movie' ? '영화' : '인물'}</TypeButton>
+      <Input onChange={debounce((e) => setWord(e.target.value), 300)} />
     </SearchBarLayout>
   );
 }

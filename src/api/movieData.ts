@@ -17,9 +17,27 @@ interface MovieType {
   vote_count: number;
 }
 
-type SearchDataType = {
+type SearchMovieDataType = {
   page: number;
   results: MovieType[];
+  total_pages: number;
+  total_results: number;
+};
+
+type PersonTypeWithSearch = {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for: MovieType[];
+  known_for_department: string;
+  name: string;
+  popularity: number;
+  profile_path: string;
+};
+
+type SearchPersonDataType = {
+  page: number;
+  results: PersonTypeWithSearch[];
   total_pages: number;
   total_results: number;
 };
@@ -122,7 +140,15 @@ const getMovies = async (title: string, page: number) => {
   const response = await axios.get(
     `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&query=${title}&page=${page}&region=KR`
   );
-  const { data }: { data: SearchDataType } = response;
+  const { data }: { data: SearchMovieDataType } = response;
+  return data;
+};
+
+const getPeople = async (name: string, page: number) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/search/person?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&query=${name}&page=${page}&region=KR`
+  );
+  const { data }: { data: SearchPersonDataType } = response;
   return data;
 };
 
@@ -141,8 +167,8 @@ const getRecommendationMovies = async (id: string) => {
   const response2 = axios.get(
     `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&page=2`
   );
-  const { data }: { data: SearchDataType } = await response;
-  const data2: SearchDataType = (await response2).data;
+  const { data }: { data: SearchMovieDataType } = await response;
+  const data2: SearchMovieDataType = (await response2).data;
   const list = [...data.results, ...data2.results];
   return list.filter((v, i, arr) => i === arr.findIndex((t) => t.id === v.id));
 };
@@ -173,7 +199,7 @@ const getPersonData = async (id: string) => {
   const creditsResponse = axios.get(
     `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR`
   );
-  const detail: PersonDetailType = (await detailResponse).data;
+  const detail: PersonDataType = (await detailResponse).data;
   const { cast, crew: list }: { cast: CastType[]; crew: CrewType[] } = (await creditsResponse).data;
   const crew = list.filter((v, i, arr) => i === arr.findIndex((t) => t.id === v.id));
   return { ...detail, cast, crew };
@@ -183,8 +209,9 @@ export {
   getCredits,
   getMovieData,
   getMovies,
+  getPeople,
   getPersonData,
   getRecommendationMovies,
   getTopRatedMovies,
 };
-export type { CreditsDataType, MovieDataType, MovieType, PersonDataType };
+export type { CreditsDataType, MovieDataType, MovieType, PersonDataType, PersonTypeWithSearch };

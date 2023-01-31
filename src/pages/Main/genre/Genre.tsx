@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 
 import useMovieWithGenre from 'hooks/useMovieWithGenre';
 import styled from 'styled-components';
-import { GENRE } from 'utils/constants';
+import { GENRE, STYLE } from 'utils/constants';
 
 import GenreButton from '../GenreButton';
 import Movie from '../Movie';
@@ -10,7 +10,7 @@ import VerticalContainer from '../VerticalContainer';
 
 const GenreLayout = styled.div`
   padding: 50px;
-  min-height: calc(100vh - 479px);
+  min-height: ${STYLE.HEIGHT_WITHOUT_HEADER_FOOTER};
 `;
 
 const ButtonContainer = styled.div`

@@ -1,13 +1,14 @@
 import { useParams } from 'react-router-dom';
 
 import styled from 'styled-components';
+import { STYLE } from 'utils/constants';
 
 import MoviesWithStars from '../MoviesWithStars';
 import TopRatedMovies from '../TopRatedMovies';
 
 const CategoryLayout = styled.div`
   padding: 50px;
-  min-height: calc(100vh - 479px);
+  min-height: ${STYLE.HEIGHT_WITHOUT_HEADER_FOOTER};
 `;
 
 function Category() {
