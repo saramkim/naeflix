@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import noImage from 'assets/no-image-342.jpg';
 import Loading from 'components/Loading';
 import { useComment } from 'hooks/useComment';
 import { useMark } from 'hooks/useMark';
@@ -140,7 +141,7 @@ function MovieDetail() {
       <MovieDetailLayout>
         <Backdrop backgroundImg={MOVIE.IMG_BASE_URL(780) + backdrop_path}>
           <MovieInfo>
-            <Poster src={MOVIE.IMG_BASE_URL(342) + poster_path} />
+            <Poster src={poster_path ? MOVIE.IMG_BASE_URL(342) + poster_path : noImage} />
             <Content>
               <GenreWraaper>
                 {genres.map((genre) => (
@@ -168,7 +169,7 @@ function MovieDetail() {
               </TitleWrapper>
               <Created>
                 {release_date} {production_countries.map((country) => `(${country.iso_3166_1}) `)}
-                {runtime}분
+                {runtime !== undefined && runtime > 0 && `${runtime}분`}
               </Created>
               {isShown ? (
                 <Tagline comment={comment}>

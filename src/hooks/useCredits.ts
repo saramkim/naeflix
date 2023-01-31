@@ -8,8 +8,7 @@ export const useCredits = (id: string) => {
   useEffect(() => {
     (async () => {
       const data = await getCredits(id);
-      const list = data.filter((person) => person.profile_path);
-      setCredits(list);
+      setCredits(data);
     })();
   }, [id]);
 

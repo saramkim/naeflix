@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 
+import noImage from 'assets/no-image-342.jpg';
 import Loading from 'components/Loading';
 import { usePersonData } from 'hooks/usePersonData';
 import styled from 'styled-components';
@@ -69,7 +70,7 @@ function PersonDetail() {
     return (
       <PersonDetailLayout>
         <PersonInfo>
-          <Profile src={MOVIE.IMG_BASE_URL(342) + profile_path} />
+          <Profile src={profile_path ? MOVIE.IMG_BASE_URL(342) + profile_path : noImage} />
           <Content>
             <Name>{name}</Name>
             <Info title='활동 분야'>{known_for_department}</Info>

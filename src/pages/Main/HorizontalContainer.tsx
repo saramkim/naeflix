@@ -6,7 +6,7 @@ import { MOVIE, STYLE } from 'utils/constants';
 import { throttle } from 'utils/throttle';
 
 type HorizontalContainerType = {
-  children: React.ReactNode;
+  children: JSX.Element[];
   category: string;
   viewAll?: boolean;
 };
@@ -46,7 +46,11 @@ const MovieWrapper = styled.div`
   }
 `;
 
-function HorizontalContainer({ children, category, viewAll = true }: HorizontalContainerType) {
+function HorizontalContainer({
+  children,
+  category,
+  viewAll = Boolean(children.length),
+}: HorizontalContainerType) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScroll, setCanScroll] = useState(false);
   const [mouseDownX, setMouseDownX] = useState(0);

@@ -34,7 +34,7 @@ export const useSearch = ({ word, type }: useSearchType) => {
       setPage(DEFAULT_PAGE);
       setTotalPages(DEFAULT_PAGE);
     };
-  }, [word]);
+  }, [word, type]);
 
   useEffect(() => {
     if (load) {
