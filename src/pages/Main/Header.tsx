@@ -22,7 +22,7 @@ const HeaderLayout = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 22px;
   height: 100%;
   font-size: 15px;
 `;
@@ -43,20 +43,11 @@ function Header() {
         <TextButton hover='opacity' path='/main'>
           홈
         </TextButton>
+        <TextButton hover='opacity' path='/main/top-rated'>
+          높은 평점
+        </TextButton>
         <TextButton hover='opacity' path='/main/genre'>
           장르
-        </TextButton>
-        <TextButton hover='opacity' path='/main/top-rated'>
-          평점순
-        </TextButton>
-        <TextButton hover='opacity' path='/main/korean-movie'>
-          한국 영화
-        </TextButton>
-        <TextButton hover='opacity' path='/main/foreign-movie'>
-          외국 영화
-        </TextButton>
-        <TextButton hover='opacity' path='/main/movie-director'>
-          감독
         </TextButton>
       </ButtonContainer>
       <ButtonContainer>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { CreditsDataType, getCredits } from 'api/movieData';
+import { getCredits } from 'api/movieData';
+import { CreditsDataType } from 'api/personType';
 
 export const useCredits = (id: string) => {
   const [credits, setCredits] = useState<CreditsDataType[]>([]);

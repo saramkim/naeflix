@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import noImage from 'assets/no-image-342.jpg';
+import noImage from 'assets/no-image.jpg';
 import Loading from 'components/Loading';
 import { usePersonData } from 'hooks/usePersonData';
 import styled from 'styled-components';
@@ -10,6 +10,8 @@ import HorizontalContainer from '../HorizontalContainer';
 import Movie from '../Movie';
 
 import Info from './Info';
+
+const PROFILE_WIDTH = 342;
 
 const PersonDetailLayout = styled.div`
   display: flex;
@@ -29,6 +31,7 @@ const PersonInfo = styled.div`
 
 const Profile = styled.img`
   border-radius: 10px;
+  width: ${PROFILE_WIDTH}px;
 `;
 
 const Content = styled.div`
@@ -70,7 +73,9 @@ function PersonDetail() {
     return (
       <PersonDetailLayout>
         <PersonInfo>
-          <Profile src={profile_path ? MOVIE.IMG_BASE_URL(342) + profile_path : noImage} />
+          <Profile
+            src={profile_path ? MOVIE.IMG_BASE_URL(PROFILE_WIDTH) + profile_path : noImage}
+          />
           <Content>
             <Name>{name}</Name>
             <Info title='활동 분야'>{known_for_department}</Info>

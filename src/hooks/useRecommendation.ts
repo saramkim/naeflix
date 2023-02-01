@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { getRecommendationMovies, MovieType } from 'api/movieData';
+import { getRecommendationMovies } from 'api/movieData';
+import { MovieType } from 'api/movieType';
 
 export const useRecommendation = (id: string) => {
   const [movieList, setMovieList] = useState<MovieType[]>([]);

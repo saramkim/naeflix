@@ -1,29 +1,20 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { MovieType } from 'api/movieData';
-import noImage from 'assets/no-image-154.jpg';
+import { MovieType } from 'api/movieType';
+import Image from 'components/Image';
 import { useMark } from 'hooks/useMark';
 import { useStar } from 'hooks/useStar';
 import styled from 'styled-components';
-import { MOVIE } from 'utils/constants';
 
 import MarkingButton from './MarkingButton';
 import RatingStar from './RatingStar';
 
-const POSTER_WIDTH = 154;
-
 const MovieLayout = styled.div`
   position: relative;
   cursor: pointer;
-  border-radius: 5px;
-  overflow: hidden;
   display: flex;
-  width: ${POSTER_WIDTH}px;
-  max-height: 231px;
 `;
-
-const Poster = styled.img``;
 
 const Content = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
@@ -60,7 +51,7 @@ function Movie({ title, poster_path, id }: MovieType) {
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
       >
-        <Poster src={MOVIE.IMG_BASE_URL(POSTER_WIDTH) + poster_path} alt='movie-poster' />
+        <Image width={154} path={poster_path} />
         {isShown && (
           <Content>
             <MarkingButton
@@ -91,7 +82,7 @@ function Movie({ title, poster_path, id }: MovieType) {
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
     >
-      <Poster src={noImage} alt='movie-poster' />
+      <Image width={154} path={poster_path} />
       <Content>
         {isShown && (
           <MarkingButton

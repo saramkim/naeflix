@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import noImage from 'assets/no-image-342.jpg';
+import Image from 'components/Image';
 import Loading from 'components/Loading';
 import { useComment } from 'hooks/useComment';
 import { useMark } from 'hooks/useMark';
@@ -53,10 +53,6 @@ const MovieInfo = styled.div`
   align-items: center;
   padding: 50px;
   gap: 50px;
-`;
-
-const Poster = styled.img`
-  border-radius: 10px;
 `;
 
 const Content = styled.div`
@@ -141,7 +137,7 @@ function MovieDetail() {
       <MovieDetailLayout>
         <Backdrop backgroundImg={MOVIE.IMG_BASE_URL(780) + backdrop_path}>
           <MovieInfo>
-            <Poster src={poster_path ? MOVIE.IMG_BASE_URL(342) + poster_path : noImage} />
+            <Image width={342} path={poster_path} />
             <Content>
               <GenreWraaper>
                 {genres.map((genre) => (

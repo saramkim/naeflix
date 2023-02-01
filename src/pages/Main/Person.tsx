@@ -1,26 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { CreditsDataType } from 'api/movieData';
-import noImage from 'assets/no-image-154.jpg';
+import { CreditsDataType } from 'api/personType';
+import Image from 'components/Image';
 import styled from 'styled-components';
-import { MOVIE } from 'utils/constants';
-
-const PROFILE_WIDTH = 154;
 
 const PersonLayout = styled.div`
   position: relative;
   cursor: pointer;
-  width: ${PROFILE_WIDTH}px;
-  border-radius: 5px;
-  overflow: hidden;
-  background-color: white;
   display: flex;
-  width: ${PROFILE_WIDTH}px;
-  min-height: 220px;
 `;
-
-const Profile = styled.img``;
 
 const Content = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
@@ -67,7 +56,7 @@ function Person({
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
       >
-        <Profile src={MOVIE.IMG_BASE_URL(PROFILE_WIDTH) + profile_path} alt='Person-Profile' />
+        <Image width={154} path={profile_path} />
         {isShown && (
           <Content>
             <Name>{name}</Name>
@@ -83,12 +72,11 @@ function Person({
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
     >
-      <Profile src={noImage} alt='Person-Profile' />(
+      <Image width={154} path={profile_path} />
       <Content>
         <Name>{name}</Name>
         {isShown && <Info>{department || character || known_for_department}</Info>}
       </Content>
-      )
     </PersonLayout>
   );
 }

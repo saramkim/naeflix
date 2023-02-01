@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { getTopRatedMovies, MovieType } from 'api/movieData';
+import { getTopRatedMovies } from 'api/movieData';
+import { MovieType } from 'api/movieType';
 
 type useTopRatedMoviesType = {
   load: boolean;

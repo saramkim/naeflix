@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { getMovieData, MovieDataType } from 'api/movieData';
+import { getMovieData } from 'api/movieData';
+import { MovieDataType } from 'api/movieType';
 import { getMarkedMovie } from 'firebases/firestore';
 
 export const useMovieWithGenre = (genre: string) => {
