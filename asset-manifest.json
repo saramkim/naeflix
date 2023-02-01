@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/naeflix/static/js/main.9ee57251.js",
+    "static/media/kids.png": "/naeflix/static/media/kids.bd003beb0e5ed932811a.png",
+    "static/media/device-pile.png": "/naeflix/static/media/device-pile.8e6539e8bfc6937a0648.png",
+    "static/media/netflix-background.jpg": "/naeflix/static/media/netflix-background.68236982d52cfc3d8e0d.jpg",
+    "static/media/Netflix_Symbol_RGB.png": "/naeflix/static/media/Netflix_Symbol_RGB.039aba766c05fd6e44fe.png",
+    "static/media/kakao-profile.jpg": "/naeflix/static/media/kakao-profile.90e51e7d338788eed29a.jpg",
+    "static/media/mobile-0819.jpg": "/naeflix/static/media/mobile-0819.063578d5b6d5ab4155ec.jpg",
+    "static/media/tv.png": "/naeflix/static/media/tv.0049bc70babc1f94cf88.png",
+    "index.html": "/naeflix/index.html",
+    "main.9ee57251.js.map": "/naeflix/static/js/main.9ee57251.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.9ee57251.js"
+  ]
+}

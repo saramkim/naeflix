@@ -1,0 +1,20 @@
+{
+  "short_name": "Naeflix",
+  "name": "Naeflix",
+  "icons": [
+    {
+      "src": "Netflix_Symbol_RGB.png",
+      "sizes": "1801x756",
+      "type": "image/png"
+    },
+    {
+      "src": "naeflix-logo.png",
+      "sizes": "446x120",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "https://saramkim.github.io/naeflix/",
+  "display": "browser",
+  "theme_color": "rgb(229, 9, 20)",
+  "background_color": "rgb(255, 255, 255)"
+}
