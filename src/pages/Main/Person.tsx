@@ -15,25 +15,41 @@ const Content = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   height: 100%;
-  padding: 10px;
   position: absolute;
   top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
   font-size: 25px;
+  padding: 10px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 18px;
+    padding: 0px;
+  }
 `;
 
 const Name = styled.h1`
   text-align: center;
-  line-height: 30px;
   margin: auto;
+
+  line-height: 30px;
+
+  @media screen and (max-width: 550px) {
+    line-height: 20px;
+  }
 `;
 
 const Info = styled.span`
-  font-size: 20px;
   text-align: center;
+
+  font-size: 20px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 15px;
+  }
 `;
 
 function Person({
@@ -55,6 +71,8 @@ function Person({
         onClick={onClickPerson}
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
+        onTouchStart={() => setIsShown(true)}
+        onTouchEnd={() => setIsShown(false)}
       >
         <Image width={154} path={profile_path} />
         {isShown && (
@@ -71,6 +89,8 @@ function Person({
       onClick={onClickPerson}
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
+      onTouchStart={() => setIsShown(true)}
+      onTouchEnd={() => setIsShown(false)}
     >
       <Image width={154} path={profile_path} />
       <Content>

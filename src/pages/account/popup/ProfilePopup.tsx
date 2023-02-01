@@ -1,20 +1,12 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Button from 'components/Button';
 import { getAuth, updateProfile } from 'firebase/auth';
 import { uploadImage } from 'firebases/storage';
 import styled from 'styled-components';
 
+import AccountForm from './AccountForm';
 import Layout from './Layout';
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 30px;
-  width: 100%;
-`;
 
 const ImageInput = styled.input`
   border: 1px solid rgb(79, 79, 79);
@@ -40,10 +32,9 @@ function ProfilePopup() {
 
   return (
     <Layout>
-      <Form onSubmit={onSubmitForm}>
+      <AccountForm onSubmit={onSubmitForm} buttonText='확인'>
         <ImageInput type='file' ref={ImageRef} />
-        <Button fontSize={25}>확인</Button>
-      </Form>
+      </AccountForm>
     </Layout>
   );
 }

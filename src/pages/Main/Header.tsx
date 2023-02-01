@@ -4,12 +4,11 @@ import Logo from 'components/Logo';
 import ProfileButton from 'components/ProfileButton';
 import TextButton from 'components/TextButton';
 import { GoSearch } from 'react-icons/go';
+import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 
 const HeaderLayout = styled.div`
-  height: 70px;
   width: 100%;
-  padding: 0 45px;
   background-color: black;
   display: flex;
   justify-content: space-between;
@@ -17,6 +16,14 @@ const HeaderLayout = styled.div`
   position: fixed;
   top: 0;
   z-index: 10;
+
+  height: 70px;
+  padding: 0 45px;
+
+  @media screen and (max-width: 550px) {
+    height: 60px;
+    padding: 0 30px;
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -34,21 +41,26 @@ const Icon = styled.div`
 
 function Header() {
   const navigate = useNavigate();
+  const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
 
   return (
     <HeaderLayout>
       <ButtonContainer>
         <Logo path='/main' height='30' />
-        <div />
-        <TextButton hover='opacity' path='/main'>
-          홈
-        </TextButton>
-        <TextButton hover='opacity' path='/main/top-rated'>
-          높은 평점
-        </TextButton>
-        <TextButton hover='opacity' path='/main/genre'>
-          장르
-        </TextButton>
+        {!isMobile && (
+          <>
+            <div />
+            <TextButton hover='opacity' path='/main'>
+              홈
+            </TextButton>
+            <TextButton hover='opacity' path='/main/top-rated'>
+              높은 평점
+            </TextButton>
+            <TextButton hover='opacity' path='/main/genre'>
+              장르
+            </TextButton>
+          </>
+        )}
       </ButtonContainer>
       <ButtonContainer>
         <Icon onClick={() => navigate('/main/search')}>

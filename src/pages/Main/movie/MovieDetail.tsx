@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Image from 'components/Image';
@@ -7,14 +7,15 @@ import { useComment } from 'hooks/useComment';
 import { useMark } from 'hooks/useMark';
 import { useMovieData } from 'hooks/useMovieData';
 import { useStar } from 'hooks/useStar';
+import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
 
-import Comment from '../Comment';
 import GenreButton from '../GenreButton';
 import MarkingButton from '../MarkingButton';
 import RatingStar from '../RatingStar';
 
+import Comment from './Comment';
 import CommentIcon from './CommentIcon';
 import Credits from './Credits';
 import RecommendationMovies from './RecommendationMovies';
@@ -44,6 +45,10 @@ const Backdrop = styled.div<{ backgroundImg: string }>`
     bottom: 0px;
     background-color: black;
   }
+
+  @media screen and (max-width: 550px) {
+    height: auto;
+  }
 `;
 
 const MovieInfo = styled.div`
@@ -51,14 +56,26 @@ const MovieInfo = styled.div`
   max-width: 1280px;
   display: flex;
   align-items: center;
+
   padding: 50px;
   gap: 50px;
+
+  @media screen and (max-width: 550px) {
+    flex-direction: column;
+    padding: 30px;
+    gap: 30px;
+  }
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+
+  gap: 20px;
+
+  @media screen and (max-width: 550px) {
+    gap: 15px;
+  }
 `;
 
 const GenreWraaper = styled.div`
@@ -72,9 +89,16 @@ const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 15px;
-  font-size: 50px;
   width: fit-content;
+
+  font-size: 50px;
+  gap: 15px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 35px;
+    line-height: 40px;
+    gap: 10px;
+  }
 `;
 
 const Title = styled.h1`
@@ -82,34 +106,57 @@ const Title = styled.h1`
 `;
 
 const Created = styled.span`
-  font-size: 22px;
   color: rgb(180, 180, 180);
+
+  font-size: 22px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 16px;
+  }
 `;
 
 const Tagline = styled.div<{ comment: string | null }>`
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 24px;
   font-weight: bold;
-  line-height: 30px;
   color: ${({ comment }) => (comment ? 'rgb(255, 188, 11)' : 'white')};
+
+  font-size: 24px;
+  line-height: 30px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 20px;
+    line-height: 25px;
+  }
 `;
 
 const Overview = styled.p`
-  font-size: 18px;
-  line-height: 28px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 7;
   overflow: hidden;
+
+  font-size: 18px;
+  line-height: 28px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 14px;
+    line-height: 16px;
+  }
 `;
 
 const Extra = styled.div`
-  padding: 50px 0 50px 50px;
   display: flex;
   flex-direction: column;
+
+  padding: 50px 0 50px 50px;
   gap: 50px;
+
+  @media screen and (max-width: 550px) {
+    padding: 30px 0 30px 30px;
+    gap: 30px;
+  }
 `;
 
 function MovieDetail() {
@@ -119,6 +166,9 @@ function MovieDetail() {
   const { isMarked, setMarked } = useMark(id);
   const { comment, setComment } = useComment(id);
   const [isShown, setShown] = useState(true);
+  const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
+
+  useEffect(() => setShown(true), [id]);
 
   if (movieData) {
     const {
@@ -135,7 +185,13 @@ function MovieDetail() {
 
     return (
       <MovieDetailLayout>
-        <Backdrop backgroundImg={MOVIE.IMG_BASE_URL(780) + backdrop_path}>
+        <Backdrop
+          backgroundImg={
+            isMobile
+              ? MOVIE.IMG_BASE_URL(780) + poster_path
+              : MOVIE.IMG_BASE_URL(780) + backdrop_path
+          }
+        >
           <MovieInfo>
             <Image width={342} path={poster_path} />
             <Content>

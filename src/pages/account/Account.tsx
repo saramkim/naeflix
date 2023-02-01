@@ -10,6 +10,10 @@ import Header from './Header';
 const AccountLayout = styled.div`
   background-color: ${STYLE.ACCOUNT_COLOR};
   padding-top: 70px;
+
+  @media screen and (max-width: 550px) {
+    padding-top: 60px;
+  }
 `;
 
 function Account() {

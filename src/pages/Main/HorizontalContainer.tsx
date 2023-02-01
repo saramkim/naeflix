@@ -26,6 +26,10 @@ const Info = styled.div`
 
 const Category = styled.h1`
   font-size: 20px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 16px;
+  }
 `;
 
 const MovieWrapper = styled.div`
@@ -44,6 +48,10 @@ const MovieWrapper = styled.div`
     background-color: rgb(155, 155, 155);
     border-radius: 3px;
   }
+
+  @media screen and (max-width: 550px) {
+    gap: 5px;
+  }
 `;
 
 function HorizontalContainer({
@@ -55,22 +63,28 @@ function HorizontalContainer({
   const [canScroll, setCanScroll] = useState(false);
   const [mouseDownX, setMouseDownX] = useState(0);
 
-  const onDragStart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const onDragStart = (currentX: number) => {
     setCanScroll(true);
-    setMouseDownX(e.pageX + scrollRef.current!.scrollLeft);
+    if (scrollRef.current) setMouseDownX(currentX + scrollRef.current.scrollLeft);
   };
+  const onDragStartByMouse = (e: React.MouseEvent<HTMLDivElement>) => onDragStart(e.pageX);
+  const onDragStartByTouch = (e: React.TouchEvent<HTMLDivElement>) =>
+    onDragStart(e.changedTouches[0].pageX);
 
   const onDragEnd = () => setCanScroll(false);
 
-  const onDrag = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const onDrag = (currentX: number) => {
     if (canScroll && scrollRef.current) {
       const { scrollWidth, clientWidth, scrollLeft } = scrollRef.current;
-      scrollRef.current.scrollLeft = mouseDownX - e.pageX;
 
-      if (scrollLeft === 0) setMouseDownX(e.pageX);
-      else if (scrollWidth <= clientWidth + scrollLeft) setMouseDownX(e.pageX + scrollLeft);
+      scrollRef.current.scrollLeft = mouseDownX - currentX;
+
+      if (scrollLeft === 0) setMouseDownX(currentX);
+      else if (scrollWidth <= clientWidth + scrollLeft) setMouseDownX(currentX + scrollLeft);
     }
   };
+  const onDragByMouse = (e: React.MouseEvent<HTMLDivElement>) => onDrag(e.pageX);
+  const onDragByTouch = (e: React.TouchEvent<HTMLDivElement>) => onDrag(e.changedTouches[0].pageX);
 
   return (
     <Layout>
@@ -84,10 +98,13 @@ function HorizontalContainer({
       </Info>
       <MovieWrapper
         ref={scrollRef}
-        onMouseDown={onDragStart}
+        onMouseDown={onDragStartByMouse}
         onMouseUp={onDragEnd}
         onMouseLeave={onDragEnd}
-        onMouseMove={throttle(onDrag, 50)}
+        onMouseMove={throttle(onDragByMouse, 50)}
+        onTouchStart={onDragStartByTouch}
+        onTouchEnd={onDragEnd}
+        onTouchMove={throttle(onDragByTouch, 50)}
       >
         {children}
       </MovieWrapper>

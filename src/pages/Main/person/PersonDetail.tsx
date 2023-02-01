@@ -1,17 +1,14 @@
 import { useParams } from 'react-router-dom';
 
-import noImage from 'assets/no-image.jpg';
+import Image from 'components/Image';
 import Loading from 'components/Loading';
 import { usePersonData } from 'hooks/usePersonData';
 import styled from 'styled-components';
-import { MOVIE } from 'utils/constants';
 
 import HorizontalContainer from '../HorizontalContainer';
 import Movie from '../Movie';
 
 import Info from './Info';
-
-const PROFILE_WIDTH = 342;
 
 const PersonDetailLayout = styled.div`
   display: flex;
@@ -20,24 +17,31 @@ const PersonDetailLayout = styled.div`
 
 const PersonInfo = styled.div`
   max-width: 1280px;
-  height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: auto;
+
+  height: 600px;
   padding: 50px;
   gap: 50px;
-`;
 
-const Profile = styled.img`
-  border-radius: 10px;
-  width: ${PROFILE_WIDTH}px;
+  @media screen and (max-width: 550px) {
+    height: auto;
+    padding: 30px;
+    gap: 30px;
+    flex-direction: column;
+  }
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+
+  @media screen and (max-width: 550px) {
+    gap: 20px;
+  }
 `;
 
 const Name = styled.h1`
@@ -73,9 +77,7 @@ function PersonDetail() {
     return (
       <PersonDetailLayout>
         <PersonInfo>
-          <Profile
-            src={profile_path ? MOVIE.IMG_BASE_URL(PROFILE_WIDTH) + profile_path : noImage}
-          />
+          <Image width={342} path={profile_path} />
           <Content>
             <Name>{name}</Name>
             <Info title='활동 분야'>{known_for_department}</Info>

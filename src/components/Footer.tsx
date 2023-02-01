@@ -9,7 +9,7 @@ const FooterLayout = styled.div<{ background?: string }>`
   background-color: ${({ background }) => background || 'inherit'};
 
   @media screen and (max-width: 550px) {
-    padding: 70px 45px;
+    padding: 70px 30px;
   }
 `;
 

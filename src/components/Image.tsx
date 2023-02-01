@@ -8,11 +8,20 @@ const Image154 = styled.img`
   width: 154px;
   height: 231px;
   border-radius: 5px;
+
+  @media screen and (max-width: 550px) {
+    width: 100px;
+    height: 150px;
+  }
 `;
 
 const Image342 = styled.img`
   width: 342px;
   border-radius: 10px;
+
+  @media screen and (max-width: 550px) {
+    width: 280px;
+  }
 `;
 
 function Image({ width, path }: ImageType) {

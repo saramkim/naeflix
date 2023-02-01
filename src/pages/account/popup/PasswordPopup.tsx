@@ -1,27 +1,13 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Button from 'components/Button';
 import Input from 'components/Input';
 import { getAuth, updatePassword } from 'firebase/auth';
 import { useInput } from 'hooks/useInput';
-import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
 
+import AccountForm from './AccountForm';
 import Layout from './Layout';
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 30px;
-  width: 100%;
-`;
-
-const Title = styled.h1`
-  font-size: 30px;
-  line-height: 40px;
-`;
 
 function PasswordPopup() {
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -43,8 +29,11 @@ function PasswordPopup() {
 
   return (
     <Layout>
-      <Form onSubmit={onSubmitForm}>
-        <Title>변경할 비밀번호를 입력해주세요.</Title>
+      <AccountForm
+        onSubmit={onSubmitForm}
+        title='변경할 비밀번호를 입력해주세요.'
+        buttonText='비밀번호 변경'
+      >
         <Input
           ref={passwordRef}
           onChange={onChange}
@@ -53,8 +42,7 @@ function PasswordPopup() {
           warning={PHRASE.PASSWORD_WARNING}
           type='password'
         />
-        <Button fontSize={25}>비밀번호 변경</Button>
-      </Form>
+      </AccountForm>
     </Layout>
   );
 }

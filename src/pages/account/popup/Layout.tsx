@@ -13,8 +13,6 @@ const Background = styled.div`
 
 const PopupLayout = styled.div`
   background-color: white;
-  height: 600px;
-  width: 500px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -23,15 +21,33 @@ const PopupLayout = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px;
   gap: 30px;
+  border-radius: 10px;
+
+  height: 600px;
+  width: 500px;
+  padding: 50px;
+
+  @media screen and (max-width: 550px) {
+    height: 460px;
+    width: 400px;
+    padding: 30px;
+    gap: 20px;
+    max-width: 100%;
+  }
 `;
 
 const ExitButton = styled.button`
   position: absolute;
+  font-size: 40px;
+
   top: 30px;
   right: 30px;
-  font-size: 40px;
+
+  @media screen and (max-width: 550px) {
+    top: 20px;
+    right: 20px;
+  }
 `;
 
 function Layout({ children }: { children: React.ReactNode }) {

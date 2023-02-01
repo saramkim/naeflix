@@ -20,7 +20,6 @@ const Content = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   height: 100%;
-  padding: 10px;
   position: absolute;
   top: 0;
   display: flex;
@@ -28,12 +27,23 @@ const Content = styled.div`
   align-items: center;
   justify-content: space-between;
   font-size: 25px;
+
+  padding: 10px;
+
+  @media screen and (max-width: 550px) {
+    padding: 0px;
+  }
 `;
 
 const Title = styled.h1`
   text-align: center;
   line-height: 30px;
   margin: auto;
+
+  @media screen and (max-width: 550px) {
+    font-size: 18px;
+    line-height: 22px;
+  }
 `;
 
 function Movie({ title, poster_path, id }: MovieType) {
@@ -50,6 +60,8 @@ function Movie({ title, poster_path, id }: MovieType) {
         onClick={onClickMovie}
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
+        onTouchStart={() => setIsShown(true)}
+        onTouchEnd={() => setIsShown(false)}
       >
         <Image width={154} path={poster_path} />
         {isShown && (
@@ -81,6 +93,8 @@ function Movie({ title, poster_path, id }: MovieType) {
       onClick={onClickMovie}
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
+      onTouchStart={() => setIsShown(true)}
+      onTouchEnd={() => setIsShown(false)}
     >
       <Image width={154} path={poster_path} />
       <Content>

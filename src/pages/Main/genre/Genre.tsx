@@ -9,8 +9,13 @@ import Movie from '../Movie';
 import VerticalContainer from '../VerticalContainer';
 
 const GenreLayout = styled.div`
-  padding: 50px;
   min-height: ${STYLE.HEIGHT_WITHOUT_HEADER_FOOTER};
+
+  padding: 50px;
+
+  @media screen and (max-width: 550px) {
+    padding: 30px;
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -18,7 +23,12 @@ const ButtonContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
+
   margin-bottom: 50px;
+
+  @media screen and (max-width: 550px) {
+    margin-bottom: 30px;
+  }
 `;
 
 function Genre() {

@@ -16,18 +16,32 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 50px;
+
+  @media screen and (max-width: 550px) {
+    gap: 30px;
+  }
 `;
 
 const MovieWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+
   gap: 25px;
+
+  @media screen and (max-width: 550px) {
+    gap: 15px;
+  }
 `;
 
 const Category = styled.h1`
   font-size: 30px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 25px;
+  }
 `;
 
 const ScrollDown = styled.div`

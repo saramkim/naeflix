@@ -1,27 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Button from 'components/Button';
 import Input from 'components/Input';
 import { getAuth, PhoneAuthProvider, RecaptchaVerifier, updatePhoneNumber } from 'firebase/auth';
 import { useInput } from 'hooks/useInput';
-import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
 
+import AccountForm from './AccountForm';
 import Layout from './Layout';
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  gap: 30px;
-`;
-
-const Title = styled.h1`
-  font-size: 30px;
-  line-height: 40px;
-`;
 
 function PhoneNumberPopup() {
   const phoneRef = useRef<HTMLInputElement>(null);
@@ -85,8 +71,11 @@ function PhoneNumberPopup() {
 
   return (
     <Layout>
-      <Form onSubmit={onSubmitPhoneForm}>
-        <Title>휴대폰 번호를 입력하세요.</Title>
+      <AccountForm
+        onSubmit={onSubmitPhoneForm}
+        title='휴대폰 번호를 입력하세요.'
+        buttonText='인증 번호 전송'
+      >
         <Input
           ref={phoneRef}
           onChange={onChangePhone}
@@ -94,9 +83,8 @@ function PhoneNumberPopup() {
           label='휴대폰 번호'
           warning={PHRASE.PHONE_WARNING}
         />
-        <Button fontSize={25}>인증 번호 전송</Button>
-      </Form>
-      <Form onSubmit={onSubmitCodeForm}>
+      </AccountForm>
+      <AccountForm onSubmit={onSubmitCodeForm} buttonText='확인'>
         <Input
           ref={codeRef}
           onChange={onChangeCode}
@@ -104,8 +92,7 @@ function PhoneNumberPopup() {
           label='인증 번호'
           warning={PHRASE.CODE_WARNING}
         />
-        <Button fontSize={25}>확인</Button>
-      </Form>
+      </AccountForm>
       <div id='recaptcha-containe' />
     </Layout>
   );

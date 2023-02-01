@@ -4,6 +4,7 @@ import Button from 'components/Button';
 import { getAuth } from 'firebase/auth';
 import { unregisterUser } from 'firebases/user';
 
+import AccountForm from './AccountForm';
 import Layout from './Layout';
 
 function UnregisterPopup() {
@@ -21,9 +22,7 @@ function UnregisterPopup() {
 
   return (
     <Layout>
-      <form onSubmit={onSubmitForm}>
-        <Button fontSize={25}>회원탈퇴</Button>
-      </form>
+      <AccountForm onSubmit={onSubmitForm} buttonText='회원탈퇴' />
     </Layout>
   );
 }

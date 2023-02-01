@@ -31,7 +31,7 @@ function Email() {
           path='reauthentication'
           state={{ path: 'email' }}
         >
-          이메일 주소 변경
+          이메일 변경
         </TextButton>
       </ContentLayout>
     );

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import defaultProfile from 'assets/kakao-profile.jpg';
 import { getAuth, signOut } from 'firebase/auth';
+import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
 
@@ -17,6 +18,10 @@ const ProfileButtonLayout = styled.div`
   align-items: center;
   cursor: pointer;
   padding: 15px;
+
+  @media screen and (max-width: 550px) {
+    padding: 10px;
+  }
 `;
 
 const InitialBox = styled.div`
@@ -61,6 +66,11 @@ const DropBox = styled.div`
     border-top-width: 0;
     border-bottom-color: ${STYLE.ACCOUNT_COLOR};
   }
+
+  @media screen and (max-width: 550px) {
+    top: 60px;
+    right: -9px;
+  }
 `;
 
 function ProfileButton() {
@@ -68,6 +78,7 @@ function ProfileButton() {
   const auth = getAuth();
   const { photoURL } = auth.currentUser!;
   const navigate = useNavigate();
+  const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
 
   const onClickLogout = () => {
     signOut(auth).then(() => navigate('/'));
@@ -77,18 +88,31 @@ function ProfileButton() {
     <ProfileButtonLayout
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
+      onClick={() => setIsShown((v) => !v)}
     >
       <InitialBox>
         <ProfileImage src={photoURL || defaultProfile} alt='profile-img' /> ▼
       </InitialBox>
       {isShown && (
         <DropBox>
-          <TextButton fontSize={13} path='/account'>
-            계정
-          </TextButton>
-          <TextButton fontSize={13} onClick={onClickLogout}>
-            로그아웃
-          </TextButton>
+          {isMobile ? (
+            <>
+              <TextButton path='/main/top-rated'>높은 평점</TextButton>
+              <TextButton path='/main/genre'>장르</TextButton>
+              <TextButton fontSize={13} path='/account'>
+                계정
+              </TextButton>
+            </>
+          ) : (
+            <>
+              <TextButton fontSize={13} path='/account'>
+                계정
+              </TextButton>
+              <TextButton fontSize={13} onClick={onClickLogout}>
+                로그아웃
+              </TextButton>
+            </>
+          )}
         </DropBox>
       )}
     </ProfileButtonLayout>

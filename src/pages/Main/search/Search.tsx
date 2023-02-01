@@ -15,11 +15,17 @@ export type SearchType = 'movie' | 'person';
 const SearchLayout = styled.div`
   width: 100%;
   min-height: ${STYLE.HEIGHT_WITHOUT_HEADER_FOOTER};
-  padding: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding: 50px;
   gap: 50px;
+
+  @media screen and (max-width: 550px) {
+    padding: 30px 0;
+    gap: 30px;
+  }
 `;
 
 function Search() {
@@ -30,7 +36,7 @@ function Search() {
   return (
     <SearchLayout>
       <SearchBar setWord={setWord} type={type} setType={setType} />
-      <VerticalContainer category={word} canLoad={totalPages > page} setLoad={setLoad}>
+      <VerticalContainer canLoad={totalPages > page} setLoad={setLoad}>
         {dataList.map((data) => {
           if (type === 'movie') return <Movie {...data} key={data.id} />;
           return <Person {...data} key={data.id} />;

@@ -9,6 +9,10 @@ import TopRatedMovies from '../TopRatedMovies';
 const CategoryLayout = styled.div`
   padding: 50px;
   min-height: ${STYLE.HEIGHT_WITHOUT_HEADER_FOOTER};
+
+  @media screen and (max-width: 550px) {
+    padding: 30px 0;
+  }
 `;
 
 function Category() {

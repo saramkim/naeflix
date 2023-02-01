@@ -14,9 +14,14 @@ const BodyLayout = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 80px auto;
-  width: 80%;
-  max-width: 1024px;
+  max-width: 1184px;
+  margin: auto;
+
+  padding: 80px;
+
+  @media screen and (max-width: 550px) {
+    padding: 50px 30px;
+  }
 `;
 
 const Title = styled.div`
@@ -31,6 +36,10 @@ const Wrapper = styled.div`
   border-bottom: 1px solid rgb(153, 153, 153);
   width: 100%;
   display: flex;
+
+  @media screen and (max-width: 550px) {
+    flex-direction: column;
+  }
 `;
 
 const SubTitle = styled.div`
