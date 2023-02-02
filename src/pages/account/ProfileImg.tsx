@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import ContentLayout from './ContentLayout';
 
 const Image = styled.img`
-  height: 100px;
+  height: 150px;
 `;
 
 function ProfileImg() {
@@ -17,7 +17,7 @@ function ProfileImg() {
     <ContentLayout>
       <Image src={photoURL || defaultProfile} alt='profile-img' />
       <TextButton color='rgb(0, 115, 232)' fontSize={16} path='profile'>
-        프로필 이미지 변경
+        프로필 사진 변경
       </TextButton>
     </ContentLayout>
   );

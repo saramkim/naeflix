@@ -14,7 +14,7 @@ const HeaderLayout = styled.div`
 function Header() {
   return (
     <HeaderLayout>
-      <Logo path='/' height='45px' />
+      <Logo path='/' height='35px' />
       <TextButton fontSize={20} path='/login'>
         로그인
       </TextButton>

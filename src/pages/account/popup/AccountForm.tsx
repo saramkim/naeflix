@@ -27,8 +27,8 @@ const Title = styled.h1`
   line-height: 36px;
 
   @media screen and (max-width: 550px) {
-    /* font-size: 25px;
-    line-height: 30px; */
+    font-size: 25px;
+    line-height: 30px;
   }
 `;
 

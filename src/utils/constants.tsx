@@ -43,8 +43,6 @@ const MOVIE = {
   },
 };
 
-const LANGUAGE_LIST = ['한국어', 'English'];
-
 const COUNTRY = {
   AE: '아랍에미리트 연합',
   AR: '아르헨티나',
@@ -170,4 +168,4 @@ const GENRE = [
   },
 ];
 
-export { COUNTRY, GENRE, LANGUAGE_LIST, MOVIE, PHRASE, REG_EX, STYLE };
+export { COUNTRY, GENRE, MOVIE, PHRASE, REG_EX, STYLE };

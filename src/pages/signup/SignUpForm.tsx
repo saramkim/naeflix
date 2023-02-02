@@ -21,7 +21,12 @@ const Form = styled.form`
 
 export const Title = styled.h1`
   font-size: 32px;
-  line-height: 44px;
+  line-height: 40px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 28px;
+    line-height: 35px;
+  }
 `;
 
 export const Content = styled.p`
@@ -105,8 +110,8 @@ function SignUpForm() {
           isValid={isValidPassword}
           type='password'
         />
-        <Button fontSize={24} padding='15px' hover>
-          다음
+        <Button fontSize={20} padding='15px' hover>
+          확인
         </Button>
       </Form>
     </OutletLayout>

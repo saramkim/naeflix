@@ -7,10 +7,14 @@ import OutletLayout from './OutletLayout';
 import { Title } from './SignUpForm';
 
 const CompletionLayout = styled.div`
-  width: 440px;
+  width: 100%;
+  max-width: 440px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media screen and (max-width: 550px) {
+  }
 `;
 
 const ButtonWrapper = styled.div`
@@ -31,10 +35,10 @@ function Completion() {
         </Title>
         <Logo height='110' />
         <ButtonWrapper>
-          <Button fontSize={24} padding='15px' hover path='/account'>
+          <Button fontSize={20} padding='15px' hover path='/account'>
             계정 정보
           </Button>
-          <Button fontSize={24} padding='15px' hover path='/main'>
+          <Button fontSize={20} padding='15px' hover path='/main'>
             메인으로
           </Button>
         </ButtonWrapper>

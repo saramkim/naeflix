@@ -5,26 +5,28 @@ import styled from 'styled-components';
 
 const BannerLayout = styled.div`
   height: 144px;
-  width: 800px;
-  margin: 0 calc((100vw - 800px) / 2);
+  width: 90%;
+  max-width: 800px;
   padding: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #0c1949;
   position: absolute;
-  top: 620px;
+  top: 600px;
+  left: 50%;
+  transform: translateX(-50%);
 
   @media screen and (max-width: 550px) {
     height: 110px;
     width: 100%;
     margin: 0;
     padding: 18px;
-    top: 480px;
+    top: 470px;
   }
-  @media screen and (min-width: 550px) and (max-width: 950px) {
-    width: 90%;
-    margin: 0 5%;
+
+  @media screen and (min-width: 1450px) {
+    top: 610px;
   }
 `;
 
@@ -62,7 +64,7 @@ function Banner() {
     <BannerLayout>
       <Logo />
       <Content>
-        <Title>회원가입으로 만날 수 있는 내플릭스.</Title>
+        <Title>간단 회원가입 후 이용 가능</Title>
         <SubTitle>평생 무료 멤버십에 가입하세요.</SubTitle>
         <TextButton fontSize={16} color='#447fc4' path='/signup'>
           자세히 알아보기

@@ -22,6 +22,10 @@ const Info = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-right: 50px;
+
+  @media screen and (max-width: 550px) {
+    padding-right: 30px;
+  }
 `;
 
 const Category = styled.h1`
@@ -34,9 +38,9 @@ const Category = styled.h1`
 
 const MovieWrapper = styled.div`
   display: flexbox;
-  gap: 10px;
   overflow: scroll;
   max-width: fit-content;
+  gap: 10px;
 
   &::-webkit-scrollbar {
     width: 0;
@@ -104,7 +108,7 @@ function HorizontalContainer({
         onMouseMove={throttle(onDragByMouse, 50)}
         onTouchStart={onDragStartByTouch}
         onTouchEnd={onDragEnd}
-        onTouchMove={throttle(onDragByTouch, 50)}
+        onTouchMove={onDragByTouch}
       >
         {children}
       </MovieWrapper>

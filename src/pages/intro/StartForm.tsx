@@ -23,9 +23,15 @@ const Form = styled.form`
 `;
 
 const FormTitle = styled.h3`
-  font-size: 18px;
   text-align: center;
+
+  font-size: 20px;
   line-height: 24px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
 `;
 
 const InputContainer = styled.div`

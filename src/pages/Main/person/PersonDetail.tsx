@@ -56,6 +56,10 @@ const Credits = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
+
+  @media screen and (max-width: 550px) {
+    padding-left: 30px;
+  }
 `;
 
 function PersonDetail() {

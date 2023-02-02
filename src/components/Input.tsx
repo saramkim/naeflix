@@ -13,7 +13,6 @@ type InputProps = {
 
 const InputLayout = styled.div`
   width: 100%;
-  font-size: 20px;
   position: relative;
 `;
 
@@ -23,7 +22,7 @@ const InputBox = styled.input<{ isWrong: boolean; background?: string }>`
   height: 60px;
   font-size: 20px;
   border: 1px solid ${({ isWrong }) => (isWrong ? '#ffa00a' : 'black')};
-  border-radius: 1px;
+  border-radius: 3px;
   outline: none;
   background-color: ${({ background }) => background || 'white'};
   color: ${({ background }) => (background ? 'white' : 'black')}; ;
@@ -31,6 +30,7 @@ const InputBox = styled.input<{ isWrong: boolean; background?: string }>`
 
 const Label = styled.label<{ top: number; fontSize: number }>`
   position: absolute;
+  pointer-events: none;
   left: 10px;
   top: ${({ top }) => top}px;
   font-size: ${({ fontSize }) => fontSize}px;
@@ -44,8 +44,13 @@ const Warning = styled.div`
   color: #ffa00a;
   position: absolute;
   left: 0.4em;
-  bottom: -1.5em;
   font-size: 15px;
+
+  bottom: -1.5em;
+
+  @media screen and (max-width: 550px) {
+    bottom: -1.2em;
+  }
 `;
 
 function Input(

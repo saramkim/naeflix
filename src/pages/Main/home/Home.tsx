@@ -6,13 +6,11 @@ import TopRatedMovies from '../TopRatedMovies';
 const HomeLayout = styled.div`
   display: flex;
   flex-direction: column;
-
   padding: 50px 0 50px 50px;
   gap: 50px;
 
   @media screen and (max-width: 550px) {
-    padding: 30px 0 30px 30px;
-    gap: 30px;
+    padding-left: 30px;
   }
 `;
 

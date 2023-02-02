@@ -54,7 +54,6 @@ const TypeButton = styled.button`
   @media screen and (max-width: 550px) {
     height: 50px;
     font-size: 20px;
-    padding: 0 5px;
   }
 `;
 

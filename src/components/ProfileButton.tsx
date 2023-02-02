@@ -32,7 +32,6 @@ const InitialBox = styled.div`
 `;
 
 const ProfileImage = styled.img`
-  border-radius: 5px;
   height: 100%;
   margin-right: 6px;
 `;
