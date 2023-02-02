@@ -1,4 +1,4 @@
-import symbol from 'assets/Netflix_Symbol_RGB.png';
+import logo from 'assets/naeflix-logo.png';
 import styled from 'styled-components';
 
 const LoadginLayout = styled.div`
@@ -9,14 +9,21 @@ const LoadginLayout = styled.div`
   align-items: center;
 `;
 
-const Symbol = styled.img`
-  height: 500px;
+const Logo = styled.img`
+  height: 150px;
+
+  @media screen and (max-width: 550px) {
+    height: 60px;
+  }
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    height: 100px;
+  }
 `;
 
 function Loading() {
   return (
     <LoadginLayout>
-      <Symbol src={symbol} />
+      <Logo src={logo} />
     </LoadginLayout>
   );
 }

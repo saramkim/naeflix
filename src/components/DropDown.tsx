@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 type DropDownProps = {
   title: string;
-  content: string;
+  children: React.ReactNode;
 };
 
 const DropDownLayout = styled.div``;
@@ -51,12 +51,17 @@ const Icon = styled.span`
 
 const DropBox = styled.div<{ isClicked: boolean }>`
   background: #303030;
-  font-size: 26px;
-  line-height: 35px;
   transition: all 0.15s linear;
   overflow: hidden;
-  padding: ${({ isClicked }) => (isClicked ? '30' : '0')}px 30px;
   max-height: ${({ isClicked }) => (isClicked ? '500' : '0')}px;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+
+  font-size: 26px;
+  line-height: 35px;
+  padding: ${({ isClicked }) => (isClicked ? '30' : '0')}px 30px;
 
   @media screen and (max-width: 550px) {
     font-size: 18px;
@@ -70,7 +75,7 @@ const DropBox = styled.div<{ isClicked: boolean }>`
   }
 `;
 
-function DropDown({ title, content }: DropDownProps) {
+function DropDown({ title, children }: DropDownProps) {
   const [isClicked, setClcik] = useState(false);
 
   const onClickInitailBox = () => {
@@ -83,7 +88,7 @@ function DropDown({ title, content }: DropDownProps) {
         <Title>{title}</Title>
         <Icon>{isClicked ? <AiOutlineClose /> : <AiOutlinePlus />}</Icon>
       </InitialBox>
-      <DropBox isClicked={isClicked}>{content}</DropBox>
+      <DropBox isClicked={isClicked}>{children}</DropBox>
     </DropDownLayout>
   );
 }

@@ -1,11 +1,12 @@
+import TypingText from 'components/TypingText';
 import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
 
 import StartForm from './StartForm';
 
 const TextCardLayout = styled.div`
-  height: 600px;
-  padding: 100px 0;
+  height: 800px;
+  padding: 80px 0 120px 0;
   color: white;
   display: flex;
   flex-direction: column;
@@ -17,51 +18,50 @@ const TextCardLayout = styled.div`
   position: relative;
 
   @media screen and (max-width: 550px) {
-    height: 460px;
-    padding: 60px 20px;
+    height: 600px;
+    padding: 60px 20px 100px;
   }
   @media screen and (min-width: 550px) and (max-width: 950px) {
-    padding: 60px 40px;
+    padding: 60px 40px 100px;
   }
 `;
 
 const Title = styled.h1`
-  font-size: 50px;
-  line-height: 68px;
+  font-size: 40px;
+  line-height: 50px;
 
   @media screen and (max-width: 550px) {
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 26px;
+    line-height: 32px;
   }
-  @media screen and (min-width: 1450px) {
-    font-size: 64px;
-    line-height: 80px;
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    font-size: 34px;
+    line-height: 42px;
   }
 `;
 
 const SubTitle = styled.h2`
-  font-size: 26px;
-  line-height: 35px;
+  font-size: 30px;
+  line-height: 38px;
 
   @media screen and (max-width: 550px) {
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 20px;
+    line-height: 24px;
   }
-  @media screen and (min-width: 1450px) {
-    font-size: 28px;
-    line-height: 38px;
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    font-size: 26px;
+    line-height: 32px;
   }
 `;
 
 function TextCard() {
   return (
     <TextCardLayout>
-      <Title>
-        영화와 시리즈는
-        <br />
-        합법적으로.
-      </Title>
-      <SubTitle>불법 스트리밍 사이트를 이용하지 맙시다.</SubTitle>
+      <TypingText term={100} fontSize={64}>
+        Not Netflix
+      </TypingText>
+      <Title>나의 영화들, 내플릭스(Naeflix)</Title>
+      <SubTitle>나의 영화를 기록하세요.</SubTitle>
       <StartForm />
     </TextCardLayout>
   );

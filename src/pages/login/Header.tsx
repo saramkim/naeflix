@@ -9,9 +9,9 @@ const HeaderLayout = styled.div`
   position: relative;
 
   @media screen and (max-width: 740px) {
-    background-color: black;
     height: 80px;
     padding: 0 18px;
+    background-color: black;
   }
 `;
 

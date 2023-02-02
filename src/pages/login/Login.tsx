@@ -1,19 +1,23 @@
 import { Outlet } from 'react-router-dom';
 
-import BackgroundLayout from 'components/BackgroundLayout';
 import Footer from 'components/Footer';
+import styled from 'styled-components';
 
 import Header from './Header';
 import LoginForm from './LoginForm';
 
+const LoginLayout = styled.div`
+  background-color: rgb(20, 20, 20);
+`;
+
 function Login() {
   return (
-    <BackgroundLayout>
+    <LoginLayout>
       <Header />
       <LoginForm />
       <Footer />
       <Outlet />
-    </BackgroundLayout>
+    </LoginLayout>
   );
 }
 

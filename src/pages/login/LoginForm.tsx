@@ -10,25 +10,25 @@ import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
 
 const Form = styled.form`
-  height: 660px;
-  width: 450px;
-  padding: 60px 68px;
+  background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: rgb(150, 150, 150);
-  margin: auto;
-  margin-bottom: 90px;
-  background-color: inherit;
   position: relative;
   font-size: 14px;
 
+  width: 450px;
+  height: 660px;
+  padding: 60px;
+  margin: 50px auto;
+
   @media screen and (max-width: 740px) {
     width: 100%;
-    margin-bottom: 0;
     height: 550px;
-    padding: 20px 30px;
-    border-bottom: 1px solid;
+    padding: 30px;
+    margin: 0;
+    border-bottom: 1px solid rgb(150, 150, 150);
   }
 `;
 

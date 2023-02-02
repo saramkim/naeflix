@@ -4,29 +4,25 @@ import { AiOutlineRight } from 'react-icons/ai';
 import styled from 'styled-components';
 
 const BannerLayout = styled.div`
-  height: 144px;
-  width: 90%;
-  max-width: 800px;
-  padding: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #0c1949;
   position: absolute;
-  top: 600px;
   left: 50%;
   transform: translateX(-50%);
+  max-width: 800px;
+
+  height: 144px;
+  width: 90%;
+  padding: 28px;
+  top: 805px;
 
   @media screen and (max-width: 550px) {
     height: 110px;
     width: 100%;
-    margin: 0;
     padding: 18px;
-    top: 470px;
-  }
-
-  @media screen and (min-width: 1450px) {
-    top: 610px;
+    top: 605px;
   }
 `;
 
@@ -64,10 +60,10 @@ function Banner() {
     <BannerLayout>
       <Logo />
       <Content>
-        <Title>간단 회원가입 후 이용 가능</Title>
+        <Title>회원가입 후 이용 가능</Title>
         <SubTitle>평생 무료 멤버십에 가입하세요.</SubTitle>
         <TextButton fontSize={16} color='#447fc4' path='/signup'>
-          자세히 알아보기
+          즉시 회원가입
           <Icon>
             <AiOutlineRight />
           </Icon>
