@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import defaultProfile from 'assets/kakao-profile.jpg';
 import TextButton from 'components/TextButton';
 import { getAuth, updateProfile } from 'firebase/auth';
-import { uploadImage } from 'firebases/storage';
+import { deleteImage, uploadImage } from 'firebases/storage';
 import styled from 'styled-components';
 
 import AccountForm from './AccountForm';
@@ -46,11 +46,14 @@ function ProfilePopup() {
   };
 
   const onReset = () => {
-    if (window.confirm('프로필 사진을 초기화하시겠습니까?')) {
-      updateProfile(auth.currentUser!, { photoURL: '' }).then(() => {
-        navigate('/account');
-        window.location.reload();
-      });
+    const userImage = auth.currentUser?.photoURL;
+    if (userImage && window.confirm('프로필 사진을 초기화하시겠습니까?')) {
+      deleteImage(userImage).then(() =>
+        updateProfile(auth.currentUser!, { photoURL: '' }).then(() => {
+          navigate('/account');
+          window.location.reload();
+        })
+      );
     }
   };
 

@@ -2,7 +2,7 @@ const STYLE = {
   MAIN_COLOR: 'rgb(229, 9, 20)',
   BORDER_BOTTOM: '8px solid #222222',
   ACCOUNT_COLOR: 'rgb(242, 242, 242)',
-  HEIGHT_WITHOUT_HEADER_FOOTER: 'calc(100vh - 527px);',
+  HEIGHT_WITHOUT_HEADER_FOOTER: 'calc(100vh - 474px);',
 };
 
 const REG_EX = {
