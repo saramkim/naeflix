@@ -2,12 +2,11 @@ import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Input from 'components/Input';
+import Popup from 'components/Popup';
+import PopupForm from 'components/PopupForm';
 import { getAuth, updateEmail } from 'firebase/auth';
 import { useInput } from 'hooks/useInput';
 import { PHRASE, REG_EX } from 'utils/constants';
-
-import AccountForm from './AccountForm';
-import Layout from './Layout';
 
 function EmailPopup() {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -28,8 +27,8 @@ function EmailPopup() {
   };
 
   return (
-    <Layout>
-      <AccountForm
+    <Popup>
+      <PopupForm
         onSubmit={onSubmitForm}
         title='변경할 이메일을 입력해주세요.'
         buttonText='이메일 변경'
@@ -41,8 +40,8 @@ function EmailPopup() {
           label='이메일'
           warning={PHRASE.EMAIL_WARNING}
         />
-      </AccountForm>
-    </Layout>
+      </PopupForm>
+    </Popup>
   );
 }
 

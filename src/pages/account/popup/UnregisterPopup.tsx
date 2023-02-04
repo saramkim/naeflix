@@ -1,11 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 
-import Button from 'components/Button';
+import Popup from 'components/Popup';
+import PopupForm from 'components/PopupForm';
 import { getAuth } from 'firebase/auth';
 import { unregisterUser } from 'firebases/user';
-
-import AccountForm from './AccountForm';
-import Layout from './Layout';
 
 function UnregisterPopup() {
   const navigate = useNavigate();
@@ -21,9 +19,9 @@ function UnregisterPopup() {
   };
 
   return (
-    <Layout>
-      <AccountForm onSubmit={onSubmitForm} buttonText='회원탈퇴' />
-    </Layout>
+    <Popup>
+      <PopupForm onSubmit={onSubmitForm} buttonText='회원탈퇴' />
+    </Popup>
   );
 }
 

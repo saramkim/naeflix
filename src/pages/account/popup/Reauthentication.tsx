@@ -2,12 +2,11 @@ import { useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import Input from 'components/Input';
+import Popup from 'components/Popup';
+import PopupForm from 'components/PopupForm';
 import { EmailAuthProvider, getAuth, reauthenticateWithCredential } from 'firebase/auth';
 import { useInput } from 'hooks/useInput';
 import { PHRASE, REG_EX } from 'utils/constants';
-
-import AccountForm from './AccountForm';
-import Layout from './Layout';
 
 function Reauthentication() {
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -38,8 +37,8 @@ function Reauthentication() {
   };
 
   return (
-    <Layout>
-      <AccountForm onSubmit={onSubmitForm} title='현재 비밀번호를 입력해주세요.' buttonText='다음'>
+    <Popup>
+      <PopupForm onSubmit={onSubmitForm} title='현재 비밀번호를 입력해주세요.' buttonText='다음'>
         <Input
           ref={passwordRef}
           onChange={onChange}
@@ -48,8 +47,8 @@ function Reauthentication() {
           warning={PHRASE.PASSWORD_WARNING}
           type='password'
         />
-      </AccountForm>
-    </Layout>
+      </PopupForm>
+    </Popup>
   );
 }
 

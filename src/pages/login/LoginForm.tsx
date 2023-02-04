@@ -21,14 +21,12 @@ const Form = styled.form`
   width: 450px;
   height: 660px;
   padding: 60px;
-  margin: 50px auto;
 
-  @media screen and (max-width: 740px) {
+  @media screen and (max-width: 550px) {
     width: 100%;
-    height: 550px;
+    height: 600px;
     padding: 30px;
-    margin: 0;
-    border-bottom: 1px solid rgb(150, 150, 150);
+    padding-bottom: 60px;
   }
 `;
 
@@ -102,10 +100,9 @@ function LoginForm() {
           로그인
         </Button>
         <ExtraFeatures>
-          <label>
-            <input type='checkbox' value='save' defaultChecked />
-            로그인 정보 저장
-          </label>
+          <TextButton fontSize={14} path='phone-number'>
+            전화번호 로그인
+          </TextButton>
           <TextButton fontSize={14} path='help'>
             비밀번호 찾기
           </TextButton>

@@ -2,12 +2,11 @@ import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Input from 'components/Input';
+import Popup from 'components/Popup';
+import PopupForm from 'components/PopupForm';
 import { getAuth, updatePassword } from 'firebase/auth';
 import { useInput } from 'hooks/useInput';
 import { PHRASE, REG_EX } from 'utils/constants';
-
-import AccountForm from './AccountForm';
-import Layout from './Layout';
 
 function PasswordPopup() {
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -28,8 +27,8 @@ function PasswordPopup() {
   };
 
   return (
-    <Layout>
-      <AccountForm
+    <Popup>
+      <PopupForm
         onSubmit={onSubmitForm}
         title='변경할 비밀번호를 입력해주세요.'
         buttonText='비밀번호 변경'
@@ -42,8 +41,8 @@ function PasswordPopup() {
           warning={PHRASE.PASSWORD_WARNING}
           type='password'
         />
-      </AccountForm>
-    </Layout>
+      </PopupForm>
+    </Popup>
   );
 }
 

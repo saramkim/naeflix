@@ -50,7 +50,7 @@ const ExitButton = styled.button`
   }
 `;
 
-function Layout({ children }: { children: React.ReactNode }) {
+function Popup({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
 
   const onClickButton = () => {
@@ -67,4 +67,4 @@ function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default Layout;
+export default Popup;

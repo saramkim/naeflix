@@ -60,7 +60,7 @@ function TextCard() {
       <TypingText term={100} fontSize={64}>
         Not Netflix
       </TypingText>
-      <Title>나의 영화들, 내플릭스(Naeflix)</Title>
+      <Title>My Flicks, 내플릭스(Naeflix)</Title>
       <SubTitle>나의 영화를 기록하세요.</SubTitle>
       <StartForm />
     </TextCardLayout>

@@ -2,7 +2,7 @@ import Button from 'components/Button';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 
-type AccountFormType = {
+type PopupFormType = {
   children?: React.ReactNode;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   buttonText: string;
@@ -32,7 +32,7 @@ const Title = styled.h1`
   }
 `;
 
-function AccountForm({ children, onSubmit, buttonText, title }: AccountFormType) {
+function PopupForm({ children, onSubmit, buttonText, title }: PopupFormType) {
   const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
 
   return (
@@ -46,4 +46,4 @@ function AccountForm({ children, onSubmit, buttonText, title }: AccountFormType)
   );
 }
 
-export default AccountForm;
+export default PopupForm;

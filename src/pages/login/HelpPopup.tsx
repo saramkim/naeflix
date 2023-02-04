@@ -1,25 +1,11 @@
 import { useRef } from 'react';
 
-import Button from 'components/Button';
 import Input from 'components/Input';
+import Popup from 'components/Popup';
+import PopupForm from 'components/PopupForm';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import { useInput } from 'hooks/useInput';
-import Layout from 'pages/account/popup/Layout';
-import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 30px;
-  width: 100%;
-`;
-
-const Title = styled.h1`
-  font-size: 30px;
-  line-height: 40px;
-`;
 
 function HelpPopup() {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -41,9 +27,8 @@ function HelpPopup() {
   };
 
   return (
-    <Layout>
-      <Form onSubmit={onSubmitForm}>
-        <Title>이메일을 입력하세요.</Title>
+    <Popup>
+      <PopupForm onSubmit={onSubmitForm} title='이메일을 입력하세요.' buttonText='비밀번호 재설정'>
         <Input
           ref={emailRef}
           onChange={onChange}
@@ -51,9 +36,8 @@ function HelpPopup() {
           label='이메일'
           warning={PHRASE.EMAIL_WARNING}
         />
-        <Button fontSize={25}>비밀번호 재설정</Button>
-      </Form>
-    </Layout>
+      </PopupForm>
+    </Popup>
   );
 }
 

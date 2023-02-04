@@ -1,6 +1,6 @@
 const STYLE = {
   MAIN_COLOR: 'rgb(229, 9, 20)',
-  BORDER_BOTTOM: '8px solid #222222',
+  BORDER_BOTTOM: '8px id #222222',
   ACCOUNT_COLOR: 'rgb(242, 242, 242)',
   HEIGHT_WITHOUT_HEADER_FOOTER: 'calc(100vh - 474px);',
 };
@@ -17,7 +17,7 @@ const PHRASE = {
   EMAIL_WARNING: '올바른 이메일 형식을 입력하세요.',
   PASSWORD_WARNING: '비밀번호는 6자 이상이여야 합니다.',
   PHONE_WARNING: '올바른 번호를 숫자만 입력하세요.',
-  CODE_WARNING: '인증 번호는 6자여야 합니다.',
+  CODE_WARNING: '인증 번호는 숫자 6자입니다.',
 };
 
 const MOVIE = {
@@ -90,82 +90,24 @@ const COUNTRY = {
 };
 
 const GENRE = [
-  {
-    id: 28,
-    name: '액션',
-  },
-  {
-    id: 12,
-    name: '모험',
-  },
-  {
-    id: 16,
-    name: '애니메이션',
-  },
-  {
-    id: 35,
-    name: '코미디',
-  },
-  {
-    id: 80,
-    name: '범죄',
-  },
-  {
-    id: 99,
-    name: '다큐멘터리',
-  },
-  {
-    id: 18,
-    name: '드라마',
-  },
-  {
-    id: 10751,
-    name: '가족',
-  },
-  {
-    id: 14,
-    name: '판타지',
-  },
-  {
-    id: 36,
-    name: '역사',
-  },
-  {
-    id: 27,
-    name: '공포',
-  },
-  {
-    id: 10402,
-    name: '음악',
-  },
-  {
-    id: 9648,
-    name: '미스터리',
-  },
-  {
-    id: 10749,
-    name: '로맨스',
-  },
-  {
-    id: 878,
-    name: 'SF',
-  },
-  {
-    id: 10770,
-    name: 'TV 영화',
-  },
-  {
-    id: 53,
-    name: '스릴러',
-  },
-  {
-    id: 10752,
-    name: '전쟁',
-  },
-  {
-    id: 37,
-    name: '서부',
-  },
+  { id: 28, name: '액션' },
+  { id: 12, name: '모험' },
+  { id: 16, name: '애니메이션' },
+  { id: 35, name: '코미디' },
+  { id: 80, name: '범죄' },
+  { id: 99, name: '다큐멘터리' },
+  { id: 18, name: '드라마' },
+  { id: 10751, name: '가족' },
+  { id: 14, name: '판타지' },
+  { id: 36, name: '역사' },
+  { id: 27, name: '공포' },
+  { id: 10402, name: '음악' },
+  { id: 9648, name: '미스터리' },
+  { id: 10749, name: '로맨스' },
+  { id: 878, name: 'SF' },
+  { id: 10770, name: 'TV 영화' },
+  { id: 53, name: '스릴러' },
+  { id: 10752, name: '전쟁' },
 ];
 
 export { COUNTRY, GENRE, MOVIE, PHRASE, REG_EX, STYLE };

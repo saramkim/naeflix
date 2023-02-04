@@ -2,12 +2,11 @@ import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Input from 'components/Input';
+import Popup from 'components/Popup';
+import PopupForm from 'components/PopupForm';
 import { getAuth, updateProfile } from 'firebase/auth';
 import { useInput } from 'hooks/useInput';
 import { REG_EX } from 'utils/constants';
-
-import AccountForm from './AccountForm';
-import Layout from './Layout';
 
 function NicknamePopup() {
   const nicknameRef = useRef<HTMLInputElement>(null);
@@ -29,8 +28,8 @@ function NicknamePopup() {
   };
 
   return (
-    <Layout>
-      <AccountForm onSubmit={onSubmitForm} title='닉네임을 입력하세요.' buttonText='확인'>
+    <Popup>
+      <PopupForm onSubmit={onSubmitForm} title='닉네임을 입력하세요.' buttonText='확인'>
         <Input
           ref={nicknameRef}
           onChange={onChange}
@@ -38,8 +37,8 @@ function NicknamePopup() {
           label='닉네임'
           warning='닉네임은 1~20자여야 합니다.'
         />
-      </AccountForm>
-    </Layout>
+      </PopupForm>
+    </Popup>
   );
 }
 
