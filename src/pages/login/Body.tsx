@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { STYLE } from 'utils/constants';
 
 import LoginForm from './LoginForm';
 
@@ -7,6 +8,7 @@ const BodyLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: ${STYLE.BORDER_BOTTOM};
 
   @media screen and (max-width: 550px) {
     height: auto;

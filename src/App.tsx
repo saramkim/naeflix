@@ -9,6 +9,7 @@ import PasswordPopup from 'pages/account/popup/PasswordPopup';
 import PhoneNumberPopup from 'pages/account/popup/PhoneNumberPopup';
 import ProfilePopup from 'pages/account/popup/ProfilePopup';
 import Reauthentication from 'pages/account/popup/Reauthentication';
+import RegisterPasswordPopup from 'pages/account/popup/RegisterPasswordPopup';
 import UnregisterPopup from 'pages/account/popup/UnregisterPopup';
 import Intro from 'pages/intro/Intro';
 import HelpPopup from 'pages/login/HelpPopup';
@@ -52,6 +53,7 @@ function App() {
           <Route path='nickname' element={<NicknamePopup />} />
           <Route path='profile' element={<ProfilePopup />} />
           <Route path='unregister' element={<UnregisterPopup />} />
+          <Route path='register-password' element={<RegisterPasswordPopup />} />
         </Route>
         <Route path='/main' element={<Main />}>
           <Route path='' element={<Home />} />

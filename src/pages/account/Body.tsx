@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import ContentLayout from './ContentLayout';
 import Email from './Email';
+import LinkAccount from './LinkAccount';
 import Logout from './Logout';
 import Nickname from './Nickname';
 import Password from './Password';
@@ -63,6 +64,7 @@ function Body() {
           <Email />
           <Password />
           <PhoneNumber />
+          <LinkAccount />
         </Contents>
       </Wrapper>
       <Wrapper>

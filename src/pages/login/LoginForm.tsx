@@ -9,6 +9,8 @@ import { useInput } from 'hooks/useInput';
 import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
 
+import GoogleLogin from './GoogleLogin';
+
 const Form = styled.form`
   background-color: black;
   display: flex;
@@ -49,7 +51,6 @@ const ExtraFeatures = styled.div`
 const TextWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 40px;
 `;
 
 const Text = styled.div`
@@ -108,6 +109,7 @@ function LoginForm() {
           </TextButton>
         </ExtraFeatures>
       </ButtonWrapper>
+      <GoogleLogin />
       <TextWrapper>
         <Text>Naeflix 회원이 아닌가요?</Text>
         <TextButton fontSize={18} color='white' path='/signup'>

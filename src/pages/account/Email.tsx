@@ -8,7 +8,7 @@ function Email() {
   const auth = getAuth();
   const { email, emailVerified } = auth.currentUser!;
 
-  const onClickButton = () => {
+  const VerifyEmail = () => {
     auth.useDeviceLanguage();
     sendEmailVerification(auth.currentUser!)
       .then(() => {
@@ -39,7 +39,7 @@ function Email() {
   return (
     <ContentLayout>
       <div>이메일: {email}</div>
-      <TextButton color='rgb(0, 115, 232)' fontSize={16} onClick={onClickButton}>
+      <TextButton color='rgb(0, 115, 232)' fontSize={16} onClick={VerifyEmail}>
         이메일 인증
       </TextButton>
       <TextButton

@@ -6,7 +6,7 @@ function Unregister() {
   return (
     <ContentLayout>
       <TextButton
-        color='rgb(0, 115, 232)'
+        color='rgb(223, 27, 20)'
         fontSize={16}
         path='reauthentication'
         state={{ path: 'unregister' }}

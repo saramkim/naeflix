@@ -13,7 +13,7 @@ function UnregisterPopup() {
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     unregisterUser(user).then(() => {
-      alert('회원탈퇴 완료');
+      alert('다음에 또 봐요');
       navigate('/');
     });
   };
