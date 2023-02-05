@@ -1,31 +1,27 @@
-import { useEffect, useRef, useState } from 'react';
-
-import { throttle } from 'utils/throttle';
+import { useEffect, useRef } from 'react';
 
 type useInfiniteScrollType = {
   setLoad: React.Dispatch<React.SetStateAction<boolean>>;
+  canLoad: boolean;
 };
 
-const DISTANCE = 900;
-
-export const useInfiniteScroll = ({ setLoad }: useInfiniteScrollType) => {
+export const useInfiniteScroll = ({ setLoad, canLoad }: useInfiniteScrollType) => {
   const iconRef = useRef<HTMLDivElement>(null);
-  const [scrollY, setScrollY] = useState(0);
-  const [iconY, setIconY] = useState(DISTANCE + 100);
-
-  const handleScroll = () => {
-    setScrollY(window.pageYOffset);
-    if (iconRef.current) setIconY(iconRef.current.offsetTop);
+  const options = {
+    root: null,
+    rootMargin: '-30px',
+    threshold: 1.0,
   };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) setLoad(true);
+    });
+  }, options);
 
   useEffect(() => {
-    window.addEventListener('scroll', throttle(handleScroll, 300));
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setLoad(iconY - scrollY < DISTANCE);
-  }, [scrollY]);
+    if (iconRef.current) observer.observe(iconRef.current.children[0]);
+    return () => observer.disconnect();
+  }, [canLoad]);
 
   return iconRef;
 };

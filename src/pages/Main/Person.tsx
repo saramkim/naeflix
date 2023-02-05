@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { CreditsDataType } from 'api/personType';
@@ -101,4 +101,4 @@ function Person({
   );
 }
 
-export default Person;
+export default memo(Person);

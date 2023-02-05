@@ -105,7 +105,7 @@ function HorizontalContainer({
         onMouseDown={onDragStartByMouse}
         onMouseUp={onDragEnd}
         onMouseLeave={onDragEnd}
-        onMouseMove={throttle(onDragByMouse, 50)}
+        onMouseMove={throttle(onDragByMouse, 30)}
         onTouchStart={onDragStartByTouch}
         onTouchEnd={onDragEnd}
         onTouchMove={onDragByTouch}

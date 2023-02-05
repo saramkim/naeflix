@@ -55,7 +55,7 @@ function VerticalContainer({
   canLoad = false,
   setLoad,
 }: VerticalContainerType) {
-  const iconRef = setLoad ? useInfiniteScroll({ setLoad }) : null;
+  const iconRef = setLoad ? useInfiniteScroll({ setLoad, canLoad }) : null;
   const exceed = useScrollDistance(800);
 
   return (

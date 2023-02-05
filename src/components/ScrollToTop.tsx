@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { AiFillCaretUp } from 'react-icons/ai';
 import styled from 'styled-components';
 
@@ -26,4 +28,4 @@ function ScrollToTop() {
     </ScrollTopButton>
   );
 }
-export default ScrollToTop;
+export default memo(ScrollToTop);

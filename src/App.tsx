@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import Loading from 'components/Loading';
 import PrivateRoutes from 'components/PrivateRoutes';
+import { useLoading } from 'hooks/useLoading';
 import Account from 'pages/account/Account';
 import EmailPopup from 'pages/account/popup/EmailPopup';
 import NicknamePopup from 'pages/account/popup/NicknamePopup';
@@ -26,10 +27,11 @@ import NotFound from 'pages/NotFound';
 import Completion from 'pages/signup/Completion';
 import SignUp from 'pages/signup/SignUp';
 import SignUpForm from 'pages/signup/SignUpForm';
-import { loading } from 'utils/loading';
 
 function App() {
-  if (loading()) return <Loading />;
+  const loading = useLoading();
+
+  if (loading) return <Loading />;
 
   return (
     <Routes>

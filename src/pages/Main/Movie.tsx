@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { MovieType } from 'api/movieType';
@@ -124,4 +124,4 @@ function Movie({ title, poster_path, id }: MovieType) {
   );
 }
 
-export default Movie;
+export default memo(Movie);

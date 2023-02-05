@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-export function loading() {
+export const useLoading = () => {
   const [isLoaded, setisLoaded] = useState(false);
   const auth = getAuth();
 
@@ -13,4 +13,4 @@ export function loading() {
   }, []);
 
   return !isLoaded;
-}
+};
