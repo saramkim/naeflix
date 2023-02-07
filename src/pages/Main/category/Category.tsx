@@ -3,7 +3,11 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
 
+import Credits from '../movie/Credits';
+import RecommendationMovies from '../movie/RecommendationMovies';
 import MoviesWithStars from '../MoviesWithStars';
+import Cast from '../person/Cast';
+import Crew from '../person/Crew';
 import TopRatedMovies from '../TopRatedMovies';
 
 const CategoryLayout = styled.div`
@@ -16,14 +20,17 @@ const CategoryLayout = styled.div`
 `;
 
 function Category() {
-  const { category } = useParams();
+  const { category, id } = useParams();
 
-  if (category === 'top-rated')
-    return (
-      <CategoryLayout>
-        <TopRatedMovies direction='vertical' />
-      </CategoryLayout>
-    );
+  const components = {
+    'top-rated': <TopRatedMovies direction='vertical' />,
+    recommendation: <RecommendationMovies id={id!} direction='vertical' />,
+    credits: <Credits id={id!} direction='vertical' />,
+    cast: <Cast id={id!} direction='vertical' />,
+    crew: <Crew id={id!} direction='vertical' />,
+  };
+
+  if (category! in components) return <CategoryLayout>{components[category!]}</CategoryLayout>;
 
   return (
     <CategoryLayout>

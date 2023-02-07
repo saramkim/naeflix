@@ -62,7 +62,9 @@ function App() {
           <Route path=':category' element={<Category />} />
           <Route path='search' element={<Search />} />
           <Route path='movie/:id' element={<MovieDetail />} />
+          <Route path='movie/:id/:category' element={<Category />} />
           <Route path='person/:id' element={<PersonDetail />} />
+          <Route path='person/:id/:category' element={<Category />} />
           <Route path='genre' element={<Genre />} />
           <Route path='genre/:genre' element={<Genre />} />
         </Route>

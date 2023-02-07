@@ -1,6 +1,10 @@
-# NAEFLIX (내플릭스)
+# [NAEFLIX (내플릭스)](https://saramkim.github.io/naeflix/)
 
-영화를 기록하는 웹 사이트.
+Skills : **React, Typescript, Firebase**
+
+</br>
+
+나의 영화를 기록하는 웹 사이트.
 
 My Flicks, 내플릭스.
 
@@ -75,7 +79,3 @@ My Flicks, 내플릭스.
   - [x] 장르
 
   - [x] 평점순
-
-  - [ ] 리뷰
-
-  - [ ] 연대

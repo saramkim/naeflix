@@ -29,7 +29,7 @@ interface CreditsDataType extends PersonType {
   known_for: undefined;
 }
 
-interface PersonDetailType extends PersonType {
+interface PersonDataType extends PersonType {
   also_known_as: string[];
   biography: string;
   birthday: Date;
@@ -40,9 +40,15 @@ interface PersonDetailType extends PersonType {
   known_for: undefined;
 }
 
-interface PersonDataType extends PersonDetailType {
+interface PersonCreditsType extends PersonDataType {
   cast: CastType[];
   crew: CrewType[];
 }
 
-export type { CreditsDataType, PersonDataType, PersonType, SearchPersonDataType };
+export type {
+  CreditsDataType,
+  PersonCreditsType,
+  PersonDataType,
+  PersonType,
+  SearchPersonDataType,
+};
