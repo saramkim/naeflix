@@ -61,7 +61,7 @@ function Banner() {
       <Logo />
       <Content>
         <Title>회원가입 후 이용 가능</Title>
-        <SubTitle>평생 무료 멤버십에 가입하세요.</SubTitle>
+        <SubTitle>어서 내플릭스에 가입하세요.</SubTitle>
         <TextButton fontSize={16} color='#447fc4' path='/signup'>
           즉시 회원가입
           <Icon>

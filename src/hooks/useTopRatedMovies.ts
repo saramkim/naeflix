@@ -3,12 +3,8 @@ import { useEffect, useState } from 'react';
 import { getTopRatedMovies } from 'api/movieData';
 import { MovieType } from 'api/movieType';
 
-type useTopRatedMoviesType = {
-  load: boolean;
-  setLoad: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-export const useTopRatedMovies = ({ load, setLoad }: useTopRatedMoviesType) => {
+export const useTopRatedMovies = () => {
+  const [load, setLoad] = useState(true);
   const [movieList, setMovieList] = useState<MovieType[]>([]);
   const [page, setPage] = useState(1);
 
@@ -16,18 +12,12 @@ export const useTopRatedMovies = ({ load, setLoad }: useTopRatedMoviesType) => {
     const data = await getTopRatedMovies(page);
     setMovieList((v) => [...v, ...data]);
     setPage((v) => v + 1);
+    setLoad(false);
   };
 
   useEffect(() => {
-    getMovieList();
-  }, []);
-
-  useEffect(() => {
-    if (load) {
-      getMovieList();
-      setLoad(false);
-    }
+    if (load) getMovieList();
   }, [load]);
 
-  return movieList;
+  return { movieList, setLoad };
 };

@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { useTopRatedMovies } from 'hooks/useTopRatedMovies';
 
 import HorizontalContainer from './HorizontalContainer';
@@ -7,8 +5,7 @@ import Movie from './Movie';
 import VerticalContainer from './VerticalContainer';
 
 function TopRatedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) {
-  const [load, setLoad] = useState(false);
-  const movieList = useTopRatedMovies({ load, setLoad });
+  const { movieList, setLoad } = useTopRatedMovies();
 
   if (direction === 'vertical')
     return (

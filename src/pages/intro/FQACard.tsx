@@ -62,20 +62,29 @@ function FQACard() {
       <Title>자주 묻는 질문</Title>
       <Content>
         <DropDown title='내플릭스란 무엇인가요?'>
-          내플릭스는 영화를 기록하는 비상업적 웹 사이트입니다.
-          <br /> 시청한 영화를 기록하고, 평점과 한줄평을 남겨 자신만의 영화 데이터를 기록할 수
-          있습니다.
-        </DropDown>
-        <DropDown title='내플릭스 요금은 얼마인가요?'>
-          멤버십 요금은 무료입니다.
+          내플릭스는 영화를 기록하는 웹 사이트입니다.
           <br />
-          내플릭스는 비상업으로 운영합니다.
+          시청한 영화를 기록하고, 평점과 한줄평을 남겨 자신만의 영화 컬렉션을 만들 수 있습니다.
+        </DropDown>
+        <DropDown title='넷플릭스와 관련이 있나요?'>
+          넷플릭스(Netflix)와 아무 관련 없습니다.
+          <br />
+          그저 넷플릭스의 디자인을 차용한 것뿐입니다.
+          <br />
+          비상업 서비스라 문제 없겠지만, 혹 문제가 된다면 디자인이 바뀔 예정입니다.
         </DropDown>
         <DropDown title='어느 디바이스에서 이용할 수 있나요?'>
           웹 브라우저가 동작하는 모든 디바이스에서 이용 가능합니다.
         </DropDown>
-        <DropDown title='내플릭스에서 영화를 시청할 수 있나요?'>시청할 수 없습니다.</DropDown>
-        <DropDown title='문의할 수 있나요?'>saramkimm@gmail.com으로 문의주세요.</DropDown>
+        <DropDown title='내플릭스에서 영화를 시청할 수 있나요?'>
+          시청할 수 없습니다.
+          <br />
+          스트리밍 서비스 아닙니다.
+        </DropDown>
+        <DropDown title='문의할 수 있나요?'>
+          saramkimm@gmail.com
+          <br />위 이메일로 문의주세요.
+        </DropDown>
       </Content>
       <StartFormWrapper>
         <StartForm />
