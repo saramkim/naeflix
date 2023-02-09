@@ -18,9 +18,11 @@ function Credits({ id, direction }: { id: string; direction: 'vertical' | 'horiz
 
   return (
     <HorizontalContainer category='credits'>
-      {credits.map((person) => (
-        <Person {...person} key={person.department ? person.id + person.department : person.id} />
-      ))}
+      {credits
+        .filter(({ profile_path }) => profile_path)
+        .map((person) => (
+          <Person {...person} key={person.department ? person.id + person.department : person.id} />
+        ))}
     </HorizontalContainer>
   );
 }

@@ -9,7 +9,7 @@ import Movie from '../Movie';
 import VerticalContainer from '../VerticalContainer';
 
 const GenreLayout = styled.div`
-  min-height: ${STYLE.HEIGHT_WITHOUT_HEADER_FOOTER};
+  min-height: ${STYLE.HEIGHT_WITHOUT_HEADER};
 
   padding: 50px;
 

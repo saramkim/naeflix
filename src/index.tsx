@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import GlobalStyles from 'components/GlobalStyle';
+import ScrollToTop from 'components/ScrollToTop';
 import { Provider } from 'react-redux';
 import { store } from 'store/store';
 
@@ -14,7 +15,9 @@ root.render(
   <Provider store={store}>
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <GlobalStyles />
-      <App />
+      <ScrollToTop>
+        <App />
+      </ScrollToTop>
     </BrowserRouter>
   </Provider>
   // </React.StrictMode>

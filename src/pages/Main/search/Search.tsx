@@ -14,7 +14,7 @@ export type SearchType = 'movie' | 'person';
 
 const SearchLayout = styled.div`
   width: 100%;
-  min-height: ${STYLE.HEIGHT_WITHOUT_HEADER_FOOTER};
+  min-height: ${STYLE.HEIGHT_WITHOUT_HEADER};
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,4 +1,4 @@
-import ScrollToTop from 'components/ScrollToTop';
+import ScrollToTopButton from 'components/ScrollToTopButton';
 import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 import { useScrollDistance } from 'hooks/useScrollDistance';
 import { AiOutlineDownCircle } from 'react-icons/ai';
@@ -67,7 +67,7 @@ function VerticalContainer({
           <AiOutlineDownCircle />
         </ScrollDown>
       )}
-      {exceed && <ScrollToTop />}
+      {exceed && <ScrollToTopButton />}
     </Layout>
   );
 }

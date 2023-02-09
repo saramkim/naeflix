@@ -8,7 +8,6 @@ import { throttle } from 'utils/throttle';
 type HorizontalContainerType = {
   children: JSX.Element[];
   category: string;
-  viewAll?: boolean;
 };
 
 const Layout = styled.div`
@@ -58,11 +57,7 @@ const MovieWrapper = styled.div`
   }
 `;
 
-function HorizontalContainer({
-  children,
-  category,
-  viewAll = Boolean(children.length),
-}: HorizontalContainerType) {
+function HorizontalContainer({ children, category }: HorizontalContainerType) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScroll, setCanScroll] = useState(false);
   const [mouseDownX, setMouseDownX] = useState(0);
@@ -94,7 +89,7 @@ function HorizontalContainer({
     <Layout>
       <Info>
         <Category>{MOVIE.CATEGORY_NAME[category]}</Category>
-        {viewAll && (
+        {Boolean(children.length) && (
           <TextButton hover='opacity' color={STYLE.MAIN_COLOR} path={category}>
             모두 보기
           </TextButton>

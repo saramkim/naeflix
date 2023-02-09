@@ -1,31 +1,15 @@
-import { memo } from 'react';
+import { useEffect } from 'react';
+import { useLocation, useNavigationType } from 'react-router';
 
-import { AiFillCaretUp } from 'react-icons/ai';
-import styled from 'styled-components';
+function ScrollToTop({ children }: { children: JSX.Element }) {
+  const location = useLocation();
+  const navigationType = useNavigationType();
 
-const ScrollTopButton = styled.button`
-  background-color: rgb(222, 222, 222);
-  position: fixed;
-  right: 40px;
-  bottom: 40px;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  font-size: 30px;
-`;
+  useEffect(() => {
+    if (navigationType !== 'POP') window.scrollTo(0, 0);
+  }, [location]);
 
-function ScrollToTop() {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
-  return (
-    <ScrollTopButton onClick={scrollToTop}>
-      <AiFillCaretUp />
-    </ScrollTopButton>
-  );
+  return children;
 }
-export default memo(ScrollToTop);
+
+export default ScrollToTop;
