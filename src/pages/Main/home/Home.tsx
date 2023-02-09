@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import MoviesWithStars from '../MoviesWithStars';
 import TopRatedMovies from '../TopRatedMovies';
+import Trending from '../Trending';
 
 const HomeLayout = styled.div`
   display: flex;
@@ -17,17 +18,19 @@ const HomeLayout = styled.div`
 function Home() {
   return (
     <HomeLayout>
-      <MoviesWithStars category='0stars' />
-      <MoviesWithStars category='5stars' />
-      <MoviesWithStars category='4.5stars' />
-      <MoviesWithStars category='4stars' />
-      <MoviesWithStars category='3.5stars' />
-      <MoviesWithStars category='3stars' />
-      <MoviesWithStars category='2.5stars' />
-      <MoviesWithStars category='2stars' />
-      <MoviesWithStars category='1.5stars' />
-      <MoviesWithStars category='1stars' />
-      <MoviesWithStars category='0.5stars' />
+      <Trending period='day' direction='horizontal' />
+      <Trending period='week' direction='horizontal' />
+      <MoviesWithStars category='0stars' direction='horizontal' />
+      <MoviesWithStars category='5stars' direction='horizontal' />
+      <MoviesWithStars category='4.5stars' direction='horizontal' />
+      <MoviesWithStars category='4stars' direction='horizontal' />
+      <MoviesWithStars category='3.5stars' direction='horizontal' />
+      <MoviesWithStars category='3stars' direction='horizontal' />
+      <MoviesWithStars category='2.5stars' direction='horizontal' />
+      <MoviesWithStars category='2stars' direction='horizontal' />
+      <MoviesWithStars category='1.5stars' direction='horizontal' />
+      <MoviesWithStars category='1stars' direction='horizontal' />
+      <MoviesWithStars category='0.5stars' direction='horizontal' />
       <TopRatedMovies direction='horizontal' />
     </HomeLayout>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { getPersonCredits } from 'api/movieData';
+import { getPersonCredits } from 'api/personData';
 import { PersonCreditsType } from 'api/personType';
 
 export const usePersonCredits = (id: string) => {

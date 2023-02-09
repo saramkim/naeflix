@@ -29,6 +29,8 @@ const MOVIE = {
     cast: '출연 영화',
     crew: '제작 참여 영화',
     'top-rated': '대중 평점순',
+    'trending-day': '오늘 인기 영화',
+    'trending-week': '금주 인기 영화',
     '5stars': '평점 10점',
     '4.5stars': '평점 9점',
     '4stars': '평점 8점',

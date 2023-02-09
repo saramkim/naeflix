@@ -6,7 +6,7 @@ import VerticalContainer from './VerticalContainer';
 
 type MoviesWithStarsType = {
   category: string;
-  direction?: 'vertical';
+  direction: 'vertical' | 'horizontal';
 };
 
 function MoviesWithStars({ category, direction }: MoviesWithStarsType) {

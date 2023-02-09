@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { getPersonData } from 'api/movieData';
+import { getPersonData } from 'api/personData';
 import { PersonDataType } from 'api/personType';
 
 export const usePersonData = (id: string) => {

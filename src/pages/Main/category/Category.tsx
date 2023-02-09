@@ -9,6 +9,7 @@ import MoviesWithStars from '../MoviesWithStars';
 import Cast from '../person/Cast';
 import Crew from '../person/Crew';
 import TopRatedMovies from '../TopRatedMovies';
+import Trending from '../Trending';
 
 const CategoryLayout = styled.div`
   padding: 50px;
@@ -24,6 +25,8 @@ function Category() {
 
   const components = {
     'top-rated': <TopRatedMovies direction='vertical' />,
+    'trending-day': <Trending period='day' direction='vertical' />,
+    'trending-week': <Trending period='week' direction='vertical' />,
     recommendation: <RecommendationMovies id={id!} direction='vertical' />,
     credits: <Credits id={id!} direction='vertical' />,
     cast: <Cast id={id!} direction='vertical' />,

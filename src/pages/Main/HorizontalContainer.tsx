@@ -6,7 +6,7 @@ import { MOVIE, STYLE } from 'utils/constants';
 import { throttle } from 'utils/throttle';
 
 type HorizontalContainerType = {
-  children: JSX.Element[];
+  children: React.ReactNode[];
   category: string;
 };
 
@@ -27,7 +27,7 @@ const Info = styled.div`
   }
 `;
 
-const Category = styled.h1`
+const Title = styled.h1`
   font-size: 20px;
 
   @media screen and (max-width: 550px) {
@@ -35,7 +35,18 @@ const Category = styled.h1`
   }
 `;
 
-const MovieWrapper = styled.div`
+const ChildrenCount = styled.span`
+  margin-left: 5px;
+  color: rgb(155, 155, 155);
+
+  font-size: 18px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 14px;
+  }
+`;
+
+const Wrapper = styled.div`
   display: flexbox;
   overflow: scroll;
   max-width: fit-content;
@@ -88,14 +99,17 @@ function HorizontalContainer({ children, category }: HorizontalContainerType) {
   return (
     <Layout>
       <Info>
-        <Category>{MOVIE.CATEGORY_NAME[category]}</Category>
+        <Title>
+          <span>{MOVIE.CATEGORY_NAME[category]}</span>
+          <ChildrenCount>({children.length})</ChildrenCount>
+        </Title>
         {Boolean(children.length) && (
           <TextButton hover='opacity' color={STYLE.MAIN_COLOR} path={category}>
             모두 보기
           </TextButton>
         )}
       </Info>
-      <MovieWrapper
+      <Wrapper
         ref={scrollRef}
         onMouseDown={onDragStartByMouse}
         onMouseUp={onDragEnd}
@@ -106,7 +120,7 @@ function HorizontalContainer({ children, category }: HorizontalContainerType) {
         onTouchMove={onDragByTouch}
       >
         {children}
-      </MovieWrapper>
+      </Wrapper>
     </Layout>
   );
 }

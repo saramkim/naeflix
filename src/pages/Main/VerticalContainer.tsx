@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { MOVIE } from 'utils/constants';
 
 type VerticalContainerType = {
-  children: React.ReactNode;
+  children: React.ReactNode[];
   category?: string;
   canLoad?: boolean;
   setLoad?: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,7 +24,7 @@ const Layout = styled.div`
   }
 `;
 
-const MovieWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -36,11 +36,22 @@ const MovieWrapper = styled.div`
   }
 `;
 
-const Category = styled.h1`
+const Title = styled.h1`
   font-size: 30px;
 
   @media screen and (max-width: 550px) {
     font-size: 25px;
+  }
+`;
+
+const ChildrenCount = styled.span`
+  margin-left: 5px;
+  color: rgb(155, 155, 155);
+
+  font-size: 25px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 20px;
   }
 `;
 
@@ -60,8 +71,13 @@ function VerticalContainer({
 
   return (
     <Layout>
-      {category && <Category>{MOVIE.CATEGORY_NAME[category] || category}</Category>}
-      <MovieWrapper>{children}</MovieWrapper>
+      {category && (
+        <Title>
+          <span>{MOVIE.CATEGORY_NAME[category] || category}</span>
+          <ChildrenCount>({children.length})</ChildrenCount>
+        </Title>
+      )}
+      <Wrapper>{children}</Wrapper>
       {canLoad && (
         <ScrollDown ref={iconRef}>
           <AiOutlineDownCircle />

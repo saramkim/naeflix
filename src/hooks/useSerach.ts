@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { getMovies, getPeople } from 'api/movieData';
+import { getMovies } from 'api/movieData';
+import { getPeople } from 'api/personData';
 import { SearchType } from 'pages/Main/search/Search';
 
 type useSearchType = {
