@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/naeflix/static/js/main.610130b9.js",
+    "main.js": "/naeflix/static/js/main.eef36dc1.js",
     "static/media/kakao-profile.jpg": "/naeflix/static/media/kakao-profile.90e51e7d338788eed29a.jpg",
     "index.html": "/naeflix/index.html",
-    "main.610130b9.js.map": "/naeflix/static/js/main.610130b9.js.map"
+    "main.eef36dc1.js.map": "/naeflix/static/js/main.eef36dc1.js.map"
   },
   "entrypoints": [
-    "static/js/main.610130b9.js"
+    "static/js/main.eef36dc1.js"
   ]
 }
