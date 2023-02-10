@@ -39,7 +39,7 @@ function PopupForm({ children, onSubmit, buttonText, title }: PopupFormType) {
     <Form onSubmit={onSubmit}>
       {title && <Title>{title}</Title>}
       {children}
-      <Button fontSize={isMobile ? 20 : 25} padding={isMobile ? '12px' : undefined}>
+      <Button fontSize={isMobile ? 16 : 20} padding={isMobile ? '12px' : '16px'}>
         {buttonText}
       </Button>
     </Form>

@@ -22,8 +22,7 @@ const CategoryLayout = styled.div`
 
 function Category() {
   const { category, id } = useParams();
-
-  const components = {
+  const Components = {
     'top-rated': <TopRatedMovies direction='vertical' />,
     'trending-day': <Trending period='day' direction='vertical' />,
     'trending-week': <Trending period='week' direction='vertical' />,
@@ -33,11 +32,9 @@ function Category() {
     crew: <Crew id={id!} direction='vertical' />,
   };
 
-  if (category! in components) return <CategoryLayout>{components[category!]}</CategoryLayout>;
-
   return (
     <CategoryLayout>
-      <MoviesWithStars direction='vertical' category={category!} />
+      {Components[category!] || <MoviesWithStars direction='vertical' category={category!} />}
     </CategoryLayout>
   );
 }

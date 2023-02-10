@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
+import { STYLE } from 'utils/constants';
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
@@ -9,10 +10,12 @@ const Background = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
 `;
 
 const PopupLayout = styled.div`
-  background-color: white;
+  background-color: ${STYLE.ACCOUNT_COLOR};
+  color: black;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -23,17 +26,17 @@ const PopupLayout = styled.div`
   align-items: center;
   gap: 30px;
   border-radius: 10px;
+  max-width: 100%;
 
-  height: 600px;
-  width: 500px;
+  min-height: 600px;
+  min-width: 500px;
   padding: 50px;
 
   @media screen and (max-width: 550px) {
-    height: 460px;
-    width: 400px;
+    min-height: 460px;
+    min-width: 400px;
     padding: 30px;
     gap: 20px;
-    max-width: 100%;
   }
 `;
 
@@ -53,15 +56,11 @@ const ExitButton = styled.button`
 function Popup({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
 
-  const onClickButton = () => {
-    navigate('/account', { replace: true });
-  };
-
   return (
     <Background>
       <PopupLayout>
         {children}
-        <ExitButton onClick={onClickButton}>X</ExitButton>
+        <ExitButton onClick={() => navigate(-1)}>X</ExitButton>
       </PopupLayout>
     </Background>
   );

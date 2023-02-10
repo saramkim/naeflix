@@ -19,6 +19,7 @@ import PhoneNumberLoginPopup from 'pages/login/PhoneNumberLoginPopup';
 import Category from 'pages/Main/category/Category';
 import Genre from 'pages/Main/genre/Genre';
 import Home from 'pages/Main/home/Home';
+import ListEditor from 'pages/Main/home/ListEditor';
 import Main from 'pages/Main/Main';
 import MovieDetail from 'pages/Main/movie/MovieDetail';
 import PersonDetail from 'pages/Main/person/PersonDetail';
@@ -58,7 +59,9 @@ function App() {
           <Route path='register-password' element={<RegisterPasswordPopup />} />
         </Route>
         <Route path='/main' element={<Main />}>
-          <Route path='' element={<Home />} />
+          <Route path='' element={<Home />}>
+            <Route path='edit-list' element={<ListEditor />} />
+          </Route>
           <Route path=':category' element={<Category />} />
           <Route path='search' element={<Search />} />
           <Route path='movie/:id' element={<MovieDetail />} />

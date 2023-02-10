@@ -38,8 +38,6 @@ const ProfileImage = styled.img`
 
 const DropBox = styled.div`
   position: absolute;
-  top: 70px;
-  right: -4px;
   background-color: black;
   min-width: 120px;
   display: flex;
@@ -47,11 +45,14 @@ const DropBox = styled.div`
   justify-content: center;
   text-align: left;
   align-items: center;
-  gap: 20px;
   padding: 20px;
   background-clip: padding-box;
   border-top: 2px solid transparent;
   z-index: 10;
+  top: 70px;
+  right: -4px;
+  font-size: 15px;
+  gap: 25px;
 
   &:after {
     content: '';
@@ -69,6 +70,8 @@ const DropBox = styled.div`
   @media screen and (max-width: 550px) {
     top: 60px;
     right: -9px;
+    font-size: 13px;
+    gap: 20px;
   }
 `;
 
@@ -98,18 +101,14 @@ function ProfileButton() {
             <>
               <TextButton path='/main/top-rated'>높은 평점</TextButton>
               <TextButton path='/main/genre'>장르</TextButton>
-              <TextButton fontSize={13} path='/account'>
-                계정
-              </TextButton>
+              <TextButton path='/account'>계정</TextButton>
+              <TextButton path='/main/edit-list'>홈 설정</TextButton>
             </>
           ) : (
             <>
-              <TextButton fontSize={13} path='/account'>
-                계정
-              </TextButton>
-              <TextButton fontSize={13} onClick={onClickLogout}>
-                로그아웃
-              </TextButton>
+              <TextButton path='/account'>계정</TextButton>
+              <TextButton path='/main/edit-list'>홈 설정</TextButton>
+              <TextButton onClick={onClickLogout}>로그아웃</TextButton>
             </>
           )}
         </DropBox>

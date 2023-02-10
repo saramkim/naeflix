@@ -20,17 +20,17 @@ const PHRASE = {
   CODE_WARNING: '인증 번호는 숫자 6자입니다.',
 };
 
-const MOVIE = {
+const DATA = {
   IMG_BASE_URL: (width: number) => `https://image.tmdb.org/t/p/w${width}/`,
   CATEGORY_NAME: {
-    marked: '저장한 영화',
     recommendation: '추천 영화',
     credits: '관련 인물',
     cast: '출연 영화',
     crew: '제작 참여 영화',
-    'top-rated': '대중 평점순',
     'trending-day': '오늘 인기 영화',
     'trending-week': '금주 인기 영화',
+    'top-rated': '대중 평점순',
+    '0stars': '평가 대기중',
     '5stars': '평점 10점',
     '4.5stars': '평점 9점',
     '4stars': '평점 8점',
@@ -41,8 +41,23 @@ const MOVIE = {
     '1.5stars': '평점 3점',
     '1stars': '평점 2점',
     '0.5stars': '평점 1점',
-    '0stars': '평가 대기중',
   },
+  HOME_LIST: [
+    'trending-day',
+    'trending-week',
+    'top-rated',
+    '0stars',
+    '5stars',
+    '4.5stars',
+    '4stars',
+    '3.5stars',
+    '3stars',
+    '2.5stars',
+    '2stars',
+    '1.5stars',
+    '1stars',
+    '0.5stars',
+  ],
 };
 
 const COUNTRY = {
@@ -112,4 +127,4 @@ const GENRE = [
   { id: 10752, name: '전쟁' },
 ];
 
-export { COUNTRY, GENRE, MOVIE, PHRASE, REG_EX, STYLE };
+export { COUNTRY, DATA, GENRE, PHRASE, REG_EX, STYLE };

@@ -7,7 +7,7 @@ import { useMovieData } from 'hooks/useMovieData';
 import { useStar } from 'hooks/useStar';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
-import { MOVIE } from 'utils/constants';
+import { DATA } from 'utils/constants';
 
 import GenreButton from '../GenreButton';
 import MarkingButton from '../MarkingButton';
@@ -163,7 +163,7 @@ function MovieInfo({ id }: { id: string }) {
     return (
       <Backdrop
         backgroundImg={
-          isMobile ? MOVIE.IMG_BASE_URL(780) + poster_path : MOVIE.IMG_BASE_URL(780) + backdrop_path
+          isMobile ? DATA.IMG_BASE_URL(780) + poster_path : DATA.IMG_BASE_URL(780) + backdrop_path
         }
       >
         <MovieInfoLayout>

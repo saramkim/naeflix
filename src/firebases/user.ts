@@ -7,13 +7,13 @@ import {
   User,
 } from 'firebase/auth';
 
-import { createMarked, deleteMarked } from './firestore';
+import { createUserDoc, deleteUserDoc } from './firestore';
 
 const auth = getAuth();
 
 const createUser = (email: string, password: string) =>
   createUserWithEmailAndPassword(auth, email, password)
-    .then(createMarked)
+    .then(createUserDoc)
     .catch((error) => {
       console.log(error.code);
 
@@ -21,7 +21,7 @@ const createUser = (email: string, password: string) =>
     });
 
 const unregisterUser = (user: User) => {
-  deleteMarked(user);
+  deleteUserDoc(user);
   return deleteUser(user).catch((error) => console.log(error.code));
 };
 

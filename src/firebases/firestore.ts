@@ -14,46 +14,34 @@ import app from './firebase';
 const db = getFirestore(app);
 const auth = getAuth();
 
-const createMarked = ({ user }: { user: User }) => {
+const uid = () => auth.currentUser!.uid;
+const markedRef = (uid: string) => doc(db, 'marked', uid);
+const listRef = (uid: string) => doc(db, 'list', uid);
+
+const createUserDoc = ({ user }: { user: User }) => {
   const { uid } = user;
-  const markedRef = doc(db, 'marked', uid);
-  setDoc(markedRef, {});
+  setDoc(markedRef(uid), {});
+  setDoc(listRef(uid), {});
 };
 
-const deleteMarked = (user: User) => {
+const deleteUserDoc = (user: User) => {
   const { uid } = user;
-  const markedRef = doc(db, 'marked', uid);
-  deleteDoc(markedRef);
+  deleteDoc(markedRef(uid));
+  deleteDoc(listRef(uid));
 };
 
-const markMovie = (id: string) => {
-  const { uid } = auth.currentUser!;
-  const markedRef = doc(db, 'marked', uid);
-  updateDoc(markedRef, { [id]: { rating: 0 } });
-};
+const markMovie = (id: string) => updateDoc(markedRef(uid()), { [id]: { rating: 0 } });
 
-const rateMovie = ({ id, rating }: { id: string; rating: number }) => {
-  const { uid } = auth.currentUser!;
-  const markedRef = doc(db, 'marked', uid);
-  updateDoc(markedRef, { [`${id}.rating`]: rating });
-};
+const rateMovie = ({ id, rating }: { id: string; rating: number }) =>
+  updateDoc(markedRef(uid()), { [`${id}.rating`]: rating });
 
-const commentMovie = ({ id, comment }: { id: string; comment: string }) => {
-  const { uid } = auth.currentUser!;
-  const markedRef = doc(db, 'marked', uid);
-  updateDoc(markedRef, { [`${id}.comment`]: comment });
-};
+const commentMovie = ({ id, comment }: { id: string; comment: string }) =>
+  updateDoc(markedRef(uid()), { [`${id}.comment`]: comment });
 
-const unmarkMovie = (id: string) => {
-  const { uid } = auth.currentUser!;
-  const markedRef = doc(db, 'marked', uid);
-  updateDoc(markedRef, { [id]: deleteField() });
-};
+const unmarkMovie = (id: string) => updateDoc(markedRef(uid()), { [id]: deleteField() });
 
 const isMarkedMovie = async (id: string) => {
-  const { uid } = auth.currentUser!;
-  const markedRef = doc(db, 'marked', uid);
-  const docSnap = await getDoc(markedRef);
+  const docSnap = await getDoc(markedRef(uid()));
   if (docSnap.exists()) {
     const data = docSnap.data();
     return id in data;
@@ -62,9 +50,7 @@ const isMarkedMovie = async (id: string) => {
 };
 
 const getMarkedMovie = async (id?: string) => {
-  const { uid } = auth.currentUser!;
-  const markedRef = doc(db, 'marked', uid);
-  const docSnap = await getDoc(markedRef);
+  const docSnap = await getDoc(markedRef(uid()));
   if (docSnap.exists()) {
     const data = docSnap.data();
     return id ? data[id] : data;
@@ -72,13 +58,26 @@ const getMarkedMovie = async (id?: string) => {
   return {};
 };
 
+const getHomeList = async () => {
+  const docSnap = await getDoc(listRef(uid()));
+  if (docSnap.exists()) {
+    const { home } = docSnap.data();
+    return home;
+  }
+  return {};
+};
+
+const updateHomeList = async (list: string[]) => updateDoc(listRef(uid()), { home: list });
+
 export {
   commentMovie,
-  createMarked,
-  deleteMarked,
+  createUserDoc,
+  deleteUserDoc,
+  getHomeList,
   getMarkedMovie,
   isMarkedMovie,
   markMovie,
   rateMovie,
   unmarkMovie,
+  updateHomeList,
 };

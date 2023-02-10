@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 
 import TextButton from 'components/TextButton';
 import styled from 'styled-components';
-import { MOVIE, STYLE } from 'utils/constants';
+import { DATA, STYLE } from 'utils/constants';
 import { throttle } from 'utils/throttle';
 
 type HorizontalContainerType = {
@@ -16,7 +16,7 @@ const Layout = styled.div`
   gap: 10px;
 `;
 
-const Info = styled.div`
+const TextWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,7 +27,13 @@ const Info = styled.div`
   }
 `;
 
-const Title = styled.h1`
+const Info = styled.div`
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+`;
+
+const Category = styled.h1`
   font-size: 20px;
 
   @media screen and (max-width: 550px) {
@@ -36,7 +42,6 @@ const Title = styled.h1`
 `;
 
 const ChildrenCount = styled.span`
-  margin-left: 5px;
   color: rgb(155, 155, 155);
 
   font-size: 18px;
@@ -70,6 +75,7 @@ const Wrapper = styled.div`
 
 function HorizontalContainer({ children, category }: HorizontalContainerType) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [isShown, setShown] = useState(true);
   const [canScroll, setCanScroll] = useState(false);
   const [mouseDownX, setMouseDownX] = useState(0);
 
@@ -98,17 +104,17 @@ function HorizontalContainer({ children, category }: HorizontalContainerType) {
 
   return (
     <Layout>
-      <Info>
-        <Title>
-          <span>{MOVIE.CATEGORY_NAME[category]}</span>
+      <TextWrapper>
+        <Info onClick={() => setShown((v) => !v)}>
+          <Category>{DATA.CATEGORY_NAME[category]}</Category>
           <ChildrenCount>({children.length})</ChildrenCount>
-        </Title>
+        </Info>
         {Boolean(children.length) && (
           <TextButton hover='opacity' color={STYLE.MAIN_COLOR} path={category}>
             모두 보기
           </TextButton>
         )}
-      </Info>
+      </TextWrapper>
       <Wrapper
         ref={scrollRef}
         onMouseDown={onDragStartByMouse}
@@ -119,7 +125,7 @@ function HorizontalContainer({ children, category }: HorizontalContainerType) {
         onTouchEnd={onDragEnd}
         onTouchMove={onDragByTouch}
       >
-        {children}
+        {isShown && children}
       </Wrapper>
     </Layout>
   );

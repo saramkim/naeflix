@@ -3,7 +3,7 @@ import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 import { useScrollDistance } from 'hooks/useScrollDistance';
 import { AiOutlineDownCircle } from 'react-icons/ai';
 import styled from 'styled-components';
-import { MOVIE } from 'utils/constants';
+import { DATA } from 'utils/constants';
 
 type VerticalContainerType = {
   children: React.ReactNode[];
@@ -73,7 +73,7 @@ function VerticalContainer({
     <Layout>
       {category && (
         <Title>
-          <span>{MOVIE.CATEGORY_NAME[category] || category}</span>
+          <span>{DATA.CATEGORY_NAME[category] || category}</span>
           <ChildrenCount>({children.length})</ChildrenCount>
         </Title>
       )}

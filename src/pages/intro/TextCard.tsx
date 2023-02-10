@@ -5,17 +5,18 @@ import { STYLE } from 'utils/constants';
 import StartForm from './StartForm';
 
 const TextCardLayout = styled.div`
-  height: 800px;
-  padding: 80px 0 120px 0;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: space-around;
-  border-bottom: ${STYLE.BORDER_BOTTOM};
-  box-shadow: inset 0px -200px 100px -80px rgba(0, 0, 0, 0.75);
   position: relative;
+  border-bottom: ${STYLE.BORDER_BOTTOM};
+  box-shadow: inset 0px -200px 100px -80px rgba(255, 255, 255, 0.15);
+
+  height: 800px;
+  padding: 80px 0 120px 0;
 
   @media screen and (max-width: 550px) {
     height: 600px;

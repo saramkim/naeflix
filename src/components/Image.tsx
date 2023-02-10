@@ -1,6 +1,6 @@
 import noImage from 'assets/no-image.jpg';
 import styled from 'styled-components';
-import { MOVIE } from 'utils/constants';
+import { DATA } from 'utils/constants';
 
 type ImageType = { width: 154 | 342; path: string | null };
 
@@ -25,7 +25,7 @@ const Image342 = styled.img`
 `;
 
 function Image({ width, path }: ImageType) {
-  const IMAGE_SRC = path ? MOVIE.IMG_BASE_URL(width) + path : noImage;
+  const IMAGE_SRC = path ? DATA.IMG_BASE_URL(width) + path : noImage;
 
   if (width === 154) return <Image154 src={IMAGE_SRC} alt='image-154' />;
   return <Image342 src={IMAGE_SRC} alt='image-342' />;
