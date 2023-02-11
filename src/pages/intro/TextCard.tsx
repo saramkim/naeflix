@@ -58,10 +58,10 @@ const SubTitle = styled.h2`
 function TextCard() {
   return (
     <TextCardLayout>
+      <Title>My Flicks, Naeflix</Title>
       <TypingText term={100} fontSize={64}>
-        나의 영화 컬렉션
+        나만의 영화 컬렉션
       </TypingText>
-      <Title>My Flicks, 내플릭스(NAEFLIX)</Title>
       <SubTitle>나의 영화를 기록하세요.</SubTitle>
       <StartForm />
     </TextCardLayout>
