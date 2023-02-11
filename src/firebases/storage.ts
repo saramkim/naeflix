@@ -22,3 +22,4 @@ const deleteImage = (photoURL: string) => {
 };
 
 export { deleteImage, uploadImage };
+
