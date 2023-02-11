@@ -2,16 +2,8 @@
   "short_name": "Naeflix",
   "name": "Naeflix",
   "icons": [
-    {
-      "src": "Netflix_Symbol_RGB.png",
-      "sizes": "1801x756",
-      "type": "image/png"
-    },
-    {
-      "src": "naeflix-logo.png",
-      "sizes": "446x120",
-      "type": "image/png"
-    }
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
   ],
   "start_url": "https://saramkim.github.io/naeflix/",
   "display": "browser",
