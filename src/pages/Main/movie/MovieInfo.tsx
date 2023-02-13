@@ -15,6 +15,7 @@ import RatingStar from '../RatingStar';
 
 import Comment from './Comment';
 import CommentIcon from './CommentIcon';
+import Trailer from './Trailer';
 
 const Backdrop = styled.div<{ backgroundImg: string }>`
   background-color: rgba(0, 0, 0, 0.75);
@@ -56,6 +57,10 @@ const MovieInfoLayout = styled.div`
     padding: 30px;
     gap: 30px;
   }
+`;
+
+const Poster = styled.div`
+  cursor: pointer;
 `;
 
 const Content = styled.div`
@@ -143,6 +148,7 @@ function MovieInfo({ id }: { id: string }) {
   const { isMarked, setMarked } = useMark(id);
   const { comment, setComment } = useComment(id);
   const [isShown, setShown] = useState(true);
+  const [isTrailer, setTrailer] = useState(false);
   const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
 
   useEffect(() => setShown(true), [id]);
@@ -166,48 +172,54 @@ function MovieInfo({ id }: { id: string }) {
           isMobile ? DATA.IMG_BASE_URL(780) + poster_path : DATA.IMG_BASE_URL(780) + backdrop_path
         }
       >
-        <MovieInfoLayout>
-          <Image width={342} path={poster_path} />
-          <Content>
-            <GenreWraaper>
-              {genres.map((genre) => (
-                <GenreButton key={genre.id} genre={genre.name} fontSize={16} />
-              ))}
-            </GenreWraaper>
-            <TitleWrapper>
-              <Title>{title}</Title>
-              <MarkingButton
-                id={id}
-                isMarked={isMarked}
-                setMarked={setMarked}
-                setStar={setStar}
-                setComment={setComment}
-                setShown={setShown}
-              />
-              <RatingStar
-                id={id}
-                star={star}
-                setStar={setStar}
-                setMarked={setMarked}
-                size={50}
-                readonly={false}
-              />
-            </TitleWrapper>
-            <Created>
-              {release_date} {production_countries.map((country) => `(${country.iso_3166_1}) `)}
-              {runtime !== undefined && runtime > 0 && `${runtime}분`}
-            </Created>
-            {isShown ? (
-              <Tagline comment={comment}>
-                {comment || tagline}
-                {isMarked && <CommentIcon setShown={setShown} />}
-              </Tagline>
-            ) : (
-              <Comment id={id} setShown={setShown} comment={comment} setComment={setComment} />
-            )}
-            {overview && <Overview>{overview}</Overview>}
-          </Content>
-        </MovieInfoLayout>
+        {isTrailer ? (
+          <Trailer id={id} setTrailer={setTrailer} />
+        ) : (
+          <MovieInfoLayout>
+            <Poster onClick={() => setTrailer(true)}>
+              <Image width={342} path={poster_path} />
+            </Poster>
+            <Content>
+              <GenreWraaper>
+                {genres.map((genre) => (
+                  <GenreButton key={genre.id} genre={genre.name} fontSize={16} />
+                ))}
+              </GenreWraaper>
+              <TitleWrapper>
+                <Title>{title}</Title>
+                <MarkingButton
+                  id={id}
+                  isMarked={isMarked}
+                  setMarked={setMarked}
+                  setStar={setStar}
+                  setComment={setComment}
+                  setShown={setShown}
+                />
+                <RatingStar
+                  id={id}
+                  star={star}
+                  setStar={setStar}
+                  setMarked={setMarked}
+                  size={50}
+                  readonly={false}
+                />
+              </TitleWrapper>
+              <Created>
+                {release_date} {production_countries.map((country) => `(${country.iso_3166_1}) `)}
+                {runtime !== undefined && runtime > 0 && `${runtime}분`}
+              </Created>
+              {isShown ? (
+                <Tagline comment={comment}>
+                  {comment || tagline}
+                  {isMarked && <CommentIcon setShown={setShown} />}
+                </Tagline>
+              ) : (
+                <Comment id={id} setShown={setShown} comment={comment} setComment={setComment} />
+              )}
+              {overview && <Overview>{overview}</Overview>}
+            </Content>
+          </MovieInfoLayout>
+        )}
       </Backdrop>
     );
   }

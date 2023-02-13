@@ -58,7 +58,7 @@ Skills: **React, Typescript, Firebase**
 
   - [x] 관련 인물
 
-  - [ ] 예고편
+  - [x] 예고편
 
 - 인물 상세
 

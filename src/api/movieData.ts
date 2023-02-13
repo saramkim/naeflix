@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { MovieDataType, MovieType, SearchMovieDataType } from './movieType';
+import { MovieDataType, MovieType, SearchMovieDataType, TrailerType } from './movieType';
 
 const getMovies = async (title: string, page: number) => {
   const response = await axios.get(
@@ -47,4 +47,19 @@ const getTrending = async (period: 'day' | 'week', page: number) => {
   return results;
 };
 
-export { getMovieData, getMovies, getRecommendationMovies, getTopRatedMovies, getTrending };
+const getTrailer = async (id: string) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+  );
+  const { results }: { results: TrailerType[] } = response.data;
+  return results[0];
+};
+
+export {
+  getMovieData,
+  getMovies,
+  getRecommendationMovies,
+  getTopRatedMovies,
+  getTrailer,
+  getTrending,
+};
