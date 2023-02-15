@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 
+import { getMovieData } from 'api/movieData';
 import Image from 'components/Image';
-import { useComment } from 'hooks/useComment';
-import { useMark } from 'hooks/useMark';
-import { useMovieData } from 'hooks/useMovieData';
-import { useStar } from 'hooks/useStar';
+import { getComment, getStar, isMarkedMovie } from 'firebases/firestore';
+import { useData } from 'hooks/useData';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import { DATA } from 'utils/constants';
@@ -143,10 +142,28 @@ const Overview = styled.p`
 `;
 
 function MovieInfo({ id }: { id: string }) {
-  const movieData = useMovieData(id);
-  const { star, setStar } = useStar(id);
-  const { isMarked, setMarked } = useMark(id);
-  const { comment, setComment } = useComment(id);
+  const { data: movieData } = useData({
+    callback: getMovieData,
+    initailValue: null,
+    id,
+  });
+
+  const { data: star, setData: setStar } = useData({
+    callback: getStar,
+    initailValue: 0,
+    id,
+  });
+  const { data: isMarked, setData: setMarked } = useData({
+    callback: isMarkedMovie,
+    initailValue: false,
+    id,
+  });
+  const { data: comment, setData: setComment } = useData({
+    callback: getComment,
+    initailValue: '',
+    id,
+  });
+
   const [isShown, setShown] = useState(true);
   const [isTrailer, setTrailer] = useState(false);
   const isMobile = useMediaQuery({ query: '(max-width: 550px)' });

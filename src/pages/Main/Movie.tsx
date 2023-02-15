@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { MovieType } from 'api/movieType';
 import Image from 'components/Image';
-import { useMark } from 'hooks/useMark';
-import { useStar } from 'hooks/useStar';
+import { getStar, isMarkedMovie } from 'firebases/firestore';
+import { useData } from 'hooks/useData';
 import styled from 'styled-components';
 
 import MarkingButton from './MarkingButton';
@@ -46,11 +46,20 @@ const Title = styled.h1`
   }
 `;
 
-function Movie({ title, poster_path, id }: MovieType) {
+function Movie({ title, poster_path, id: idNumber }: MovieType) {
+  const id = idNumber.toString();
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
-  const { star, setStar } = useStar(id.toString());
-  const { isMarked, setMarked } = useMark(id.toString());
+  const { data: star, setData: setStar } = useData({
+    callback: getStar,
+    initailValue: 0,
+    id,
+  });
+  const { data: isMarked, setData: setMarked } = useData({
+    callback: isMarkedMovie,
+    initailValue: false,
+    id,
+  });
 
   const onClickMovie = () => navigate(`/main/movie/${id}`);
 
@@ -66,17 +75,12 @@ function Movie({ title, poster_path, id }: MovieType) {
         <Image width={154} path={poster_path} />
         {isShown && (
           <Content>
-            <MarkingButton
-              id={id.toString()}
-              isMarked={isMarked}
-              setMarked={setMarked}
-              setStar={setStar}
-            />
+            <MarkingButton id={id} isMarked={isMarked} setMarked={setMarked} setStar={setStar} />
 
             <Title>{title}</Title>
 
             <RatingStar
-              id={id.toString()}
+              id={id}
               star={star}
               setStar={setStar}
               setMarked={setMarked}
@@ -99,19 +103,14 @@ function Movie({ title, poster_path, id }: MovieType) {
       <Image width={154} path={poster_path} />
       <Content>
         {isShown && (
-          <MarkingButton
-            id={id.toString()}
-            isMarked={isMarked}
-            setMarked={setMarked}
-            setStar={setStar}
-          />
+          <MarkingButton id={id} isMarked={isMarked} setMarked={setMarked} setStar={setStar} />
         )}
 
         <Title>{title}</Title>
 
         {isShown && (
           <RatingStar
-            id={id.toString()}
+            id={id}
             star={star}
             setStar={setStar}
             setMarked={setMarked}

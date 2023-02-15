@@ -1,11 +1,17 @@
-import { useCredits } from 'hooks/useCredits';
+import { getCredits } from 'api/personData';
+import { CreditsDataType } from 'api/personType';
+import { useData } from 'hooks/useData';
 
 import HorizontalContainer from '../HorizontalContainer';
 import Person from '../Person';
 import VerticalContainer from '../VerticalContainer';
 
 function Credits({ id, direction }: { id: string; direction: 'vertical' | 'horizontal' }) {
-  const credits = useCredits(id);
+  const { data: credits } = useData<CreditsDataType[]>({
+    callback: getCredits,
+    initailValue: [],
+    id,
+  });
 
   if (direction === 'vertical')
     return (

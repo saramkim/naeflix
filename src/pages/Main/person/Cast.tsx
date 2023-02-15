@@ -1,11 +1,16 @@
-import { usePersonCredits } from 'hooks/usePersonCredits';
+import { getPersonCredits } from 'api/personData';
+import { useData } from 'hooks/useData';
 
 import HorizontalContainer from '../HorizontalContainer';
 import Movie from '../Movie';
 import VerticalContainer from '../VerticalContainer';
 
 function Cast({ id, direction }: { id: string; direction: 'vertical' | 'horizontal' }) {
-  const credits = usePersonCredits(id);
+  const { data: credits } = useData({
+    callback: getPersonCredits,
+    initailValue: null,
+    id,
+  });
 
   if (credits) {
     const { cast } = credits;

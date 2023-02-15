@@ -1,5 +1,6 @@
+import { getPersonData } from 'api/personData';
 import Image from 'components/Image';
-import { usePersonData } from 'hooks/usePersonData';
+import { useData } from 'hooks/useData';
 import styled from 'styled-components';
 
 import Info from './Info';
@@ -40,7 +41,11 @@ const Name = styled.h1`
 `;
 
 function PersonInfo({ id }: { id: string }) {
-  const personData = usePersonData(id);
+  const { data: personData } = useData({
+    callback: getPersonData,
+    initailValue: null,
+    id,
+  });
 
   if (personData) {
     const { profile_path, name, known_for_department, birthday, deathday, place_of_birth } =

@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
 import Popup from 'components/Popup';
-import { updateHomeList } from 'firebases/firestore';
-import { useHomeList } from 'hooks/useHomeList';
+import { getHomeList, updateHomeList } from 'firebases/firestore';
+import { useData } from 'hooks/useData';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import { DATA, STYLE } from 'utils/constants';
@@ -50,13 +50,17 @@ const Category = styled.span`
 `;
 
 function ListEditor() {
-  const { list, setList } = useHomeList();
+  const { data: homeList, setData: setHomeList } = useData({
+    callback: getHomeList,
+    initailValue: [],
+    defaultValue: DATA.HOME_LIST,
+  });
   const navigate = useNavigate();
   const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
 
   const onListChange = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    updateHomeList(list).then(() => {
+    updateHomeList(homeList).then(() => {
       navigate('/main');
       window.location.reload();
     });
@@ -71,17 +75,16 @@ function ListEditor() {
             {DATA.HOME_LIST.map((category) => (
               <Checkbox
                 category={category}
-                setList={setList}
-                checked={list.includes(category)}
+                setList={setHomeList}
+                checked={homeList.includes(category)}
                 key={category}
               />
             ))}
           </ListWrapper>
           <ListWrapper>
-            {list &&
-              list.map((category) => (
-                <Category key={category}>{DATA.CATEGORY_NAME[category]}</Category>
-              ))}
+            {homeList.map((category) => (
+              <Category key={category}>{DATA.CATEGORY_NAME[category]}</Category>
+            ))}
           </ListWrapper>
         </Context>
         <Button fontSize={isMobile ? 16 : 20} padding={isMobile ? '12px' : '16px'}>

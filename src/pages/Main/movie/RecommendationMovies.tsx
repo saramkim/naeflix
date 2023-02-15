@@ -1,4 +1,5 @@
-import { useRecommendation } from 'hooks/useRecommendation';
+import { getRecommendationMovies } from 'api/movieData';
+import { useData } from 'hooks/useData';
 
 import HorizontalContainer from '../HorizontalContainer';
 import Movie from '../Movie';
@@ -11,7 +12,11 @@ function RecommendationMovies({
   id: string;
   direction: 'vertical' | 'horizontal';
 }) {
-  const recommendationMovieList = useRecommendation(id);
+  const { data: recommendationMovieList } = useData({
+    callback: getRecommendationMovies,
+    initailValue: [],
+    id,
+  });
 
   if (direction === 'vertical')
     return (

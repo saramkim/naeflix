@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
-import TextButton from 'components/TextButton';
-import { useHomeList } from 'hooks/useHomeList';
+import { getHomeList } from 'firebases/firestore';
+import { useData } from 'hooks/useData';
 import styled from 'styled-components';
 import { DATA, STYLE } from 'utils/constants';
 
@@ -22,8 +22,12 @@ const HomeLayout = styled.div`
 `;
 
 function Home() {
-  const { list: customList } = useHomeList();
-  const homeList = customList || DATA.HOME_LIST;
+  const { data: homeList } = useData<string[]>({
+    callback: getHomeList,
+    initailValue: [],
+    defaultValue: DATA.HOME_LIST,
+  });
+
   const Components = {
     'top-rated': <TopRatedMovies direction='horizontal' key='top-rated' />,
     'trending-day': <Trending period='day' direction='horizontal' key='trending-day' />,

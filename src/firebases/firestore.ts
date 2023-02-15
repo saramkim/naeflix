@@ -58,13 +58,24 @@ const getMarkedMovie = async (id?: string) => {
   return {};
 };
 
+const getComment = async (id: string) => {
+  const data = await getMarkedMovie(id);
+  return data ? data.comment : '';
+};
+
+const getStar = async (id: string) => {
+  const data = await getMarkedMovie(id);
+  return data ? data.rating : 0;
+};
+
 const getHomeList = async () => {
   const docSnap = await getDoc(listRef(uid()));
   if (docSnap.exists()) {
-    const { home } = docSnap.data();
+    const data: { [key: string]: string[] } = docSnap.data();
+    const { home } = data;
     return home;
   }
-  return {};
+  return [];
 };
 
 const updateHomeList = async (list: string[]) => updateDoc(listRef(uid()), { home: list });
@@ -73,8 +84,10 @@ export {
   commentMovie,
   createUserDoc,
   deleteUserDoc,
+  getComment,
   getHomeList,
   getMarkedMovie,
+  getStar,
   isMarkedMovie,
   markMovie,
   rateMovie,
