@@ -4,7 +4,15 @@ Skills: **React, Typescript, Firebase**
 
 테스트 계정: test123@test.com / 123456
 
-</br>
+## 갑자기 보안 경고(사기성 사이트 주의)가 뜨고 있습니다.
+
+이전에도 발생하여 해결한 문제인데, 느닷 없이 또 발생하여 검토 요청한 상태입니다. (피드백까지 최소 3일이 걸리니 양해 부탁드립니다.)
+
+그리고 당연히 피싱 사이트 아닙니다..
+
+### 세부정보(크롬) or 더보기(엣지)를 누르시면 사이트에 연결 가능합니다.
+
+---
 
 시청한 영화를 기록하고, 평점과 한줄평을 남길 수 있는 웹 사이트.
 
@@ -12,7 +20,7 @@ Skills: **React, Typescript, Firebase**
 
 \*PC, 태블릿, 모바일 모두 이용 가능.
 
-<br/>
+### [시현 영상](https://youtu.be/GFiRs4t9ITw)
 
 [![Naeflix 시현 영상](https://img.youtube.com/vi/GFiRs4t9ITw/0.jpg)](https://youtu.be/GFiRs4t9ITw?t=0s)
 
