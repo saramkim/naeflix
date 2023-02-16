@@ -14,6 +14,10 @@ Skills: **React, Typescript, Firebase**
 
 <br/>
 
+[![Naeflix 시현 영상](https://img.youtube.com/vi/GFiRs4t9ITw/0.jpg)](https://youtu.be/GFiRs4t9ITw?t=0s)
+
+<br/>
+
 ## 기능 목록
 
 - 회원가입
