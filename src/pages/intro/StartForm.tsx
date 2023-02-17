@@ -6,6 +6,7 @@ import Input from 'components/Input';
 import { checkUserExist } from 'firebases/user';
 import { useInput } from 'hooks/useInput';
 import { useAppDispatch } from 'hooks/useRedux';
+import { useMediaQuery } from 'react-responsive';
 import { setEmail } from 'store/emailSlice';
 import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
@@ -16,10 +17,6 @@ const Form = styled.form`
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-
-  @media screen and (min-width: 550px) and (max-width: 950px) {
-    max-width: 500px;
-  }
 `;
 
 const FormTitle = styled.h3`
@@ -38,15 +35,9 @@ const InputContainer = styled.div`
   display: grid;
   grid-template-columns: 2.5fr 1fr;
   width: 100%;
+  color: black;
 
-  @media screen and (max-width: 550px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  @media screen and (min-width: 550px) and (max-width: 950px) {
+  @media screen and (max-width: 950px) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,6 +50,7 @@ function StartForm() {
   const { onChange, isValid } = useInput(inputRef, REG_EX.EMAIL);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,7 +59,7 @@ function StartForm() {
       checkUserExist(inputRef.current!.value).then((result) =>
         result ? navigate('/login') : navigate('/signup')
       );
-    }
+    } else if (!inputRef.current!.value) navigate('/signup');
   };
 
   return (
@@ -81,7 +73,7 @@ function StartForm() {
           warning={PHRASE.EMAIL_WARNING}
           isValid={isValid}
         />
-        <Button fontSize={26} hover>
+        <Button fontSize={isMobile ? 22 : 26} hover>
           시작하기 &gt;
         </Button>
       </InputContainer>

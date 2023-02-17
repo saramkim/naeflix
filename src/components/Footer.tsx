@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const FooterLayout = styled.div<{ background?: string }>`
   padding: 80px 80px;
-  color: rgb(111, 111, 111);
+  color: rgb(125, 125, 125);
   background-color: ${({ background }) => background || 'inherit'};
 
   @media screen and (max-width: 550px) {
@@ -22,7 +22,7 @@ const ContentWrapper = styled.div`
 const Inquiry = styled.span`
   font-size: 15px;
   padding-bottom: 30px;
-  border-bottom: 1px solid rgb(111, 111, 111);
+  border-bottom: 1px solid rgb(125, 125, 125);
 `;
 
 const Info = styled.p`

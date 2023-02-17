@@ -22,7 +22,7 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
 
   margin-bottom: 50px;
 
@@ -39,7 +39,7 @@ function Genre() {
     <GenreLayout>
       <ButtonContainer>
         {GENRE.map((genre) => (
-          <GenreButton key={genre.id} genre={genre.name} fontSize={20} />
+          <GenreButton key={genre.id} genre={genre.name} fontSize={18} />
         ))}
       </ButtonContainer>
       <VerticalContainer category={genre}>

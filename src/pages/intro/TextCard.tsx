@@ -42,16 +42,16 @@ const Title = styled.h1`
 `;
 
 const SubTitle = styled.h2`
-  font-size: 30px;
-  line-height: 38px;
+  font-size: 34px;
+  line-height: 42px;
 
   @media screen and (max-width: 550px) {
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 22px;
+    line-height: 28px;
   }
   @media screen and (min-width: 550px) and (max-width: 950px) {
-    font-size: 26px;
-    line-height: 32px;
+    font-size: 30px;
+    line-height: 38px;
   }
 `;
 

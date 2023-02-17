@@ -30,11 +30,10 @@ const InputBox = styled.input<{ isWrong: boolean; background?: string }>`
 
 const Label = styled.label<{ top: number; fontSize: number }>`
   position: absolute;
-  pointer-events: none;
+  color: rgb(125, 125, 125);
   left: 10px;
   top: ${({ top }) => top}px;
   font-size: ${({ fontSize }) => fontSize}px;
-  color: gray;
   transition: font 0.1s ease, top 0.1s ease, transform 0.1s ease;
   transition: font 0.1s ease, top 0.1s ease, transform 0.1s ease, -webkit-transform 0.1s ease,
     -moz-transform 0.1s ease, -o-transform 0.1s ease;
@@ -85,8 +84,9 @@ function Input(
         isWrong={isWrong}
         type={type || 'text'}
         background={background}
+        id='input'
       />
-      <Label top={top} fontSize={fontSize}>
+      <Label top={top} fontSize={fontSize} htmlFor='input'>
         {label}
       </Label>
       {isWrong && <Warning>{warning}</Warning>}

@@ -11,16 +11,17 @@ const PersonInfoLayout = styled.div`
   justify-content: center;
   align-items: center;
   margin: auto;
+  gap: 30px 50px;
 
   height: 600px;
   padding: 50px;
-  gap: 50px;
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 950px) {
     height: auto;
-    padding: 30px;
-    gap: 30px;
     flex-direction: column;
+  }
+  @media screen and (max-width: 550px) {
+    padding: 30px;
   }
 `;
 
@@ -29,15 +30,22 @@ const Content = styled.div`
   flex-direction: column;
   gap: 30px;
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 950px) {
     gap: 20px;
   }
 `;
 
 const Name = styled.h1`
   flex-wrap: wrap;
-  font-size: 50px;
   width: fit-content;
+
+  font-size: 45px;
+  line-height: 55px;
+
+  @media screen and (max-width: 550px) {
+    font-size: 35px;
+    line-height: 42px;
+  }
 `;
 
 function PersonInfo({ id }: { id: string }) {

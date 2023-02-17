@@ -17,7 +17,6 @@ import CommentIcon from './CommentIcon';
 import Trailer from './Trailer';
 
 const Backdrop = styled.div<{ backgroundImg: string }>`
-  background-color: rgba(0, 0, 0, 0.75);
   background-image: url(${({ backgroundImg }) => backgroundImg});
   background-size: cover;
   position: relative;
@@ -37,7 +36,7 @@ const Backdrop = styled.div<{ backgroundImg: string }>`
     background-color: black;
   }
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 950px) {
     height: auto;
   }
 `;
@@ -47,14 +46,15 @@ const MovieInfoLayout = styled.div`
   max-width: 1280px;
   display: flex;
   align-items: center;
+  gap: 30px 50px;
 
   padding: 50px;
-  gap: 50px;
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 950px) {
     flex-direction: column;
+  }
+  @media screen and (max-width: 550px) {
     padding: 30px;
-    gap: 30px;
   }
 `;
 
@@ -68,7 +68,7 @@ const Content = styled.div`
 
   gap: 20px;
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 950px) {
     gap: 15px;
   }
 `;
@@ -76,7 +76,6 @@ const Content = styled.div`
 const GenreWraaper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   gap: 10px;
 `;
 
@@ -85,33 +84,23 @@ const TitleWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
   width: fit-content;
+  gap: 10px;
 
-  font-size: 50px;
-  line-height: 60px;
-  gap: 15px;
+  font-size: 45px;
+  line-height: 55px;
 
   @media screen and (max-width: 550px) {
     font-size: 35px;
-    line-height: 40px;
-    gap: 10px;
-  }
-  @media screen and (min-width: 550px) and (max-width: 950px) {
-    font-size: 40px;
-    line-height: 45px;
-    gap: 10px;
+    line-height: 42px;
   }
 `;
 
 const Title = styled.h1`
   font-weight: bold;
-
-  @media screen and (min-width: 550px) and (max-width: 950px) {
-    word-break: normal;
-  }
 `;
 
 const Created = styled.span`
-  color: rgb(180, 180, 180);
+  color: rgb(155, 155, 155);
 
   font-size: 22px;
 
@@ -147,7 +136,7 @@ const Overview = styled.p`
 
   @media screen and (max-width: 550px) {
     font-size: 14px;
-    line-height: 16px;
+    line-height: 20px;
   }
 `;
 
@@ -157,7 +146,6 @@ function MovieInfo({ id }: { id: string }) {
     initailValue: null,
     id,
   });
-
   const { data: star, setData: setStar } = useData({
     callback: getStar,
     initailValue: 0,
@@ -173,7 +161,6 @@ function MovieInfo({ id }: { id: string }) {
     initailValue: '',
     id,
   });
-
   const [isShown, setShown] = useState(true);
   const [isTrailer, setTrailer] = useState(false);
   const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
@@ -227,7 +214,7 @@ function MovieInfo({ id }: { id: string }) {
                   star={star}
                   setStar={setStar}
                   setMarked={setMarked}
-                  size={50}
+                  size={isMobile ? 40 : 50}
                   readonly={false}
                 />
               </TitleWrapper>
