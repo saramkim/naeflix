@@ -87,6 +87,7 @@ const TitleWrapper = styled.div`
   width: fit-content;
 
   font-size: 50px;
+  line-height: 60px;
   gap: 15px;
 
   @media screen and (max-width: 550px) {
@@ -94,10 +95,19 @@ const TitleWrapper = styled.div`
     line-height: 40px;
     gap: 10px;
   }
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    font-size: 40px;
+    line-height: 45px;
+    gap: 10px;
+  }
 `;
 
 const Title = styled.h1`
   font-weight: bold;
+
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    word-break: normal;
+  }
 `;
 
 const Created = styled.span`

@@ -65,25 +65,6 @@ function Person({
 
   const onClickPerson = () => navigate(`/main/person/${id}`);
 
-  if (profile_path)
-    return (
-      <PersonLayout
-        onClick={onClickPerson}
-        onMouseEnter={() => setIsShown(true)}
-        onMouseLeave={() => setIsShown(false)}
-        onTouchStart={() => setIsShown(true)}
-        onTouchEnd={() => setIsShown(false)}
-      >
-        <Image width={154} path={profile_path} />
-        {isShown && (
-          <Content>
-            <Name>{name}</Name>
-            <Info>{department || character || known_for_department}</Info>
-          </Content>
-        )}
-      </PersonLayout>
-    );
-
   return (
     <PersonLayout
       onClick={onClickPerson}
@@ -93,10 +74,19 @@ function Person({
       onTouchEnd={() => setIsShown(false)}
     >
       <Image width={154} path={profile_path} />
-      <Content>
-        <Name>{name}</Name>
-        {isShown && <Info>{department || character || known_for_department}</Info>}
-      </Content>
+      {profile_path ? (
+        isShown && (
+          <Content>
+            <Name>{name}</Name>
+            <Info>{department || character || known_for_department}</Info>
+          </Content>
+        )
+      ) : (
+        <Content>
+          <Name>{name}</Name>
+          {isShown && <Info>{department || character || known_for_department}</Info>}
+        </Content>
+      )}
     </PersonLayout>
   );
 }

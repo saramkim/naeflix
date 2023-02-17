@@ -16,7 +16,7 @@ export const useData = <T>({ callback, initailValue, id, defaultValue }: useData
       if (value) setData(value);
       else setData(defaultValue || initailValue);
     })();
-  }, []);
+  }, [id]);
 
   return { data, setData };
 };
