@@ -1,15 +1,33 @@
 import { getAuth, User } from 'firebase/auth';
 import {
+  addDoc,
+  collection,
   deleteDoc,
   deleteField,
   doc,
   getDoc,
+  getDocs,
   getFirestore,
+  orderBy,
+  query,
   setDoc,
   updateDoc,
 } from 'firebase/firestore';
 
 import app from './firebase';
+
+interface MarkBestMovieProps {
+  id: string;
+  title: string;
+  comment: string;
+  posterPath: string | null;
+}
+
+export interface MarkBestMovieType extends MarkBestMovieProps {
+  user: { uid: string; displayName: string; photoURL: string };
+  timestamp: number;
+  docId: string;
+}
 
 const db = getFirestore(app);
 const auth = getAuth();
@@ -80,15 +98,43 @@ const getHomeList = async () => {
 
 const updateHomeList = async (list: string[]) => updateDoc(listRef(uid()), { home: list });
 
+const markBestMovie = async ({ id, title, comment, posterPath }: MarkBestMovieProps) => {
+  const { uid, displayName, photoURL } = auth.currentUser!;
+  return addDoc(collection(db, 'best'), {
+    id,
+    title,
+    posterPath,
+    comment,
+    user: { uid, displayName, photoURL },
+    timestamp: Date.now(),
+  });
+};
+
+const getBestMovieList = async () => {
+  const bestMovieList: MarkBestMovieType[] = [];
+  const q = query(collection(db, 'best'), orderBy('timestamp', 'desc'));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    const data = doc.data() as MarkBestMovieType;
+    bestMovieList.push({ ...data, docId: doc.id });
+  });
+  return bestMovieList;
+};
+
+const deleteBestMovie = async (docId: string) => deleteDoc(doc(db, 'best', docId));
+
 export {
   commentMovie,
   createUserDoc,
+  deleteBestMovie,
   deleteUserDoc,
+  getBestMovieList,
   getComment,
   getHomeList,
   getMarkedMovie,
   getStar,
   isMarkedMovie,
+  markBestMovie,
   markMovie,
   rateMovie,
   unmarkMovie,

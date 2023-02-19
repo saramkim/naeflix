@@ -12,7 +12,7 @@ function RecommendationMovies({
   id: string;
   direction: 'vertical' | 'horizontal';
 }) {
-  const { data: recommendationMovieList } = useData({
+  const [recommendationMovieList] = useData({
     callback: getRecommendationMovies,
     initailValue: [],
     id,

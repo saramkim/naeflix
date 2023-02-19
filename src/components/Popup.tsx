@@ -11,7 +11,7 @@ const Background = styled.div`
   top: 0;
   left: 0;
   z-index: 10;
-`;
+`
 
 const PopupLayout = styled.div`
   background-color: ${STYLE.ACCOUNT_COLOR};

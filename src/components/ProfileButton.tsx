@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import defaultProfile from 'assets/kakao-profile.jpg';
 import { getAuth, signOut } from 'firebase/auth';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
 
+import ProfileImage from './ProfileImage';
 import TextButton from './TextButton';
 
 const ProfileButtonLayout = styled.div`
@@ -29,11 +29,7 @@ const InitialBox = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-`;
-
-const ProfileImage = styled.img`
-  height: 100%;
-  margin-right: 6px;
+  gap: 6px;
 `;
 
 const DropBox = styled.div`
@@ -93,12 +89,14 @@ function ProfileButton() {
       onClick={() => setIsShown((v) => !v)}
     >
       <InitialBox>
-        <ProfileImage src={photoURL || defaultProfile} alt='profile-img' /> ▼
+        <ProfileImage size={40} src={photoURL} />
+        <div>▼</div>
       </InitialBox>
       {isShown && (
         <DropBox>
           {isMobile ? (
             <>
+              <TextButton path='/main/cinema'>인생 영화</TextButton>
               <TextButton path='/main/top-rated'>높은 평점</TextButton>
               <TextButton path='/main/genre'>장르</TextButton>
               <TextButton path='/account'>계정</TextButton>

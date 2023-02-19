@@ -1,13 +1,8 @@
-import defaultProfile from 'assets/kakao-profile.jpg';
+import ProfileImage from 'components/ProfileImage';
 import TextButton from 'components/TextButton';
 import { getAuth } from 'firebase/auth';
-import styled from 'styled-components';
 
 import ContentLayout from './ContentLayout';
-
-const Image = styled.img`
-  height: 150px;
-`;
 
 function ProfileImg() {
   const auth = getAuth();
@@ -15,7 +10,7 @@ function ProfileImg() {
 
   return (
     <ContentLayout>
-      <Image src={photoURL || defaultProfile} alt='profile-img' />
+      <ProfileImage size={150} src={photoURL} />
       <TextButton color='rgb(0, 115, 232)' fontSize={16} path='profile'>
         프로필 사진 변경
       </TextButton>

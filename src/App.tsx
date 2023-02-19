@@ -16,7 +16,9 @@ import Intro from 'pages/intro/Intro';
 import HelpPopup from 'pages/login/HelpPopup';
 import Login from 'pages/login/Login';
 import PhoneNumberLoginPopup from 'pages/login/PhoneNumberLoginPopup';
+import Best from 'pages/Main/best/Best';
 import Category from 'pages/Main/category/Category';
+import Cinema from 'pages/Main/cinema/Cinema';
 import Genre from 'pages/Main/genre/Genre';
 import Home from 'pages/Main/home/Home';
 import ListEditor from 'pages/Main/home/ListEditor';
@@ -63,11 +65,13 @@ function App() {
             <Route path='edit-list' element={<ListEditor />} />
           </Route>
           <Route path=':category' element={<Category />} />
-          <Route path='search' element={<Search />} />
           <Route path='movie/:id' element={<MovieDetail />} />
           <Route path='movie/:id/:category' element={<Category />} />
           <Route path='person/:id' element={<PersonDetail />} />
           <Route path='person/:id/:category' element={<Category />} />
+          <Route path='search' element={<Search />} />
+          <Route path='best' element={<Best />} />
+          <Route path='cinema' element={<Cinema />} />
           <Route path='genre' element={<Genre />} />
           <Route path='genre/:genre' element={<Genre />} />
         </Route>

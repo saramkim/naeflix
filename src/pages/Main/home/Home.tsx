@@ -22,7 +22,7 @@ const HomeLayout = styled.div`
 `;
 
 function Home() {
-  const { data: homeList } = useData<string[]>({
+  const [homeList] = useData<string[]>({
     callback: getHomeList,
     initailValue: [],
     defaultValue: DATA.HOME_LIST,

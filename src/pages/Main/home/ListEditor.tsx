@@ -32,7 +32,7 @@ const Title = styled.h1`
   }
 `;
 
-const Context = styled.div`
+const Content = styled.div`
   display: flex;
   justify-content: space-between;
 `;
@@ -50,7 +50,7 @@ const Category = styled.span`
 `;
 
 function ListEditor() {
-  const { data: homeList, setData: setHomeList } = useData({
+  const [homeList, setHomeList] = useData({
     callback: getHomeList,
     initailValue: [],
     defaultValue: DATA.HOME_LIST,
@@ -70,7 +70,7 @@ function ListEditor() {
     <Popup>
       <Form onSubmit={onListChange}>
         <Title>홈 목록 설정</Title>
-        <Context>
+        <Content>
           <ListWrapper>
             {DATA.HOME_LIST.map((category) => (
               <Checkbox
@@ -86,7 +86,7 @@ function ListEditor() {
               <Category key={category}>{DATA.CATEGORY_NAME[category]}</Category>
             ))}
           </ListWrapper>
-        </Context>
+        </Content>
         <Button fontSize={isMobile ? 16 : 20} padding={isMobile ? '12px' : '16px'}>
           적용
         </Button>

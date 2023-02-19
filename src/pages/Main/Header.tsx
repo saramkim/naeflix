@@ -53,6 +53,9 @@ function Header() {
             <TextButton hover='opacity' path='/main'>
               홈
             </TextButton>
+            <TextButton hover='opacity' path='/main/cinema'>
+              인생 영화
+            </TextButton>
             <TextButton hover='opacity' path='/main/top-rated'>
               높은 평점
             </TextButton>

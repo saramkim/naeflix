@@ -6,7 +6,7 @@ import Movie from '../Movie';
 import VerticalContainer from '../VerticalContainer';
 
 function Crew({ id, direction }: { id: string; direction: 'vertical' | 'horizontal' }) {
-  const { data: credits } = useData({
+  const [credits] = useData({
     callback: getPersonCredits,
     initailValue: null,
     id,

@@ -18,6 +18,7 @@ const MovieLayout = styled.div`
 
 const Content = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
+  color: white;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -27,6 +28,7 @@ const Content = styled.div`
   align-items: center;
   justify-content: space-between;
   font-size: 25px;
+  border-radius: 3px;
 
   padding: 10px;
 
@@ -39,6 +41,7 @@ const Title = styled.h1`
   text-align: center;
   line-height: 30px;
   margin: auto;
+  pointer-events: none;
 
   @media screen and (max-width: 550px) {
     font-size: 18px;
@@ -50,12 +53,12 @@ function Movie({ title, poster_path, id: idNumber }: MovieType) {
   const id = idNumber.toString();
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
-  const { data: star, setData: setStar } = useData({
+  const [star, setStar] = useData({
     callback: getStar,
     initailValue: 0,
     id,
   });
-  const { data: isMarked, setData: setMarked } = useData({
+  const [isMarked, setMarked] = useData({
     callback: isMarkedMovie,
     initailValue: false,
     id,
@@ -72,9 +75,9 @@ function Movie({ title, poster_path, id: idNumber }: MovieType) {
         onTouchStart={() => setIsShown(true)}
         onTouchEnd={() => setIsShown(false)}
       >
-        <Image width={154} path={poster_path} />
+        <Image width={154} path={poster_path} id={id} />
         {isShown && (
-          <Content>
+          <Content id={id}>
             <MarkingButton id={id} isMarked={isMarked} setMarked={setMarked} setStar={setStar} />
 
             <Title>{title}</Title>
@@ -100,8 +103,8 @@ function Movie({ title, poster_path, id: idNumber }: MovieType) {
       onTouchStart={() => setIsShown(true)}
       onTouchEnd={() => setIsShown(false)}
     >
-      <Image width={154} path={poster_path} />
-      <Content>
+      <Image width={154} path={poster_path} id={id} />
+      <Content id={id}>
         {isShown && (
           <MarkingButton id={id} isMarked={isMarked} setMarked={setMarked} setStar={setStar} />
         )}

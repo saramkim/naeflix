@@ -4,9 +4,10 @@ import { getMovieData } from 'api/movieData';
 import Image from 'components/Image';
 import { getComment, getStar, isMarkedMovie } from 'firebases/firestore';
 import { useData } from 'hooks/useData';
+import { Backdrop, Content, InfoLayout } from 'pages/Main/InfoLayout';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
-import { DATA } from 'utils/constants';
+import { DATA, STYLE } from 'utils/constants';
 
 import GenreButton from '../GenreButton';
 import MarkingButton from '../MarkingButton';
@@ -16,61 +17,8 @@ import Comment from './Comment';
 import CommentIcon from './CommentIcon';
 import Trailer from './Trailer';
 
-const Backdrop = styled.div<{ backgroundImg: string }>`
-  background-image: url(${({ backgroundImg }) => backgroundImg});
-  background-size: cover;
-  position: relative;
-  height: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &:before {
-    content: '';
-    opacity: 0.8;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    background-color: black;
-  }
-
-  @media screen and (max-width: 950px) {
-    height: auto;
-  }
-`;
-
-const MovieInfoLayout = styled.div`
-  position: relative;
-  max-width: 1280px;
-  display: flex;
-  align-items: center;
-  gap: 30px 50px;
-
-  padding: 50px;
-
-  @media screen and (max-width: 950px) {
-    flex-direction: column;
-  }
-  @media screen and (max-width: 550px) {
-    padding: 30px;
-  }
-`;
-
 const Poster = styled.div`
   cursor: pointer;
-`;
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  gap: 20px;
-
-  @media screen and (max-width: 950px) {
-    gap: 15px;
-  }
 `;
 
 const GenreWraaper = styled.div`
@@ -114,7 +62,8 @@ const Tagline = styled.div<{ comment: string | null }>`
   align-items: center;
   gap: 10px;
   font-weight: bold;
-  color: ${({ comment }) => (comment ? 'rgb(255, 188, 11)' : 'white')};
+  word-break: normal;
+  color: ${({ comment }) => (comment ? STYLE.COMMNET_COLOR : 'white')};
 
   font-size: 24px;
   line-height: 30px;
@@ -141,22 +90,22 @@ const Overview = styled.p`
 `;
 
 function MovieInfo({ id }: { id: string }) {
-  const { data: movieData } = useData({
+  const [movieData] = useData({
     callback: getMovieData,
     initailValue: null,
     id,
   });
-  const { data: star, setData: setStar } = useData({
+  const [star, setStar] = useData({
     callback: getStar,
     initailValue: 0,
     id,
   });
-  const { data: isMarked, setData: setMarked } = useData({
+  const [isMarked, setMarked] = useData({
     callback: isMarkedMovie,
     initailValue: false,
     id,
   });
-  const { data: comment, setData: setComment } = useData({
+  const [comment, setComment] = useData({
     callback: getComment,
     initailValue: '',
     id,
@@ -180,20 +129,20 @@ function MovieInfo({ id }: { id: string }) {
       runtime,
     } = movieData;
 
+    const BACKDROP_SRC = isMobile
+      ? DATA.IMG_BASE_URL(780) + poster_path
+      : DATA.IMG_BASE_URL(780) + backdrop_path;
+
     return (
-      <Backdrop
-        backgroundImg={
-          isMobile ? DATA.IMG_BASE_URL(780) + poster_path : DATA.IMG_BASE_URL(780) + backdrop_path
-        }
-      >
+      <Backdrop heigth='615px' src={BACKDROP_SRC}>
         {isTrailer ? (
           <Trailer id={id} setTrailer={setTrailer} />
         ) : (
-          <MovieInfoLayout>
+          <InfoLayout>
             <Poster onClick={() => setTrailer(true)}>
               <Image width={342} path={poster_path} />
             </Poster>
-            <Content>
+            <Content gap={20}>
               <GenreWraaper>
                 {genres.map((genre) => (
                   <GenreButton key={genre.id} genre={genre.name} fontSize={16} />
@@ -232,7 +181,7 @@ function MovieInfo({ id }: { id: string }) {
               )}
               {overview && <Overview>{overview}</Overview>}
             </Content>
-          </MovieInfoLayout>
+          </InfoLayout>
         )}
       </Backdrop>
     );

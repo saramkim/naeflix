@@ -7,7 +7,7 @@ import Person from '../Person';
 import VerticalContainer from '../VerticalContainer';
 
 function Credits({ id, direction }: { id: string; direction: 'vertical' | 'horizontal' }) {
-  const { data: credits } = useData<CreditsDataType[]>({
+  const [credits] = useData<CreditsDataType[]>({
     callback: getCredits,
     initailValue: [],
     id,

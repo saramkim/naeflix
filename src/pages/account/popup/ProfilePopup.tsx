@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import defaultProfile from 'assets/kakao-profile.jpg';
 import Popup from 'components/Popup';
 import PopupForm from 'components/PopupForm';
+import ProfileImage from 'components/ProfileImage';
 import TextButton from 'components/TextButton';
 import { getAuth, updateProfile } from 'firebase/auth';
 import { deleteImage, uploadImage } from 'firebases/storage';
@@ -13,13 +13,6 @@ const ImageInput = styled.input`
   border: 1px solid rgb(79, 79, 79);
   border-radius: 3px;
   font-size: 20px;
-`;
-
-const Image = styled.img`
-  height: 180px;
-  width: auto;
-  max-width: 100%;
-  margin: auto;
 `;
 
 function ProfilePopup() {
@@ -75,7 +68,7 @@ function ProfilePopup() {
     <Popup>
       <PopupForm onSubmit={onSubmitForm} buttonText='확인'>
         {currentUrl && <TextButton onClick={onReset}>초기화</TextButton>}
-        <Image src={currentUrl || defaultProfile} />
+        <ProfileImage size={180} src={currentUrl} />
         <ImageInput type='file' ref={ImageRef} onChange={onPreview} />
       </PopupForm>
     </Popup>
