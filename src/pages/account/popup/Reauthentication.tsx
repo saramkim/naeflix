@@ -22,7 +22,6 @@ function Reauthentication() {
   const { path } = useLocation().state;
   const auth = getAuth();
   const user = auth.currentUser!;
-
   const passwordRef = useRef<HTMLInputElement>(null);
   const { onChange, isValid } = useInput(passwordRef, REG_EX.PASSWORD);
 
@@ -32,7 +31,6 @@ function Reauthentication() {
       if (isValid) {
         const password = passwordRef.current!.value;
         const credential = EmailAuthProvider.credential(user.email!, password);
-
         reauthenticateWithCredential(user, credential)
           .then(() => navigate(`/account/${path}`))
           .catch((error) => {
@@ -55,6 +53,7 @@ function Reauthentication() {
             label='비밀번호'
             warning={PHRASE.PASSWORD_WARNING}
             type='password'
+            autoComplete='password'
           />
         </PopupForm>
       </Popup>

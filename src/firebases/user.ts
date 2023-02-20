@@ -8,6 +8,8 @@ import {
 } from 'firebase/auth';
 
 import { createUserDoc, deleteUserDoc } from './firestore';
+import { deleteImageFolder } from './storage';
+// import { deleteImageFolder } from './storage';
 
 const auth = getAuth();
 
@@ -20,8 +22,9 @@ const createUser = (email: string, password: string) =>
       if (error.code === 'auth/email-already-in-use') alert('이미 존재하는 계정입니다.');
     });
 
-const unregisterUser = (user: User) => {
+const unregisterUser = async (user: User) => {
   deleteUserDoc(user);
+  await deleteImageFolder(user.uid);
   return deleteUser(user).catch((error) => console.log(error.code));
 };
 

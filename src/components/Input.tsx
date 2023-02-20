@@ -9,6 +9,7 @@ type InputProps = {
   isValid: boolean;
   background?: string;
   type?: 'password';
+  autoComplete?: 'username' | 'current-password' | 'new-password' | 'password';
 };
 
 const InputLayout = styled.div`
@@ -53,7 +54,7 @@ const Warning = styled.div`
 `;
 
 function Input(
-  { onChange, label, warning, isValid, type, background }: InputProps,
+  { onChange, label, warning, isValid, type, background, autoComplete }: InputProps,
   ref: React.Ref<HTMLInputElement>
 ) {
   const INITIAL_TOP = 20;
@@ -84,9 +85,10 @@ function Input(
         isWrong={isWrong}
         type={type || 'text'}
         background={background}
-        id='input'
+        id={label}
+        autoComplete={autoComplete}
       />
-      <Label top={top} fontSize={fontSize} htmlFor='input'>
+      <Label top={top} fontSize={fontSize} htmlFor={label}>
         {label}
       </Label>
       {isWrong && <Warning>{warning}</Warning>}

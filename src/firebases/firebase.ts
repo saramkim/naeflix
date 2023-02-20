@@ -10,4 +10,4 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
-export default initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);

@@ -46,6 +46,7 @@ function RegisterPasswordPopup() {
           label='비밀번호'
           warning={PHRASE.PASSWORD_WARNING}
           type='password'
+          autoComplete='password'
         />
       </PopupForm>
     </Popup>

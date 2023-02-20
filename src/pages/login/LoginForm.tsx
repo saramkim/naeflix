@@ -86,6 +86,7 @@ function LoginForm() {
         warning={PHRASE.EMAIL_WARNING}
         isValid={isValidEmail}
         background='rgb(51, 51, 51)'
+        autoComplete='username'
       />
       <Input
         ref={passwordRef}
@@ -95,6 +96,7 @@ function LoginForm() {
         isValid={isValidPassword}
         type='password'
         background='rgb(51, 51, 51)'
+        autoComplete='current-password'
       />
       <ButtonWrapper>
         <Button fontSize={16} padding='15px'>

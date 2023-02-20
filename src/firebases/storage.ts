@@ -1,25 +1,37 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { getAuth } from 'firebase/auth';
-import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
+import {
+  deleteObject,
+  getDownloadURL,
+  getStorage,
+  listAll,
+  ref,
+  uploadBytes,
+} from 'firebase/storage';
 
-import app from './firebase';
+import { app } from './firebase';
 
 const storage = getStorage(app);
 const auth = getAuth();
 
 const uploadImage = async (file: File) => {
-  const { uid, photoURL } = auth.currentUser!;
+  const { uid } = auth.currentUser!;
   const imageRef = ref(storage, `${uid}/${file.name + file.lastModified}`);
-
-  if (photoURL) await deleteImage(photoURL);
   await uploadBytes(imageRef, file).catch((error) => console.log(error.code));
-
   return getDownloadURL(imageRef);
 };
 
-const deleteImage = (photoURL: string) => {
-  const userImageRef = ref(storage, photoURL);
-  return deleteObject(userImageRef);
+const deleteImageFolder = async (uid: string) => {
+  const BASE_URL = `gs://${storage.app.options.storageBucket}`;
+  const storageRef = ref(storage, `${BASE_URL}/${uid}`);
+  listAll(storageRef)
+    .then((res) => {
+      res.items.forEach((fileRef) => {
+        const path = `${BASE_URL}/${uid}/${fileRef.name}`;
+        const userImageRef = ref(storage, path);
+        return deleteObject(userImageRef);
+      });
+    })
+    .catch((error) => console.log(error.code));
 };
-
-export { deleteImage, uploadImage };
-
+export { deleteImageFolder, uploadImage };

@@ -14,7 +14,7 @@ import {
   updateDoc,
 } from 'firebase/firestore';
 
-import app from './firebase';
+import { app } from './firebase';
 
 interface MarkBestMovieProps {
   id: string;

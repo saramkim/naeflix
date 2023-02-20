@@ -6,7 +6,7 @@ import PopupForm from 'components/PopupForm';
 import ProfileImage from 'components/ProfileImage';
 import TextButton from 'components/TextButton';
 import { getAuth, updateProfile } from 'firebase/auth';
-import { deleteImage, uploadImage } from 'firebases/storage';
+import { uploadImage } from 'firebases/storage';
 import styled from 'styled-components';
 
 const ImageInput = styled.input`
@@ -40,12 +40,10 @@ function ProfilePopup() {
   const onReset = () => {
     const userImage = auth.currentUser?.photoURL;
     if (userImage && window.confirm('프로필 사진을 초기화하시겠습니까?')) {
-      deleteImage(userImage).then(() =>
-        updateProfile(auth.currentUser!, { photoURL: '' }).then(() => {
-          navigate('/account');
-          window.location.reload();
-        })
-      );
+      updateProfile(auth.currentUser!, { photoURL: '' }).then(() => {
+        navigate('/account');
+        window.location.reload();
+      });
     }
   };
 
