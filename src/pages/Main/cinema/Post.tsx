@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom';
 
 import Image from 'components/Image';
 import ProfileImage from 'components/ProfileImage';
+import { FlexColumn } from 'components/style/Flex';
+import { Font36 } from 'components/style/FontSize';
 import { getAuth } from 'firebase/auth';
 import { deleteBestMovie, MarkBestMovieType } from 'firebases/firestore';
 import { MdDeleteForever } from 'react-icons/md';
@@ -32,10 +34,8 @@ const ImageWrapper = styled.div`
   cursor: pointer;
 `;
 
-const Content = styled.div`
+const Content = styled(FlexColumn)`
   width: 100%;
-  display: flex;
-  flex-direction: column;
   justify-content: space-around;
 
   height: 277.5px;
@@ -46,15 +46,8 @@ const Content = styled.div`
   }
 `;
 
-const Title = styled.h1`
+const Title = styled(Font36)`
   word-break: normal;
-  font-size: 35px;
-  line-height: 42px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 28px;
-    line-height: 35px;
-  }
 `;
 
 const Comment = styled.div`

@@ -1,16 +1,15 @@
 import Button from 'components/Button';
 import Logo from 'components/Logo';
+import { FlexColumn } from 'components/style/Flex';
 import { FcApproval } from 'react-icons/fc';
 import styled from 'styled-components';
 
 import OutletLayout from './OutletLayout';
 import { Title } from './SignUpForm';
 
-const CompletionLayout = styled.div`
+const CompletionLayout = styled(FlexColumn)`
   width: 100%;
   max-width: 440px;
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
 
   @media screen and (max-width: 550px) {
@@ -35,10 +34,10 @@ function Completion() {
         </Title>
         <Logo height='110' />
         <ButtonWrapper>
-          <Button fontSize={20} padding='15px' hover path='/account'>
+          <Button fontSize={20} padding={15} fix hover path='/account'>
             계정 정보
           </Button>
-          <Button fontSize={20} padding='15px' hover path='/main'>
+          <Button fontSize={20} padding={15} fix hover path='/main'>
             메인으로
           </Button>
         </ButtonWrapper>

@@ -2,7 +2,9 @@ import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { getMovieData } from 'api/movieData';
+import Button from 'components/Button';
 import Image from 'components/Image';
+import { Font45 } from 'components/style/FontSize';
 import { commentMovie, getComment, markBestMovie } from 'firebases/firestore';
 import { useData } from 'hooks/useData';
 import { Backdrop, Content, InfoLayout } from 'pages/Main/InfoLayout';
@@ -10,15 +12,11 @@ import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import { DATA, STYLE } from 'utils/constants';
 
-const Title = styled.h1`
+const Title = styled(Font45)`
   width: 440px;
-  font-size: 45px;
-  line-height: 55px;
 
   @media screen and (max-width: 550px) {
     width: 100%;
-    font-size: 35px;
-    line-height: 42px;
   }
 `;
 
@@ -121,20 +119,6 @@ const ButtonWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const Button = styled.button<{ background: string }>`
-  background-color: ${({ background }) => background};
-  width: fit-content;
-  color: white;
-  border-radius: 3px;
-  padding: 10px 15px;
-  font-size: 20px;
-
-  @media screen and (max-width: 550px) {
-    padding: 8px 13px;
-    font-size: 18px;
-  }
-`;
-
 function Register({
   id,
   setId,
@@ -183,10 +167,10 @@ function Register({
               <Title>{title}</Title>
               <Comment ref={textRef} defaultValue={comment} rows={5} />
               <ButtonWrapper>
-                <Button onClick={onRegister} background={STYLE.MAIN_COLOR}>
+                <Button fontSize={22} onClick={onRegister}>
                   등록
                 </Button>
-                <Button onClick={onUnregister} background='rgb(125,125,125)'>
+                <Button fontSize={22} onClick={onUnregister} background='rgb(125,125,125)'>
                   취소
                 </Button>
               </ButtonWrapper>

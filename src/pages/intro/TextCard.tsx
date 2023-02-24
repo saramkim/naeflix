@@ -1,13 +1,12 @@
+import { FlexColumn } from 'components/style/Flex';
 import TypingText from 'components/TypingText';
 import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
 
 import StartForm from './StartForm';
 
-const TextCardLayout = styled.div`
+const TextCardLayout = styled(FlexColumn)`
   color: white;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: space-around;

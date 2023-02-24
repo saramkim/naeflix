@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { FlexColumn } from './style/Flex';
+
 const FooterLayout = styled.div<{ background?: string }>`
   padding: 80px 80px;
   color: rgb(125, 125, 125);
@@ -10,11 +12,9 @@ const FooterLayout = styled.div<{ background?: string }>`
   }
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled(FlexColumn)`
   margin: auto;
   max-width: 1000px;
-  display: flex;
-  flex-direction: column;
   gap: 30px;
   position: relative;
 `;
@@ -25,10 +25,8 @@ const Inquiry = styled.span`
   border-bottom: 1px solid rgb(125, 125, 125);
 `;
 
-const Info = styled.p`
+const Info = styled(FlexColumn)`
   font-size: 13px;
-  display: flex;
-  flex-direction: column;
   gap: 10px;
 `;
 

@@ -1,3 +1,4 @@
+import { FlexColumn } from 'components/style/Flex';
 import styled from 'styled-components';
 
 export const Backdrop = styled.div<{ heigth: string; src?: string }>`
@@ -44,11 +45,9 @@ export const InfoLayout = styled.div`
   }
 `;
 
-export const Content = styled.div<{ gap: number }>`
+export const Content = styled(FlexColumn)<{ gap: number }>`
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   gap: ${({ gap }) => gap}px;
 

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { MovieType } from 'api/movieType';
 import Image from 'components/Image';
+import { FlexColumn } from 'components/style/Flex';
 import { getStar, isMarkedMovie } from 'firebases/firestore';
 import { useData } from 'hooks/useData';
 import styled from 'styled-components';
@@ -16,15 +17,13 @@ const MovieLayout = styled.div`
   display: flex;
 `;
 
-const Content = styled.div`
+const Content = styled(FlexColumn)`
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   font-size: 25px;

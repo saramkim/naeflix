@@ -1,20 +1,10 @@
 import { getPersonData } from 'api/personData';
 import Image from 'components/Image';
+import { Font45 } from 'components/style/FontSize';
 import { useData } from 'hooks/useData';
 import { Backdrop, Content, InfoLayout } from 'pages/Main/InfoLayout';
-import styled from 'styled-components';
 
 import Info from './Info';
-
-const Name = styled.h1`
-  font-size: 45px;
-  line-height: 55px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 35px;
-    line-height: 42px;
-  }
-`;
 
 function PersonInfo({ id }: { id: string }) {
   const [personData] = useData({
@@ -32,7 +22,7 @@ function PersonInfo({ id }: { id: string }) {
         <InfoLayout>
           <Image width={342} path={profile_path} />
           <Content gap={30}>
-            <Name>{name}</Name>
+            <Font45>{name}</Font45>
             <Info title='활동 분야'>{known_for_department}</Info>
             <Info title='출생'>
               {birthday ? birthday.toString() : 'unknown'}

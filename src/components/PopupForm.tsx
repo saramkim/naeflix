@@ -1,5 +1,4 @@
 import Button from 'components/Button';
-import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 
 type PopupFormType = {
@@ -33,13 +32,11 @@ const Title = styled.h1`
 `;
 
 function PopupForm({ children, onSubmit, buttonText, title }: PopupFormType) {
-  const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
-
   return (
     <Form onSubmit={onSubmit}>
       {title && <Title>{title}</Title>}
       {children}
-      <Button fontSize={isMobile ? 16 : 20} padding={isMobile ? '12px' : '16px'}>
+      <Button fontSize={20} padding={16}>
         {buttonText}
       </Button>
     </Form>

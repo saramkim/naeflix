@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import { FlexColumn } from 'components/style/Flex';
 import { getAuth, signOut } from 'firebase/auth';
 import styled from 'styled-components';
 
@@ -7,10 +8,8 @@ import Banner from './Banner';
 import ButtonBundle from './ButtonBundle';
 import ImageTextBundle from './ImageTextBundle';
 
-const IntroductionLayout = styled.div`
+const IntroductionLayout = styled(FlexColumn)`
   background-color: rgb(235, 235, 235);
-  display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 100px;
   max-width: 1920px;

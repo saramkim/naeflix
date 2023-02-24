@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { FlexColumn } from 'components/style/Flex';
 import VerticalContainer from 'components/VerticalContainer';
 import { useSearch } from 'hooks/useSerach';
 import styled from 'styled-components';
@@ -12,11 +13,9 @@ import SearchBar from './SearchBar';
 
 export type SearchType = 'movie' | 'person';
 
-const SearchLayout = styled.div`
+const SearchLayout = styled(FlexColumn)`
   width: 100%;
   min-height: ${STYLE.HEIGHT_WITHOUT_HEADER};
-  display: flex;
-  flex-direction: column;
   align-items: center;
 
   padding: 50px;

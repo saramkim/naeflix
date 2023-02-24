@@ -1,3 +1,4 @@
+import { FlexColumn } from 'components/style/Flex';
 import styled from 'styled-components';
 
 type ImageTextBoxProprs = {
@@ -54,9 +55,7 @@ const Video = styled.video`
   }
 `;
 
-const TextBox = styled.div`
-  display: flex;
-  flex-direction: column;
+const TextBox = styled(FlexColumn)`
   gap: 30px;
 
   width: 45%;

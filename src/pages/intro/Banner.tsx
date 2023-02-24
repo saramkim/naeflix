@@ -1,4 +1,6 @@
 import Logo from 'components/Logo';
+import { FlexColumn } from 'components/style/Flex';
+import { Font20 } from 'components/style/FontSize';
 import TextButton from 'components/TextButton';
 import { AiOutlineRight } from 'react-icons/ai';
 import styled from 'styled-components';
@@ -26,20 +28,10 @@ const BannerLayout = styled.div`
   }
 `;
 
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
+const Content = styled(FlexColumn)`
   justify-content: space-between;
   height: 100%;
   margin-left: 30px;
-`;
-
-const Title = styled.h1`
-  font-size: 20px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 16px;
-  }
 `;
 
 const SubTitle = styled.h2`
@@ -60,7 +52,7 @@ function Banner() {
     <BannerLayout>
       <Logo />
       <Content>
-        <Title>회원가입 후 이용 가능</Title>
+        <Font20>회원가입 후 이용 가능</Font20>
         <SubTitle>어서 내플릭스에 가입하세요.</SubTitle>
         <TextButton fontSize={16} color='#99c9ff' path='/signup'>
           즉시 회원가입

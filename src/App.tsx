@@ -52,6 +52,7 @@ function App() {
           <Route path='completion' element={<Completion />} />
         </Route>
       </Route>
+
       <Route element={<PrivateRoutes authentication />}>
         <Route path='/account' element={<Account />}>
           <Route path='reauthentication' element={<Reauthentication />} />

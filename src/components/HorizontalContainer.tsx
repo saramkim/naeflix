@@ -5,14 +5,15 @@ import styled from 'styled-components';
 import { DATA, STYLE } from 'utils/constants';
 import { throttle } from 'utils/throttle';
 
+import { FlexColumn } from './style/Flex';
+import { Font20 } from './style/FontSize';
+
 type HorizontalContainerType = {
   children: React.ReactNode[];
   category: string;
 };
 
-const Layout = styled.div`
-  display: flex;
-  flex-direction: column;
+const Layout = styled(FlexColumn)`
   gap: 10px;
 `;
 
@@ -30,21 +31,14 @@ const TextWrapper = styled.div`
 const Info = styled.div`
   cursor: pointer;
   display: flex;
+  align-items: center;
   gap: 5px;
-`;
-
-const Category = styled.h1`
-  font-size: 20px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 16px;
-  }
 `;
 
 const ChildrenCount = styled.span`
   color: rgb(155, 155, 155);
 
-  font-size: 18px;
+  font-size: 17px;
 
   @media screen and (max-width: 550px) {
     font-size: 14px;
@@ -106,7 +100,7 @@ function HorizontalContainer({ children, category }: HorizontalContainerType) {
     <Layout>
       <TextWrapper>
         <Info onClick={() => setShown((v) => !v)}>
-          <Category>{DATA.CATEGORY_NAME[category]}</Category>
+          <Font20>{DATA.CATEGORY_NAME[category]}</Font20>
           <ChildrenCount>({children.length})</ChildrenCount>
         </Info>
         {Boolean(children.length) && (

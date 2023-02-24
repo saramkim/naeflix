@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { getMovieData } from 'api/movieData';
 import Image from 'components/Image';
+import { Font24, Font45 } from 'components/style/FontSize';
 import { getComment, getStar, isMarkedMovie } from 'firebases/firestore';
 import { useData } from 'hooks/useData';
 import { Backdrop, Content, InfoLayout } from 'pages/Main/InfoLayout';
@@ -27,23 +28,15 @@ const GenreWraaper = styled.div`
   gap: 10px;
 `;
 
-const TitleWrapper = styled.div`
+const TitleWrapper = styled(Font45)`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   width: fit-content;
   gap: 10px;
-
-  font-size: 45px;
-  line-height: 55px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 35px;
-    line-height: 42px;
-  }
 `;
 
-const Title = styled.h1`
+const Title = styled.span`
   font-weight: bold;
 `;
 
@@ -57,21 +50,13 @@ const Created = styled.span`
   }
 `;
 
-const Tagline = styled.div<{ comment: string | null }>`
+const Tagline = styled(Font24)<{ comment: string | null }>`
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: bold;
   word-break: normal;
   color: ${({ comment }) => (comment ? STYLE.COMMNET_COLOR : 'white')};
-
-  font-size: 24px;
-  line-height: 30px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 20px;
-    line-height: 25px;
-  }
 `;
 
 const Overview = styled.p`

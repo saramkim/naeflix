@@ -5,14 +5,13 @@ import intro from 'assets/intro.png';
 import movieDetail from 'assets/movie-detail.png';
 import personDetail from 'assets/person-detail.png';
 import search from 'assets/search.png';
+import { FlexColumn } from 'components/style/Flex';
 import styled from 'styled-components';
 
 import ImageTextBox from './ImageTextBox';
 
-const ImageTextBundleLayout = styled.div`
+const ImageTextBundleLayout = styled(FlexColumn)`
   width: 100%;
-  display: flex;
-  flex-direction: column;
   align-items: center;
 `;
 

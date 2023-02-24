@@ -6,7 +6,6 @@ import Input from 'components/Input';
 import { checkUserExist } from 'firebases/user';
 import { useInput } from 'hooks/useInput';
 import { useAppDispatch } from 'hooks/useRedux';
-import { useMediaQuery } from 'react-responsive';
 import { setEmail } from 'store/emailSlice';
 import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
@@ -50,7 +49,6 @@ function StartForm() {
   const { onChange, isValid } = useInput(inputRef, REG_EX.EMAIL);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -73,7 +71,7 @@ function StartForm() {
           warning={PHRASE.EMAIL_WARNING}
           isValid={isValid}
         />
-        <Button fontSize={isMobile ? 22 : 26} hover>
+        <Button fontSize={26} hover>
           시작하기 &gt;
         </Button>
       </InputContainer>

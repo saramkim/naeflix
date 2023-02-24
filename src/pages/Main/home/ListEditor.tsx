@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
 import Popup from 'components/Popup';
+import { FlexColumn } from 'components/style/Flex';
 import { getHomeList, updateHomeList } from 'firebases/firestore';
 import { useData } from 'hooks/useData';
-import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import { DATA, STYLE } from 'utils/constants';
 
@@ -37,9 +37,7 @@ const Content = styled.div`
   justify-content: space-between;
 `;
 
-const ListWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+const ListWrapper = styled(FlexColumn)`
   gap: 10px;
 `;
 
@@ -56,7 +54,6 @@ function ListEditor() {
     defaultValue: DATA.HOME_LIST,
   });
   const navigate = useNavigate();
-  const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
 
   const onListChange = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -87,7 +84,7 @@ function ListEditor() {
             ))}
           </ListWrapper>
         </Content>
-        <Button fontSize={isMobile ? 16 : 20} padding={isMobile ? '12px' : '16px'}>
+        <Button fontSize={20} padding={16}>
           적용
         </Button>
       </Form>

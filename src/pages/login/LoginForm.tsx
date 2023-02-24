@@ -99,7 +99,7 @@ function LoginForm() {
         autoComplete='current-password'
       />
       <ButtonWrapper>
-        <Button fontSize={16} padding='15px'>
+        <Button fontSize={16} padding={15} fix>
           로그인
         </Button>
         <ExtraFeatures>

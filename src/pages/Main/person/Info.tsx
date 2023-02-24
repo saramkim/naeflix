@@ -1,37 +1,21 @@
+import { FlexColumn } from 'components/style/Flex';
+import { Font20, Font24 } from 'components/style/FontSize';
 import styled from 'styled-components';
 
-const InfoLayout = styled.div`
-  display: flex;
-  flex-direction: column;
+const InfoLayout = styled(FlexColumn)`
   flex-wrap: wrap;
   gap: 5px;
 `;
 
-const Title = styled.div`
+const Title = styled(Font20)`
   color: rgb(155, 155, 155);
-
-  font-size: 20px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 16px;
-  }
-`;
-
-const Content = styled.div`
-  font-size: 24px;
-  line-height: 30px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 20px;
-    line-height: 25px;
-  }
 `;
 
 function Info({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <InfoLayout>
       <Title>{title}</Title>
-      <Content>{children}</Content>
+      <Font24>{children}</Font24>
     </InfoLayout>
   );
 }

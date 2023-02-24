@@ -5,6 +5,8 @@ import { AiOutlineDownCircle } from 'react-icons/ai';
 import styled from 'styled-components';
 import { DATA } from 'utils/constants';
 
+import { FlexColumn } from './style/Flex';
+
 type VerticalContainerType = {
   children: React.ReactNode[];
   category?: string;
@@ -12,9 +14,7 @@ type VerticalContainerType = {
   setLoad?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Layout = styled.div`
-  display: flex;
-  flex-direction: column;
+const Layout = styled(FlexColumn)`
   align-items: center;
 
   gap: 50px;

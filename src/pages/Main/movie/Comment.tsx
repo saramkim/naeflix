@@ -2,7 +2,6 @@ import { useRef, useState } from 'react';
 
 import Button from 'components/Button';
 import { commentMovie } from 'firebases/firestore';
-import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 
 type CommentType = {
@@ -31,7 +30,6 @@ const CommentInput = styled.input`
 function Comment({ id, setShown, comment, setComment }: CommentType) {
   const [inputValue, setInputValue] = useState(comment);
   const inputRef = useRef<HTMLInputElement>(null);
-  const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
 
   const handleComment = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,7 +46,7 @@ function Comment({ id, setShown, comment, setComment }: CommentType) {
   return (
     <CommentLayout onSubmit={handleComment}>
       <CommentInput ref={inputRef} defaultValue={inputValue} />
-      <Button fontSize={isMobile ? 18 : 20}>저장</Button>
+      <Button fontSize={20}>저장</Button>
     </CommentLayout>
   );
 }

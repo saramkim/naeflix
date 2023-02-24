@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { CreditsDataType } from 'api/personType';
 import Image from 'components/Image';
+import { FlexColumn } from 'components/style/Flex';
+import { Font20 } from 'components/style/FontSize';
 import styled from 'styled-components';
 
 const PersonLayout = styled.div`
@@ -11,14 +13,12 @@ const PersonLayout = styled.div`
   display: flex;
 `;
 
-const Content = styled.div`
+const Content = styled(FlexColumn)`
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 
@@ -42,14 +42,8 @@ const Name = styled.h1`
   }
 `;
 
-const Info = styled.span`
+const Info = styled(Font20)`
   text-align: center;
-
-  font-size: 20px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 15px;
-  }
 `;
 
 function Person({

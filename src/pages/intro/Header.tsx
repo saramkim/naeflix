@@ -20,7 +20,7 @@ function Header() {
   return (
     <HeaderLayout>
       <Logo />
-      <Button fontSize={18} path='login'>
+      <Button fontSize={18} fix path='login'>
         로그인
       </Button>
     </HeaderLayout>

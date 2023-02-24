@@ -1,3 +1,4 @@
+import { FlexColumn } from 'components/style/Flex';
 import { useTrailer } from 'hooks/useTrailer';
 import { BiLoaderCircle } from 'react-icons/bi';
 import styled from 'styled-components';
@@ -7,10 +8,8 @@ type TrailerType = {
   setTrailer: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const TrailerLayout = styled.div`
+const TrailerLayout = styled(FlexColumn)`
   position: relative;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;

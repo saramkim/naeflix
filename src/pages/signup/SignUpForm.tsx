@@ -111,7 +111,7 @@ function SignUpForm() {
           type='password'
           autoComplete='current-password'
         />
-        <Button fontSize={20} padding='15px' hover>
+        <Button fontSize={20} padding={15} fix hover>
           확인
         </Button>
       </Form>

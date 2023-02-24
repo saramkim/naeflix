@@ -6,6 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
 
+import { FlexColumn } from './style/Flex';
 import ProfileImage from './ProfileImage';
 import TextButton from './TextButton';
 
@@ -32,12 +33,10 @@ const InitialBox = styled.div`
   gap: 6px;
 `;
 
-const DropBox = styled.div`
+const DropBox = styled(FlexColumn)`
   position: absolute;
   background-color: black;
   min-width: 120px;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   text-align: left;
   align-items: center;

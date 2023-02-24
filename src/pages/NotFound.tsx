@@ -1,10 +1,9 @@
 import Logo from 'components/Logo';
+import { FlexColumn } from 'components/style/Flex';
 import styled from 'styled-components';
 
-const NotFoundLayout = styled.div`
+const NotFoundLayout = styled(FlexColumn)`
   height: 100vh;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 80px;
