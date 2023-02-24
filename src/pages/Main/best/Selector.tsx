@@ -1,7 +1,13 @@
+import { useEffect, useState } from 'react';
+
+import { getMovieData } from 'api/movieData';
+import { MovieDataType } from 'api/movieType';
+import VerticalContainer from 'components/VerticalContainer';
+import { getMarkedMovie } from 'firebases/firestore';
 import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
 
-import MoviesWithStars from '../MoviesWithStars';
+import Movie from '../Movie';
 
 type SelectorType = {
   setSelect: React.Dispatch<React.SetStateAction<boolean>>;
@@ -49,6 +55,8 @@ const SelectorLayout = styled.div`
 `;
 
 function Selector({ setSelect, setId }: SelectorType) {
+  const [movieList, setMovieList] = useState<MovieDataType[]>([]);
+
   const onClickCaptureMovie = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation();
     if (e.target instanceof HTMLElement && e.target.id) {
@@ -56,10 +64,30 @@ function Selector({ setSelect, setId }: SelectorType) {
       setId(e.target.id);
     }
   };
+
+  useEffect(() => {
+    (async () => {
+      const movies = await getMarkedMovie();
+      const idList = Object.keys(movies);
+      idList.forEach(async (id) => {
+        const { rating, best } = movies[id];
+
+        if (rating === 5 && !best) {
+          const detail = await getMovieData(id);
+          setMovieList((v) => [...v, detail]);
+        }
+      });
+    })();
+  }, []);
+
   return (
     <Background onClick={() => setSelect(false)}>
       <SelectorLayout onClickCapture={onClickCaptureMovie}>
-        <MoviesWithStars category='5stars' direction='vertical' />
+        <VerticalContainer category='5stars'>
+          {movieList.map((movie) => (
+            <Movie {...movie} key={movie.id} />
+          ))}
+        </VerticalContainer>
       </SelectorLayout>
     </Background>
   );

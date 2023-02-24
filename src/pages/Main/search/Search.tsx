@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
+import VerticalContainer from 'components/VerticalContainer';
 import { useSearch } from 'hooks/useSerach';
 import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
 
 import Movie from '../Movie';
 import Person from '../Person';
-import VerticalContainer from '../VerticalContainer';
 
 import SearchBar from './SearchBar';
 

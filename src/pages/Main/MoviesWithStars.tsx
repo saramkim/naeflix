@@ -1,8 +1,8 @@
-import useMoviesWithStars from 'hooks/useMovieWithStar';
+import HorizontalContainer from 'components/HorizontalContainer';
+import VerticalContainer from 'components/VerticalContainer';
+import { useMoviesWithStars } from 'hooks/useMovieWithStar';
 
-import HorizontalContainer from './HorizontalContainer';
 import Movie from './Movie';
-import VerticalContainer from './VerticalContainer';
 
 type MoviesWithStarsType = {
   category: string;

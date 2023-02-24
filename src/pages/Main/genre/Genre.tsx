@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
 
+import VerticalContainer from 'components/VerticalContainer';
 import useMovieWithGenre from 'hooks/useMovieWithGenre';
 import styled from 'styled-components';
 import { GENRE, STYLE } from 'utils/constants';
 
 import GenreButton from '../GenreButton';
 import Movie from '../Movie';
-import VerticalContainer from '../VerticalContainer';
 
 const GenreLayout = styled.div`
   min-height: ${STYLE.HEIGHT_WITHOUT_HEADER};

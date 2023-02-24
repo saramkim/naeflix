@@ -1,8 +1,8 @@
+import HorizontalContainer from 'components/HorizontalContainer';
+import VerticalContainer from 'components/VerticalContainer';
 import { useTopRatedMovies } from 'hooks/useTopRatedMovies';
 
-import HorizontalContainer from './HorizontalContainer';
 import Movie from './Movie';
-import VerticalContainer from './VerticalContainer';
 
 function TopRatedMovies({ direction }: { direction: 'vertical' | 'horizontal' }) {
   const { movieList, setLoad } = useTopRatedMovies();

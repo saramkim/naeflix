@@ -13,6 +13,7 @@ import Reauthentication from 'pages/account/popup/Reauthentication';
 import RegisterPasswordPopup from 'pages/account/popup/RegisterPasswordPopup';
 import UnregisterPopup from 'pages/account/popup/UnregisterPopup';
 import Intro from 'pages/intro/Intro';
+import Introduction from 'pages/introduction/Introduction';
 import HelpPopup from 'pages/login/HelpPopup';
 import Login from 'pages/login/Login';
 import PhoneNumberLoginPopup from 'pages/login/PhoneNumberLoginPopup';
@@ -38,6 +39,8 @@ function App() {
 
   return (
     <Routes>
+      <Route path='/introduction' element={<Introduction />} />
+
       <Route element={<PrivateRoutes />}>
         <Route path='/' element={<Intro />} />
         <Route path='/login' element={<Login />}>

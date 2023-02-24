@@ -2,19 +2,9 @@
 
 Skills: **React, Typescript, Firebase**
 
-테스트 계정: test123@test.com / 123456
-
 </br>
 
-시청한 영화를 기록하고, 평점과 한줄평을 남길 수 있는 웹 사이트.
-
-**나만의 영화 컬렉션**을 만들 수 있습니다.
-
-\*PC, 태블릿, 모바일 모두 이용 가능.
-
-### [시현 영상](https://youtu.be/GFiRs4t9ITw)
-
-[![Naeflix 시현 영상](https://img.youtube.com/vi/GFiRs4t9ITw/0.jpg)](https://youtu.be/GFiRs4t9ITw?t=0s)
+## [내플릭스 소개 링크](https://saramkim.github.io/naeflix/introduction)
 
 <br/>
 

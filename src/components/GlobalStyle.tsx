@@ -4,10 +4,6 @@ import reset from 'styled-reset';
 const GlobalStyles = createGlobalStyle` 
   ${reset}
 
-    a{
-        text-decoration: none;
-        color: inherit;
-    }
     *{
         box-sizing: border-box;
         word-break: keep-all;
@@ -15,6 +11,9 @@ const GlobalStyles = createGlobalStyle`
         -moz-user-select:none;
         -ms-user-select:none;
         user-select:none;
+    }
+    body{
+      font-family: 'Noto Sans KR', sans-serif;
     }
     input, textarea { 
       -moz-user-select: auto;
@@ -25,14 +24,16 @@ const GlobalStyles = createGlobalStyle`
     input:focus {
       outline: none;
     }
-
     button {
       border: none;
       background: none;
       padding: 0;
       cursor: pointer;
     }
-
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
 `;
 
 export default GlobalStyles;

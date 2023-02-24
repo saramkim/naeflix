@@ -9,7 +9,6 @@ import {
 
 import { createUserDoc, deleteUserDoc } from './firestore';
 import { deleteImageFolder } from './storage';
-// import { deleteImageFolder } from './storage';
 
 const auth = getAuth();
 

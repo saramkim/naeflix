@@ -9,6 +9,7 @@ type ButtonProps = {
   padding?: string;
   path?: string;
   hover?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const ButtonLayout = styled.button<{ fontSize: number; padding?: string; hover?: boolean }>`
@@ -23,7 +24,7 @@ const ButtonLayout = styled.button<{ fontSize: number; padding?: string; hover?:
   }
 `;
 
-function Button({ children, fontSize, padding, path, hover }: ButtonProps) {
+function Button({ children, fontSize, padding, path, hover, onClick }: ButtonProps) {
   const navigate = useNavigate();
 
   const onClickButton = () => {
@@ -31,7 +32,12 @@ function Button({ children, fontSize, padding, path, hover }: ButtonProps) {
   };
 
   return (
-    <ButtonLayout fontSize={fontSize} padding={padding} hover={hover} onClick={onClickButton}>
+    <ButtonLayout
+      fontSize={fontSize}
+      padding={padding}
+      hover={hover}
+      onClick={onClick || onClickButton}
+    >
       {children}
     </ButtonLayout>
   );

@@ -1,9 +1,9 @@
 import { getPersonCredits } from 'api/personData';
+import HorizontalContainer from 'components/HorizontalContainer';
+import VerticalContainer from 'components/VerticalContainer';
 import { useData } from 'hooks/useData';
 
-import HorizontalContainer from '../HorizontalContainer';
 import Movie from '../Movie';
-import VerticalContainer from '../VerticalContainer';
 
 function Crew({ id, direction }: { id: string; direction: 'vertical' | 'horizontal' }) {
   const [credits] = useData({

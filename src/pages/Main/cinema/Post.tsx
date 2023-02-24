@@ -107,7 +107,7 @@ function Post({ id, title, comment, posterPath, user, timestamp, docId }: MarkBe
 
   const onDelete = () => {
     if (window.confirm('삭제하시겠습니까?'))
-      deleteBestMovie(docId).then(() => window.location.reload());
+      deleteBestMovie({ uid: user.uid, id, docId }).then(() => window.location.reload());
   };
 
   return (

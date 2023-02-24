@@ -100,6 +100,7 @@ const updateHomeList = async (list: string[]) => updateDoc(listRef(uid()), { hom
 
 const markBestMovie = async ({ id, title, comment, posterPath }: MarkBestMovieProps) => {
   const { uid, displayName, photoURL } = auth.currentUser!;
+  updateDoc(markedRef(uid), { [`${id}.best`]: true });
   return addDoc(collection(db, 'best'), {
     id,
     title,
@@ -112,8 +113,8 @@ const markBestMovie = async ({ id, title, comment, posterPath }: MarkBestMoviePr
 
 const getBestMovieList = async () => {
   const bestMovieList: MarkBestMovieType[] = [];
-  const q = query(collection(db, 'best'), orderBy('timestamp', 'desc'));
-  const querySnapshot = await getDocs(q);
+  const bestQuery = query(collection(db, 'best'), orderBy('timestamp', 'desc'));
+  const querySnapshot = await getDocs(bestQuery);
   querySnapshot.forEach((doc) => {
     const data = doc.data() as MarkBestMovieType;
     bestMovieList.push({ ...data, docId: doc.id });
@@ -121,7 +122,10 @@ const getBestMovieList = async () => {
   return bestMovieList;
 };
 
-const deleteBestMovie = async (docId: string) => deleteDoc(doc(db, 'best', docId));
+const deleteBestMovie = async ({ uid, id, docId }: { uid: string; id: string; docId: string }) => {
+  updateDoc(markedRef(uid), { [`${id}.best`]: false });
+  return deleteDoc(doc(db, 'best', docId));
+};
 
 export {
   commentMovie,

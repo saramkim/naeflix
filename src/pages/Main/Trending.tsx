@@ -1,8 +1,8 @@
+import HorizontalContainer from 'components/HorizontalContainer';
+import VerticalContainer from 'components/VerticalContainer';
 import { useTrending } from 'hooks/useTrending';
 
-import HorizontalContainer from './HorizontalContainer';
 import Movie from './Movie';
-import VerticalContainer from './VerticalContainer';
 
 type TrendingType = { direction: 'vertical' | 'horizontal'; period: 'day' | 'week' };
 

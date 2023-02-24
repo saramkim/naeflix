@@ -26,5 +26,3 @@ export const useMoviesWithStars = (category: string) => {
 
   return movieList;
 };
-
-export default useMoviesWithStars;

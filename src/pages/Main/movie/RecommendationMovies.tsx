@@ -1,9 +1,9 @@
 import { getRecommendationMovies } from 'api/movieData';
+import HorizontalContainer from 'components/HorizontalContainer';
+import VerticalContainer from 'components/VerticalContainer';
 import { useData } from 'hooks/useData';
 
-import HorizontalContainer from '../HorizontalContainer';
 import Movie from '../Movie';
-import VerticalContainer from '../VerticalContainer';
 
 function RecommendationMovies({
   id,
