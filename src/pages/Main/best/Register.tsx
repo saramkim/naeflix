@@ -12,6 +12,11 @@ import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import { DATA, STYLE } from 'utils/constants';
 
+type RegisterType = {
+  id: string;
+  setId: React.Dispatch<React.SetStateAction<string>>;
+};
+
 const Title = styled(Font45)`
   width: 440px;
 
@@ -119,13 +124,7 @@ const ButtonWrapper = styled.div`
   justify-content: space-between;
 `;
 
-function Register({
-  id,
-  setId,
-}: {
-  id: string;
-  setId: React.Dispatch<React.SetStateAction<string>>;
-}) {
+function Register({ id, setId }: RegisterType) {
   const [movieData] = useData({
     callback: getMovieData,
     initailValue: null,

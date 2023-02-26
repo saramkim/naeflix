@@ -96,6 +96,7 @@ function ProfileButton() {
           {isMobile ? (
             <>
               <TextButton path='/main/cinema'>인생 영화</TextButton>
+              <TextButton path='/main/any'>아무 영화</TextButton>
               <TextButton path='/main/top-rated'>높은 평점</TextButton>
               <TextButton path='/main/genre'>장르</TextButton>
               <TextButton path='/account'>계정</TextButton>

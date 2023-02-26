@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { getMovieData } from 'api/movieData';
 import Image from 'components/Image';
+import Loading from 'components/Loading';
 import { Font24, Font45 } from 'components/style/FontSize';
 import { getComment, getStar, isMarkedMovie } from 'firebases/firestore';
 import { useData } from 'hooks/useData';
@@ -172,6 +173,6 @@ function MovieInfo({ id }: { id: string }) {
     );
   }
 
-  return null;
+  return <Loading />;
 }
 export default MovieInfo;

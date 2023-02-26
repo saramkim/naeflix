@@ -26,10 +26,10 @@ const HeaderLayout = styled.div`
   }
 `;
 
-const ButtonContainer = styled.div`
+const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 20px;
   height: 100%;
   font-size: 15px;
 `;
@@ -37,6 +37,7 @@ const ButtonContainer = styled.div`
 const Icon = styled.div`
   font-size: 22px;
   cursor: pointer;
+  margin-left: 20px;
 `;
 
 function Header() {
@@ -45,7 +46,7 @@ function Header() {
 
   return (
     <HeaderLayout>
-      <ButtonContainer>
+      <ButtonWrapper>
         <Logo path='/main' height='30' />
         {!isMobile && (
           <>
@@ -56,6 +57,9 @@ function Header() {
             <TextButton hover='opacity' path='/main/cinema'>
               인생 영화
             </TextButton>
+            <TextButton hover='opacity' path='/main/any'>
+              아무 영화
+            </TextButton>
             <TextButton hover='opacity' path='/main/top-rated'>
               높은 평점
             </TextButton>
@@ -64,13 +68,13 @@ function Header() {
             </TextButton>
           </>
         )}
-      </ButtonContainer>
-      <ButtonContainer>
+      </ButtonWrapper>
+      <ButtonWrapper>
         <Icon onClick={() => navigate('/main/search')}>
           <GoSearch />
         </Icon>
         <ProfileButton />
-      </ButtonContainer>
+      </ButtonWrapper>
     </HeaderLayout>
   );
 }

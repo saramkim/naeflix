@@ -17,6 +17,7 @@ import Introduction from 'pages/introduction/Introduction';
 import HelpPopup from 'pages/login/HelpPopup';
 import Login from 'pages/login/Login';
 import PhoneNumberLoginPopup from 'pages/login/PhoneNumberLoginPopup';
+import Any from 'pages/Main/any/Any';
 import Best from 'pages/Main/best/Best';
 import Category from 'pages/Main/category/Category';
 import Cinema from 'pages/Main/cinema/Cinema';
@@ -75,6 +76,7 @@ function App() {
           <Route path='person/:id/:category' element={<Category />} />
           <Route path='search' element={<Search />} />
           <Route path='best' element={<Best />} />
+          <Route path='any' element={<Any />} />
           <Route path='cinema' element={<Cinema />} />
           <Route path='genre' element={<Genre />} />
           <Route path='genre/:genre' element={<Genre />} />

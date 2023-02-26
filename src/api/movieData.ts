@@ -55,7 +55,20 @@ const getTrailer = async (id: string) => {
   return results[0];
 };
 
+const getAnyMovie = async (type: 'korea' | 'all') => {
+  const page = type === 'korea' ? Math.ceil(Math.random() * 19) : Math.ceil(Math.random() * 90);
+  const number = Math.floor(Math.random() * 20);
+  const request =
+    type === 'korea'
+      ? `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&region=KR&page=${page}&vote_count.gte=10&vote_average.gte=7&with_original_language=ko`
+      : `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR&region=KR&page=${page}&vote_count.gte=10&vote_average.gte=7`;
+  const response = await axios.get(request);
+  const { results }: { results: MovieType[] } = response.data;
+  return results[number];
+};
+
 export {
+  getAnyMovie,
   getMovieData,
   getMovies,
   getRecommendationMovies,
