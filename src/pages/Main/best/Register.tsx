@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { getMovieData } from 'api/movieData';
 import Button from 'components/Button';
 import Image from 'components/Image';
+import Loading from 'components/Loading';
 import { Font45 } from 'components/style/FontSize';
 import { commentMovie, getComment, markBestMovie } from 'firebases/firestore';
 import { useData } from 'hooks/useData';
@@ -180,7 +181,7 @@ function Register({ id, setId }: RegisterType) {
     );
   }
 
-  return null;
+  return <Loading />;
 }
 
 export default Register;

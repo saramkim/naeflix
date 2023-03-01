@@ -5,6 +5,8 @@ import { MovieType } from 'api/movieType';
 import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
 
+import CountrySelector from './CountrySelector';
+import GenreSelector from './GenreSelector';
 import Result from './Result';
 
 const AnyMovieLayout = styled.div`
@@ -41,21 +43,13 @@ const AnyMovie = styled.div`
   }
 `;
 
-const TypeButton = styled.button`
-  position: absolute;
-  padding: 20px;
-  font-size: 20px;
-  background-color: rgb(50, 50, 50);
-  color: white;
-  border-radius: 10px;
-`;
-
 function Any() {
   const [movie, setMovie] = useState<MovieType | null>(null);
-  const [type, setType] = useState<'korea' | 'all'>('all');
+  const [country, setCountry] = useState('');
+  const [genre, setGenre] = useState('');
 
   const onAnyMovie = async () => {
-    const data = await getAnyMovie(type);
+    const data = await getAnyMovie(country, genre);
     setMovie(data);
   };
 
@@ -64,9 +58,8 @@ function Any() {
   return (
     <AnyMovieLayout>
       <AnyMovie onClick={onAnyMovie} />
-      <TypeButton onClick={() => setType((type) => (type === 'korea' ? 'all' : 'korea'))}>
-        {type === 'korea' ? '한국 영화' : '모든 영화'}
-      </TypeButton>
+      <CountrySelector setCountry={setCountry} />
+      <GenreSelector setGenre={setGenre} />
     </AnyMovieLayout>
   );
 }

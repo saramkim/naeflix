@@ -1,60 +1,84 @@
-import { AiOutlineCaretDown } from 'react-icons/ai';
-import { RiGlobalFill } from 'react-icons/ri';
+import { useState } from 'react';
+
 import styled from 'styled-components';
+import { STYLE } from 'utils/constants';
 
-type Props = { list: string[]; fontSize: number; background?: string };
+type SelectBoxType = {
+  children: React.ReactNode[];
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+  fontSize: number;
+  top: number;
+  right: number;
+};
 
-const SelectBoxLayout = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-`;
-
-const Box = styled.select<{ fontSize: number; background?: string }>`
-  position: relative;
-  padding: 0.6em;
-  width: 6.5em;
-  font-size: ${({ fontSize }) => fontSize}px;
-  border-color: inherit;
-  border-radius: 0.2em;
-  background: ${({ background }) => background || 'inherit'};
-  color: inherit;
+const GenreSelectorLayout = styled.select<{ fontSize: number; top: number; right: number }>`
+  -o-appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-`;
 
-const OptionBox = styled.option<{ background?: string }>`
-  background-color: ${({ background }) => background || 'black'};
-  text-align: center;
-`;
-
-const Icon = styled.div<{ fontSize: number }>`
-  font-size: ${({ fontSize }) => fontSize}px;
   position: absolute;
-  display: flex;
-  align-items: center;
-  padding: 0.6em;
-  width: 6.5em;
-  justify-content: space-between;
-  pointer-events: none;
+  top: ${({ top }) => top}px;
+  right: ${({ right }) => right}px;
+  padding: 0.75rem;
+  border-radius: 0.3em;
+  background-color: ${STYLE.ACCOUNT_COLOR};
+  border: none;
+  font-family: inherit;
+  font-size: ${({ fontSize }) => fontSize}px;
+  cursor: pointer;
+  text-align: center;
+
+  &::-ms-expand {
+    display: none;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &:focus {
+    outline: none;
+    padding: 0.75rem 0.62rem;
+  }
+  &:hover,
+  &:focus,
+  & > option:checked,
+  & > option:hover {
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: 550px) {
+    font-size: 16px;
+    top: ${({ top }) => top * 0.8}px;
+    right: ${({ right }) => right * 0.8}px;
+  }
 `;
 
-function SelectBox({ list, fontSize, background }: Props) {
+function SelectBox({ children, setValue, fontSize, top, right }: SelectBoxType) {
+  const [selectorSize, setSelectorSize] = useState(1);
+
+  const onFocus = (e: React.FocusEvent<HTMLSelectElement, Element>) => {
+    if (e.target.childElementCount > 7) setSelectorSize(7);
+    else setSelectorSize(e.target.childElementCount);
+  };
+  const onBlur = () => setSelectorSize(1);
+  const onChange = (e: React.FocusEvent<HTMLSelectElement, Element>) => {
+    onBlur();
+    e.target.blur();
+    setValue(e.target.value);
+  };
+
   return (
-    <SelectBoxLayout>
-      <Box fontSize={fontSize} background={background}>
-        {list.map((text) => (
-          <OptionBox key={text} background={background}>
-            {text}
-          </OptionBox>
-        ))}
-      </Box>
-      <Icon fontSize={fontSize}>
-        <RiGlobalFill />
-        <AiOutlineCaretDown />
-      </Icon>
-    </SelectBoxLayout>
+    <GenreSelectorLayout
+      size={selectorSize}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      onChange={onChange}
+      fontSize={fontSize}
+      top={top}
+      right={right}
+    >
+      {children}
+    </GenreSelectorLayout>
   );
 }
 

@@ -17,7 +17,7 @@ const AnimationPoster = styled.div`
     0% {
       transform: translateX(245px);
     }
-    30% {
+    50% {
       transform: translateX(245px);
     }
     100% {
@@ -31,7 +31,7 @@ const AnimationPoster = styled.div`
       0% {
         transform: translateY(194px);
       }
-      30% {
+      50% {
         transform: translateY(194px);
       }
       100% {
@@ -49,11 +49,11 @@ const AnimationContent = styled.div`
       opacity: 0;
       transform: translateX(-245px);
     }
-    30% {
+    50% {
       opacity: 0;
       transform: translateX(-245px);
     }
-    50% {
+    75% {
       opacity: 0;
     }
     100% {
@@ -69,11 +69,11 @@ const AnimationContent = styled.div`
         opacity: 0;
         transform: translateY(-194px);
       }
-      30% {
+      50% {
         opacity: 0;
         transform: translateY(-194px);
       }
-      50% {
+      75% {
         opacity: 0;
       }
       100% {

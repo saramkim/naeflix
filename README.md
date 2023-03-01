@@ -4,7 +4,7 @@ Skills: **React, Typescript, Firebase**
 
 </br>
 
-## [내플릭스 소개 링크](https://saramkim.github.io/naeflix/introduction)
+### [내플릭스 소개 링크](https://saramkim.github.io/naeflix/introduction)
 
 <br/>
 
@@ -20,11 +20,9 @@ Skills: **React, Typescript, Firebase**
 
 - 아무 영화
 
-  - [x] 모든 영화
+  - [x] 한국 / 외국
 
-  - [x] 한국 영화
-
-  - [ ] 장르별
+  - [x] 장르별
 
 - 회원가입
 

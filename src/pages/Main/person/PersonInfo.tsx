@@ -1,5 +1,6 @@
 import { getPersonData } from 'api/personData';
 import Image from 'components/Image';
+import Loading from 'components/Loading';
 import { Font45 } from 'components/style/FontSize';
 import { useData } from 'hooks/useData';
 import { Backdrop, Content, InfoLayout } from 'pages/Main/InfoLayout';
@@ -35,7 +36,8 @@ function PersonInfo({ id }: { id: string }) {
       </Backdrop>
     );
   }
-  return null;
+
+  return <Loading />;
 }
 
 export default PersonInfo;

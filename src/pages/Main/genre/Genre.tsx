@@ -38,8 +38,8 @@ function Genre() {
   return (
     <GenreLayout>
       <ButtonContainer>
-        {GENRE.map((genre) => (
-          <GenreButton key={genre.id} genre={genre.name} fontSize={18} />
+        {GENRE.map(({ id, name }) => (
+          <GenreButton key={id} genre={name} fontSize={18} />
         ))}
       </ButtonContainer>
       <VerticalContainer category={genre}>

@@ -1,5 +1,6 @@
 import { getPersonCredits } from 'api/personData';
 import HorizontalContainer from 'components/HorizontalContainer';
+import Loading from 'components/Loading';
 import VerticalContainer from 'components/VerticalContainer';
 import { useData } from 'hooks/useData';
 
@@ -33,7 +34,7 @@ function Cast({ id, direction }: { id: string; direction: 'vertical' | 'horizont
     );
   }
 
-  return null;
+  return <Loading />;
 }
 
 export default Cast;
