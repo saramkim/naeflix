@@ -9,6 +9,7 @@ type SelectBoxType = {
   fontSize: number;
   top: number;
   right: number;
+  defaultValue: string;
 };
 
 const GenreSelectorLayout = styled.select<{ fontSize: number; top: number; right: number }>`
@@ -53,7 +54,7 @@ const GenreSelectorLayout = styled.select<{ fontSize: number; top: number; right
   }
 `;
 
-function SelectBox({ children, setValue, fontSize, top, right }: SelectBoxType) {
+function SelectBox({ children, setValue, fontSize, top, right, defaultValue }: SelectBoxType) {
   const [selectorSize, setSelectorSize] = useState(1);
 
   const onFocus = (e: React.FocusEvent<HTMLSelectElement, Element>) => {
@@ -76,6 +77,7 @@ function SelectBox({ children, setValue, fontSize, top, right }: SelectBoxType) 
       fontSize={fontSize}
       top={top}
       right={right}
+      defaultValue={defaultValue}
     >
       {children}
     </GenreSelectorLayout>

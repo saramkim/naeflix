@@ -24,6 +24,8 @@ Skills: **React, Typescript, Firebase**
 
   - [x] 장르별
 
+  - [ ] 시대별
+
 - 회원가입
 
   - [x] 이메일, 비밀번호 회원가입

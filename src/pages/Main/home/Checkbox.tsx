@@ -40,10 +40,8 @@ const Text = styled.span`
 
 function Checkbox({ category, setList, checked }: CheckboxType) {
   const onEdit = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (setList) {
-      if (e.target.checked) setList((v) => [...v, category]);
-      else setList((v) => v.filter((v) => v !== category));
-    }
+    if (e.target.checked) setList((v) => [...v, category]);
+    else setList((v) => v.filter((v) => v !== category));
   };
 
   return (

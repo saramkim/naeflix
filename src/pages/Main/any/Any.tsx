@@ -58,8 +58,8 @@ function Any() {
   return (
     <AnyMovieLayout>
       <AnyMovie onClick={onAnyMovie} />
-      <CountrySelector setCountry={setCountry} />
-      <GenreSelector setGenre={setGenre} />
+      <CountrySelector country={country} setCountry={setCountry} />
+      <GenreSelector genre={genre} setGenre={setGenre} />
     </AnyMovieLayout>
   );
 }
