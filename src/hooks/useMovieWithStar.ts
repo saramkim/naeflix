@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { getMovieData } from 'api/movieData';
 import { MovieDataType } from 'api/movieType';
-import { getMarkedMovie } from 'firebases/firestore';
+import { getAllMarkedMovie } from 'firebases/firestore';
 
 export const useMoviesWithStars = (category: string) => {
   const [movieList, setMovieList] = useState<MovieDataType[]>([]);
@@ -10,7 +10,7 @@ export const useMoviesWithStars = (category: string) => {
 
   useEffect(() => {
     (async () => {
-      const movies = await getMarkedMovie();
+      const movies = await getAllMarkedMovie();
       const idList = Object.keys(movies);
 
       idList.forEach(async (id) => {

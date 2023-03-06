@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getAllMarkedMovie } from 'firebases/firestore';
 
 import { MovieDataType, MovieType, SearchMovieDataType, TrailerType } from './movieType';
 
@@ -66,7 +67,7 @@ const getTotalPages = async (country: string, genre: string) => {
   return total_pages;
 };
 
-const getAnyMovie = async (country: string, genre: string) => {
+const getAnyMovie = async (country: string, genre: string, exceptMark: boolean) => {
   const totalPages = await getTotalPages(country, genre);
   const page = Math.ceil(Math.random() * totalPages);
   const URL =
@@ -76,6 +77,14 @@ const getAnyMovie = async (country: string, genre: string) => {
   const response = await axios.get(URL);
   const { results }: { results: MovieType[] } = response.data;
   const number = Math.floor(Math.random() * results.length);
+
+  if (exceptMark) {
+    const data = await getAllMarkedMovie();
+    const markedMovieList = Object.keys(data);
+    const exceptionResults = results.filter(({ id }) => !markedMovieList.includes(id.toString()));
+    const number = Math.floor(Math.random() * exceptionResults.length);
+    return exceptionResults[number];
+  }
   return results[number];
 };
 

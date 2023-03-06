@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { getMovieData } from 'api/movieData';
 import { MovieDataType } from 'api/movieType';
 import VerticalContainer from 'components/VerticalContainer';
-import { getMarkedMovie } from 'firebases/firestore';
+import { getAllMarkedMovie } from 'firebases/firestore';
 import styled from 'styled-components';
 import { STYLE } from 'utils/constants';
 
@@ -67,7 +67,7 @@ function Selector({ setSelect, setId }: SelectorType) {
 
   useEffect(() => {
     (async () => {
-      const movies = await getMarkedMovie();
+      const movies = await getAllMarkedMovie();
       const idList = Object.keys(movies);
       idList.forEach(async (id) => {
         const { rating, best } = movies[id];

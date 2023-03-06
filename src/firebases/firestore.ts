@@ -67,11 +67,20 @@ const isMarkedMovie = async (id: string) => {
   return false;
 };
 
-const getMarkedMovie = async (id?: string) => {
+const getAllMarkedMovie = async () => {
   const docSnap = await getDoc(markedRef(uid()));
   if (docSnap.exists()) {
     const data = docSnap.data();
-    return id ? data[id] : data;
+    return data;
+  }
+  return {};
+};
+
+const getMarkedMovie = async (id: string) => {
+  const docSnap = await getDoc(markedRef(uid()));
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    return data[id];
   }
   return {};
 };
@@ -132,6 +141,7 @@ export {
   createUserDoc,
   deleteBestMovie,
   deleteUserDoc,
+  getAllMarkedMovie,
   getBestMovieList,
   getComment,
   getHomeList,

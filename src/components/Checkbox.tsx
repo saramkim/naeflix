@@ -1,18 +1,18 @@
 import styled from 'styled-components';
-import { DATA, STYLE } from 'utils/constants';
+import { STYLE } from 'utils/constants';
 
-type CheckboxType = {
-  category: string;
-  setList: React.Dispatch<React.SetStateAction<string[]>>;
-  checked: boolean;
-};
+interface CheckboxType extends React.InputHTMLAttributes<HTMLInputElement> {
+  children: React.ReactNode;
+  fontSize?: number;
+}
 
-const CheckboxLayout = styled.label`
+const CheckboxLayout = styled.label<{ fontSize?: number }>`
   cursor: pointer;
   display: flex;
   align-items: center;
   user-select: none;
   width: fit-content;
+  font-size: ${({ fontSize }) => fontSize}px;
 `;
 
 const Input = styled.input`
@@ -38,16 +38,11 @@ const Text = styled.span`
   margin-left: 5px;
 `;
 
-function Checkbox({ category, setList, checked }: CheckboxType) {
-  const onEdit = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) setList((v) => [...v, category]);
-    else setList((v) => v.filter((v) => v !== category));
-  };
-
+function Checkbox({ children, fontSize, ...rest }: CheckboxType) {
   return (
-    <CheckboxLayout>
-      <Input type='checkbox' onChange={onEdit} checked={checked} />
-      <Text>{DATA.CATEGORY_NAME[category]}</Text>
+    <CheckboxLayout fontSize={fontSize}>
+      <Input type='checkbox' {...rest} />
+      <Text>{children}</Text>
     </CheckboxLayout>
   );
 }

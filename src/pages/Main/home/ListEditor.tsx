@@ -8,7 +8,7 @@ import { useData } from 'hooks/useData';
 import styled from 'styled-components';
 import { DATA, STYLE } from 'utils/constants';
 
-import Checkbox from './Checkbox';
+import ListCheck from './ListCheck';
 
 const Form = styled.form`
   display: flex;
@@ -70,7 +70,7 @@ function ListEditor() {
         <Content>
           <ListWrapper>
             {DATA.HOME_LIST.map((category) => (
-              <Checkbox
+              <ListCheck
                 category={category}
                 setList={setHomeList}
                 checked={homeList.includes(category)}
