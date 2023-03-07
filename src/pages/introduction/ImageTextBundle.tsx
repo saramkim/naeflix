@@ -44,6 +44,9 @@ function ImageTextBundle() {
       </ImageTextBox>
       <ImageTextBox title='인생 영화관' video={bestCinema}>
         자신의 인생 영화를 한줄평과 함께 다른 사용자들과 공유할 수 있습니다.
+        <br />
+        <br />
+        등록, 삭제, 좋아요 기능이 구현되어 있습니다.
       </ImageTextBox>
       <ImageTextBox title='검색 기능' img={search} direction='reverse'>
         제목으로 영화를 검색하고, 이름으로 인물을 검색할 수 있습니다.

@@ -1,6 +1,8 @@
 import { getAuth, User } from 'firebase/auth';
 import {
   addDoc,
+  arrayRemove,
+  arrayUnion,
   collection,
   deleteDoc,
   deleteField,
@@ -24,6 +26,7 @@ interface MarkBestMovieProps {
 }
 
 export interface MarkBestMovieType extends MarkBestMovieProps {
+  like: string[];
   user: { uid: string; displayName: string; photoURL: string };
   timestamp: number;
   docId: string;
@@ -115,6 +118,7 @@ const markBestMovie = async ({ id, title, comment, posterPath }: MarkBestMoviePr
     title,
     posterPath,
     comment,
+    like: [],
     user: { uid, displayName, photoURL },
     timestamp: Date.now(),
   });
@@ -136,6 +140,16 @@ const deleteBestMovie = async ({ uid, id, docId }: { uid: string; id: string; do
   return deleteDoc(doc(db, 'best', docId));
 };
 
+const likeBestMovie = async (docId: string) => {
+  const bestRef = doc(db, 'best', docId);
+  return updateDoc(bestRef, { like: arrayUnion(uid()) });
+};
+
+const unlikeBestMovie = async (docId: string) => {
+  const bestRef = doc(db, 'best', docId);
+  return updateDoc(bestRef, { like: arrayRemove(uid()) });
+};
+
 export {
   commentMovie,
   createUserDoc,
@@ -148,9 +162,11 @@ export {
   getMarkedMovie,
   getStar,
   isMarkedMovie,
+  likeBestMovie,
   markBestMovie,
   markMovie,
   rateMovie,
+  unlikeBestMovie,
   unmarkMovie,
   updateHomeList,
 };

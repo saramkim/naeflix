@@ -1,10 +1,16 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Image from 'components/Image';
 import ProfileImage from 'components/ProfileImage';
 import { getAuth } from 'firebase/auth';
-import { deleteBestMovie, MarkBestMovieType } from 'firebases/firestore';
-import { MdDeleteForever } from 'react-icons/md';
+import {
+  deleteBestMovie,
+  likeBestMovie,
+  MarkBestMovieType,
+  unlikeBestMovie,
+} from 'firebases/firestore';
+import { MdDeleteForever, MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import styled from 'styled-components';
 
 const PostLayout = styled.div`
@@ -50,15 +56,9 @@ const Title = styled.h1`
 
 const Comment = styled.div`
   color: ${({ theme }) => theme.color.yellow};
+  ${({ theme }) => theme.font(22)}
   font-weight: bold;
   word-break: normal;
-  font-size: 22px;
-  line-height: 26px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 20px;
-    line-height: 24px;
-  }
 `;
 
 const Created = styled.div`
@@ -72,12 +72,27 @@ const Nickname = styled.div`
 `;
 
 const Delete = styled.div`
+  color: rgb(155, 155, 155);
   cursor: pointer;
-  position: absolute;
   font-size: 30px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+`;
+
+const Like = styled.div`
+  ${({ theme }) => theme.flex.center}
   color: ${({ theme }) => theme.color.main};
-  top: 20px;
-  right: 20px;
+  gap: 3px;
+  cursor: pointer;
+  font-size: 30px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+`;
+
+const LikeCount = styled.span`
+  font-size: 25px;
 `;
 
 const RegisterDate = styled.div`
@@ -87,14 +102,22 @@ const RegisterDate = styled.div`
   right: 20px;
 `;
 
-function Post({ id, title, comment, posterPath, user, timestamp, docId }: MarkBestMovieType) {
+function Post({ id, title, comment, posterPath, like, user, timestamp, docId }: MarkBestMovieType) {
+  const auth = getAuth();
+  const { uid } = auth.currentUser!;
+  const [isLike, setLike] = useState(like.includes(uid));
   const navigate = useNavigate();
   const dateFormat = new Date(timestamp);
   const DATE = `${dateFormat.getFullYear()} / ${
     dateFormat.getMonth() + 1
   } / ${dateFormat.getDate()}`;
-  const auth = getAuth();
-  const { uid } = auth.currentUser!;
+  const LIKE_COUNT = like.length + (isLike ? 1 : 0) - (like.includes(uid) ? 1 : 0);
+
+  const onLike = () => {
+    setLike((v) => !v);
+    if (isLike) unlikeBestMovie(docId);
+    else likeBestMovie(docId);
+  };
 
   const onDelete = () => {
     if (window.confirm('삭제하시겠습니까?'))
@@ -114,12 +137,17 @@ function Post({ id, title, comment, posterPath, user, timestamp, docId }: MarkBe
           <Nickname>{user.displayName || '(무명)'}</Nickname>
         </Created>
       </Content>
+
+      <Like onClick={onLike}>
+        {isLike ? <MdFavorite /> : <MdFavoriteBorder />}
+        <LikeCount>{LIKE_COUNT}</LikeCount>
+      </Like>
+      <RegisterDate>{DATE}</RegisterDate>
       {uid === user.uid && (
         <Delete onClick={onDelete}>
           <MdDeleteForever />
         </Delete>
       )}
-      <RegisterDate>{DATE}</RegisterDate>
     </PostLayout>
   );
 }

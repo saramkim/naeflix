@@ -14,9 +14,9 @@ Skills: **React, Typescript, Firebase**
 
   - [x] 등록 (한줄평 공유)
 
-  - [ ] 순위
+  - [x] 좋아요
 
-  - [ ] 공감
+  - [ ] 순위
 
 - 아무 영화
 
