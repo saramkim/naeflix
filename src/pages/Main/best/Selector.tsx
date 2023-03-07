@@ -5,7 +5,6 @@ import { MovieDataType } from 'api/movieType';
 import VerticalContainer from 'components/VerticalContainer';
 import { getAllMarkedMovie } from 'firebases/firestore';
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
 import Movie from '../Movie';
 
@@ -25,7 +24,7 @@ const Background = styled.div`
 `;
 
 const SelectorLayout = styled.div`
-  background-color: ${STYLE.ACCOUNT_COLOR};
+  background-color: ${({ theme }) => theme.color.lightGray};
   color: black;
   position: fixed;
   top: 50%;

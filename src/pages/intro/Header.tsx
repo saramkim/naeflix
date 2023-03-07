@@ -3,9 +3,7 @@ import Logo from 'components/Logo';
 import styled from 'styled-components';
 
 const HeaderLayout = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  ${({ theme }) => theme.flex.spaceBetween}
   position: relative;
   height: 80px;
   padding: 0 56px;

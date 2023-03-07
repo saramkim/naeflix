@@ -1,13 +1,10 @@
-import { FlexColumn } from 'components/style/Flex';
 import styled from 'styled-components';
 
 export const Backdrop = styled.div<{ heigth: string; src?: string }>`
+  ${({ theme }) => theme.flex.center}
   background-image: url(${({ src }) => src});
   background-size: cover;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: ${({ heigth }) => heigth};
 
   &:before {
@@ -28,12 +25,11 @@ export const Backdrop = styled.div<{ heigth: string; src?: string }>`
 `;
 
 export const InfoLayout = styled.div`
+  ${({ theme }) => theme.flex.center}
   position: relative;
   height: 100%;
   max-width: 1280px;
 
-  display: flex;
-  align-items: center;
   gap: 30px 50px;
   padding: 50px;
 
@@ -45,10 +41,11 @@ export const InfoLayout = styled.div`
   }
 `;
 
-export const Content = styled(FlexColumn)<{ gap: number }>`
+export const Content = styled.div<{ gap: number }>`
+  ${({ theme }) => theme.flex.column};
+  justify-content: center;
   height: 100%;
   width: 100%;
-  justify-content: center;
   gap: ${({ gap }) => gap}px;
 
   @media screen and (max-width: 950px) {

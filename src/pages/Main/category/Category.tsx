@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
 import Credits from '../movie/Credits';
 import RecommendationMovies from '../movie/RecommendationMovies';
@@ -12,8 +11,8 @@ import TopRatedMovies from '../TopRatedMovies';
 import Trending from '../Trending';
 
 const CategoryLayout = styled.div`
+  ${({ theme }) => theme.style.minHeight};
   padding: 50px;
-  min-height: ${STYLE.HEIGHT_WITHOUT_HEADER};
 
   @media screen and (max-width: 550px) {
     padding: 30px 0;

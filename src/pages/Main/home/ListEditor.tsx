@@ -2,18 +2,16 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from 'components/Button';
 import Popup from 'components/Popup';
-import { FlexColumn } from 'components/style/Flex';
 import { getHomeList, updateHomeList } from 'firebases/firestore';
 import { useData } from 'hooks/useData';
 import styled from 'styled-components';
-import { DATA, STYLE } from 'utils/constants';
+import { DATA } from 'utils/constants';
 
 import ListCheck from './ListCheck';
 
 const Form = styled.form`
-  display: flex;
+  ${({ theme }) => theme.flex.column};
   width: 100%;
-  flex-direction: column;
   gap: 30px;
 
   @media screen and (max-width: 550px) {
@@ -22,27 +20,21 @@ const Form = styled.form`
 `;
 
 const Title = styled.h1`
+  ${({ theme }) => theme.font(35)};
   text-align: center;
-  font-size: 30px;
-  line-height: 36px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 25px;
-    line-height: 30px;
-  }
 `;
 
 const Content = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${({ theme }) => theme.flex.spaceBetween}
 `;
 
-const ListWrapper = styled(FlexColumn)`
+const ListWrapper = styled.div`
+  ${({ theme }) => theme.flex.column};
   gap: 10px;
 `;
 
 const Category = styled.span`
-  color: ${STYLE.MAIN_COLOR};
+  color: ${({ theme }) => theme.color.main};
   font-weight: bold;
   text-align: right;
 `;

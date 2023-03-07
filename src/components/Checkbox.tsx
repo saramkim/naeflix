@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
 interface CheckboxType extends React.InputHTMLAttributes<HTMLInputElement> {
   children: React.ReactNode;
@@ -7,9 +6,8 @@ interface CheckboxType extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const CheckboxLayout = styled.label<{ fontSize?: number }>`
+  ${({ theme }) => theme.flex.center}
   cursor: pointer;
-  display: flex;
-  align-items: center;
   user-select: none;
   width: fit-content;
   font-size: ${({ fontSize }) => fontSize}px;
@@ -30,7 +28,7 @@ const Input = styled.input`
     background-size: 100% 100%;
     background-position: 50%;
     background-repeat: no-repeat;
-    background-color: ${STYLE.MAIN_COLOR};
+    background-color: ${({ theme }) => theme.color.main};
   }
 `;
 

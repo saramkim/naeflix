@@ -1,7 +1,6 @@
 import { getMarkedMovie, markMovie, unmarkMovie } from 'firebases/firestore';
 import { BsFillBookmarkStarFill } from 'react-icons/bs';
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
 type MarkingButtonType = {
   id: string;
@@ -13,11 +12,9 @@ type MarkingButtonType = {
 };
 
 const MarkingButtonLayout = styled.button<{ isMarked: boolean }>`
-  color: ${({ isMarked }) => (isMarked ? STYLE.MAIN_COLOR : 'rgb(155,155,155)')};
+  ${({ theme }) => theme.flex.center}
+  color: ${({ isMarked, theme }) => (isMarked ? theme.color.main : 'rgb(155,155,155)')};
   font-size: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 function MarkingButton({

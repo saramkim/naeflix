@@ -5,22 +5,18 @@ import styled from 'styled-components';
 import { DATA, STYLE } from 'utils/constants';
 import { throttle } from 'utils/throttle';
 
-import { FlexColumn } from './style/Flex';
-import { Font20 } from './style/FontSize';
-
 type HorizontalContainerType = {
   children: React.ReactNode[];
   category: string;
 };
 
-const Layout = styled(FlexColumn)`
+const Layout = styled.div`
+  ${({ theme }) => theme.flex.column};
   gap: 10px;
 `;
 
 const TextWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  ${({ theme }) => theme.flex.spaceBetween}
   padding-right: 50px;
 
   @media screen and (max-width: 550px) {
@@ -29,20 +25,18 @@ const TextWrapper = styled.div`
 `;
 
 const Info = styled.div`
+  ${({ theme }) => theme.flex.center}
   cursor: pointer;
-  display: flex;
-  align-items: center;
   gap: 5px;
 `;
 
 const ChildrenCount = styled.span`
   color: rgb(155, 155, 155);
+  ${({ theme }) => theme.font(17)}
+`;
 
-  font-size: 17px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 14px;
-  }
+const Category = styled.div`
+  ${({ theme }) => theme.font(20)}
 `;
 
 const Wrapper = styled.div`
@@ -100,7 +94,7 @@ function HorizontalContainer({ children, category }: HorizontalContainerType) {
     <Layout>
       <TextWrapper>
         <Info onClick={() => setShown((v) => !v)}>
-          <Font20>{DATA.CATEGORY_NAME[category]}</Font20>
+          <Category>{DATA.CATEGORY_NAME[category]}</Category>
           <ChildrenCount>({children.length})</ChildrenCount>
         </Info>
         {Boolean(children.length) && (

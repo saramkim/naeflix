@@ -7,16 +7,14 @@ type ExceptionCheckType = {
 };
 
 const ExceptionCheckLayout = styled.div`
+  ${({ theme }) => theme.font(20)};
   position: absolute;
-
   top: 100px;
   right: 30px;
-  font-size: 20px;
 
   @media screen and (max-width: 550px) {
     top: 80px;
     right: 24px;
-    font-size: 16px;
   }
 `;
 

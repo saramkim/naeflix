@@ -2,20 +2,16 @@ import { useNavigate } from 'react-router-dom';
 
 import Image from 'components/Image';
 import ProfileImage from 'components/ProfileImage';
-import { FlexColumn } from 'components/style/Flex';
-import { Font36 } from 'components/style/FontSize';
 import { getAuth } from 'firebase/auth';
 import { deleteBestMovie, MarkBestMovieType } from 'firebases/firestore';
 import { MdDeleteForever } from 'react-icons/md';
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
 const PostLayout = styled.div`
+  ${({ theme }) => theme.flex.center}
   position: relative;
   background-color: rgb(20, 20, 20);
   width: 100%;
-  display: flex;
-  align-items: center;
   border-radius: 10px;
 
   padding: 50px;
@@ -34,9 +30,10 @@ const ImageWrapper = styled.div`
   cursor: pointer;
 `;
 
-const Content = styled(FlexColumn)`
-  width: 100%;
+const Content = styled.div`
+  ${({ theme }) => theme.flex.column};
   justify-content: space-around;
+  width: 100%;
 
   height: 277.5px;
 
@@ -46,12 +43,13 @@ const Content = styled(FlexColumn)`
   }
 `;
 
-const Title = styled(Font36)`
+const Title = styled.h1`
+  ${({ theme }) => theme.font(36)}
   word-break: normal;
 `;
 
 const Comment = styled.div`
-  color: ${STYLE.COMMNET_COLOR};
+  color: ${({ theme }) => theme.color.yellow};
   font-weight: bold;
   word-break: normal;
   font-size: 22px;
@@ -77,7 +75,7 @@ const Delete = styled.div`
   cursor: pointer;
   position: absolute;
   font-size: 30px;
-  color: ${STYLE.MAIN_COLOR};
+  color: ${({ theme }) => theme.color.main};
   top: 20px;
   right: 20px;
 `;

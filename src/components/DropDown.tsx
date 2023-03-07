@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { AiOutlineClose, AiOutlinePlus } from 'react-icons/ai';
 import styled from 'styled-components';
 
-import { Font36 } from './style/FontSize';
-
 type DropDownProps = {
   title: string;
   children: React.ReactNode;
@@ -13,12 +11,10 @@ type DropDownProps = {
 const DropDownLayout = styled.div``;
 
 const InitialBox = styled.div`
+  ${({ theme }) => theme.flex.spaceBetween}
   padding: 20px 30px;
   margin-bottom: 1px;
   background: #303030;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   cursor: pointer;
 
   @media screen and (max-width: 550px) {
@@ -30,14 +26,11 @@ const InitialBox = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 26px;
+  ${({ theme }) => theme.font(26)}
+`;
 
-  @media screen and (max-width: 550px) {
-    font-size: 18px;
-  }
-  @media screen and (min-width: 550px) and (max-width: 950px) {
-    font-size: 20px;
-  }
+const Icon = styled.div`
+  ${({ theme }) => theme.font(36)}
 `;
 
 const DropBox = styled.div<{ isClicked: boolean }>`
@@ -50,18 +43,13 @@ const DropBox = styled.div<{ isClicked: boolean }>`
   -ms-user-select: text;
   user-select: text;
 
-  font-size: 26px;
-  line-height: 35px;
+  ${({ theme }) => theme.font(26)}
   padding: ${({ isClicked }) => (isClicked ? '30' : '0')}px 30px;
 
   @media screen and (max-width: 550px) {
-    font-size: 18px;
-    line-height: 24px;
     padding: ${({ isClicked }) => (isClicked ? '22' : '0')}px 22px;
   }
   @media screen and (min-width: 550px) and (max-width: 950px) {
-    font-size: 20px;
-    line-height: 26px;
     padding: ${({ isClicked }) => (isClicked ? '24' : '0')}px 24px;
   }
 `;
@@ -77,7 +65,7 @@ function DropDown({ title, children }: DropDownProps) {
     <DropDownLayout>
       <InitialBox onClick={onClickInitailBox}>
         <Title>{title}</Title>
-        <Font36>{isClicked ? <AiOutlineClose /> : <AiOutlinePlus />}</Font36>
+        <Icon>{isClicked ? <AiOutlineClose /> : <AiOutlinePlus />}</Icon>
       </InitialBox>
       <DropBox isClicked={isClicked}>{children}</DropBox>
     </DropDownLayout>

@@ -1,21 +1,25 @@
-import { FlexColumn } from 'components/style/Flex';
-import { Font20, Font24 } from 'components/style/FontSize';
 import styled from 'styled-components';
 
-const InfoLayout = styled(FlexColumn)`
+const InfoLayout = styled.div`
+  ${({ theme }) => theme.flex.column};
   flex-wrap: wrap;
   gap: 5px;
 `;
 
-const Title = styled(Font20)`
+const Title = styled.div`
+  ${({ theme }) => theme.font(20)}
   color: rgb(155, 155, 155);
+`;
+
+const Content = styled.div`
+  ${({ theme }) => theme.font(24)}
 `;
 
 function Info({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <InfoLayout>
       <Title>{title}</Title>
-      <Font24>{children}</Font24>
+      <Content>{children}</Content>
     </InfoLayout>
   );
 }

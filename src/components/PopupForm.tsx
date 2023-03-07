@@ -9,9 +9,7 @@ type PopupFormType = {
 };
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  ${({ theme }) => theme.flex.column};
   width: 100%;
 
   gap: 30px;
@@ -22,13 +20,7 @@ const Form = styled.form`
 `;
 
 const Title = styled.h1`
-  font-size: 30px;
-  line-height: 36px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 25px;
-    line-height: 30px;
-  }
+  ${({ theme }) => theme.font(36)}
 `;
 
 function PopupForm({ children, onSubmit, buttonText, title }: PopupFormType) {

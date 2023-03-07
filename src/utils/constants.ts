@@ -1,9 +1,6 @@
 const STYLE = {
   MAIN_COLOR: 'rgb(229, 9, 20)',
-  BORDER_BOTTOM: '8px solid #222222',
-  ACCOUNT_COLOR: 'rgb(242, 242, 242)',
   HEIGHT_WITHOUT_HEADER: 'calc(100vh - 60px);',
-  COMMNET_COLOR: 'rgb(255, 188, 0)',
 };
 
 const REG_EX = {

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
 type SelectBoxType = {
   children: React.ReactNode[];
@@ -23,7 +22,7 @@ const GenreSelectorLayout = styled.select<{ fontSize: number; top: number; right
   right: ${({ right }) => right}px;
   padding: 0.75rem;
   border-radius: 0.3em;
-  background-color: ${STYLE.ACCOUNT_COLOR};
+  background-color: ${({ theme }) => theme.color.lightGray};
   border: none;
   font-family: inherit;
   font-size: ${({ fontSize }) => fontSize}px;

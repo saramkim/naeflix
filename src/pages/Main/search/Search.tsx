@@ -1,10 +1,8 @@
 import { useState } from 'react';
 
-import { FlexColumn } from 'components/style/Flex';
 import VerticalContainer from 'components/VerticalContainer';
 import { useSearch } from 'hooks/useSerach';
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
 import Movie from '../Movie';
 import Person from '../Person';
@@ -13,10 +11,11 @@ import SearchBar from './SearchBar';
 
 export type SearchType = 'movie' | 'person';
 
-const SearchLayout = styled(FlexColumn)`
-  width: 100%;
-  min-height: ${STYLE.HEIGHT_WITHOUT_HEADER};
+const SearchLayout = styled.div`
+  ${({ theme }) => theme.flex.column};
+  ${({ theme }) => theme.style.minHeight};
   align-items: center;
+  width: 100%;
 
   padding: 50px;
   gap: 50px;

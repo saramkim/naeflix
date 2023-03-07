@@ -11,23 +11,14 @@ import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
 
 const Form = styled.form`
-  display: flex;
+  ${({ theme }) => theme.flex.spaceBetween}
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
   gap: 20px;
 `;
 
 const FormTitle = styled.h3`
+  ${({ theme }) => theme.font(20)}
   text-align: center;
-
-  font-size: 20px;
-  line-height: 24px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 16px;
-    line-height: 20px;
-  }
 `;
 
 const InputContainer = styled.div`
@@ -37,9 +28,7 @@ const InputContainer = styled.div`
   color: black;
 
   @media screen and (max-width: 950px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    ${({ theme }) => theme.flex.columnCenter}
     gap: 20px;
   }
 `;

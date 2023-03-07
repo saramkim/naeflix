@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 import { debounce } from 'utils/debounce';
 
 import { SearchType } from './Search';
@@ -11,7 +10,7 @@ type SearchBarType = {
 };
 
 const SearchBarLayout = styled.div`
-  background-color: ${STYLE.MAIN_COLOR};
+  background-color: ${({ theme }) => theme.color.main};
   width: 100%;
   max-width: 600px;
   padding: 0 5px;

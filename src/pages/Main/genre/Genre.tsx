@@ -3,14 +3,13 @@ import { useParams } from 'react-router-dom';
 import VerticalContainer from 'components/VerticalContainer';
 import useMovieWithGenre from 'hooks/useMovieWithGenre';
 import styled from 'styled-components';
-import { GENRE, STYLE } from 'utils/constants';
+import { GENRE } from 'utils/constants';
 
 import GenreButton from '../GenreButton';
 import Movie from '../Movie';
 
 const GenreLayout = styled.div`
-  min-height: ${STYLE.HEIGHT_WITHOUT_HEADER};
-
+  ${({ theme }) => theme.style.minHeight};
   padding: 50px;
 
   @media screen and (max-width: 550px) {

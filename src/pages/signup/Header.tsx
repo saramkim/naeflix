@@ -3,10 +3,8 @@ import TextButton from 'components/TextButton';
 import styled from 'styled-components';
 
 const HeaderLayout = styled.div`
+  ${({ theme }) => theme.flex.spaceBetween}
   height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 0 28px;
   border-bottom: 1px rgb(225, 225, 225) solid;
 `;

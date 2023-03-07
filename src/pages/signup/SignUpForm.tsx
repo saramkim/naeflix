@@ -13,20 +13,13 @@ import { PHRASE, REG_EX } from 'utils/constants';
 import OutletLayout from './OutletLayout';
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: column;
+  ${({ theme }) => theme.flex.column};
   justify-content: space-between;
   width: 440px;
 `;
 
 export const Title = styled.h1`
-  font-size: 32px;
-  line-height: 40px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 28px;
-    line-height: 35px;
-  }
+  ${({ theme }) => theme.font(32)};
 `;
 
 export const Content = styled.p`

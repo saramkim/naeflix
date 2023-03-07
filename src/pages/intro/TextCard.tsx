@@ -1,17 +1,16 @@
-import { FlexColumn } from 'components/style/Flex';
 import TypingText from 'components/TypingText';
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
 import StartForm from './StartForm';
 
-const TextCardLayout = styled(FlexColumn)`
-  color: white;
-  align-items: center;
-  text-align: center;
+const TextCardLayout = styled.div`
+  ${({ theme }) => theme.flex.column};
+  ${({ theme }) => theme.style.borderBottom};
   justify-content: space-around;
+  align-items: center;
+  color: white;
+  text-align: center;
   position: relative;
-  border-bottom: ${STYLE.BORDER_BOTTOM};
   box-shadow: inset 0px -200px 100px -80px rgba(255, 255, 255, 0.15);
 
   height: 800px;

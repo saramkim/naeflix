@@ -1,16 +1,16 @@
 import Button from 'components/Button';
 import Logo from 'components/Logo';
-import { FlexColumn } from 'components/style/Flex';
 import { FcApproval } from 'react-icons/fc';
 import styled from 'styled-components';
 
 import OutletLayout from './OutletLayout';
 import { Title } from './SignUpForm';
 
-const CompletionLayout = styled(FlexColumn)`
+const CompletionLayout = styled.div`
+  ${({ theme }) => theme.flex.column};
+  justify-content: space-between;
   width: 100%;
   max-width: 440px;
-  justify-content: space-between;
 
   @media screen and (max-width: 550px) {
   }

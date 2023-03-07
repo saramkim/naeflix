@@ -1,9 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
-
-import { FlexColumn } from './style/Flex';
 
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
@@ -15,15 +12,14 @@ const Background = styled.div`
   z-index: 10;
 `;
 
-const PopupLayout = styled(FlexColumn)`
-  background-color: ${STYLE.ACCOUNT_COLOR};
+const PopupLayout = styled.div`
+  ${({ theme }) => theme.flex.columnCenter}
+  background-color: ${({ theme }) => theme.color.lightGray};
   color: black;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  justify-content: center;
-  align-items: center;
   gap: 30px;
   border-radius: 10px;
   max-width: 100%;

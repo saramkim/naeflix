@@ -1,15 +1,12 @@
 import DropDown from 'components/DropDown';
-import { FlexColumn } from 'components/style/Flex';
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
 import StartForm from './StartForm';
 
-const FQACardLayout = styled(FlexColumn)`
+const FQACardLayout = styled.div`
+  ${({ theme }) => theme.flex.columnCenter};
+  ${({ theme }) => theme.style.borderBottom};
   width: 100%;
-  justify-content: center;
-  align-items: center;
-  border-bottom: ${STYLE.BORDER_BOTTOM};
 
   margin-top: 60px;
   gap: 60px;
@@ -36,7 +33,8 @@ const Title = styled.h1`
   }
 `;
 
-const Content = styled(FlexColumn)`
+const Content = styled.div`
+  ${({ theme }) => theme.flex.column};
   gap: 10px;
   width: 75%;
   max-width: 815px;

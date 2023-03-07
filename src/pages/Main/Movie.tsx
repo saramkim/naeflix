@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { MovieType } from 'api/movieType';
 import Image from 'components/Image';
-import { FlexColumn } from 'components/style/Flex';
 import { getStar, isMarkedMovie } from 'firebases/firestore';
 import { useData } from 'hooks/useData';
 import styled from 'styled-components';
@@ -17,15 +16,15 @@ const MovieLayout = styled.div`
   display: flex;
 `;
 
-const Content = styled(FlexColumn)`
+const Content = styled.div`
+  ${({ theme }) => theme.flex.spaceBetween};
+  flex-direction: column;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
-  align-items: center;
-  justify-content: space-between;
   font-size: 25px;
   border-radius: 3px;
 

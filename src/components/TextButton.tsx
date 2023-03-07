@@ -17,8 +17,6 @@ const TextButtonLayout = styled.div<{ fontSize?: number; color?: string; hover?:
   font-size: ${({ fontSize }) => `${fontSize}px` || 'inherit'};
   width: fit-content;
   cursor: pointer;
-  display: flex;
-  align-items: center;
   line-height: 1rem;
 
   &:hover {

@@ -3,11 +3,9 @@ import ProfileButton from 'components/ProfileButton';
 import styled from 'styled-components';
 
 const HeaderLayout = styled.div`
+  ${({ theme }) => theme.flex.spaceBetween}
   width: 100%;
   background-color: black;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: fixed;
   top: 0;
 

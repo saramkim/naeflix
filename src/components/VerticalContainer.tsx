@@ -5,8 +5,6 @@ import { AiOutlineDownCircle } from 'react-icons/ai';
 import styled from 'styled-components';
 import { DATA } from 'utils/constants';
 
-import { FlexColumn } from './style/Flex';
-
 type VerticalContainerType = {
   children: React.ReactNode[];
   category?: string;
@@ -14,9 +12,8 @@ type VerticalContainerType = {
   setLoad?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Layout = styled(FlexColumn)`
-  align-items: center;
-
+const Layout = styled.div`
+  ${({ theme }) => theme.flex.columnCenter}
   gap: 50px;
 
   @media screen and (max-width: 550px) {
@@ -25,8 +22,7 @@ const Layout = styled(FlexColumn)`
 `;
 
 const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
+  ${({ theme }) => theme.flex.center}
   flex-wrap: wrap;
 
   gap: 25px;
@@ -37,22 +33,14 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 30px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 25px;
-  }
+  ${({ theme }) => theme.font(30)}
 `;
 
 const ChildrenCount = styled.span`
   margin-left: 5px;
   color: rgb(155, 155, 155);
 
-  font-size: 25px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 20px;
-  }
+  ${({ theme }) => theme.font(22)}
 `;
 
 const ScrollDown = styled.div`

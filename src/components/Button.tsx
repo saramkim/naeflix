@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
 type ButtonProps = {
   children: string;
@@ -15,7 +14,7 @@ type ButtonProps = {
 };
 
 const ButtonLayout = styled.button<ButtonProps>`
-  background-color: ${({ background }) => background || STYLE.MAIN_COLOR};
+  background-color: ${({ background, theme }) => background || theme.color.main};
   font-size: ${({ fontSize }) => fontSize}px;
   padding: ${({ padding }) => (padding ? `${padding}px` : '0.5rem 1rem')};
   border-radius: 3px;

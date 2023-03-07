@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { getAnyMovie } from 'api/movieData';
 import { MovieType } from 'api/movieType';
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
 import CountrySelector from './CountrySelector';
 import ExceptionCheck from './ExceptionCheck';
@@ -11,11 +10,9 @@ import GenreSelector from './GenreSelector';
 import Result from './Result';
 
 const AnyMovieLayout = styled.div`
+  ${({ theme }) => theme.flex.center};
+  ${({ theme }) => theme.style.minHeight};
   position: relative;
-  height: ${STYLE.HEIGHT_WITHOUT_HEADER};
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: radial-gradient(rgb(255, 255, 255), rgb(0, 0, 0));
 
   @media screen and (max-width: 550px) {

@@ -1,4 +1,3 @@
-import { FlexColumn } from 'components/style/Flex';
 import styled from 'styled-components';
 
 type ImageTextBoxProprs = {
@@ -10,10 +9,8 @@ type ImageTextBoxProprs = {
 };
 
 const ImageTextBoxLayout = styled.div<{ direction?: string }>`
-  display: flex;
+  ${({ theme }) => theme.flex.center}
   flex-direction: ${({ direction }) => (direction ? 'row-reverse' : 'row')};
-  justify-content: center;
-  align-items: center;
   border-bottom: 5px solid white;
   gap: 50px;
   width: 100%;
@@ -55,7 +52,8 @@ const Video = styled.video`
   }
 `;
 
-const TextBox = styled(FlexColumn)`
+const TextBox = styled.div`
+  ${({ theme }) => theme.flex.column};
   gap: 30px;
 
   width: 45%;

@@ -1,11 +1,9 @@
 import Logo from 'components/Logo';
-import { FlexColumn } from 'components/style/Flex';
 import styled from 'styled-components';
 
-const NotFoundLayout = styled(FlexColumn)`
+const NotFoundLayout = styled.div`
+  ${({ theme }) => theme.flex.columnCenter}
   height: 100vh;
-  justify-content: center;
-  align-items: center;
   gap: 80px;
   background-color: black;
   color: white;

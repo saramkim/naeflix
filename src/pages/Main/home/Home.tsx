@@ -1,17 +1,17 @@
 import { Outlet } from 'react-router-dom';
 
-import { FlexColumn } from 'components/style/Flex';
 import { getHomeList } from 'firebases/firestore';
 import { useData } from 'hooks/useData';
 import styled from 'styled-components';
-import { DATA, STYLE } from 'utils/constants';
+import { DATA } from 'utils/constants';
 
 import MoviesWithStars from '../MoviesWithStars';
 import TopRatedMovies from '../TopRatedMovies';
 import Trending from '../Trending';
 
-const HomeLayout = styled(FlexColumn)`
-  min-height: ${STYLE.HEIGHT_WITHOUT_HEADER};
+const HomeLayout = styled.div`
+  ${({ theme }) => theme.flex.column};
+  ${({ theme }) => theme.style.minHeight};
   padding: 50px 0 50px 50px;
   gap: 50px;
 

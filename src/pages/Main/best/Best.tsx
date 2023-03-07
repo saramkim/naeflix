@@ -1,16 +1,13 @@
 import { useState } from 'react';
 
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
 import Register from './Register';
 import Selector from './Selector';
 
 const NoBestLayout = styled.div`
-  height: ${STYLE.HEIGHT_WITHOUT_HEADER};
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${({ theme }) => theme.flex.center};
+  ${({ theme }) => theme.style.minHeight};
   background: radial-gradient(rgb(255, 255, 255), rgb(0, 0, 0));
 
   @media screen and (max-width: 550px) {

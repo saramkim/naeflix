@@ -1,11 +1,10 @@
 import { AiFillEdit } from 'react-icons/ai';
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
 const CommentIconLayout = styled.div`
   cursor: pointer;
   font-size: 35px;
-  color: ${STYLE.MAIN_COLOR};
+  color: ${({ theme }) => theme.color.main};
 
   @media screen and (max-width: 550px) {
     font-size: 26px;

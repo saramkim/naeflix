@@ -13,8 +13,7 @@ import GoogleLogin from './GoogleLogin';
 
 const Form = styled.form`
   background-color: black;
-  display: flex;
-  flex-direction: column;
+  ${({ theme }) => theme.flex.column};
   justify-content: space-between;
   color: rgb(150, 150, 150);
   position: relative;
@@ -44,13 +43,11 @@ const ButtonWrapper = styled.div`
 `;
 
 const ExtraFeatures = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${({ theme }) => theme.flex.spaceBetween}
 `;
 
 const TextWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${({ theme }) => theme.flex.spaceBetween}
 `;
 
 const Text = styled.div`

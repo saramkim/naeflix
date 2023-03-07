@@ -3,13 +3,12 @@ import { useEffect, useState } from 'react';
 import { getMovieData } from 'api/movieData';
 import Image from 'components/Image';
 import Loading from 'components/Loading';
-import { Font24, Font45 } from 'components/style/FontSize';
 import { getComment, getStar, isMarkedMovie } from 'firebases/firestore';
 import { useData } from 'hooks/useData';
 import { Backdrop, Content, InfoLayout } from 'pages/Main/InfoLayout';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
-import { DATA, STYLE } from 'utils/constants';
+import { DATA } from 'utils/constants';
 
 import GenreButton from '../GenreButton';
 import MarkingButton from '../MarkingButton';
@@ -29,7 +28,8 @@ const GenreWraaper = styled.div`
   gap: 10px;
 `;
 
-const TitleWrapper = styled(Font45)`
+const TitleWrapper = styled.div`
+  ${({ theme }) => theme.font(45)}
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -42,37 +42,26 @@ const Title = styled.span`
 `;
 
 const Created = styled.span`
+  ${({ theme }) => theme.font(22)};
   color: rgb(155, 155, 155);
-
-  font-size: 22px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 16px;
-  }
 `;
 
-const Tagline = styled(Font24)<{ comment: string | null }>`
+const Tagline = styled.div<{ comment: string | null }>`
+  ${({ theme }) => theme.font(24)}
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: bold;
   word-break: normal;
-  color: ${({ comment }) => (comment ? STYLE.COMMNET_COLOR : 'white')};
+  color: ${({ comment, theme }) => (comment ? theme.color.yellow : 'white')};
 `;
 
 const Overview = styled.p`
+  ${({ theme }) => theme.font(18)};
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 7;
   overflow: hidden;
-
-  font-size: 18px;
-  line-height: 28px;
-
-  @media screen and (max-width: 550px) {
-    font-size: 14px;
-    line-height: 20px;
-  }
 `;
 
 function MovieInfo({ id }: { id: string }) {

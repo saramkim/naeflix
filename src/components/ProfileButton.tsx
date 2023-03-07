@@ -4,19 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
-import { FlexColumn } from './style/Flex';
 import ProfileImage from './ProfileImage';
 import TextButton from './TextButton';
 
 const ProfileButtonLayout = styled.div`
+  ${({ theme }) => theme.flex.center}
   color: white;
   position: relative;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
   padding: 15px;
 
@@ -26,27 +22,25 @@ const ProfileButtonLayout = styled.div`
 `;
 
 const InitialBox = styled.div`
+  ${({ theme }) => theme.flex.center}
   color: white;
   height: 100%;
-  display: flex;
-  align-items: center;
   gap: 6px;
 `;
 
-const DropBox = styled(FlexColumn)`
+const DropBox = styled.div`
+  ${({ theme }) => theme.flex.columnCenter}
+  font-size: 15px;
   position: absolute;
   background-color: black;
   min-width: 120px;
-  justify-content: center;
   text-align: left;
-  align-items: center;
   padding: 20px;
   background-clip: padding-box;
   border-top: 2px solid transparent;
   z-index: 10;
   top: 70px;
   right: -4px;
-  font-size: 15px;
   gap: 25px;
 
   &:after {
@@ -59,13 +53,12 @@ const DropBox = styled(FlexColumn)`
     transform: translateX(-50%);
     border: 8px solid transparent;
     border-top-width: 0;
-    border-bottom-color: ${STYLE.ACCOUNT_COLOR};
+    border-bottom-color: ${({ theme }) => theme.color.lightGray};
   }
 
   @media screen and (max-width: 550px) {
     top: 60px;
     right: -9px;
-    font-size: 13px;
     gap: 20px;
   }
 `;

@@ -1,10 +1,10 @@
 import { MovieType } from 'api/movieType';
 import Button from 'components/Button';
 import Image from 'components/Image';
-import { Font45 } from 'components/style/FontSize';
 import { Backdrop, Content, InfoLayout } from 'pages/Main/InfoLayout';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
+import { moveDown, moveLeft, moveRight, moveUp } from 'styles/keyframes';
 import { DATA, STYLE } from 'utils/constants';
 
 interface ResultType extends MovieType {
@@ -13,79 +13,24 @@ interface ResultType extends MovieType {
 
 const AnimationPoster = styled.div`
   z-index: 5;
-  @keyframes left {
-    0% {
-      transform: translateX(245px);
-    }
-    50% {
-      transform: translateX(245px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-  animation: left 2s ease-in-out;
+  animation: ${moveLeft} 2s ease-in-out;
 
   @media screen and (max-width: 950px) {
-    @keyframes up {
-      0% {
-        transform: translateY(194px);
-      }
-      50% {
-        transform: translateY(194px);
-      }
-      100% {
-        transform: translateY(0);
-      }
-    }
-    animation: up 2s ease-in-out;
+    animation: ${moveUp} 2s ease-in-out;
   }
 `;
 
 const AnimationContent = styled.div`
   width: 100%;
-  @keyframes right {
-    0% {
-      opacity: 0;
-      transform: translateX(-245px);
-    }
-    50% {
-      opacity: 0;
-      transform: translateX(-245px);
-    }
-    75% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  animation: right 2s ease-in-out;
+  animation: ${moveRight} 2s ease-in-out;
 
   @media screen and (max-width: 950px) {
-    @keyframes down {
-      0% {
-        opacity: 0;
-        transform: translateY(-194px);
-      }
-      50% {
-        opacity: 0;
-        transform: translateY(-194px);
-      }
-      75% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    animation: down 2s ease-in-out;
+    animation: ${moveDown} 2s ease-in-out;
   }
 `;
 
-const Title = styled(Font45)`
+const Title = styled.h1`
+  ${({ theme }) => theme.font(45)}
   width: 440px;
 
   @media screen and (max-width: 550px) {
@@ -94,24 +39,20 @@ const Title = styled(Font45)`
 `;
 
 const Overview = styled.p`
+  ${({ theme }) => theme.font(18)};
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 9;
   overflow: hidden;
 
-  font-size: 18px;
-  line-height: 28px;
   width: 440px;
 
   @media screen and (max-width: 550px) {
-    font-size: 14px;
-    line-height: 20px;
     width: 100%;
   }
 `;
 const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${({ theme }) => theme.flex.spaceBetween}
 `;
 
 function Result({

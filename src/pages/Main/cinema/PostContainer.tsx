@@ -1,7 +1,7 @@
-import { FlexColumn } from 'components/style/Flex';
 import styled from 'styled-components';
 
-const PostContainerLayout = styled(FlexColumn)`
+const PostContainerLayout = styled.div`
+  ${({ theme }) => theme.flex.column};
   max-width: 1080px;
   width: 100%;
   border-radius: 5px;

@@ -1,12 +1,9 @@
 import logo from 'assets/naeflix-logo.png';
-import { FlexColumn } from 'components/style/Flex';
-import { Font24 } from 'components/style/FontSize';
 import styled from 'styled-components';
-import { STYLE } from 'utils/constants';
 
-const BannerLayout = styled(FlexColumn)`
+const BannerLayout = styled.div`
+  ${({ theme }) => theme.flex.columnCenter}
   width: 100%;
-  align-items: center;
 
   gap: 150px;
 
@@ -30,7 +27,7 @@ const TextWrapper = styled.div`
   padding: 30px;
 
   *:nth-child(odd) {
-    color: ${STYLE.MAIN_COLOR};
+    color: ${({ theme }) => theme.color.main};
     text-align: right;
   }
 
@@ -39,19 +36,23 @@ const TextWrapper = styled.div`
   }
 `;
 
+const Text = styled.div`
+  ${({ theme }) => theme.font(24)}
+`;
+
 function Banner() {
   return (
     <BannerLayout>
       <Logo src={logo} />
       <TextWrapper>
-        <Font24>나만의 영화 컬렉션, 내플릭스</Font24>
-        <Font24>Front-end: React, TypeScript</Font24>
-        <Font24>영화를 기록하는 웹 사이트</Font24>
-        <Font24>Back-end: Firebase</Font24>
-        <Font24>PC, 태블릿, 모바일 지원</Font24>
-        <Font24>Library: Redux, styled-components, etc</Font24>
-        <Font24>2023.01 ~ 현재 개발 중</Font24>
-        <Font24>Data: TMDB API, Open Source</Font24>
+        <Text>나만의 영화 컬렉션, 내플릭스</Text>
+        <Text>Front-end: React, TypeScript</Text>
+        <Text>영화를 기록하는 웹 사이트</Text>
+        <Text>Back-end: Firebase</Text>
+        <Text>PC, 태블릿, 모바일 지원</Text>
+        <Text>Library: Redux, styled-components, etc</Text>
+        <Text>2023.01 ~ 현재 개발 중</Text>
+        <Text>Data: TMDB API, Open Source</Text>
       </TextWrapper>
     </BannerLayout>
   );

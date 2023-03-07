@@ -1,4 +1,3 @@
-import { FlexColumn } from 'components/style/Flex';
 import styled from 'styled-components';
 
 import ContentLayout from './ContentLayout';
@@ -11,9 +10,8 @@ import PhoneNumber from './PhoneNumber';
 import ProfileImg from './ProfileImg';
 import Unregister from './Unregister';
 
-const BodyLayout = styled(FlexColumn)`
-  justify-content: center;
-  align-items: center;
+const BodyLayout = styled.div`
+  ${({ theme }) => theme.flex.columnCenter}
   max-width: 1184px;
   margin: auto;
 
