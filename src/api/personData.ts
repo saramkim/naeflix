@@ -39,7 +39,9 @@ const getPersonCredits = async (id: string) => {
     `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR`
   );
   const { data }: { data: PersonCreditsType } = await creditsResponse;
-  return data;
+  const cast = data.cast.filter((v, i, arr) => i === arr.findIndex((t) => t.id === v.id));
+  const crew = data.crew.filter((v, i, arr) => i === arr.findIndex((t) => t.id === v.id));
+  return { cast, crew };
 };
 
 export { getCredits, getPeople, getPersonCredits, getPersonData };

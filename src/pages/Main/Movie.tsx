@@ -25,8 +25,8 @@ const Content = styled.div`
   height: 100%;
   position: absolute;
   top: 0;
-  font-size: 25px;
   border-radius: 3px;
+  font-size: 25px;
 
   padding: 10px;
 
@@ -37,9 +37,14 @@ const Content = styled.div`
 
 const Title = styled.h1`
   text-align: center;
-  line-height: 30px;
   margin: auto;
   pointer-events: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+
+  line-height: 30px;
 
   @media screen and (max-width: 550px) {
     font-size: 18px;

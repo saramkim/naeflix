@@ -32,6 +32,11 @@ const Content = styled.div`
 const Name = styled.h1`
   text-align: center;
   margin: auto;
+  pointer-events: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
 
   line-height: 30px;
 
