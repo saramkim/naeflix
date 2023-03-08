@@ -46,6 +46,8 @@ const style = {
     min-height: calc(100vh - 60px);
   }
   `,
+  transition: `
+  transition: all 0.3s ease-in-out;`,
 };
 
 const theme = {

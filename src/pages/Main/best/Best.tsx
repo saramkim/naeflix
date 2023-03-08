@@ -16,13 +16,13 @@ const NoBestLayout = styled.div`
 `;
 
 const NoBest = styled.div`
+  ${({ theme }) => theme.style.transition};
   border-radius: 10px;
   background-color: white;
   cursor: pointer;
   width: 342px;
   height: 513px;
   max-width: 100vw;
-  transition: all 0.3s ease-in-out;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
 
   &:hover {

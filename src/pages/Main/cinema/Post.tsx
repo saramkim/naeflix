@@ -19,8 +19,9 @@ const PostLayout = styled.div`
   background-color: rgb(20, 20, 20);
   width: 100%;
   border-radius: 10px;
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8);
 
-  padding: 50px;
+  padding: 50px 100px;
   gap: 50px;
 
   @media screen and (max-width: 950px) {
@@ -33,7 +34,14 @@ const PostLayout = styled.div`
 `;
 
 const ImageWrapper = styled.div`
+  ${({ theme }) => theme.style.transition};
   cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(155, 155, 155, 0.6);
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(155, 155, 155, 1);
+  }
 `;
 
 const Content = styled.div`

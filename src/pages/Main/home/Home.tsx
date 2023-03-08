@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { getHomeList } from 'firebases/firestore';
@@ -9,10 +10,12 @@ import MoviesWithStars from '../MoviesWithStars';
 import TopRatedMovies from '../TopRatedMovies';
 import Trending from '../Trending';
 
-const HomeLayout = styled.div`
+import Banner from './Banner';
+
+const HomeLayout = styled.div<{ isShownBest: boolean }>`
   ${({ theme }) => theme.flex.column};
   ${({ theme }) => theme.style.minHeight};
-  padding: 50px 0 50px 50px;
+  padding: ${({ isShownBest }) => (isShownBest ? '0 0 50px 50px' : '50px 0 50px 50px')};
   gap: 50px;
 
   @media screen and (max-width: 550px) {
@@ -26,6 +29,7 @@ function Home() {
     initailValue: [],
     defaultValue: DATA.HOME_LIST,
   });
+  const [isShownBest, setShownBest] = useState(true);
 
   const Components = {
     'top-rated': <TopRatedMovies direction='horizontal' key='top-rated' />,
@@ -34,7 +38,8 @@ function Home() {
   };
 
   return (
-    <HomeLayout>
+    <HomeLayout isShownBest={isShownBest}>
+      {isShownBest && <Banner setShownBest={setShownBest} />}
       {homeList.map(
         (category) =>
           Components[category] || (

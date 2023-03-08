@@ -30,12 +30,13 @@ const Title = styled.h1`
 `;
 
 const RegisterButton = styled.button`
-  ${({ theme }) => theme.flex.center}
+  ${({ theme }) => theme.flex.center};
   position: relative;
   background-color: rgb(20, 20, 20);
   width: 100%;
   border-radius: 10px;
   color: white;
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8);
 
   font-size: 30px;
   height: 100px;

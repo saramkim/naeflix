@@ -25,7 +25,7 @@ function ImageTextBundle() {
         회원가입, 로그인 기능이 구현되어 있습니다.
       </ImageTextBox>
       <ImageTextBox title='홈 화면' img={home} direction='reverse'>
-        평점별 영화 목록, 인기 영화 목록 등 다양한 영화 목록을 확인할 수 있습니다.
+        평점별 영화, 인기 영화 등 다양한 영화들의 목록을 확인할 수 있습니다.
         <br />
         <br />
         시청한 영화, 자신의 평점별 영화 목록을 통해 나만의 영화 컬렉션을 만들 수 있습니다.
