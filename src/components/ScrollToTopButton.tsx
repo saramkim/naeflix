@@ -4,7 +4,7 @@ import { AiFillCaretUp } from 'react-icons/ai';
 import styled from 'styled-components';
 
 const ScrollTopButton = styled.button`
-  background-color: rgb(222, 222, 222);
+  background: rgb(222, 222, 222);
   position: fixed;
   right: 40px;
   bottom: 40px;

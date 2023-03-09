@@ -14,7 +14,6 @@ const ImageTextBoxLayout = styled.div<{ direction?: string }>`
   border-bottom: 5px solid white;
   gap: 50px;
   width: 100%;
-
   padding: 100px;
 
   @media screen and (max-width: 950px) {
@@ -28,8 +27,8 @@ const ImageTextBoxLayout = styled.div<{ direction?: string }>`
 `;
 
 const Img = styled.img`
-  box-shadow: 20px 20px 30px 6px rgba(0, 0, 0, 0.8);
   width: 55%;
+  box-shadow: 20px 20px 30px 6px rgba(0, 0, 0, 0.8);
 
   @media screen and (max-width: 950px) {
     width: 100%;
@@ -40,9 +39,9 @@ const Img = styled.img`
 `;
 
 const Video = styled.video`
-  box-shadow: 20px 20px 30px 6px rgba(0, 0, 0, 0.8);
   height: fit-content;
   width: 55%;
+  box-shadow: 20px 20px 30px 6px rgba(0, 0, 0, 0.8);
 
   @media screen and (max-width: 950px) {
     width: 100%;
@@ -55,7 +54,6 @@ const Video = styled.video`
 const TextBox = styled.div`
   ${({ theme }) => theme.flex.column};
   gap: 30px;
-
   width: 45%;
 
   @media screen and (max-width: 950px) {
@@ -67,20 +65,20 @@ const TextBox = styled.div`
 export const Title = styled.h1`
   font-weight: 500;
   padding: 0 10px;
-  background-color: #ffe96a;
+  background: #ffe96a;
   color: rgb(30, 30, 30);
   width: fit-content;
 
   font-size: 50px;
   line-height: 65px;
 
-  @media screen and (max-width: 550px) {
-    font-size: 30px;
-    line-height: 38px;
-  }
   @media screen and (min-width: 550px) and (max-width: 950px) {
     font-size: 40px;
     line-height: 48px;
+  }
+  @media screen and (max-width: 550px) {
+    font-size: 30px;
+    line-height: 38px;
   }
 `;
 
@@ -90,13 +88,13 @@ export const Content = styled.p`
   font-size: 30px;
   line-height: 38px;
 
-  @media screen and (max-width: 550px) {
-    font-size: 18px;
-    line-height: 22px;
-  }
   @media screen and (min-width: 550px) and (max-width: 950px) {
     font-size: 26px;
     line-height: 32px;
+  }
+  @media screen and (max-width: 550px) {
+    font-size: 18px;
+    line-height: 22px;
   }
 `;
 

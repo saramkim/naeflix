@@ -46,10 +46,10 @@ const Wrapper = styled.div`
   gap: 10px;
 
   &::-webkit-scrollbar {
+    background: rgb(55, 55, 55);
+    border-radius: 3px;
     width: 0;
     height: 6px;
-    border-radius: 3px;
-    background: rgb(55, 55, 55);
   }
   &::-webkit-scrollbar-thumb {
     background: rgb(155, 155, 155);

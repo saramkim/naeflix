@@ -22,7 +22,6 @@ const ButtonContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
-
   margin-bottom: 50px;
 
   @media screen and (max-width: 550px) {

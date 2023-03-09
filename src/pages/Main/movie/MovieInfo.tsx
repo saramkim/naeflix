@@ -48,12 +48,12 @@ const Created = styled.span`
 
 const Tagline = styled.div<{ comment: string | null }>`
   ${({ theme }) => theme.font(24)}
+  color: ${({ comment, theme }) => (comment ? theme.color.yellow : 'white')};
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: bold;
   word-break: normal;
-  color: ${({ comment, theme }) => (comment ? theme.color.yellow : 'white')};
 `;
 
 const Overview = styled.p`

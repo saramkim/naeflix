@@ -44,7 +44,6 @@ const Overview = styled.p`
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 9;
   overflow: hidden;
-
   width: 440px;
 
   @media screen and (max-width: 550px) {

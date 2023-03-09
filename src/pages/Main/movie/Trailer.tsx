@@ -15,12 +15,12 @@ const TrailerLayout = styled.div`
 `;
 
 const TrailerButton = styled.button`
+  background: black;
+  color: white;
   font-size: 25px;
   width: 50px;
   height: 50px;
   border-radius: 25px;
-  background-color: black;
-  color: white;
 `;
 
 const Video = styled.iframe`

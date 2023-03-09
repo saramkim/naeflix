@@ -15,12 +15,11 @@ import styled from 'styled-components';
 
 const PostLayout = styled.div`
   ${({ theme }) => theme.flex.center}
+  background: rgb(20, 20, 20);
   position: relative;
-  background-color: rgb(20, 20, 20);
   width: 100%;
   border-radius: 10px;
   box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8);
-
   padding: 50px 100px;
   gap: 50px;
 
@@ -48,7 +47,6 @@ const Content = styled.div`
   ${({ theme }) => theme.flex.column};
   justify-content: space-around;
   width: 100%;
-
   height: 277.5px;
 
   @media screen and (max-width: 550px) {

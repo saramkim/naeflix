@@ -18,16 +18,15 @@ const MovieLayout = styled.div`
 
 const Content = styled.div`
   ${({ theme }) => theme.flex.spaceBetween};
-  flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.7);
   color: white;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   border-radius: 3px;
   font-size: 25px;
-
   padding: 10px;
 
   @media screen and (max-width: 550px) {
@@ -43,7 +42,6 @@ const Title = styled.h1`
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
   overflow: hidden;
-
   line-height: 30px;
 
   @media screen and (max-width: 550px) {

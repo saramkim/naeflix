@@ -15,7 +15,7 @@ export const Backdrop = styled.div<{ heigth: string; src?: string }>`
     left: 0px;
     right: 0px;
     bottom: 0px;
-    background-color: black;
+    background: black;
   }
 
   @media screen and (max-width: 950px) {
@@ -29,7 +29,6 @@ export const InfoLayout = styled.div`
   position: relative;
   height: 100%;
   max-width: 1280px;
-
   gap: 30px 50px;
   padding: 50px;
 

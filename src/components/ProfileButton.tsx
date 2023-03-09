@@ -30,9 +30,9 @@ const InitialBox = styled.div`
 
 const DropBox = styled.div`
   ${({ theme }) => theme.flex.columnCenter}
+  background: black;
   font-size: 15px;
   position: absolute;
-  background-color: black;
   min-width: 120px;
   text-align: left;
   padding: 20px;
@@ -44,6 +44,7 @@ const DropBox = styled.div`
   gap: 25px;
 
   &:after {
+    border-bottom-color: ${({ theme }) => theme.color.lightGray};
     content: '';
     height: 0;
     width: 0;
@@ -53,7 +54,6 @@ const DropBox = styled.div`
     transform: translateX(-50%);
     border: 8px solid transparent;
     border-top-width: 0;
-    border-bottom-color: ${({ theme }) => theme.color.lightGray};
   }
 
   @media screen and (max-width: 550px) {

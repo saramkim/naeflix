@@ -13,8 +13,8 @@ const PersonDetailLayoyt = styled.div`
 const Credits = styled.div`
   ${({ theme }) => theme.flex.column};
   border-top: 1px solid rgb(80, 80, 80);
-  padding: 50px 0 50px 50px;
   gap: 50px;
+  padding: 50px 0 50px 50px;
 
   @media screen and (max-width: 550px) {
     padding-left: 30px;

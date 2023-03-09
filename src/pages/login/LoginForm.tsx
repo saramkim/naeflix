@@ -12,13 +12,12 @@ import { PHRASE, REG_EX } from 'utils/constants';
 import GoogleLogin from './GoogleLogin';
 
 const Form = styled.form`
-  background-color: black;
   ${({ theme }) => theme.flex.column};
-  justify-content: space-between;
+  background: black;
   color: rgb(150, 150, 150);
+  justify-content: space-between;
   position: relative;
   font-size: 14px;
-
   width: 450px;
   height: 660px;
   padding: 60px;

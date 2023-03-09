@@ -12,8 +12,8 @@ const MovieDetailLayout = styled.div`
 
 const Extra = styled.div`
   ${({ theme }) => theme.flex.column};
-  padding: 50px 0 50px 50px;
   gap: 50px;
+  padding: 50px 0 50px 50px;
 
   @media screen and (max-width: 550px) {
     padding-left: 30px;

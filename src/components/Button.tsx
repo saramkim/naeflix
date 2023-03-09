@@ -14,14 +14,14 @@ type ButtonProps = {
 };
 
 const ButtonLayout = styled.button<ButtonProps>`
-  background-color: ${({ background, theme }) => background || theme.color.main};
+  background: ${({ background, theme }) => background || theme.color.main};
   font-size: ${({ fontSize }) => fontSize}px;
   padding: ${({ padding }) => (padding ? `${padding}px` : '0.5rem 1rem')};
-  border-radius: 3px;
   color: white;
-
+  border-radius: 3px;
+  
   &:hover {
-    background-color: ${({ hover }) => hover && 'rgb(246, 18, 29)'};
+    background: ${({ hover }) => hover && 'rgb(246, 18, 29)'};
   }
 
   @media screen and (max-width: 550px) {

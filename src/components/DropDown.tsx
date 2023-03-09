@@ -12,16 +12,16 @@ const DropDownLayout = styled.div``;
 
 const InitialBox = styled.div`
   ${({ theme }) => theme.flex.spaceBetween}
-  padding: 20px 30px;
-  margin-bottom: 1px;
   background: #303030;
   cursor: pointer;
+  margin-bottom: 1px;
+  padding: 20px 30px;
 
-  @media screen and (max-width: 550px) {
-    padding: 14px 22px;
-  }
   @media screen and (min-width: 550px) and (max-width: 950px) {
     padding: 16px 24px;
+  }
+  @media screen and (max-width: 550px) {
+    padding: 14px 22px;
   }
 `;
 
@@ -34,23 +34,22 @@ const Icon = styled.div`
 `;
 
 const DropBox = styled.div<{ isClicked: boolean }>`
+  ${({ theme }) => theme.font(26)}
+  max-height: ${({ isClicked }) => (isClicked ? '500' : '0')}px;
   background: #303030;
   transition: all 0.15s linear;
   overflow: hidden;
-  max-height: ${({ isClicked }) => (isClicked ? '500' : '0')}px;
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
   user-select: text;
-
-  ${({ theme }) => theme.font(26)}
   padding: ${({ isClicked }) => (isClicked ? '30' : '0')}px 30px;
 
-  @media screen and (max-width: 550px) {
-    padding: ${({ isClicked }) => (isClicked ? '22' : '0')}px 22px;
-  }
   @media screen and (min-width: 550px) and (max-width: 950px) {
     padding: ${({ isClicked }) => (isClicked ? '24' : '0')}px 24px;
+  }
+  @media screen and (max-width: 550px) {
+    padding: ${({ isClicked }) => (isClicked ? '22' : '0')}px 22px;
   }
 `;
 

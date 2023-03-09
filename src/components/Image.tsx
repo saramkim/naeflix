@@ -5,9 +5,9 @@ import { DATA } from 'utils/constants';
 type ImageType = { width: 154 | 342 | 185; path: string | null; id?: string };
 
 const Image154 = styled.img`
+  border-radius: 5px;
   width: 154px;
   height: 231px;
-  border-radius: 5px;
 
   @media screen and (max-width: 550px) {
     width: 100px;
@@ -22,9 +22,9 @@ const Image185 = styled.img`
 `;
 
 const Image342 = styled.img`
+  border-radius: 10px;
   width: 342px;
   height: 513px;
-  border-radius: 10px;
 
   @media screen and (max-width: 550px) {
     width: 280px;

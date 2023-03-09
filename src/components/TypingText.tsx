@@ -5,14 +5,14 @@ import styled from 'styled-components';
 type TypingTextType = { children: string; term: number; fontSize: number };
 
 const Text = styled.h1<{ fontSize: number }>`
-  font-size: ${({ fontSize }) => fontSize}px;
   line-height: 1.2em;
+  font-size: ${({ fontSize }) => fontSize}px;
 
-  @media screen and (max-width: 550px) {
-    font-size: ${({ fontSize }) => fontSize * 0.6}px;
-  }
   @media screen and (min-width: 550px) and (max-width: 950px) {
     font-size: ${({ fontSize }) => fontSize * 0.8}px;
+  }
+  @media screen and (max-width: 550px) {
+    font-size: ${({ fontSize }) => fontSize * 0.6}px;
   }
 `;
 

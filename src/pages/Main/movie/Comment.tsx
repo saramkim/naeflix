@@ -16,11 +16,11 @@ const CommentLayout = styled.form`
 `;
 
 const CommentInput = styled.input`
-  font-size: 20px;
   width: 100%;
   border-radius: 3px;
   border: none;
   padding: 0 10px;
+  font-size: 20px;
 
   @media screen and (max-width: 550px) {
     font-size: 18px;

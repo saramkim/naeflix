@@ -9,10 +9,9 @@ import ImageTextBundle from './ImageTextBundle';
 
 const IntroductionLayout = styled.div`
   ${({ theme }) => theme.flex.columnCenter}
-  background-color: rgb(235, 235, 235);
+  background: rgb(235, 235, 235);
   gap: 100px;
   max-width: 1920px;
-
   padding: 150px 0;
 
   @media screen and (max-width: 950px) {

@@ -24,7 +24,6 @@ const Layout = styled.div`
 const Wrapper = styled.div`
   ${({ theme }) => theme.flex.center}
   flex-wrap: wrap;
-
   gap: 25px;
 
   @media screen and (max-width: 550px) {
@@ -37,10 +36,9 @@ const Title = styled.h1`
 `;
 
 const ChildrenCount = styled.span`
+  ${({ theme }) => theme.font(22)}
   margin-left: 5px;
   color: rgb(155, 155, 155);
-
-  ${({ theme }) => theme.font(22)}
 `;
 
 const ScrollDown = styled.div`

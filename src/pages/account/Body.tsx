@@ -14,7 +14,6 @@ const BodyLayout = styled.div`
   ${({ theme }) => theme.flex.columnCenter}
   max-width: 1184px;
   margin: auto;
-
   padding: 80px;
 
   @media screen and (max-width: 550px) {
@@ -30,10 +29,10 @@ const Title = styled.div`
 `;
 
 const Wrapper = styled.div`
-  padding: 10px 0;
-  border-bottom: 1px solid rgb(153, 153, 153);
-  width: 100%;
   display: flex;
+  padding: 10px 0;
+  width: 100%;
+  border-bottom: 1px solid rgb(153, 153, 153);
 
   @media screen and (max-width: 550px) {
     flex-direction: column;
@@ -41,9 +40,9 @@ const Wrapper = styled.div`
 `;
 
 const SubTitle = styled.div`
+  color: rgb(115, 115, 115);
   padding: 10px 0;
   font-size: 18px;
-  color: rgb(115, 115, 115);
   width: 260px;
 `;
 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Background = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   height: 100%;
   width: 100%;
   position: fixed;
@@ -14,7 +14,7 @@ const Background = styled.div`
 
 const PopupLayout = styled.div`
   ${({ theme }) => theme.flex.columnCenter}
-  background-color: ${({ theme }) => theme.color.lightGray};
+  background: ${({ theme }) => theme.color.lightGray};
   color: black;
   position: fixed;
   top: 50%;

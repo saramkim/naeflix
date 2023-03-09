@@ -10,7 +10,6 @@ const BannerLayout = styled.div`
   left: 50%;
   transform: translateX(-50%);
   max-width: 800px;
-
   height: 144px;
   width: 90%;
   padding: 28px;

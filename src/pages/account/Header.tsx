@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const HeaderLayout = styled.div`
   ${({ theme }) => theme.flex.spaceBetween}
   width: 100%;
-  background-color: black;
+  background: black;
   position: fixed;
   top: 0;
 

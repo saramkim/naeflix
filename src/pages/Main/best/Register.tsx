@@ -53,7 +53,6 @@ const Comment = styled.textarea`
   border: none;
   outline: none;
   border-radius: 3px;
-
   width: 440px;
   padding: 10px;
 

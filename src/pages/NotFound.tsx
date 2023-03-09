@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 const NotFoundLayout = styled.div`
   ${({ theme }) => theme.flex.columnCenter}
+  background: black;
+  color: white;
   height: 100vh;
   gap: 80px;
-  background-color: black;
-  color: white;
   position: relative;
 `;
 

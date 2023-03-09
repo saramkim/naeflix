@@ -7,7 +7,7 @@ import Body from './Body';
 import Header from './Header';
 
 const LoginLayout = styled.div`
-  background-color: rgb(20, 20, 20);
+  background: rgb(20, 20, 20);
 `;
 
 function Login() {

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Header from './Header';
 
 const SignUpLayout = styled.div`
-  background-color: white;
+  background: white;
 `;
 
 function SignUp() {

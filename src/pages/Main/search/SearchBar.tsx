@@ -10,7 +10,7 @@ type SearchBarType = {
 };
 
 const SearchBarLayout = styled.div`
-  background-color: ${({ theme }) => theme.color.main};
+  background: ${({ theme }) => theme.color.main};
   width: 100%;
   max-width: 600px;
   padding: 0 5px;
@@ -28,7 +28,7 @@ const SearchBarLayout = styled.div`
 const Input = styled.input`
   width: 100%;
   border: none;
-  background-color: black;
+  background: black;
   color: white;
   border-radius: 3px;
 

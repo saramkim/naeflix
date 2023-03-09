@@ -9,7 +9,7 @@ const HeaderLayout = styled.div`
   position: relative;
 
   @media screen and (max-width: 550px) {
-    background-color: black;
+    background: black;
   }
 `;
 

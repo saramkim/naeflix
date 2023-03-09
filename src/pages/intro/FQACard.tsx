@@ -7,43 +7,42 @@ const FQACardLayout = styled.div`
   ${({ theme }) => theme.flex.columnCenter};
   ${({ theme }) => theme.style.borderBottom};
   width: 100%;
-
   margin-top: 60px;
   gap: 60px;
   padding: 120px 0;
 
+  @media screen and (min-width: 550px) and (max-width: 950px) {
+    gap: 45px;
+  }
   @media screen and (max-width: 550px) {
     margin-top: 40px;
     gap: 30px;
     padding: 70px 0;
-  }
-  @media screen and (min-width: 550px) and (max-width: 950px) {
-    gap: 45px;
   }
 `;
 
 const Title = styled.h1`
   font-size: 50px;
 
-  @media screen and (max-width: 550px) {
-    font-size: 26px;
-  }
   @media screen and (min-width: 550px) and (max-width: 950px) {
     font-size: 40px;
+  }
+  @media screen and (max-width: 550px) {
+    font-size: 26px;
   }
 `;
 
 const Content = styled.div`
   ${({ theme }) => theme.flex.column};
   gap: 10px;
-  width: 75%;
   max-width: 815px;
+  width: 75%;
 
-  @media screen and (max-width: 550px) {
-    width: 100%;
-  }
   @media screen and (min-width: 550px) and (max-width: 950px) {
     width: 90%;
+  }
+  @media screen and (max-width: 550px) {
+    width: 100%;
   }
 `;
 

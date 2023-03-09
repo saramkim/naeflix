@@ -7,7 +7,7 @@ import Body from './Body';
 import Header from './Header';
 
 const AccountLayout = styled.div`
-  background-color: ${({ theme }) => theme.color.lightGray};
+  background: ${({ theme }) => theme.color.lightGray};
   padding-top: 70px;
 
   @media screen and (max-width: 550px) {

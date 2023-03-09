@@ -18,26 +18,24 @@ const InputLayout = styled.div`
 `;
 
 const InputBox = styled.input<{ isWrong: boolean; background?: string }>`
+  background: ${({ background }) => background || 'white'};
+  color: ${({ background }) => (background ? 'white' : 'black')};
+  border: 1px solid ${({ isWrong }) => (isWrong ? '#ffa00a' : 'black')};
   width: 100%;
   padding: 16px 10px 0 10px;
   height: 60px;
   font-size: 20px;
-  border: 1px solid ${({ isWrong }) => (isWrong ? '#ffa00a' : 'black')};
   border-radius: 3px;
   outline: none;
-  background-color: ${({ background }) => background || 'white'};
-  color: ${({ background }) => (background ? 'white' : 'black')}; ;
 `;
 
 const Label = styled.label<{ top: number; fontSize: number }>`
-  position: absolute;
+  font-size: ${({ fontSize }) => fontSize}px;
+  top: ${({ top }) => top}px;
   color: rgb(125, 125, 125);
   left: 10px;
-  top: ${({ top }) => top}px;
-  font-size: ${({ fontSize }) => fontSize}px;
-  transition: font 0.1s ease, top 0.1s ease, transform 0.1s ease;
-  transition: font 0.1s ease, top 0.1s ease, transform 0.1s ease, -webkit-transform 0.1s ease,
-    -moz-transform 0.1s ease, -o-transform 0.1s ease;
+  position: absolute;
+  transition: all 0.1s ease;
 `;
 
 const Warning = styled.div`
@@ -45,7 +43,6 @@ const Warning = styled.div`
   position: absolute;
   left: 0.4em;
   font-size: 15px;
-
   bottom: -1.5em;
 
   @media screen and (max-width: 550px) {

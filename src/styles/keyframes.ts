@@ -1,15 +1,15 @@
 import { keyframes } from 'styled-components';
 
 export const moveLeft = keyframes`
- 0% {
-      transform: translateX(245px);
-    }
-    50% {
-      transform: translateX(245px);
-    }
-    100% {
-      transform: translateY(0);
-    }
+  0% {
+    transform: translateX(245px);
+  }
+  50% {
+    transform: translateX(245px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 `;
 
 export const moveUp = keyframes`

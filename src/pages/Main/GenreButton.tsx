@@ -6,8 +6,8 @@ type GenreButtonType = { genre: string; fontSize: number };
 
 const GenreButtonLayout = styled.button<{ fontSize: number }>`
   font-size: ${({ fontSize }) => fontSize}px;
+  background: rgb(111, 111, 111);
   color: white;
-  background-color: rgb(111, 111, 111);
   border-radius: 5px;
   width: fit-content;
   padding: 0.5em 0.7em;

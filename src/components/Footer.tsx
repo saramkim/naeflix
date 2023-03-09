@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const FooterLayout = styled.div<{ background?: string }>`
-  padding: 80px 80px;
+  background: ${({ background }) => background || 'inherit'};
   color: rgb(125, 125, 125);
-  background-color: ${({ background }) => background || 'inherit'};
+  padding: 80px 80px;
 
   @media screen and (max-width: 550px) {
     padding: 60px 30px;
@@ -12,10 +12,10 @@ const FooterLayout = styled.div<{ background?: string }>`
 
 const ContentWrapper = styled.div`
   ${({ theme }) => theme.flex.column};
+  position: relative;
   margin: auto;
   max-width: 1000px;
   gap: 30px;
-  position: relative;
 `;
 
 const Inquiry = styled.span`

@@ -16,16 +16,16 @@ const GenreSelectorLayout = styled.select<{ fontSize: number; top: number; right
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
-  position: absolute;
+  
+  background: ${({ theme }) => theme.color.lightGray};
+  font-size: ${({ fontSize }) => fontSize}px;
   top: ${({ top }) => top}px;
   right: ${({ right }) => right}px;
+  position: absolute;
   padding: 0.75rem;
   border-radius: 0.3em;
-  background-color: ${({ theme }) => theme.color.lightGray};
   border: none;
   font-family: inherit;
-  font-size: ${({ fontSize }) => fontSize}px;
   cursor: pointer;
   text-align: center;
 
@@ -47,9 +47,9 @@ const GenreSelectorLayout = styled.select<{ fontSize: number; top: number; right
   }
 
   @media screen and (max-width: 550px) {
-    font-size: 16px;
     top: ${({ top }) => top * 0.8}px;
     right: ${({ right }) => right * 0.8}px;
+    font-size: 16px;
   }
 `;
 

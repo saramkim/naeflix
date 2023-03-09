@@ -15,7 +15,7 @@ type SelectorType = {
 };
 
 const Background = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   height: 100%;
   width: 100%;
   position: fixed;
@@ -25,7 +25,7 @@ const Background = styled.div`
 `;
 
 const SelectorLayout = styled.div`
-  background-color: ${({ theme }) => theme.color.lightGray};
+  background: ${({ theme }) => theme.color.lightGray};
   color: black;
   position: fixed;
   top: 50%;
@@ -37,17 +37,17 @@ const SelectorLayout = styled.div`
   width: 1280px;
   height: 80%;
   overflow-y: scroll;
+  padding: 50px;
+
   &::-webkit-scrollbar {
     width: 15px;
     border-radius: 3px;
     background: rgb(155, 155, 155);
   }
   &::-webkit-scrollbar-thumb {
-    background-color: rgb(55, 55, 55);
+    background: rgb(55, 55, 55);
     border-radius: 3px;
   }
-
-  padding: 50px;
 
   @media screen and (max-width: 950px) {
     padding: 30px 0px;

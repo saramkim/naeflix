@@ -5,8 +5,8 @@ import Button from 'components/Button';
 import Input from 'components/Input';
 import { checkUserExist } from 'firebases/user';
 import { useInput } from 'hooks/useInput';
-import { useAppDispatch } from 'store/useRedux';
 import { setEmail } from 'store/emailSlice';
+import { useAppDispatch } from 'store/useRedux';
 import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
 
@@ -22,10 +22,10 @@ const FormTitle = styled.h3`
 `;
 
 const InputContainer = styled.div`
+  color: black;
+  width: 100%;
   display: grid;
   grid-template-columns: 2.5fr 1fr;
-  width: 100%;
-  color: black;
 
   @media screen and (max-width: 950px) {
     ${({ theme }) => theme.flex.columnCenter}

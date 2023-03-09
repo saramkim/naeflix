@@ -7,7 +7,7 @@ import Header from './Header';
 import TextCard from './TextCard';
 
 const IntroLayout = styled.div`
-  background-color: black;
+  background: black;
   color: white;
 `;
 

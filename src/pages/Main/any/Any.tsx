@@ -20,7 +20,7 @@ const AnyMovie = styled.div`
   ${({ theme }) => theme.flex.center};
   ${({ theme }) => theme.style.transition};
   border-radius: 10px;
-  background-color: white;
+  background: white;
   color: rgb(188, 188, 188);
   cursor: pointer;
   max-width: 100vw;

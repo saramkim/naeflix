@@ -8,26 +8,25 @@ import Post from '../cinema/Post';
 
 const BannerLayout = styled.div`
   ${({ theme }) => theme.flex.columnCenter};
-  position: relative;
   background: #27003d;
   background: -moz-linear-gradient(-45deg, #27003d 0%, #50005e 49%, #41094f 69%, #280030 100%);
   background: -webkit-linear-gradient(-45deg, #27003d 0%, #50005e 49%, #41094f 69%, #280030 100%);
   background: linear-gradient(135deg, #27003d 0%, #50005e 49%, #41094f 69%, #280030 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#27003d', endColorstr='#280030',GradientType=1 );
+  position: relative;
   border-radius: 5px;
   gap: 30px;
-
   margin-left: -50px;
   padding: 50px;
-
-  @media screen and (max-width: 550px) {
-    margin-left: -30px;
-    padding: 30px;
-  }
 
   > div:last-child {
     max-width: 1080px;
     width: 100%;
+  }
+
+  @media screen and (max-width: 550px) {
+    margin-left: -30px;
+    padding: 30px;
   }
 `;
 

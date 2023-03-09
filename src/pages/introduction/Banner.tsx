@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const BannerLayout = styled.div`
   ${({ theme }) => theme.flex.columnCenter}
   width: 100%;
-
   gap: 150px;
 
   @media screen and (max-width: 950px) {
@@ -19,12 +18,12 @@ const Logo = styled.img`
 `;
 
 const TextWrapper = styled.div`
+  background: white;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 30px;
-  background-color: white;
   padding: 30px;
+  grid-template-columns: 1fr 1fr;
 
   *:nth-child(odd) {
     color: ${({ theme }) => theme.color.main};
