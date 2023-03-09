@@ -5,8 +5,8 @@ import Button from 'components/Button';
 import Input from 'components/Input';
 import { createUser } from 'firebases/user';
 import { useInput } from 'hooks/useInput';
-import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 import { setEmail } from 'store/emailSlice';
+import { useAppDispatch, useAppSelector } from 'store/useRedux';
 import styled from 'styled-components';
 import { PHRASE, REG_EX } from 'utils/constants';
 

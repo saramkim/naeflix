@@ -31,8 +31,8 @@ const Info = styled.div`
 `;
 
 const ChildrenCount = styled.span`
-  color: rgb(155, 155, 155);
   ${({ theme }) => theme.font(17)}
+  color: rgb(155, 155, 155);
 `;
 
 const Category = styled.div`
@@ -40,7 +40,7 @@ const Category = styled.div`
 `;
 
 const Wrapper = styled.div`
-  display: flexbox;
+  display: flex;
   overflow: scroll;
   max-width: fit-content;
   gap: 10px;
@@ -52,7 +52,7 @@ const Wrapper = styled.div`
     background: rgb(55, 55, 55);
   }
   &::-webkit-scrollbar-thumb {
-    background-color: rgb(155, 155, 155);
+    background: rgb(155, 155, 155);
     border-radius: 3px;
   }
 
@@ -66,6 +66,7 @@ function HorizontalContainer({ children, category }: HorizontalContainerType) {
   const [isShown, setShown] = useState(true);
   const [canScroll, setCanScroll] = useState(false);
   const [mouseDownX, setMouseDownX] = useState(0);
+  const [needPreventClick, setNeedPreventClick] = useState(false);
 
   const onDragStart = (currentX: number) => {
     setCanScroll(true);
@@ -79,16 +80,20 @@ function HorizontalContainer({ children, category }: HorizontalContainerType) {
 
   const onDrag = (currentX: number) => {
     if (canScroll && scrollRef.current) {
-      const { scrollWidth, clientWidth, scrollLeft } = scrollRef.current;
-
       scrollRef.current.scrollLeft = mouseDownX - currentX;
+      setNeedPreventClick(true);
 
+      const { scrollWidth, clientWidth, scrollLeft } = scrollRef.current;
       if (scrollLeft === 0) setMouseDownX(currentX);
       else if (scrollWidth <= clientWidth + scrollLeft) setMouseDownX(currentX + scrollLeft);
-    }
+    } else setNeedPreventClick(false);
   };
   const onDragByMouse = (e: React.MouseEvent<HTMLDivElement>) => onDrag(e.pageX);
   const onDragByTouch = (e: React.TouchEvent<HTMLDivElement>) => onDrag(e.changedTouches[0].pageX);
+
+  const onPreventClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (needPreventClick) e.stopPropagation();
+  };
 
   return (
     <Layout>
@@ -112,6 +117,7 @@ function HorizontalContainer({ children, category }: HorizontalContainerType) {
         onTouchStart={onDragStartByTouch}
         onTouchEnd={onDragEnd}
         onTouchMove={onDragByTouch}
+        onClickCapture={onPreventClick}
       >
         {isShown && children}
       </Wrapper>
