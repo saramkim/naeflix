@@ -16,6 +16,7 @@ import { DATA, STYLE } from 'utils/constants';
 type RegisterType = {
   id: string;
   setId: React.Dispatch<React.SetStateAction<string>>;
+  setSelect: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Title = styled.h1`
@@ -66,7 +67,7 @@ const ButtonWrapper = styled.div`
   ${({ theme }) => theme.flex.spaceBetween}
 `;
 
-function Register({ id, setId }: RegisterType) {
+function Register({ id, setId, setSelect }: RegisterType) {
   const [movieData] = useData({
     callback: getMovieData,
     initailValue: null,
@@ -95,7 +96,10 @@ function Register({ id, setId }: RegisterType) {
       }
     };
 
-    const onUnregister = () => setId('');
+    const onCancel = () => {
+      setId('');
+      setSelect(true);
+    };
 
     return (
       <Backdrop heigth={STYLE.HEIGHT_WITHOUT_HEADER} src={BACKDROP_SRC}>
@@ -111,7 +115,7 @@ function Register({ id, setId }: RegisterType) {
                 <Button fontSize={22} onClick={onRegister}>
                   등록
                 </Button>
-                <Button fontSize={22} onClick={onUnregister} background='rgb(125,125,125)'>
+                <Button fontSize={22} onClick={onCancel} background='rgb(125,125,125)'>
                   취소
                 </Button>
               </ButtonWrapper>

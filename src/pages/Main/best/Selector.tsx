@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { getMovieData } from 'api/movieData';
 import { MovieDataType } from 'api/movieType';
@@ -55,6 +56,7 @@ const SelectorLayout = styled.div`
 
 function Selector({ setSelect, setId }: SelectorType) {
   const [movieList, setMovieList] = useState<MovieDataType[]>([]);
+  const navigate = useNavigate();
 
   const onClickCaptureMovie = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation();
@@ -80,7 +82,7 @@ function Selector({ setSelect, setId }: SelectorType) {
   }, []);
 
   return (
-    <Background onClick={() => setSelect(false)}>
+    <Background onClick={() => navigate('/main/cinema')}>
       <SelectorLayout onClickCapture={onClickCaptureMovie}>
         <VerticalContainer category='5stars'>
           {movieList.map((movie) => (

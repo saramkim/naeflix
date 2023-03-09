@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Register from './Register';
 import Selector from './Selector';
 
-const NoBestLayout = styled.div`
+export const BestLayout = styled.div`
   ${({ theme }) => theme.flex.center};
   ${({ theme }) => theme.style.minHeight};
   background: radial-gradient(rgb(255, 255, 255), rgb(0, 0, 0));
@@ -15,39 +15,13 @@ const NoBestLayout = styled.div`
   }
 `;
 
-const NoBest = styled.div`
-  ${({ theme }) => theme.style.transition};
-  border-radius: 10px;
-  background-color: white;
-  cursor: pointer;
-  width: 342px;
-  height: 513px;
-  max-width: 100vw;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
-
-  &:hover {
-    box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.8);
-  }
-
-  @media screen and (max-width: 550px) {
-    width: 280px;
-    height: 420px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-  }
-`;
-
 function Best() {
   const [id, setId] = useState('');
-  const [select, setSelect] = useState(false);
+  const [select, setSelect] = useState(true);
 
-  if (id) return <Register id={id} setId={setId} />;
+  if (id) return <Register id={id} setId={setId} setSelect={setSelect} />;
 
-  return (
-    <NoBestLayout>
-      <NoBest onClick={() => setSelect(true)} />
-      {select && <Selector setSelect={setSelect} setId={setId} />}
-    </NoBestLayout>
-  );
+  return <BestLayout>{select && <Selector setSelect={setSelect} setId={setId} />}</BestLayout>;
 }
 
 export default Best;
