@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { BestLayout } from '../best/Best';
 
 import CountrySelector from './CountrySelector';
+import DateSelector from './DateSecletor';
 import ExceptionCheck from './ExceptionCheck';
 import GenreSelector from './GenreSelector';
 import Result from './Result';
@@ -47,10 +48,11 @@ function Any() {
   const [movie, setMovie] = useState<MovieType | null>(null);
   const [country, setCountry] = useState('');
   const [genre, setGenre] = useState('');
+  const [date, setDate] = useState('');
   const [isExcept, setExcept] = useState(false);
 
   const onAnyMovie = async () => {
-    const data = await getAnyMovie(country, genre, isExcept);
+    const data = await getAnyMovie({ country, genre, date, exceptMark: isExcept });
     if (data === undefined) alert('해당 영화가 존재하지 않습니다.');
     setMovie(data);
   };
@@ -64,6 +66,7 @@ function Any() {
       </AnyMovie>
       <ExceptionCheck isExcept={isExcept} setExcept={setExcept} />
       <CountrySelector country={country} setCountry={setCountry} />
+      <DateSelector date={date} setDate={setDate} />
       <GenreSelector genre={genre} setGenre={setGenre} />
     </AnyMovieLayout>
   );

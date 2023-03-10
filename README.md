@@ -26,7 +26,7 @@ Skills: **React, Typescript, Firebase**
 
   - [x] 장르
 
-  - [ ] 시대
+  - [x] 시대
 
 - 회원가입
 

@@ -84,26 +84,23 @@ function ProfileButton() {
         <ProfileImage size={40} src={photoURL} />
         <div>▼</div>
       </InitialBox>
-      {isShown && (
-        <DropBox>
-          {isMobile ? (
-            <>
-              <TextButton path='/main/cinema'>인생 영화</TextButton>
-              <TextButton path='/main/any'>아무 영화</TextButton>
-              <TextButton path='/main/top-rated'>높은 평점</TextButton>
-              <TextButton path='/main/genre'>장르</TextButton>
-              <TextButton path='/account'>계정</TextButton>
-              <TextButton path='/main/edit-list'>홈 설정</TextButton>
-            </>
-          ) : (
-            <>
-              <TextButton path='/account'>계정</TextButton>
-              <TextButton path='/main/edit-list'>홈 설정</TextButton>
-              <TextButton onClick={onClickLogout}>로그아웃</TextButton>
-            </>
-          )}
-        </DropBox>
-      )}
+      {isShown &&
+        (isMobile ? (
+          <DropBox>
+            <TextButton path='/main/cinema'>인생 영화</TextButton>
+            <TextButton path='/main/any'>아무 영화</TextButton>
+            <TextButton path='/main/top-rated'>높은 평점</TextButton>
+            <TextButton path='/main/genre'>장르</TextButton>
+            <TextButton path='/main/edit-list'>홈 설정</TextButton>
+            <TextButton path='/account'>계정</TextButton>
+          </DropBox>
+        ) : (
+          <DropBox>
+            <TextButton path='/main/edit-list'>홈 설정</TextButton>
+            <TextButton path='/account'>계정</TextButton>
+            <TextButton onClick={onClickLogout}>로그아웃</TextButton>
+          </DropBox>
+        ))}
     </ProfileButtonLayout>
   );
 }

@@ -117,7 +117,7 @@ function MovieInfo({ id }: { id: string }) {
             <Poster onClick={() => setTrailer(true)}>
               <Image width={342} path={poster_path} />
             </Poster>
-            <Content gap={20}>
+            <Content gap={25}>
               <GenreWraaper>
                 {genres.map((genre) => (
                   <GenreButton key={genre.id} genre={genre.name} fontSize={16} />

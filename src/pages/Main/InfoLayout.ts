@@ -48,6 +48,6 @@ export const Content = styled.div<{ gap: number }>`
   gap: ${({ gap }) => gap}px;
 
   @media screen and (max-width: 950px) {
-    gap: ${({ gap }) => gap * 0.7}px;
+    gap: ${({ gap }) => gap * 0.8}px;
   }
 `;

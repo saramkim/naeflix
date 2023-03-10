@@ -31,6 +31,7 @@ const AnimationContent = styled.div`
 
 const Title = styled.h1`
   ${({ theme }) => theme.font(45)}
+  font-weight: 600;
   width: 440px;
 
   @media screen and (max-width: 550px) {

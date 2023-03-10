@@ -16,11 +16,8 @@ const GenreSelectorLayout = styled.select<{ fontSize: number; top: number; right
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  
+
   background: ${({ theme }) => theme.color.lightGray};
-  font-size: ${({ fontSize }) => fontSize}px;
-  top: ${({ top }) => top}px;
-  right: ${({ right }) => right}px;
   position: absolute;
   padding: 0.75rem;
   border-radius: 0.3em;
@@ -28,6 +25,10 @@ const GenreSelectorLayout = styled.select<{ fontSize: number; top: number; right
   font-family: inherit;
   cursor: pointer;
   text-align: center;
+  top: ${({ top }) => top}px;
+  right: ${({ right }) => right}px;
+  font-size: ${({ fontSize }) => fontSize}px;
+  min-width: 120px;
 
   &::-ms-expand {
     display: none;
@@ -37,7 +38,6 @@ const GenreSelectorLayout = styled.select<{ fontSize: number; top: number; right
   }
   &:focus {
     outline: none;
-    padding: 0.75rem 0.62rem;
   }
   &:hover,
   &:focus,
@@ -49,7 +49,8 @@ const GenreSelectorLayout = styled.select<{ fontSize: number; top: number; right
   @media screen and (max-width: 550px) {
     top: ${({ top }) => top * 0.8}px;
     right: ${({ right }) => right * 0.8}px;
-    font-size: 16px;
+    font-size: ${({ fontSize }) => fontSize * 0.8}px;
+    min-width: 95px;
   }
 `;
 

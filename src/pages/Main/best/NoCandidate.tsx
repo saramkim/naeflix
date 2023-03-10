@@ -34,9 +34,15 @@ function NoCandidate() {
       <p>평점 10점의 영화만 인생 영화로 등록 가능합니다.</p>
       <p>*이미 등록한 인생 영화를 중복 등록할 수 없습니다.</p>
       <ButtonWrapper>
-        <TextButton path='/main/top-rated'>높은 평점의 영화</TextButton>
-        <TextButton path='/main/trending-day'>오늘의 인기 영화</TextButton>
-        <TextButton path='/main/search'>영화 검색</TextButton>
+        <TextButton path='/main/top-rated' stopPropagation>
+          높은 평점의 영화
+        </TextButton>
+        <TextButton path='/main/trending-day' stopPropagation>
+          오늘의 인기 영화
+        </TextButton>
+        <TextButton path='/main/search' stopPropagation>
+          영화 검색
+        </TextButton>
       </ButtonWrapper>
     </NoCandidateLayout>
   );

@@ -57,23 +57,34 @@ const getTrailer = async (id: string) => {
   return results[0];
 };
 
-const getTotalPages = async (country: string, genre: string) => {
+const getTotalPages = async (country: string, genre: string, date: string, endDate: string) => {
   const URL =
     country === 'foreign'
-      ? `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=ko-KR&region=KR&with_genres=${genre}&vote_count.gte=80&vote_average.gte=6&without_original_language=ko`
-      : `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=ko-KR&region=KR&with_genres=${genre}&vote_count.gte=10&vote_average.gte=6&with_original_language=${country}`;
+      ? `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=ko-KR&region=KR&with_genres=${genre}&vote_count.gte=80&vote_average.gte=6&release_date.gte=${date}&release_date.lte=${endDate}&without_original_language=ko`
+      : `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=ko-KR&region=KR&with_genres=${genre}&vote_count.gte=10&vote_average.gte=6&release_date.gte=${date}&release_date.lte=${endDate}&with_original_language=${country}`;
   const response = await axios.get(URL);
   const { total_pages }: { total_pages: number } = response.data;
   return total_pages;
 };
 
-const getAnyMovie = async (country: string, genre: string, exceptMark: boolean) => {
-  const totalPages = await getTotalPages(country, genre);
+const getAnyMovie = async ({
+  country,
+  genre,
+  date,
+  exceptMark,
+}: {
+  country: string;
+  genre: string;
+  date: string;
+  exceptMark: boolean;
+}) => {
+  const endDate = Number(date) > 0 ? `${Number(date) + 9}-12-31` : '';
+  const totalPages = await getTotalPages(country, genre, date, endDate);
   const page = Math.ceil(Math.random() * totalPages);
   const URL =
     country === 'foreign'
-      ? `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=ko-KR&region=KR&page=${page}&with_genres=${genre}&vote_count.gte=80&vote_average.gte=6&without_original_language=ko`
-      : `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=ko-KR&region=KR&page=${page}&with_genres=${genre}&vote_count.gte=10&vote_average.gte=6&with_original_language=${country}`;
+      ? `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=ko-KR&region=KR&page=${page}&with_genres=${genre}&vote_count.gte=80&vote_average.gte=6&release_date.gte=${date}&release_date.lte=${endDate}&without_original_language=ko`
+      : `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=ko-KR&region=KR&page=${page}&with_genres=${genre}&vote_count.gte=10&vote_average.gte=6&release_date.gte=${date}&release_date.lte=${endDate}&with_original_language=${country}`;
   const response = await axios.get(URL);
   const { results }: { results: MovieType[] } = response.data;
   const number = Math.floor(Math.random() * results.length);

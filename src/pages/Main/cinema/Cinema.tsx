@@ -10,7 +10,8 @@ import Post from './Post';
 import PostContainer from './PostContainer';
 
 const CinemaLayout = styled.div`
-  ${({ theme }) => theme.flex.columnCenter}
+  ${({ theme }) => theme.flex.columnCenter};
+  ${({ theme }) => theme.style.minHeight};
   background: #27003d;
   background: -moz-linear-gradient(-45deg, #27003d 0%, #50005e 49%, #41094f 69%, #280030 100%);
   background: -webkit-linear-gradient(-45deg, #27003d 0%, #50005e 49%, #41094f 69%, #280030 100%);

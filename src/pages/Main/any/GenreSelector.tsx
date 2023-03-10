@@ -5,7 +5,7 @@ type GenreSelectorType = { genre: string; setGenre: React.Dispatch<React.SetStat
 
 function GenreSelector({ genre, setGenre }: GenreSelectorType) {
   return (
-    <SelectBox setValue={setGenre} fontSize={20} top={30} right={160} defaultValue={genre}>
+    <SelectBox setValue={setGenre} fontSize={20} top={30} right={290} defaultValue={genre}>
       <option value=''>모든 장르</option>
       {GENRE.map(({ id, name }) => (
         <option key={id} value={id}>

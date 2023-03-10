@@ -8,7 +8,7 @@ const LoadginLayout = styled.div`
 `;
 
 const Logo = styled.img`
-  height: 150px;
+  height: 130px;
 
   @media screen and (min-width: 550px) and (max-width: 950px) {
     height: 100px;
