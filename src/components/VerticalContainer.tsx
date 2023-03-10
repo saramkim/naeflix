@@ -12,7 +12,7 @@ type VerticalContainerType = {
   setLoad?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Layout = styled.div`
+const VerticalContainerLayout = styled.div`
   ${({ theme }) => theme.flex.columnCenter}
   gap: 50px;
 
@@ -56,7 +56,7 @@ function VerticalContainer({
   const exceed = useScrollDistance(800);
 
   return (
-    <Layout>
+    <VerticalContainerLayout>
       {category && (
         <Title>
           <span>{DATA.CATEGORY_NAME[category] || category}</span>
@@ -70,7 +70,7 @@ function VerticalContainer({
         </ScrollDown>
       )}
       {exceed && <ScrollToTopButton />}
-    </Layout>
+    </VerticalContainerLayout>
   );
 }
 

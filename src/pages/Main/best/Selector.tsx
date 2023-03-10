@@ -9,6 +9,8 @@ import styled from 'styled-components';
 
 import Movie from '../Movie';
 
+import NoCandidate from './NoCandidate';
+
 type SelectorType = {
   setSelect: React.Dispatch<React.SetStateAction<boolean>>;
   setId: React.Dispatch<React.SetStateAction<string>>;
@@ -56,13 +58,17 @@ const SelectorLayout = styled.div`
 
 function Selector({ setSelect, setId }: SelectorType) {
   const [movieList, setMovieList] = useState<MovieDataType[]>([]);
+  const [isLoaded, setLoaded] = useState(false);
   const navigate = useNavigate();
+  const hasCandidate = movieList.length > 0;
 
   const onClickCaptureMovie = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.stopPropagation();
-    if (e.target instanceof HTMLElement && e.target.id) {
-      setSelect(false);
-      setId(e.target.id);
+    if (hasCandidate) {
+      e.stopPropagation();
+      if (e.target instanceof HTMLElement && e.target.id) {
+        setSelect(false);
+        setId(e.target.id);
+      }
     }
   };
 
@@ -72,23 +78,27 @@ function Selector({ setSelect, setId }: SelectorType) {
       const idList = Object.keys(movies);
       idList.forEach(async (id) => {
         const { rating, best } = movies[id];
-
         if (rating === 5 && !best) {
           const detail = await getMovieData(id);
           setMovieList((v) => [...v, detail]);
         }
       });
+      setLoaded(true);
     })();
   }, []);
 
   return (
     <Background onClick={() => navigate('/main/cinema')}>
       <SelectorLayout onClickCapture={onClickCaptureMovie}>
-        <VerticalContainer category='5stars'>
-          {movieList.map((movie) => (
-            <Movie {...movie} key={movie.id} />
-          ))}
-        </VerticalContainer>
+        {hasCandidate ? (
+          <VerticalContainer category='5stars'>
+            {movieList.map((movie) => (
+              <Movie {...movie} key={movie.id} />
+            ))}
+          </VerticalContainer>
+        ) : (
+          isLoaded && <NoCandidate />
+        )}
       </SelectorLayout>
     </Background>
   );

@@ -25,7 +25,8 @@ const Title = styled.h1`
 `;
 
 const Content = styled.div`
-  ${({ theme }) => theme.flex.spaceBetween}
+  display: flex;
+  justify-content: space-between;
 `;
 
 const ListWrapper = styled.div`

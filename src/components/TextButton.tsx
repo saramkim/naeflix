@@ -27,13 +27,11 @@ const TextButtonLayout = styled.div<{ fontSize?: number; color?: string; hover?:
 function TextButton({ children, fontSize, onClick, path, state, color, hover }: TextButtonProps) {
   const navigate = useNavigate();
 
-  const onClickButton = () => {
+  const onClickButton = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
     if (path) {
-      if (state) {
-        navigate(path, {
-          state,
-        });
-      } else navigate(path);
+      if (state) navigate(path, { state });
+      else navigate(path);
     }
   };
 

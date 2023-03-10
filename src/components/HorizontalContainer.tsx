@@ -10,7 +10,7 @@ type HorizontalContainerType = {
   category: string;
 };
 
-const Layout = styled.div`
+const HorizontalContainerLayout = styled.div`
   ${({ theme }) => theme.flex.column};
   gap: 10px;
 `;
@@ -96,7 +96,7 @@ function HorizontalContainer({ children, category }: HorizontalContainerType) {
   };
 
   return (
-    <Layout>
+    <HorizontalContainerLayout>
       <TextWrapper>
         <Info onClick={() => setShown((v) => !v)}>
           <Category>{DATA.CATEGORY_NAME[category]}</Category>
@@ -121,7 +121,7 @@ function HorizontalContainer({ children, category }: HorizontalContainerType) {
       >
         {isShown && children}
       </Wrapper>
-    </Layout>
+    </HorizontalContainerLayout>
   );
 }
 
