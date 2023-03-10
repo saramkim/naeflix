@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/naeflix/static/js/main.f267eb41.js",
+    "main.js": "/naeflix/static/js/main.3ecb1f81.js",
     "static/media/best-cinema.mp4": "/naeflix/static/media/best-cinema.f4f61fe5b91ca1aaec5b.mp4",
     "static/media/search.png": "/naeflix/static/media/search.42ab46e284c79415aecd.png",
     "static/media/any-movie.png": "/naeflix/static/media/any-movie.f9d9744468c199fe0b40.png",
@@ -11,9 +11,9 @@
     "static/media/account.png": "/naeflix/static/media/account.c93fbeb6782f7ac342ed.png",
     "static/media/kakao-profile.jpg": "/naeflix/static/media/kakao-profile.90e51e7d338788eed29a.jpg",
     "index.html": "/naeflix/index.html",
-    "main.f267eb41.js.map": "/naeflix/static/js/main.f267eb41.js.map"
+    "main.3ecb1f81.js.map": "/naeflix/static/js/main.3ecb1f81.js.map"
   },
   "entrypoints": [
-    "static/js/main.f267eb41.js"
+    "static/js/main.3ecb1f81.js"
   ]
 }
