@@ -25,7 +25,8 @@ const TextWrapper = styled.div`
 `;
 
 const Info = styled.div`
-  ${({ theme }) => theme.flex.center}
+  display: flex;
+  align-items: baseline;
   cursor: pointer;
   gap: 5px;
 `;

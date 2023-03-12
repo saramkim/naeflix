@@ -20,7 +20,7 @@ const PostLayout = styled.div`
   width: 100%;
   border-radius: 10px;
   box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8);
-  padding: 50px 100px;
+  padding: 50px 80px;
   gap: 50px;
 
   @media screen and (max-width: 950px) {
@@ -58,12 +58,13 @@ const Content = styled.div`
 const Title = styled.h1`
   ${({ theme }) => theme.font(36)}
   word-break: normal;
+  font-weight: 500;
 `;
 
 const Comment = styled.div`
   color: ${({ theme }) => theme.color.yellow};
   ${({ theme }) => theme.font(22)}
-  font-weight: bold;
+  font-weight: 500;
   word-break: normal;
 `;
 

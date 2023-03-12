@@ -25,6 +25,7 @@ const BannerLayout = styled.div`
   }
 
   @media screen and (max-width: 550px) {
+    gap: 20px;
     margin-left: -30px;
     padding: 30px;
   }

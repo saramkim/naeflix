@@ -29,6 +29,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   button {
+    font-family: 'Noto Sans KR', sans-serif;
     border: none;
     background: none;
     padding: 0;

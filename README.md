@@ -2,8 +2,6 @@
 
 Skills: **React, Typescript, Firebase**
 
-</br>
-
 ### [내플릭스 소개 링크](https://saramkim.github.io/naeflix/introduction)
 
 <br/>
@@ -16,7 +14,9 @@ Skills: **React, Typescript, Firebase**
 
   - [x] 좋아요
 
-  - [ ] 순위
+  - [x] 정렬
+
+  - [x] 삭제
 
 - 아무 영화
 
