@@ -43,7 +43,7 @@ const getTopRatedMovies = async (page: number) => {
   return results;
 };
 
-const getTrending = async (period: 'day' | 'week', page: number) => {
+const getTrending = async (page: number, period: 'day' | 'week') => {
   const response = await axios.get(
     `${BASE_URL}/trending/movie/${period}?api_key=${API_KEY}&language=ko-KR&page=${page}`
   );

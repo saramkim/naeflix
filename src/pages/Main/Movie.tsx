@@ -67,35 +67,6 @@ function Movie({ title, poster_path, id: idNumber }: MovieType) {
 
   const onClickMovie = () => navigate(`/main/movie/${id}`);
 
-  if (poster_path)
-    return (
-      <MovieLayout
-        onClick={onClickMovie}
-        onMouseEnter={() => setIsShown(true)}
-        onMouseLeave={() => setIsShown(false)}
-        onTouchStart={() => setIsShown(true)}
-        onTouchEnd={() => setIsShown(false)}
-      >
-        <Image width={154} path={poster_path} id={id} />
-        {isShown && (
-          <Content id={id}>
-            <MarkingButton id={id} isMarked={isMarked} setMarked={setMarked} setStar={setStar} />
-
-            <Title>{title}</Title>
-
-            <RatingStar
-              id={id}
-              star={star}
-              setStar={setStar}
-              setMarked={setMarked}
-              size={20}
-              readonly
-            />
-          </Content>
-        )}
-      </MovieLayout>
-    );
-
   return (
     <MovieLayout
       onClick={onClickMovie}
@@ -105,24 +76,39 @@ function Movie({ title, poster_path, id: idNumber }: MovieType) {
       onTouchEnd={() => setIsShown(false)}
     >
       <Image width={154} path={poster_path} id={id} />
-      <Content id={id}>
-        {isShown && (
-          <MarkingButton id={id} isMarked={isMarked} setMarked={setMarked} setStar={setStar} />
-        )}
-
-        <Title>{title}</Title>
-
-        {isShown && (
-          <RatingStar
-            id={id}
-            star={star}
-            setStar={setStar}
-            setMarked={setMarked}
-            size={20}
-            readonly
-          />
-        )}
-      </Content>
+      {poster_path ? (
+        isShown && (
+          <Content id={id}>
+            <MarkingButton id={id} isMarked={isMarked} setMarked={setMarked} setStar={setStar} />
+            <Title>{title}</Title>
+            <RatingStar
+              id={id}
+              star={star}
+              setStar={setStar}
+              setMarked={setMarked}
+              size={20}
+              readonly
+            />
+          </Content>
+        )
+      ) : (
+        <Content id={id}>
+          {isShown && (
+            <MarkingButton id={id} isMarked={isMarked} setMarked={setMarked} setStar={setStar} />
+          )}
+          <Title>{title}</Title>
+          {isShown && (
+            <RatingStar
+              id={id}
+              star={star}
+              setStar={setStar}
+              setMarked={setMarked}
+              size={20}
+              readonly
+            />
+          )}
+        </Content>
+      )}
     </MovieLayout>
   );
 }

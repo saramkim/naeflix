@@ -1,11 +1,10 @@
 import { MovieType } from 'api/movieType';
+import Backdrop from 'components/Backdrop';
 import Button from 'components/Button';
 import Image from 'components/Image';
-import { Backdrop, Content, InfoLayout } from 'pages/Main/InfoLayout';
-import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
+import { Content, InfoLayout } from 'styles/InfoLayout';
 import { moveDown, moveLeft, moveRight, moveUp } from 'styles/keyframes';
-import { DATA, STYLE } from 'utils/constants';
 
 interface ResultType extends MovieType {
   setMovie: React.Dispatch<React.SetStateAction<MovieType | null>>;
@@ -63,13 +62,8 @@ function Result({
   overview,
   setMovie,
 }: ResultType) {
-  const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
-  const BACKDROP_SRC = isMobile
-    ? DATA.IMG_BASE_URL(780) + posterPath
-    : DATA.IMG_BASE_URL(780) + backdropPath;
-
   return (
-    <Backdrop heigth={STYLE.HEIGHT_WITHOUT_HEADER} src={BACKDROP_SRC}>
+    <Backdrop backdropPath={backdropPath} posterPath={posterPath}>
       <InfoLayout>
         <AnimationPoster>
           <Image width={342} path={posterPath} />

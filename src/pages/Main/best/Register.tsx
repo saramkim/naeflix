@@ -2,16 +2,15 @@ import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { getMovieData } from 'api/movieData';
+import Backdrop from 'components/Backdrop';
 import Button from 'components/Button';
 import Image from 'components/Image';
 import Loading from 'components/Loading';
 import { commentMovie, getComment, markBestMovie } from 'firebases/firestore';
 import { useData } from 'hooks/useData';
-import { Backdrop, Content, InfoLayout } from 'pages/Main/InfoLayout';
-import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
+import { Content, InfoLayout } from 'styles/InfoLayout';
 import { moveDown, moveLeft, moveRight, moveUp } from 'styles/keyframes';
-import { DATA, STYLE } from 'utils/constants';
 
 type RegisterType = {
   id: string;
@@ -79,13 +78,9 @@ function Register({ id, setId, setSelect }: RegisterType) {
   });
   const textRef = useRef<HTMLTextAreaElement>(null);
   const navigate = useNavigate();
-  const isMobile = useMediaQuery({ query: '(max-width: 550px)' });
 
   if (movieData) {
     const { title, poster_path: posterPath, backdrop_path: backdropPath } = movieData;
-    const BACKDROP_SRC = isMobile
-      ? DATA.IMG_BASE_URL(780) + posterPath
-      : DATA.IMG_BASE_URL(780) + backdropPath;
 
     const onRegister = () => {
       if (textRef.current) {
@@ -101,7 +96,7 @@ function Register({ id, setId, setSelect }: RegisterType) {
     };
 
     return (
-      <Backdrop heigth={STYLE.HEIGHT_WITHOUT_HEADER} src={BACKDROP_SRC}>
+      <Backdrop backdropPath={backdropPath} posterPath={posterPath}>
         <InfoLayout>
           <AnimationPoster>
             <Image width={342} path={posterPath} />

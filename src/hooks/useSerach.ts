@@ -4,14 +4,14 @@ import { getMovies } from 'api/movieData';
 import { getPeople } from 'api/personData';
 import { SearchType } from 'pages/Main/search/Search';
 
-type useSearchType = {
+type UseSearchType = {
   word: string;
   type: SearchType;
 };
 
 const DEFAULT_PAGE = 1;
 
-export const useSearch = ({ word, type }: useSearchType) => {
+export const useSearch = ({ word, type }: UseSearchType) => {
   const [load, setLoad] = useState(false);
   const [dataList, setDataList] = useState<any[]>([]);
   const [page, setPage] = useState(DEFAULT_PAGE);

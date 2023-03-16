@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
 
-type useInfiniteScrollType = {
+type UseInfiniteScrollType = {
   setLoad: React.Dispatch<React.SetStateAction<boolean>>;
   canLoad: boolean;
 };
 
-export const useInfiniteScroll = ({ setLoad, canLoad }: useInfiniteScrollType) => {
+export const useInfiniteScroll = ({ setLoad, canLoad }: UseInfiniteScrollType) => {
   const iconRef = useRef<HTMLDivElement>(null);
   const options = {
     root: null,

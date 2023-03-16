@@ -1,9 +1,10 @@
 import { getPersonData } from 'api/personData';
+import Backdrop from 'components/Backdrop';
 import Image from 'components/Image';
 import Loading from 'components/Loading';
 import { useData } from 'hooks/useData';
-import { Backdrop, Content, InfoLayout } from 'pages/Main/InfoLayout';
 import styled from 'styled-components';
+import { Content, InfoLayout } from 'styles/InfoLayout';
 
 import Info from './Info';
 
@@ -23,7 +24,7 @@ function PersonInfo({ id }: { id: string }) {
       personData;
 
     return (
-      <Backdrop heigth='615px'>
+      <Backdrop height={615}>
         <InfoLayout>
           <Image width={342} path={profile_path} />
           <Content gap={30}>

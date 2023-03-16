@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
 import { getMovieData } from 'api/movieData';
+import Backdrop from 'components/Backdrop';
 import Image from 'components/Image';
 import Loading from 'components/Loading';
 import { getComment, getStar, isMarkedMovie } from 'firebases/firestore';
 import { useData } from 'hooks/useData';
-import { Backdrop, Content, InfoLayout } from 'pages/Main/InfoLayout';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
-import { DATA } from 'utils/constants';
+import { Content, InfoLayout } from 'styles/InfoLayout';
 
 import GenreButton from '../GenreButton';
 import MarkingButton from '../MarkingButton';
@@ -104,12 +104,8 @@ function MovieInfo({ id }: { id: string }) {
       runtime,
     } = movieData;
 
-    const BACKDROP_SRC = isMobile
-      ? DATA.IMG_BASE_URL(780) + poster_path
-      : DATA.IMG_BASE_URL(780) + backdrop_path;
-
     return (
-      <Backdrop heigth='615px' src={BACKDROP_SRC}>
+      <Backdrop height={615} backdropPath={backdrop_path} posterPath={poster_path}>
         {isTrailer ? (
           <Trailer id={id} setTrailer={setTrailer} />
         ) : (

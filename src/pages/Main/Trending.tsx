@@ -1,13 +1,14 @@
+import { getTrending } from 'api/movieData';
 import HorizontalContainer from 'components/HorizontalContainer';
 import VerticalContainer from 'components/VerticalContainer';
-import { useTrending } from 'hooks/useTrending';
+import { useDataWithPage } from 'hooks/useDataWithPage';
 
 import Movie from './Movie';
 
 type TrendingType = { direction: 'vertical' | 'horizontal'; period: 'day' | 'week' };
 
 function Trending({ direction, period }: TrendingType) {
-  const { movieList, setLoad } = useTrending(period);
+  const { movieList, setLoad } = useDataWithPage({ callback: getTrending, param: period });
 
   if (direction === 'vertical')
     return (
